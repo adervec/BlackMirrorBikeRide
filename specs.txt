@@ -1,0 +1,58 @@
+-idea is a homebrew alternative to zwift
+-read specs before suggesting coding method
+
+-reads the same power outputs as zwift, ie. has to be able to read the Bluetooth data of for example a Schwinn 130
+-detailed user profile with biometrics, can input weight and body dimensions and this affects performance
+-detailed 'bike garage' where a realistic bike can be built.
+-customize simple player avatar and bike.
+-this should be 3D with gamecube-tier graphics, also need a top down player icon for the map
+-can optionally read user heartrate if heartbeat connected
+
+-can build 'virtual routes' by specifying various segments consisting of material X at incline Y for meters Z and so on.
+-virtual route can have various skyboxes ranging from the normal to the existentially bizzare
+-the ground level view can be some ps1 tier view, should be able to choose 'biomes for segments' with random associated artifacts appearing by the roadside
+	-can start with some basic 'Mojave desert' biome for starters
+-overhead view should be a simplified view matching the ground level view
+
+-can  build 'real routes' by inputting a google maps route
+-should best guess the underlying material
+-use google maps 3D satellite to get the overhead view
+-use google streetview to get the ground level view
+	-if the google API is difficult this can be some 'manual' process where the app spoofs a human screenshotting the pictures. However the route generation process must be checkpointed so that it can be resumed fairly well if interrupted.
+	-if starved of streetview nodes can use the pictures submitted to google maps
+	-if truly starved of ground level photography then 'spoof' the view with the 3D satellite view
+
+
+-when in game show all the relevant stats (ie. whole suite of power/speed/time/time remaining/distance/distance remaining and anything else vaguely relevant) 
+-settings can show/hide/rearrange these and can change units for each. Commonly used US/UK/EU units first but allow user to choose deeply obscure units (ie. can set all to metric/imperial, or specify per measurement type, or even per reading)
+-when in game need to show current surface type
+
+-for real routes show the 'next turn' info as if doing it IRL
+
+
+-show a rearward view of the oncoming bike avatar and 
+-show panning right and left views without the avatar
+
+
+-for now, air resistance is some average constant set to route and defaulted to some typical Ontario average, no wind or drafting mechanics
+
+-any route can be done in reverse
+-can choose whether session ends on route completion, or finishing teleports back to start, or bike turns around at route termina
+
+-need route preview ability where can quickly preview the route by speeding/skipping through it (no avatar)
+-need ability to replay old activities (can increase speed a lot so this is fast).
+-need ability to view history and PBs for routes and should have settings to show a 'player ghost' for a past run of the same route (default all-time PB), which shows time behind and shows ghost icon on overhead map only
+
+-need fallout 3 level detailing on the avatar face
+-separate the concept of the players (the real person who pedals the bike and weights a certain amount and has a certain height which affects bike movement) from the rider (the avatar in the game, can have multiple, can have different physical attributes (but have option to snap these to match player)
+-need to be able to see the vehicle and avatar in the garage page (rotatable, moving as in-game)
+-need a variety of themes for the menus
+-bike wheels are pointed in the wrong direction. All tires or wheels should have some sort of visual imperfection or tread so it is clear they are rotating.
+-allow creation of a dizzying array of bikes, trikes, quad bikes, unicycles, etc.
+-parts shop should include parts ranging from real life, to mad max, to sci fi. Basically they can be snapped together with "40K ork" logic, don't need to really design the gears and so forth.
+-for the google maps API bypass was looking for human-in-the-loop robotic process automation where google maps is opened in a popup, user makes a route, confirms, and then the app crawls through streetview as needed by clicking.
+-need to be able to import/export routes, view file location of routes, clone existing routes, edit routes with no activities against them (show this # in the routes page)
+-The upcoming point of route completion, teleport, or U turn should be visually shown on the map
+-allow for skybox customization/import/export (keep the defaults)
+-create decal management function, can optionally add these to vehicles or the player avatar (can designate if the decal is a vehicle spray and/or tatoo). Create a few safe wholesome unremovable defaults. These have no speed impact.
+-create clothing management function, with rich variety of socks, shoes, helmets, hats, jerseys, gilets, gloves, etc. available by default. Include ability to create preassembled outfits which can be quickly applied to riders. The have no speed impact.
