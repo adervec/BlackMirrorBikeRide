@@ -33,7 +33,8 @@ function freshState() {
       ghost: { enabled: true, source: 'pb' },
       previewSpeedMs: 40,
       replaySpeedMul: 4,
-      theme: 'midnight'
+      theme: 'midnight',
+      graphicsQuality: 'high'
     }
   };
 }

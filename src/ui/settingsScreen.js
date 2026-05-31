@@ -3,6 +3,7 @@ import { getState, save, resetState } from '../state.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
 import { themeList, applyTheme } from './themes.js';
+import { qualityOptions } from '../world/quality.js';
 
 export function renderSettings(ctx) {
   const s = getState();
@@ -99,6 +100,8 @@ export function renderSettings(ctx) {
     h(2, 'Appearance'),
     field('Menu theme', select(themeList(), s.settings.theme, (v) => { s.settings.theme = v; applyTheme(v); save(); })),
     div({ class: 'hint' }, 'Themes restyle the whole UI. Applied instantly and remembered.'),
+    field('Graphics quality', select(qualityOptions(), s.settings.graphicsQuality, (v) => { s.settings.graphicsQuality = v; save(); })),
+    div({ class: 'hint' }, 'Controls resolution, shadow detail, image-based lighting and bloom in the 3D world & garage. Higher looks richer but needs more GPU. Applies next time you open a ride or the garage.'),
     btn('Manage skyboxes →', () => ctx.router.go('skyboxes'), 'btn ghost')
   ]);
 

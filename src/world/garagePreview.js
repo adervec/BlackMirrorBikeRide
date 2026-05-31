@@ -4,12 +4,16 @@
 
 import * as THREE from 'three';
 import { buildAvatar } from './avatar.js';
+import { getState } from '../state.js';
+import { resolveQuality } from './quality.js';
+import { gradientEnvironment, applyAnisotropy, maxAnisotropyFor } from './gfx.js';
 
 export class GaragePreview {
   constructor(container) {
     this.container = container;
+    this.q = resolveQuality(getState().settings.graphicsQuality);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.q.pixelRatioCap));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -18,6 +22,11 @@ export class GaragePreview {
     container.appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
+    // Image-based lighting so metallic / clearcoat bike paint reflects its surroundings.
+    if (this.q.env) {
+      this.envTex = gradientEnvironment(this.renderer, 0xbfd4ff, 0x4a4030);
+      this.scene.environment = this.envTex;
+    }
     this.camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     this.camera.position.set(2.5, 1.7, 3.0);
     this.camera.lookAt(0, 0.92, 0);
@@ -26,7 +35,7 @@ export class GaragePreview {
     this.scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x4a4030, 0.8));
     const sun = new THREE.DirectionalLight(0xfff2dd, 1.4);
     sun.position.set(4, 7, 5); sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
+    sun.shadow.mapSize.set(Math.min(this.q.shadowMapSize, 2048), Math.min(this.q.shadowMapSize, 2048));
     sun.shadow.camera.left = -3; sun.shadow.camera.right = 3;
     sun.shadow.camera.top = 3; sun.shadow.camera.bottom = -3;
     sun.shadow.bias = -0.0007;
@@ -78,6 +87,7 @@ export class GaragePreview {
     this.avatar = buildAvatar({ rider, bike, player, decals });
     // center the model around origin-ish
     this.avatar.group.position.set(0, 0, 0);
+    applyAnisotropy(this.avatar.group, maxAnisotropyFor(this.renderer, this.q));
     this.turntable.add(this.avatar.group);
   }
 
@@ -105,6 +115,7 @@ export class GaragePreview {
     if (this._raf) cancelAnimationFrame(this._raf);
     window.removeEventListener('resize', this._onResize);
     if (this.avatar) disposeTree(this.avatar.group);
+    if (this.envTex) { this.envTex.dispose?.(); this.envTex = null; }
     this.renderer.dispose();
     if (this.renderer.domElement.parentNode) this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
   }
