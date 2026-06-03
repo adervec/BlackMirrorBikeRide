@@ -4,6 +4,9 @@ import { defineConfig } from 'vite';
 // on some setups, but http://localhost is treated as a secure context by Chrome,
 // so the default dev server works for sensor pairing during development.
 export default defineConfig({
+  // Allow CI to set VITE_BASE=/BlackMirrorBikeRide/ for GitHub Pages deployments.
+  // Local dev (and any other host) keeps the default '/'.
+  base: process.env.VITE_BASE ?? '/',
   root: '.',
   server: {
     host: 'localhost',
