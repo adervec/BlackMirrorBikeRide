@@ -8,6 +8,13 @@ Google Maps.
 Built as a web app so it can read sensors with **zero drivers** and run anywhere
 Chrome/Edge does. Wraps cleanly into Electron/Tauri later for a desktop build.
 
+> **Disclaimer** — This is a personal hobby project. I am a software developer, not a
+> doctor, coach, physiologist, or fitness professional. Nothing this app displays
+> (power, heart rate, calorie estimates, fitness metrics) constitutes medical advice
+> or a training prescription. Consult a qualified healthcare provider before starting
+> or changing an exercise programme. Stop exercising if you feel unwell. Use at your
+> own risk.
+
 ## Stack & why
 
 | Requirement | Choice |
@@ -154,3 +161,49 @@ for real routes (nearest captured frame, updates as you move).
   billboards/projected geometry is still possible future work (the 3D satellite world is
   the immersive ground for real routes).
 - Jersey *pattern* is modeled in data but the avatar currently uses solid colours.
+
+---
+
+## Legal & compliance
+
+### License
+
+MIT — see [LICENSE](LICENSE). Free to use, modify, and redistribute. No warranty of any kind.
+
+### Dependencies
+
+| Package | License |
+|---|---|
+| [three](https://github.com/mrdoob/three.js) | MIT |
+| [vite](https://github.com/vitejs/vite) | MIT |
+| [jsdom](https://github.com/jsdom/jsdom) | MIT *(dev / test only)* |
+| [puppeteer](https://github.com/puppeteer/puppeteer) | Apache-2.0 *(dev / capture tool only)* |
+
+### Google Maps Platform
+
+Features that use your own Google Maps API key (Elevation API, Street View Static API,
+Maps Static API) call Google's servers on your behalf. You are responsible for complying
+with the [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms)
+and any usage costs billed to your account. The app never stores or forwards your key.
+
+### Street View keyless embed & `scripts/svcapture.mjs`
+
+The in-app guided crawl and the `svcapture.mjs` capture tool use Google's keyless
+`output=svembed` Street View endpoint. As noted in the script itself, this is
+**contrary to Google Maps Platform Terms of Service** and is provided
+**for personal, local, offline use only**. Do not redistribute or publish captured
+Street View imagery. Captured frames are written to `public/imagery/`, which is
+excluded from this repository via `.gitignore`.
+
+### Health & safety
+
+This software is a hobbyist cycling simulator. The author is a software developer — not
+a medical doctor, physiologist, personal trainer, or licensed coach. **Nothing the app
+displays or calculates constitutes medical advice, a diagnosis, or a training
+prescription.** Heart rate, power, and calorie figures are estimates based on simplified
+models and may be inaccurate. Consult a qualified healthcare professional before starting,
+modifying, or intensifying an exercise programme. Stop exercising immediately if you
+experience pain, chest tightness, dizziness, or other symptoms and seek medical attention.
+
+*Black Mirror Bike Ride is not affiliated with, endorsed by, or in any way connected to
+Zwift, Google, or any other company mentioned in this readme.*
