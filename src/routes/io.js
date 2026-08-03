@@ -43,5 +43,6 @@ export function cloneRoute(route) {
   const copy = structuredClone(route);
   copy.id = uid('clone');
   copy.name = `${route.name} (copy)`;
+  delete copy.bundled; // a clone is a local route
   return copy;
 }

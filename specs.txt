@@ -14,13 +14,10 @@
 	-can start with some basic 'Mojave desert' biome for starters
 -overhead view should be a simplified view matching the ground level view
 
--can  build 'real routes' by inputting a google maps route
--should best guess the underlying material
--use google maps 3D satellite to get the overhead view
--use google streetview to get the ground level view
-	-if the google API is difficult this can be some 'manual' process where the app spoofs a human screenshotting the pictures. However the route generation process must be checkpointed so that it can be resumed fairly well if interrupted.
-	-if starved of streetview nodes can use the pictures submitted to google maps
-	-if truly starved of ground level photography then 'spoof' the view with the 3D satellite view
+-can build 'real routes' by importing a GPX file (distance/turns/gradients straight from the track)
+-real-world scenery comes from Claude enrichment (gpx-route skill): per-segment biomes + named landmarks
+-enriched routes are bundled in the repo (public/routes/) and sync to all devices on deploy
+	[superseded 2026-08: the earlier Google Maps / Street View scraping approach was retired — it never worked well]
 
 
 -when in game show all the relevant stats (ie. whole suite of power/speed/time/time remaining/distance/distance remaining and anything else vaguely relevant) 
@@ -50,7 +47,6 @@
 -bike wheels are pointed in the wrong direction. All tires or wheels should have some sort of visual imperfection or tread so it is clear they are rotating.
 -allow creation of a dizzying array of bikes, trikes, quad bikes, unicycles, etc.
 -parts shop should include parts ranging from real life, to mad max, to sci fi. Basically they can be snapped together with "40K ork" logic, don't need to really design the gears and so forth.
--for the google maps API bypass was looking for human-in-the-loop robotic process automation where google maps is opened in a popup, user makes a route, confirms, and then the app crawls through streetview as needed by clicking.
 -need to be able to import/export routes, view file location of routes, clone existing routes, edit routes with no activities against them (show this # in the routes page)
 -The upcoming point of route completion, teleport, or U turn should be visually shown on the map
 -allow for skybox customization/import/export (keep the defaults)

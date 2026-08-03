@@ -34,7 +34,8 @@ function freshState() {
       previewSpeedMs: 40,
       replaySpeedMul: 4,
       theme: 'midnight',
-      graphicsQuality: DEFAULT_QUALITY
+      graphicsQuality: DEFAULT_QUALITY,
+      dismissedRouteIds: []   // bundled routes the user deleted; never re-merged
     }
   };
 }
@@ -162,8 +163,27 @@ export function upsertRoute(route) {
   save();
 }
 export function deleteRoute(id) {
+  const r = state.routes.find((x) => x.id === id);
+  if (r?.bundled && !state.settings.dismissedRouteIds.includes(id)) {
+    state.settings.dismissedRouteIds.push(id); // deletion sticks across reloads/redeploys
+  }
   state.routes = state.routes.filter((r) => r.id !== id);
   save();
+}
+
+// Merge routes shipped in public/routes/ (see routes/bundled.js). Skips ids the
+// user already has or has deleted. Returns how many were added.
+export function mergeBundledRoutes(routes) {
+  let added = 0;
+  for (const r of routes) {
+    if (!r || !r.id || !Array.isArray(r.segments)) continue;
+    if (state.routes.some((x) => x.id === r.id)) continue;
+    if (state.settings.dismissedRouteIds.includes(r.id)) continue;
+    state.routes.push({ ...r, bundled: true });
+    added++;
+  }
+  if (added) save();
+  return added;
 }
 
 // ---- activities / history / PBs ----

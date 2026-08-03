@@ -1,7 +1,8 @@
 import './style.css';
 import { Router } from './ui/router.js';
 import { applyTheme } from './ui/themes.js';
-import { getState } from './state.js';
+import { getState, mergeBundledRoutes } from './state.js';
+import { loadBundledRoutes } from './routes/bundled.js';
 import { renderMenu } from './ui/menuScreen.js';
 import { renderRoutes } from './ui/routesScreen.js';
 import { renderVirtualBuilder } from './ui/builderScreen.js';
@@ -29,6 +30,12 @@ router
   .register('ride', renderRide);
 
 router.go('menu');
+
+// Merge routes shipped with the app (public/routes/). Refresh passive screens
+// only — never re-render mid-ride.
+loadBundledRoutes().then((routes) => {
+  if (mergeBundledRoutes(routes) && ['menu', 'routes'].includes(router.current)) router.go(router.current);
+});
 
 // Expose for quick debugging in the console.
 window.__bmbr = { router };

@@ -3,7 +3,7 @@
 A homebrew alternative to Zwift — an indoor cycling simulator that reads your real
 power (and heart rate) over Bluetooth, runs a proper physics model, and rides you
 through low-poly 3D worlds you build yourself, or real-world routes imported from
-Google Maps.
+GPX files.
 
 Built as a web app so it can read sensors with **zero drivers** and run anywhere
 Chrome/Edge does. Wraps cleanly into Electron/Tauri later for a desktop build.
@@ -21,7 +21,7 @@ Chrome/Edge does. Wraps cleanly into Electron/Tauri later for a desktop build.
 |---|---|
 | Read a Schwinn 130 / any trainer + HR strap | **Web Bluetooth API** (Cycling Power `0x1818`, FTMS `0x1826`, Heart Rate `0x180D`, CSC `0x1816`) |
 | GameCube/PS1-tier 3D | **Three.js**, rendered slightly under-res for a retro look |
-| Real routes | **Google Maps** Elevation + Street View Static + Static Maps (satellite) |
+| Real routes | **GPX import** (native DOMParser) + optional Claude-authored scenery enrichment |
 | Build tooling | **Vite**, vanilla ES modules (no framework — keeps the render loop tight) |
 
 ## Run it
@@ -59,8 +59,9 @@ npm run dev      # opens http://localhost:5173 in your browser
 ## Tests
 
 ```bash
-node scripts/selftest.mjs    # physics, units, route geometry, real-route + activity/PB math
+node scripts/selftest.mjs    # physics, units, route geometry, activity/PB math
 node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost (headless)
+node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```
@@ -73,7 +74,7 @@ src/
   sensors/                 ble.js (Web Bluetooth) · simulator.js · sensorManager.js
   physics/                 engine.js (power→motion) · surfaces.js (Crr per material)
   profile/                 rider.js (biometrics→aero) · garage.js (bike build) · customize.js
-  routes/                  virtualRoute.js · realRoute.js · biomes.js · skyboxes.js · googleMaps.js
+  routes/                  virtualRoute.js · gpx.js · geo.js · biomes.js · skyboxes.js · bundled.js
   world/                   scene.js · avatar.js · artifacts.js · cameras.js · minimap.js
   game/                    session.js (game loop) · hud.js · hudConfig.js · units.js
   ui/                      router + one module per screen
@@ -97,17 +98,26 @@ a  = (Fp − Fg − Fr − Fa) / m_eff
 - **Air resistance** is a constant per route, defaulting to a southern-Ontario average
   (ρ ≈ 1.25 kg/m³), exactly as the spec requests.
 
-### Real routes
+### Real routes (GPX)
 
-A pasted Google Maps route (waypoints or an encoded polyline) is reduced to the *same*
-segment model virtual routes use, so physics/world/minimap render it unchanged:
+A GPX file (Strava, Komoot, RideWithGPS, Garmin…) is reduced to the *same* segment
+model virtual routes use, so physics/world/minimap render it unchanged:
 
-- length & turns from the lat-lng path; gradient from the Elevation API (if a key is set)
-- surface is **best-guessed** (default asphalt; overridable)
-- **Ground imagery acquisition is checkpointed & resumable**: it walks the route node by
-  node, saving progress after each one, so an interrupted capture continues where it left
-  off. Acquisition falls back **Street View → (user photos) → 3D-satellite spoof**, per spec.
-- With no API key the route still rides fully on the satellite-derived 3D world.
+- length & turns from the lat-lng track; gradient from the GPX `<ele>` data,
+  downsampled to ~30 m segments, smoothed over ~150 m and clamped to ±25% so GPS
+  noise never produces absurd walls (no elevation data → the route rides flat)
+- surface & biome default to asphalt / neutral ground, overridable at import
+
+### Bundled routes & Claude enrichment (`gpx-route` skill)
+
+For a proper *recreation* of the real world, hand the GPX to Claude (Claude Code or
+Cowork) — the repo's `gpx-route` skill converts it with `scripts/gpx2route.mjs`, then
+enriches the JSON: real-world **biomes per segment** (farmland, forest, urban,
+lakeside, alpine…), named **landmarks** (town, peak, water, bridge, church) rendered
+as signposts + props at the right distances, a title and a skybox. Enriched routes
+live in `public/routes/` and are fetched & merged into every device on app load
+(deleting one sticks — its id is remembered). Validate any route file with
+`node scripts/gpx2route.mjs --check <file>`.
 
 ## Spec coverage
 
@@ -115,8 +125,8 @@ segment model virtual routes use, so physics/world/minimap render it unchanged:
 performance · ✅ bike garage · ✅ avatar + bike customization · ✅ 3D low-poly world +
 top-down map icon · ✅ virtual routes (material/incline/length segments) · ✅ skyboxes
 (normal → existentially bizarre) · ✅ biomes with roadside artifacts (Mojave starter) ·
-✅ matching simplified overhead map · ✅ real routes from Google Maps with material guess,
-satellite + Street View, checkpointed resumable capture, graded fallbacks · ✅ full stats
+✅ matching simplified overhead map · ✅ real routes from GPX files (distance / turns /
+gradients straight from the track, Claude-enriched biomes & landmarks) · ✅ full stats
 HUD · ✅ show/hide/reorder stats · ✅ units (metric/imperial/per-measurement/per-reading +
 deeply obscure: furlongs/fortnight, smoots, donkeypower…) · ✅ current surface display ·
 ✅ next-turn info · ✅ rear/left/right/chase/cockpit cameras · ✅ constant Ontario air
@@ -124,8 +134,8 @@ resistance, no wind/drafting · ✅ reverse any route · ✅ session end modes
 (complete / teleport to start / turn around at terminus) · ✅ **route preview** (scrub/
 fast-forward, no avatar) · ✅ **replay past activities** (adjustable fast-forward) ·
 ✅ **history + PBs per route/direction** · ✅ **player ghost** of the all-time PB with
-time-behind, ghost icon on the overhead map only · ✅ **in-ride Street View ground panel**
-for real routes (nearest captured frame, updates as you move).
+time-behind, ghost icon on the overhead map only · ✅ **bundled routes** synced to every
+device via the repo (`public/routes/`).
 
 ### Players, riders, garage & customization
 - **Players vs riders are separate**: a *player* is the real human (weight/height → physics);
@@ -148,18 +158,7 @@ for real routes (nearest captured frame, updates as you move).
 - The **upcoming end behaviour** (finish 🏁 / teleport ⊚ / U-turn ⟲) is marked on the overhead map.
 - **Custom skyboxes**: create/edit (colours, sun, special FX), import/export, built-ins preserved.
 
-### Real routes — human-in-the-loop Google Maps capture
-- **Open Google Maps in a popup**, build your route, paste the URL back (browser cross-origin
-  security prevents a page from clicking inside another site's tab — so the human stays in the loop;
-  the parser extracts the waypoints).
-- A **guided Street View crawl** steps node-by-node through an embedded Street View (keyless
-  `svembed`, or the Embed API with a key), confirming each — **checkpointed after every node**, so
-  it resumes cleanly if interrupted. Auto-acquisition (Static API) remains available with a key.
-
 ### Known next steps
-- Street View frames show in the in-ride ground panel; rendering them as full in-world
-  billboards/projected geometry is still possible future work (the 3D satellite world is
-  the immersive ground for real routes).
 - Jersey *pattern* is modeled in data but the avatar currently uses solid colours.
 
 ---
@@ -177,13 +176,6 @@ MIT — see [LICENSE](LICENSE). Free to use, modify, and redistribute. No warran
 | [three](https://github.com/mrdoob/three.js) | MIT |
 | [vite](https://github.com/vitejs/vite) | MIT |
 | [jsdom](https://github.com/jsdom/jsdom) | MIT *(dev / test only)* |
-
-### Google Maps Platform
-
-Features that use your own Google Maps API key (Elevation API, Street View Static API,
-Maps Static API) call Google's servers on your behalf. You are responsible for complying
-with the [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms)
-and any usage costs billed to your account. The app never stores or forwards your key.
 
 ### Health & safety
 
