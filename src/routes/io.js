@@ -43,6 +43,5 @@ export function cloneRoute(route) {
   const copy = structuredClone(route);
   copy.id = uid('clone');
   copy.name = `${route.name} (copy)`;
-  if (copy.real) delete copy.real.imageryComplete; // re-acquire imagery for the copy
   return copy;
 }

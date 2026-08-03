@@ -56,7 +56,7 @@ export function renderRoutes(ctx) {
     s.routes.length ? list : div({ class: 'empty' }, 'No routes yet. Build one below.'),
     div({ class: 'row' }, [
       btn('+ New Virtual Route', () => ctx.router.go('builder')),
-      btn('+ Import Real Route', () => ctx.router.go('real'), 'btn ghost'),
+      btn('+ Import GPX Route', () => ctx.router.go('real'), 'btn ghost'),
       btn('⤓ Import from file', () => fileInput.click(), 'btn ghost'),
       s.routes.length ? btn('⤒ Export all', () => exportAllRoutes(s.routes), 'btn ghost') : null,
       fileInput

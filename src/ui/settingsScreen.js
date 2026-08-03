@@ -1,4 +1,4 @@
-import { div, h, el, field, select, textInput, numberInput, btn, screen } from './dom.js';
+import { div, h, el, field, select, numberInput, btn, screen } from './dom.js';
 import { getState, save, resetState } from '../state.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
@@ -83,12 +83,6 @@ export function renderSettings(ctx) {
     div({ class: 'hint' }, 'The ghost defaults to your fastest completed lap for that route & direction. Ghost shows on the map only — never as a second rider in the 3D world.')
   ]);
 
-  const apiCard = div({ class: 'card' }, [
-    h(2, 'Google Maps API key'),
-    field('Key', textInput(s.settings.googleMapsApiKey, (v) => { s.settings.googleMapsApiKey = v.trim(); save(); }, 'AIza…')),
-    div({ class: 'hint' }, 'Optional. Enables elevation + Street View for real routes. Without it, real routes fall back to the satellite-derived 3D world. Stored locally only.')
-  ]);
-
   const dangerCard = div({ class: 'card' }, [
     h(2, 'Data'),
     btn('Reset everything to defaults', () => {
@@ -119,7 +113,6 @@ export function renderSettings(ctx) {
     ]),
     sessionCard,
     ghostCard,
-    apiCard,
     dangerCard
   ]);
 }

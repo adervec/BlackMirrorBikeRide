@@ -115,8 +115,6 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
 .build-status { margin-top: .6rem; font-size: .9rem; }
 .progress-wrap { height: 12px; background: var(--bg2); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin: .5rem 0; }
 .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .1s; }
-.crawl-box { margin-top: .8rem; border-top: 1px solid var(--line); padding-top: .8rem; }
-.sv-frame { width: 100%; height: 380px; border: 1px solid var(--line); border-radius: 10px; background: #000; }
 
 /* ============ RIDE SCREEN ============ */
 .ride-root { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; background: #000; }
@@ -177,12 +175,6 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
 .pc-row input[type=range] { flex: 1; }
 .scrub { width: 100%; }
 
-/* street view panel */
-.streetview-panel { position: absolute; left: 12px; bottom: 130px; z-index: 5; width: 280px;
-  background: rgba(10,13,20,.78); border: 1px solid rgba(120,140,180,.25); border-radius: 10px; padding: .5rem .6rem; backdrop-filter: blur(4px); }
-.streetview-panel h3 { font-size: .72rem; color: var(--dim); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .3rem; }
-.sv-img { width: 100%; border-radius: 7px; display: block; image-rendering: auto; }
-
 /* history */
 .history-list { display: flex; flex-direction: column; gap: .8rem; }
 .history-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem; }
@@ -237,7 +229,6 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
   .cam-buttons { flex-direction: row; flex-wrap: wrap; }
   .ride-bottom { flex-wrap: wrap; }
   .preview-controls, .replay-controls { min-width: 0; width: 100%; }
-  .streetview-panel { width: 150px; }
   .sky-editor { grid-template-columns: 1fr; }
   .seg-row { grid-template-columns: 28px repeat(2, 1fr); }
   .garage-preview-col { position: static; }

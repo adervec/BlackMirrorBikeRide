@@ -5,7 +5,7 @@ import { getState } from './state.js';
 import { renderMenu } from './ui/menuScreen.js';
 import { renderRoutes } from './ui/routesScreen.js';
 import { renderVirtualBuilder } from './ui/builderScreen.js';
-import { renderRealBuilder } from './ui/realBuilderScreen.js';
+import { renderGpxImport } from './ui/gpxScreen.js';
 import { renderGarage } from './ui/garageScreen.js';
 import { renderSettings } from './ui/settingsScreen.js';
 import { renderHistory } from './ui/historyScreen.js';
@@ -21,7 +21,7 @@ router
   .register('menu', renderMenu)
   .register('routes', renderRoutes)
   .register('builder', renderVirtualBuilder)
-  .register('real', renderRealBuilder)
+  .register('real', renderGpxImport)
   .register('garage', renderGarage)
   .register('settings', renderSettings)
   .register('history', renderHistory)

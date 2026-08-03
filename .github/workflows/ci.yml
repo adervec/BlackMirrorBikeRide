@@ -36,6 +36,9 @@ jobs:
       - name: Session recording & replay
         run: node scripts/sessiontest.mjs
 
+      - name: GPX conversion
+        run: node scripts/gpxtest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 

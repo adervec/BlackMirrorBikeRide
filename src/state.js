@@ -30,7 +30,6 @@ function freshState() {
       units: structuredClone(DEFAULT_UNIT_PREFS),
       hud: structuredClone(DEFAULT_HUD_LAYOUT),
       sessionEndMode: 'complete',
-      googleMapsApiKey: '',
       ghost: { enabled: true, source: 'pb' },
       previewSpeedMs: 40,
       replaySpeedMul: 4,

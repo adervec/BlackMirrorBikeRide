@@ -22,7 +22,7 @@ const screens = [
   ['menuScreen', 'renderMenu'],
   ['routesScreen', 'renderRoutes'],
   ['builderScreen', 'renderVirtualBuilder'],
-  ['realBuilderScreen', 'renderRealBuilder'],
+  ['gpxScreen', 'renderGpxImport'],
   ['garageScreen', 'renderGarage'],
   ['settingsScreen', 'renderSettings'],
   ['historyScreen', 'renderHistory'],
