@@ -9,7 +9,7 @@ import { SURFACES, DEFAULT_SURFACE } from '../physics/surfaces.js';
 import { BIOMES } from '../routes/biomes.js';
 import { SKYBOXES, DEFAULT_SKYBOX } from '../routes/skyboxes.js';
 import { buildAvatar } from './avatar.js';
-import { buildArtifacts } from './artifacts.js';
+import { buildArtifacts, buildLandmarks } from './artifacts.js';
 import { CameraRig } from './cameras.js';
 import { getState } from '../state.js';
 import { resolveQuality } from './quality.js';
@@ -72,6 +72,7 @@ export class WorldScene {
     this._maybeGrid(profile);
 
     this.scene.add(buildArtifacts(profile));
+    if (profile.landmarks?.length) this.scene.add(buildLandmarks(profile));
 
     this.avatar = buildAvatar({ rider: view.rider, bike: view.bike, player: view.player, decals: view.decals || [] });
     this.scene.add(this.avatar.group);

@@ -51,5 +51,12 @@ assert(Number.isFinite(prof.totalLength) && prof.totalLength > 1000, 'profile bu
 const rev = buildProfile(route, { reverse: true });
 approx(rev.totalLength, prof.totalLength, 1, 'reverse profile same length');
 
+// Landmarks: distances mirror on reverse, out-of-range ones dropped.
+route.landmarks = [{ at: 500, label: 'Halfway Barn', kind: 'town' }, { at: 99999, label: 'Beyond' }];
+const fwd = buildProfile(route);
+assert(fwd.landmarks.length === 1 && fwd.landmarks[0].at === 500, 'in-range landmark kept, out-of-range dropped');
+const revLm = buildProfile(route, { reverse: true }).landmarks[0];
+approx(revLm.at, prof.totalLength - 500, 1, 'reverse mirrors landmark distance');
+
 console.log(`\n${fails === 0 ? '✅ ALL GPX CHECKS PASSED' : '❌ ' + fails + ' CHECK(S) FAILED'}`);
 process.exit(fails === 0 ? 0 : 1);
