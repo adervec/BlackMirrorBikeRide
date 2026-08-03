@@ -10,6 +10,7 @@ import { defaultRider } from './profile/customize.js';
 import { defaultDecalLibrary } from './profile/decals.js';
 import { sampleRoutes } from './routes/sampleRoutes.js';
 import { pbForRoute } from './game/activity.js';
+import { DEFAULT_QUALITY } from './world/quality.js';
 
 const MAX_ACTIVITIES = 200;
 const STORAGE_KEY = 'bmbr.state.v1';
@@ -34,7 +35,7 @@ function freshState() {
       previewSpeedMs: 40,
       replaySpeedMul: 4,
       theme: 'midnight',
-      graphicsQuality: 'high'
+      graphicsQuality: DEFAULT_QUALITY
     }
   };
 }

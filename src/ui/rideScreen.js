@@ -72,7 +72,11 @@ export function renderRide(ctx) {
     if (sensors.simulatorActive) {
       rows.push(div({ class: 'sensor-row sim-target' }, [el('span', {}, 'Target:'),
         el('strong', { id: 'sim-target' }, `${sensors.simulator.targetWatts} W`)]));
-      rows.push(div({ class: 'hint small' }, '▲ / ▼ adjust watts'));
+      rows.push(div({ class: 'sensor-buttons' }, [
+        btn('−25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts - 25), 'btn small ghost'),
+        btn('+25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts + 25), 'btn small ghost')
+      ]));
+      rows.push(div({ class: 'hint small' }, '▲ / ▼ also adjust watts'));
     }
     const buttons = div({ class: 'sensor-buttons' }, [
       btn('Connect Trainer', async () => { try { await sensors.connectPower(); } catch (e) { alert(e.message); } }, 'btn small'),

@@ -12,9 +12,9 @@ export class GaragePreview {
   constructor(container) {
     this.container = container;
     this.q = resolveQuality(getState().settings.graphicsQuality);
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    this.renderer = new THREE.WebGLRenderer({ antialias: this.q.antialias !== false, alpha: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.q.pixelRatioCap));
-    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.enabled = this.q.shadows !== false;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.1;

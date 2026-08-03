@@ -8,6 +8,16 @@
 // change in Settings takes effect the next time you open one of those screens.
 
 export const QUALITY_PRESETS = {
+  low: {
+    label: 'Low (phone)',
+    pixelRatioCap: 1,
+    shadowMapSize: 1024,
+    env: false,
+    anisotropy: 2,
+    bloom: false,
+    antialias: false,
+    shadows: false,
+  },
   balanced: {
     label: 'Balanced (integrated GPU)',
     pixelRatioCap: 1.5,
@@ -17,7 +27,7 @@ export const QUALITY_PRESETS = {
     bloom: false,
   },
   high: {
-    label: 'High (default)',
+    label: 'High (desktop default)',
     pixelRatioCap: 2,
     shadowMapSize: 3072,
     env: true,
@@ -40,7 +50,12 @@ export const QUALITY_PRESETS = {
   },
 };
 
-export const DEFAULT_QUALITY = 'high';
+// iPadOS reports a Mac UA; the touch-points check catches it.
+export const IS_MOBILE = typeof navigator !== 'undefined' &&
+  (/Android|iPhone|iPad|Mobi/i.test(navigator.userAgent) ||
+   (/Mac/.test(navigator.userAgent) && navigator.maxTouchPoints > 1));
+
+export const DEFAULT_QUALITY = IS_MOBILE ? 'low' : 'high';
 
 export function resolveQuality(id) {
   return QUALITY_PRESETS[id] || QUALITY_PRESETS[DEFAULT_QUALITY];

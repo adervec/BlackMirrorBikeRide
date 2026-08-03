@@ -177,7 +177,6 @@ MIT — see [LICENSE](LICENSE). Free to use, modify, and redistribute. No warran
 | [three](https://github.com/mrdoob/three.js) | MIT |
 | [vite](https://github.com/vitejs/vite) | MIT |
 | [jsdom](https://github.com/jsdom/jsdom) | MIT *(dev / test only)* |
-| [puppeteer](https://github.com/puppeteer/puppeteer) | Apache-2.0 *(dev / capture tool only)* |
 
 ### Google Maps Platform
 
@@ -185,15 +184,6 @@ Features that use your own Google Maps API key (Elevation API, Street View Stati
 Maps Static API) call Google's servers on your behalf. You are responsible for complying
 with the [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms)
 and any usage costs billed to your account. The app never stores or forwards your key.
-
-### Street View keyless embed & `scripts/svcapture.mjs`
-
-The in-app guided crawl and the `svcapture.mjs` capture tool use Google's keyless
-`output=svembed` Street View endpoint. As noted in the script itself, this is
-**contrary to Google Maps Platform Terms of Service** and is provided
-**for personal, local, offline use only**. Do not redistribute or publish captured
-Street View imagery. Captured frames are written to `public/imagery/`, which is
-excluded from this repository via `.gitignore`.
 
 ### Health & safety
 
