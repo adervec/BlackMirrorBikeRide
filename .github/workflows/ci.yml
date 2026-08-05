@@ -39,6 +39,9 @@ jobs:
       - name: GPX conversion
         run: node scripts/gpxtest.mjs
 
+      - name: Cloud sync merge
+        run: node scripts/synctest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 

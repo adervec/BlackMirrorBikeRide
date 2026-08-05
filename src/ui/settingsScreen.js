@@ -1,9 +1,11 @@
-import { div, h, el, field, select, numberInput, btn, screen } from './dom.js';
+import { div, h, el, field, select, textInput, numberInput, btn, screen } from './dom.js';
 import { getState, save, resetState } from '../state.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
 import { themeList, applyTheme } from './themes.js';
 import { qualityOptions } from '../world/quality.js';
+import { originAllowed } from '../cloud/config.js';
+import { syncConfigured, isSignedIn, account, lastSync, signIn, signOut, syncNow } from '../cloud/sync.js';
 
 export function renderSettings(ctx) {
   const s = getState();
@@ -83,6 +85,74 @@ export function renderSettings(ctx) {
     div({ class: 'hint' }, 'The ghost defaults to your fastest completed lap for that route & direction. Ghost shows on the map only — never as a second rider in the 3D world.')
   ]);
 
+  // ---- Cloud sync (Google Drive appData) ----
+  const syncCard = div({ class: 'card' });
+  function renderSync(msg = '', msgCls = 'hint') {
+    syncCard.innerHTML = '';
+    const cfg = s.settings.sync;
+    const configured = syncConfigured(cfg.driveClientId);
+    const acct = account();
+
+    const rows = [
+      h(2, 'Cloud Sync'),
+      div({ class: 'hint' }, 'Syncs rides, PBs, routes, riders, bikes and decals to a private folder in ' +
+        'your own Google Drive — visible to this app only, never to anyone else. Units, HUD layout, theme ' +
+        'and graphics quality stay local to each device.')
+    ];
+
+    if (!configured) {
+      rows.push(div({ class: 'warn' }, 'Cloud sync isn’t enabled on this deployment. Create a Google OAuth ' +
+        'client ID (Web application), add this page’s origin to its authorized JavaScript origins, enable ' +
+        'the Drive API, and paste the ID below.'));
+    } else if (!isSignedIn()) {
+      rows.push(div({ class: 'row' }, [
+        btn('Connect Google Drive', async () => {
+          renderSync('Connecting…');
+          try { const r = await signIn(); renderSync(summarize(r), 'ok'); }
+          catch (e) { renderSync(e.message, 'err'); }
+        })
+      ]));
+    } else {
+      rows.push(div({ class: 'row' }, [
+        acct?.picture ? el('img', { src: acct.picture, alt: '', referrerpolicy: 'no-referrer', width: 28, height: 28, style: { borderRadius: '50%' } }) : null,
+        el('strong', {}, acct?.name || 'Google account'),
+        acct?.email ? el('span', { class: 'dim small' }, acct.email) : null
+      ]));
+      rows.push(div({ class: 'row' }, [
+        btn('Sync now', async () => {
+          renderSync('Syncing…');
+          try { const r = await syncNow(); renderSync(summarize(r), r.stored ? 'ok' : 'warn'); }
+          catch (e) { renderSync(e.message, 'err'); }
+        }),
+        btn('Sign out', () => { signOut(); renderSync('Signed out. Your data stays on this device.'); }, 'btn ghost')
+      ]));
+      rows.push(div({ class: 'field' }, [
+        el('label', {}, 'Automatic sync'),
+        div({ class: 'row' }, [
+          el('input', { type: 'checkbox', checked: cfg.auto, onchange: (e) => { cfg.auto = e.target.checked; save(); } }),
+          el('span', {}, 'Sync on startup and after each ride')
+        ])
+      ]));
+    }
+
+    if (lastSync()) rows.push(div({ class: 'hint small' }, `Last synced: ${new Date(lastSync()).toLocaleString()}`));
+    if (msg) rows.push(div({ class: msgCls }, msg));
+
+    // Fork escape hatch: only worth showing where the built-in ID can't be used.
+    if (!originAllowed()) {
+      rows.push(field('Your Google OAuth client ID', textInput(cfg.driveClientId, (v) => {
+        cfg.driveClientId = v.trim(); save(); renderSync();
+      }, 'xxxxx.apps.googleusercontent.com')));
+    }
+
+    syncCard.append(...rows.filter(Boolean));
+  }
+  function summarize(r) {
+    const base = `${r.pulled ? 'Merged with' : 'Uploaded to'} Drive — ${r.activities} activities, ${r.routes} routes.`;
+    return r.stored ? base : base + ' NOTE: too big to save locally — delete some old activities.';
+  }
+  renderSync();
+
   const dangerCard = div({ class: 'card' }, [
     h(2, 'Data'),
     btn('Reset everything to defaults', () => {
@@ -113,6 +183,7 @@ export function renderSettings(ctx) {
     ]),
     sessionCard,
     ghostCard,
+    syncCard,
     dangerCard
   ]);
 }

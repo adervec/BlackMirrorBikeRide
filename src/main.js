@@ -3,6 +3,7 @@ import { Router } from './ui/router.js';
 import { applyTheme } from './ui/themes.js';
 import { getState, mergeBundledRoutes } from './state.js';
 import { loadBundledRoutes } from './routes/bundled.js';
+import { autoSync } from './cloud/sync.js';
 import { renderMenu } from './ui/menuScreen.js';
 import { renderRoutes } from './ui/routesScreen.js';
 import { renderVirtualBuilder } from './ui/builderScreen.js';
@@ -35,6 +36,11 @@ router.go('menu');
 // only — never re-render mid-ride.
 loadBundledRoutes().then((routes) => {
   if (mergeBundledRoutes(routes) && ['menu', 'routes'].includes(router.current)) router.go(router.current);
+});
+
+// Pull anything ridden on another device (silent — never prompts; opt-in via Settings).
+autoSync().then((r) => {
+  if (r?.pulled && ['menu', 'routes', 'history'].includes(router.current)) router.go(router.current);
 });
 
 // Expose for quick debugging in the console.

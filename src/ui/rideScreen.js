@@ -8,6 +8,7 @@ import { HUD } from '../game/hud.js';
 import { Session } from '../game/session.js';
 import { CAMERA_MODES, CAMERA_LABELS } from '../world/cameras.js';
 import { formatString, formatTime } from '../game/units.js';
+import { autoSync } from '../cloud/sync.js';
 
 export function renderRide(ctx) {
   const s = getState();
@@ -208,7 +209,7 @@ export function renderRide(ctx) {
       mode, replayActivity, ghost,
       onEnd: (sum) => showSummary(sum),
       onFrame,
-      onRecord: (act) => { addActivity(act); savedActivityId = act.id; }
+      onRecord: (act) => { addActivity(act); savedActivityId = act.id; autoSync(); }
     });
     session.start();
 

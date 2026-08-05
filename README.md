@@ -62,6 +62,7 @@ npm run dev      # opens http://localhost:5173 in your browser
 node scripts/selftest.mjs    # physics, units, route geometry, activity/PB math
 node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost (headless)
 node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
+node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```
@@ -75,6 +76,7 @@ src/
   physics/                 engine.js (power→motion) · surfaces.js (Crr per material)
   profile/                 rider.js (biometrics→aero) · garage.js (bike build) · customize.js
   routes/                  virtualRoute.js · gpx.js · geo.js · biomes.js · skyboxes.js · bundled.js
+  cloud/                   config.js (OAuth gate) · sync.js (Drive REST) · merge.js (pure merge)
   world/                   scene.js · avatar.js · artifacts.js · cameras.js · minimap.js
   game/                    session.js (game loop) · hud.js · hudConfig.js · units.js
   ui/                      router + one module per screen
@@ -107,6 +109,29 @@ model virtual routes use, so physics/world/minimap render it unchanged:
   downsampled to ~30 m segments, smoothed over ~150 m and clamped to ±25% so GPS
   noise never produces absurd walls (no elevation data → the route rides flat)
 - surface & biome default to asphalt / neutral ground, overridable at import
+
+### Cloud sync (Google Drive)
+
+Optional, opt-in, and identical in shape to the sibling apps (Tachyread, GuitarPicker,
+GymTracker…): **Settings → Cloud Sync → Connect Google Drive**. Rides, PBs, routes,
+riders, bikes, decals and custom skyboxes sync through a single JSON file in your own
+Drive **`appDataFolder`** — a hidden, app-private space. Data goes browser → your Drive
+and touches no server of ours; there is no backend and no bundled SDK.
+
+- **Auth**: Google Identity Services implicit token flow, `drive.appdata` scope only
+  (never sees the rest of your Drive, and needs no Google verification review). The
+  access token lives in memory and is never persisted; a returning user is reconnected
+  silently when a Google session exists.
+- **Merge**: union by id, so two devices ridden offline both keep everything —
+  see `src/cloud/merge.js` (pure, covered by `scripts/synctest.mjs`).
+- **Not synced**: units, HUD layout, theme and graphics quality stay per-device, so a
+  phone keeps its low-graphics preset while the desktop keeps *High*.
+- **When**: manually from Settings, on startup, and after each ride (the latter two
+  when "Automatic sync" is on).
+
+The OAuth client ID in `src/cloud/config.js` is a public identifier, not a secret, and is
+deliberately shared with the author's other apps. It is gated to the origins listed there
+(plus localhost); a fork deployed elsewhere must supply its own ID in Settings.
 
 ### Bundled routes & Claude enrichment (`gpx-route` skill)
 
