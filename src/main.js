@@ -43,5 +43,13 @@ autoSync().then((r) => {
   if (r?.pulled && ['menu', 'routes', 'history'].includes(router.current)) router.go(router.current);
 });
 
+// Service worker: makes the app installable and usable offline. Production only,
+// so dev never serves a stale bundle from cache.
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {});
+  });
+}
+
 // Expose for quick debugging in the console.
 window.__bmbr = { router };

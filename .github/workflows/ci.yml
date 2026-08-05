@@ -45,6 +45,9 @@ jobs:
       - name: Surface textures & road groups
         run: node scripts/texturetest.mjs
 
+      - name: PWA installability
+        run: node scripts/pwatest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 

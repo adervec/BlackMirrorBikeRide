@@ -38,6 +38,14 @@ npm run dev      # opens http://localhost:5173 in your browser
 **▲ / ▼** keys (target watts), or switch it to auto mode. Click *Connect Trainer* /
 *Connect HR* any time to use real hardware.
 
+### Install it (PWA)
+
+Live at **https://adervec.github.io/BlackMirrorBikeRide/** — installable from the
+browser's *Install app* / *Add to Home Screen* prompt, then it runs in its own
+window with no browser chrome. A service worker precaches the shell, so it opens
+offline (rides, routes and history are local anyway). Icons are generated from a
+single glyph by `node tools/make-icons.mjs` — no image files to hand-edit.
+
 ## In-ride controls
 
 - **▲ / ▼** — adjust simulated watts
@@ -64,6 +72,7 @@ node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost
 node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
 node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
 node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups
+node scripts/pwatest.mjs     # manifest / icons / service worker installability contract
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```

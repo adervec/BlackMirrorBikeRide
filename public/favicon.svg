@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img">
+  <title>Black Mirror Bike Ride</title>
+  <desc>A bicycle drawn as two wheels and a diamond frame, in cyan on a dark rounded square.</desc>
+  <rect width="512" height="512" rx="96" fill="#0b0d14"/>
+  <circle cx="150" cy="285" r="92" fill="none" stroke="#4cc2ff" stroke-width="15"/>
+  <circle cx="362" cy="285" r="92" fill="none" stroke="#4cc2ff" stroke-width="15"/>
+  <line x1="256" y1="285" x2="226" y2="169" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="256" y1="285" x2="330" y2="165" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="226" y1="169" x2="330" y2="165" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="226" y1="169" x2="150" y2="285" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="256" y1="285" x2="150" y2="285" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="330" y1="165" x2="362" y2="285" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="206" y1="156" x2="248" y2="156" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+  <line x1="300" y1="150" x2="344" y2="150" stroke="#4cc2ff" stroke-width="11" stroke-linecap="round"/>
+</svg>
