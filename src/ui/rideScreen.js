@@ -8,7 +8,7 @@ import { HUD } from '../game/hud.js';
 import { Session } from '../game/session.js';
 import { CAMERA_MODES, CAMERA_LABELS } from '../world/cameras.js';
 import { formatString, formatTime } from '../game/units.js';
-import { groundImageAt } from '../routes/realRoute.js';
+import { autoSync } from '../cloud/sync.js';
 
 export function renderRide(ctx) {
   const s = getState();
@@ -36,7 +36,6 @@ export function renderRide(ctx) {
   const overlay = div({ class: 'ride-overlay', style: { display: 'none' } });
   const banner = div({ class: 'ride-banner' });
   const controlsRegion = div({ class: 'ride-controls-region' });
-  const streetPanel = route.type === 'real' ? div({ class: 'streetview-panel' }) : null;
 
   const topRight = div({ class: 'ride-top-right' }, [
     div({ class: 'minimap-wrap' }, [minimapCanvas]),
@@ -52,13 +51,11 @@ export function renderRide(ctx) {
     ]),
     topRight,
     div({ class: 'ride-bottom' }, [camPanel, controlsRegion]),
-    streetPanel,
     banner,
     overlay
   ]);
 
   let world, minimap, hud, session, pauseBtn;
-  let svUrl = null; // last street view url shown
   let savedActivityId = null;
 
   // ---------- panels ----------
@@ -72,7 +69,11 @@ export function renderRide(ctx) {
     if (sensors.simulatorActive) {
       rows.push(div({ class: 'sensor-row sim-target' }, [el('span', {}, 'Target:'),
         el('strong', { id: 'sim-target' }, `${sensors.simulator.targetWatts} W`)]));
-      rows.push(div({ class: 'hint small' }, '▲ / ▼ adjust watts'));
+      rows.push(div({ class: 'sensor-buttons' }, [
+        btn('−25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts - 25), 'btn small ghost'),
+        btn('+25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts + 25), 'btn small ghost')
+      ]));
+      rows.push(div({ class: 'hint small' }, '▲ / ▼ also adjust watts'));
     }
     const buttons = div({ class: 'sensor-buttons' }, [
       btn('Connect Trainer', async () => { try { await sensors.connectPower(); } catch (e) { alert(e.message); } }, 'btn small'),
@@ -181,18 +182,6 @@ export function renderRide(ctx) {
       const scrub = document.getElementById('scrub');
       if (scrub && document.activeElement !== scrub) scrub.value = Math.round(session.progressFraction() * 1000);
     }
-
-    if (streetPanel) {
-      const effDist = reverse ? (session.total - session.distance) : session.distance;
-      const url = groundImageAt(route, effDist);
-      if (url !== svUrl) {
-        svUrl = url;
-        streetPanel.innerHTML = '';
-        streetPanel.append(h(3, 'Ground View'));
-        if (url) streetPanel.append(el('img', { src: url, alt: 'street view', class: 'sv-img' }));
-        else streetPanel.append(div({ class: 'hint small' }, 'No captured imagery here — riding the satellite-derived world. Run acquisition in the route editor.'));
-      }
-    }
   }
 
   // ---------- keyboard ----------
@@ -220,7 +209,7 @@ export function renderRide(ctx) {
       mode, replayActivity, ghost,
       onEnd: (sum) => showSummary(sum),
       onFrame,
-      onRecord: (act) => { addActivity(act); savedActivityId = act.id; }
+      onRecord: (act) => { addActivity(act); savedActivityId = act.id; autoSync(); }
     });
     session.start();
 

@@ -6,7 +6,6 @@ import { computeBikeSpec, defaultBike } from '../src/profile/garage.js';
 import { defaultProfile } from '../src/profile/rider.js';
 import { surfaceCrr } from '../src/physics/surfaces.js';
 import { format, formatString, toUnit, applyPreset, DEFAULT_UNIT_PREFS } from '../src/game/units.js';
-import { buildRealRoute, sampleNodes } from '../src/routes/realRoute.js';
 import { lapTime, distanceAtTime, timeAtDistance, sampleAtTime, pbForRoute } from '../src/game/activity.js';
 
 let fails = 0;
@@ -58,20 +57,8 @@ assert(format('gradient', 0.08, DEFAULT_UNIT_PREFS).value === '8.0', 'gradient 0
 const bizarre = applyPreset({ ...DEFAULT_UNIT_PREFS }, 'bizarre');
 assert(formatString('speed', 10, bizarre).includes('fur/ftn'), 'bizarre preset shows furlongs/fortnight');
 
-// ---- real route ----
-const realPath = [
-  { lat: 43.6532, lng: -79.3832 },
-  { lat: 43.6601, lng: -79.3790 },
-  { lat: 43.6650, lng: -79.3700 }
-];
-const real = await buildRealRoute({ name: 'Test', path: realPath, surface: 'asphalt', apiKey: '' });
-assert(real.type === 'real' && real.segments.length >= 2, 'real route builds segments from waypoints');
-assert(sampleNodes(realPath, 40).length > 0, 'imagery nodes sampled along real path');
-const rprof = buildProfile(real);
-assert(Number.isFinite(rprof.totalLength) && rprof.totalLength > 500, 'real route has a sensible total length');
-console.log(`     real route length = ${(rprof.totalLength / 1000).toFixed(2)} km, ${real.real.nodes.length} imagery nodes`);
-
 // ---- activities / ghost / PB math ----
+// (GPX real-route conversion is covered by scripts/gpxtest.mjs.)
 const samples = [
   { t: 0, d: 0, p: 0, s: 0 },
   { t: 10, d: 100, p: 200, s: 10 },

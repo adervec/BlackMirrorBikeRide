@@ -1,0 +1,35 @@
+{
+  "id": "bundled-demo-countryside",
+  "name": "Countryside Demo Loop",
+  "type": "real",
+  "skybox": "golden-hour",
+  "airDensity": 1.25,
+  "segments": [
+    { "surface": "asphalt", "gradient": 0.0, "length": 400, "biome": "farmland", "turn": 0 },
+    { "surface": "asphalt", "gradient": 0.01, "length": 400, "biome": "farmland", "turn": 15 },
+    { "surface": "asphalt", "gradient": 0.02, "length": 400, "biome": "farmland", "turn": -20 },
+    { "surface": "asphalt", "gradient": -0.01, "length": 400, "biome": "farmland", "turn": 10 },
+    { "surface": "asphalt", "gradient": 0.0, "length": 400, "biome": "farmland", "turn": 40 },
+    { "surface": "asphalt", "gradient": 0.03, "length": 400, "biome": "forest", "turn": -30 },
+    { "surface": "asphalt", "gradient": 0.04, "length": 400, "biome": "forest", "turn": 25 },
+    { "surface": "gravel", "gradient": 0.02, "length": 400, "biome": "forest", "turn": -45 },
+    { "surface": "gravel", "gradient": -0.03, "length": 400, "biome": "forest", "turn": 20 },
+    { "surface": "asphalt", "gradient": -0.04, "length": 400, "biome": "forest", "turn": -15 },
+    { "surface": "asphalt", "gradient": -0.01, "length": 400, "biome": "lakeside", "turn": 30 },
+    { "surface": "asphalt", "gradient": 0.0, "length": 400, "biome": "lakeside", "turn": 55 },
+    { "surface": "asphalt", "gradient": 0.0, "length": 400, "biome": "lakeside", "turn": 35 },
+    { "surface": "asphalt", "gradient": 0.01, "length": 400, "biome": "lakeside", "turn": -25 },
+    { "surface": "smooth-asphalt", "gradient": 0.01, "length": 400, "biome": "urban", "turn": 20 },
+    { "surface": "smooth-asphalt", "gradient": 0.02, "length": 400, "biome": "urban", "turn": -60 },
+    { "surface": "cobbles", "gradient": 0.0, "length": 400, "biome": "urban", "turn": 45 },
+    { "surface": "smooth-asphalt", "gradient": -0.02, "length": 400, "biome": "urban", "turn": -30 },
+    { "surface": "smooth-asphalt", "gradient": -0.01, "length": 400, "biome": "urban", "turn": 15 },
+    { "surface": "smooth-asphalt", "gradient": 0.0, "length": 400, "biome": "urban", "turn": 0 }
+  ],
+  "landmarks": [
+    { "at": 1200, "label": "Village of Érable", "kind": "town" },
+    { "at": 3400, "label": "Old Rail Bridge", "kind": "bridge" },
+    { "at": 4800, "label": "Lac Miroir", "kind": "water" },
+    { "at": 6800, "label": "St. Sprocket's", "kind": "church" }
+  ]
+}

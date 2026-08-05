@@ -8,7 +8,7 @@ export function renderMenu(ctx) {
   const tiles = [
     { id: 'routes',   title: 'Ride',            sub: 'Pick a route and roll',         go: 'routes' },
     { id: 'builder',  title: 'Virtual Routes',  sub: 'Build segment-based worlds',    go: 'builder' },
-    { id: 'real',     title: 'Real Routes',     sub: 'Import a Google Maps route',    go: 'real' },
+    { id: 'real',     title: 'Real Routes',     sub: 'Ride a GPX file in 3D',         go: 'real' },
     { id: 'garage',   title: 'Garage & Rider',  sub: 'Bike build, body & avatar',     go: 'garage' },
     { id: 'history',  title: 'History & PBs',   sub: 'Past rides, bests & replays',   go: 'history' },
     { id: 'settings', title: 'Settings',        sub: 'Units, HUD, ghost, sensors',    go: 'settings' }

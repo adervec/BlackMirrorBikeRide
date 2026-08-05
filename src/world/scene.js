@@ -9,8 +9,11 @@ import { SURFACES, DEFAULT_SURFACE } from '../physics/surfaces.js';
 import { BIOMES } from '../routes/biomes.js';
 import { SKYBOXES, DEFAULT_SKYBOX } from '../routes/skyboxes.js';
 import { buildAvatar } from './avatar.js';
-import { buildArtifacts } from './artifacts.js';
+import { buildArtifacts, buildLandmarks } from './artifacts.js';
 import { CameraRig } from './cameras.js';
+import { getState } from '../state.js';
+import { resolveQuality } from './quality.js';
+import { gradientEnvironment, applyAnisotropy, maxAnisotropyFor, makeBloomComposer } from './gfx.js';
 
 const ROAD_HALF = 2.6;        // metres each side of centreline
 const TERRAIN_OFFSETS = [-220, -95, -38, -9, 9, 38, 95, 220];
@@ -18,16 +21,19 @@ const TERRAIN_OFFSETS = [-220, -95, -38, -9, 9, 38, 95, 220];
 export class WorldScene {
   constructor(container) {
     this.container = container;
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.q = resolveQuality(getState().settings.graphicsQuality);
+    this.renderer = new THREE.WebGLRenderer({ antialias: this.q.antialias !== false, powerPreference: 'high-performance' });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.q.pixelRatioCap));
     this.renderer.setSize(container.clientWidth, container.clientHeight, false);
-    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.enabled = this.q.shadows !== false;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.05;
     this.renderer.domElement.style.width = '100%';
     this.renderer.domElement.style.height = '100%';
     container.appendChild(this.renderer.domElement);
+    this.composer = null;   // bloom post-processing chain (when quality enables it)
+    this.envTex = null;     // PMREM environment map (image-based lighting)
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 6000);
@@ -52,6 +58,12 @@ export class WorldScene {
 
     const sky = view.skyboxDef || SKYBOXES[route.skybox] || SKYBOXES[DEFAULT_SKYBOX];
     this._buildSky(sky);
+    // Image-based lighting from the sky gradient: PBR materials pick up realistic
+    // ambient + reflections (especially metallic / clearcoat bike paint).
+    if (this.q.env) {
+      this.envTex = gradientEnvironment(this.renderer, sky.top, sky.bottom);
+      this.scene.environment = this.envTex;
+    }
     this._buildLights(sky);
     this.scene.fog = new THREE.FogExp2(this._biomeFog(profile), this._biomeFogDensity(profile));
 
@@ -60,11 +72,24 @@ export class WorldScene {
     this._maybeGrid(profile);
 
     this.scene.add(buildArtifacts(profile));
+    if (profile.landmarks?.length) this.scene.add(buildLandmarks(profile));
 
     this.avatar = buildAvatar({ rider: view.rider, bike: view.bike, player: view.player, decals: view.decals || [] });
     this.scene.add(this.avatar.group);
 
     this._buildSkySpecials(sky);
+
+    // Sharpen every texture in the freshly-built scene.
+    applyAnisotropy(this.scene, maxAnisotropyFor(this.renderer, this.q));
+
+    // Bloom post-processing. The scene is recreated each build(), so the composer
+    // (which holds a RenderPass bound to scene+camera) is rebuilt alongside it.
+    if (this.q.bloom) {
+      this.composer = makeBloomComposer(
+        this.renderer, this.scene, this.camera, this.q,
+        this.container.clientWidth, this.container.clientHeight
+      );
+    }
   }
 
   _biomeFog(profile) {
@@ -100,7 +125,7 @@ export class WorldScene {
     const sun = new THREE.DirectionalLight(sky.sun, sky.sunIntensity ?? 1.0);
     this._sunDir = new THREE.Vector3(...(sky.sunPos || [0.5, 0.8, 0.2])).normalize();
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.mapSize.set(this.q.shadowMapSize, this.q.shadowMapSize);
     // Tight ortho frustum that we keep centred on the rider each frame, so we
     // get crisp contact shadows without trying to shadow the whole route.
     const d = 22;
@@ -299,7 +324,8 @@ export class WorldScene {
     const t = this.clock.getElapsedTime();
     for (const fn of this._dynamic) fn(t);
 
-    this.renderer.render(this.scene, this.camera);
+    if (this.composer) this.composer.render(dt);
+    else this.renderer.render(this.scene, this.camera);
   }
 
   resize() {
@@ -308,6 +334,7 @@ export class WorldScene {
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h, false);
+    if (this.composer) this.composer.setSize(w, h);
   }
 
   dispose(full = true) {
@@ -319,7 +346,10 @@ export class WorldScene {
           mats.forEach((m) => m.dispose?.());
         }
       });
+      this.scene.environment = null;
     }
+    if (this.envTex) { this.envTex.dispose?.(); this.envTex = null; }
+    if (this.composer) { this.composer.dispose?.(); this.composer = null; }
     if (full) {
       window.removeEventListener('resize', this._onResize);
       this.renderer.dispose();

@@ -89,7 +89,11 @@ export function buildProfile(route, { reverse = false } = {}) {
     bounds: { minX, maxX, minZ, maxZ, minY, maxY },
     skybox: route.skybox || DEFAULT_SKYBOX,
     airDensity: route.airDensity || ONTARIO_AIR_DENSITY,
-    segments: segs
+    segments: segs,
+    // Landmark distances are authored from the forward start; mirror for reverse.
+    landmarks: (route.landmarks || [])
+      .map((l) => ({ ...l, at: reverse ? s - l.at : l.at }))
+      .filter((l) => Number.isFinite(l.at) && l.at >= 0 && l.at <= s)
   };
 }
 
@@ -130,6 +134,10 @@ export function validateRoute(route) {
   route.segments?.forEach((seg, i) => {
     if (!seg.length || seg.length <= 0) errs.push(`Segment ${i + 1}: length must be > 0.`);
     if (!BIOMES[seg.biome]) errs.push(`Segment ${i + 1}: unknown biome.`);
+  });
+  route.landmarks?.forEach((lm, i) => {
+    if (typeof lm.label !== 'string' || !lm.label) errs.push(`Landmark ${i + 1}: needs a label.`);
+    if (!Number.isFinite(lm.at) || lm.at < 0) errs.push(`Landmark ${i + 1}: "at" must be a distance in metres ≥ 0.`);
   });
   return errs;
 }
