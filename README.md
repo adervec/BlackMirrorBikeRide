@@ -73,6 +73,7 @@ node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / 
 node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
 node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups
 node scripts/pwatest.mjs     # manifest / icons / service worker installability contract
+node scripts/biometest.mjs   # biome data + every artifact type has a working builder
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```
@@ -159,7 +160,8 @@ live in `public/routes/` and are fetched & merged into every device on app load
 ✅ BLE power (Cycling Power/FTMS) + optional heart rate · ✅ biometric profile affecting
 performance · ✅ bike garage · ✅ avatar + bike customization · ✅ 3D low-poly world +
 top-down map icon · ✅ virtual routes (material/incline/length segments) · ✅ skyboxes
-(normal → existentially bizarre) · ✅ biomes with roadside artifacts (Mojave starter) ·
+(normal → existentially bizarre) · ✅ **22 biomes** with roadside artifacts, from
+Mojave/farmland/jungle/canyon to the outright bizarre (Void, Flesh, Neon Grid) ·
 ✅ matching simplified overhead map · ✅ real routes from GPX files (distance / turns /
 gradients straight from the track, Claude-enriched biomes & landmarks) · ✅ full stats
 HUD · ✅ show/hide/reorder stats · ✅ units (metric/imperial/per-measurement/per-reading +

@@ -33,9 +33,13 @@ ride actually goes and dress the route accordingly.
    - `skybox`: pick from the ids in `src/routes/skyboxes.js` (e.g. `clear-day`,
      `golden-hour`, `overcast`).
    - `segments[].biome`: assign **contiguous runs** matching the real terrain.
-     Live list in `src/routes/biomes.js` — currently `farmland`, `forest`,
-     `urban`, `lakeside`, `alpine`, `mojave`, `neongrid`, `satellite` (neutral).
-     Don't alternate biome every segment; change it where the landscape changes.
+     Live list in `src/routes/biomes.js` — currently, real-world: `farmland`,
+     `forest`, `urban`, `suburban`, `industrial`, `lakeside`, `coastal`,
+     `alpine`, `tundra`, `moorland`, `jungle`, `savanna`, `swamp`, `canyon`,
+     `volcanic`, `vineyard`, `mojave`; surreal: `neongrid`, `graveyard`, `void`,
+     `flesh`; plus `satellite` (neutral, no props). Pick the closest real match —
+     a Dutch polder is `farmland`, a Cornish clifftop is `coastal`. Don't
+     alternate biome every segment; change it where the landscape changes.
    - `segments[].surface`: ids from `src/physics/surfaces.js` where you know
      better than the default (e.g. `gravel` for a rail trail, `cobbles`).
    - `landmarks`: `[{ "at": <metres from start>, "label": "...", "kind": ... }]`

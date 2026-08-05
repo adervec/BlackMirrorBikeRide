@@ -48,6 +48,9 @@ jobs:
       - name: PWA installability
         run: node scripts/pwatest.mjs
 
+      - name: Biomes & artifacts
+        run: node scripts/biometest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 
