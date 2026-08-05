@@ -46,7 +46,12 @@ export function applyAnisotropy(root, maxAniso) {
     for (const m of mats) {
       for (const k of keys) {
         const tex = m[k];
-        if (tex && tex.isTexture) { tex.anisotropy = maxAniso; tex.needsUpdate = true; }
+        // Only flag a re-upload when the value actually changes: surface textures
+        // are cached and shared across scene rebuilds.
+        if (tex && tex.isTexture && tex.anisotropy !== maxAniso) {
+          tex.anisotropy = maxAniso;
+          tex.needsUpdate = true;
+        }
       }
     }
   });

@@ -63,6 +63,7 @@ node scripts/selftest.mjs    # physics, units, route geometry, activity/PB math
 node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost (headless)
 node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
 node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
+node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```
@@ -77,7 +78,7 @@ src/
   profile/                 rider.js (biometrics→aero) · garage.js (bike build) · customize.js
   routes/                  virtualRoute.js · gpx.js · geo.js · biomes.js · skyboxes.js · bundled.js
   cloud/                   config.js (OAuth gate) · sync.js (Drive REST) · merge.js (pure merge)
-  world/                   scene.js · avatar.js · artifacts.js · cameras.js · minimap.js
+  world/                   scene.js · avatar.js · artifacts.js · textures.js · cameras.js · minimap.js
   game/                    session.js (game loop) · hud.js · hudConfig.js · units.js
   ui/                      router + one module per screen
 ```

@@ -14,9 +14,12 @@ import { CameraRig } from './cameras.js';
 import { getState } from '../state.js';
 import { resolveQuality } from './quality.js';
 import { gradientEnvironment, applyAnisotropy, maxAnisotropyFor, makeBloomComposer } from './gfx.js';
+import { surfaceTexture, groundTexture } from './textures.js';
 
 const ROAD_HALF = 2.6;        // metres each side of centreline
 const TERRAIN_OFFSETS = [-220, -95, -38, -9, 9, 38, 95, 220];
+const TEX_M = 2.4;            // metres per road-texture tile
+const TERRAIN_TEX_M = 9;      // metres per ground-texture tile
 
 export class WorldScene {
   constructor(container) {
@@ -151,7 +154,11 @@ export class WorldScene {
     const n = pts.length;
     const positions = new Float32Array(n * 2 * 3);
     const colors = new Float32Array(n * 2 * 3);
+    const uvs = new Float32Array(n * 2 * 2);
     const tmp = new THREE.Color();
+    // One texture tile every TEX_M metres, in both directions, so the grain is
+    // the same physical size across the road as it is along it.
+    const uRight = (ROAD_HALF * 2) / TEX_M;
     for (let i = 0; i < n; i++) {
       const p = pts[i];
       const latX = -Math.sin(p.heading), latZ = Math.cos(p.heading);
@@ -159,6 +166,8 @@ export class WorldScene {
       const rx = p.x - latX * ROAD_HALF, rz = p.z - latZ * ROAD_HALF;
       const y = p.y + 0.06;
       positions.set([lx, y, lz, rx, y, rz], i * 6);
+      const v = p.s / TEX_M;
+      uvs.set([0, v, uRight, v], i * 4);
       const surf = SURFACES[p.surfaceId] || SURFACES[DEFAULT_SURFACE];
       tmp.set(surf.color);
       // subtle per-vertex dither for the rough look
@@ -173,9 +182,42 @@ export class WorldScene {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
     geo.setIndex(idx);
     geo.computeVertexNormals();
-    const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0.0, flatShading: true }));
+
+    // Cobbles have to actually look like cobbles, so each run of a surface gets
+    // its own draw group + material rather than one texture tinted per-vertex.
+    // Runs are contiguous, so a typical route is a handful of groups.
+    const mats = [];
+    const matIndex = new Map();
+    const materialFor = (surfaceId) => {
+      if (matIndex.has(surfaceId)) return matIndex.get(surfaceId);
+      const surf = SURFACES[surfaceId] || SURFACES[DEFAULT_SURFACE];
+      mats.push(new THREE.MeshStandardMaterial({
+        map: surfaceTexture(surfaceId),
+        vertexColors: true,
+        // Stay diffuse. The scene has an image-based-lighting environment map,
+        // so anything glossy mirrors the sky and turns the road blue — keep this
+        // near the original 0.95 and let the texture carry the detail instead.
+        roughness: 0.88 + surf.rough * 0.1,
+        metalness: 0.0,
+        flatShading: true,
+      }));
+      matIndex.set(surfaceId, mats.length - 1);
+      return mats.length - 1;
+    };
+    let runStart = 0;
+    for (let i = 0; i < n - 1; i++) {
+      const here = pts[i].surfaceId;
+      const next = i + 1 < n - 1 ? pts[i + 1].surfaceId : null;
+      if (next !== here) {
+        geo.addGroup(runStart * 6, (i - runStart + 1) * 6, materialFor(here));
+        runStart = i + 1;
+      }
+    }
+
+    const mesh = new THREE.Mesh(geo, mats);
     mesh.receiveShadow = true;
     this.scene.add(mesh);
     this._buildCenterLine(profile);
@@ -212,6 +254,7 @@ export class WorldScene {
     const K = TERRAIN_OFFSETS.length;
     const positions = new Float32Array(n * K * 3);
     const colors = new Float32Array(n * K * 3);
+    const uvs = new Float32Array(n * K * 2);
     const cGround = new THREE.Color();
     const cLow = new THREE.Color();
     for (let i = 0; i < n; i++) {
@@ -229,6 +272,9 @@ export class WorldScene {
         const zz = p.z + latZ * off;
         const ti = (i * K + k) * 3;
         positions[ti] = xx; positions[ti + 1] = y; positions[ti + 2] = zz;
+        // Planar world-space UVs: ground detail stays put as the road bends.
+        const ui = (i * K + k) * 2;
+        uvs[ui] = xx / TERRAIN_TEX_M; uvs[ui + 1] = zz / TERRAIN_TEX_M;
         const t = 0.5 + hnoise * 0.5;
         colors[ti] = cLow.r + (cGround.r - cLow.r) * t;
         colors[ti + 1] = cLow.g + (cGround.g - cLow.g) * t;
@@ -245,9 +291,10 @@ export class WorldScene {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
     geo.setIndex(idx);
     geo.computeVertexNormals();
-    const terrain = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1.0, metalness: 0.0, flatShading: true }));
+    const terrain = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: groundTexture(), vertexColors: true, roughness: 1.0, metalness: 0.0, flatShading: true }));
     terrain.receiveShadow = true;
     this.scene.add(terrain);
   }
