@@ -33,12 +33,22 @@ ride actually goes and dress the route accordingly.
    - `skybox`: pick from the ids in `src/routes/skyboxes.js` (e.g. `clear-day`,
      `golden-hour`, `overcast`).
    - `segments[].biome`: assign **contiguous runs** matching the real terrain.
-     Live list in `src/routes/biomes.js` — currently, real-world: `farmland`,
-     `forest`, `urban`, `suburban`, `industrial`, `lakeside`, `coastal`,
-     `alpine`, `tundra`, `moorland`, `jungle`, `savanna`, `swamp`, `canyon`,
-     `volcanic`, `vineyard`, `mojave`; surreal: `neongrid`, `graveyard`, `void`,
-     `flesh`; plus `satellite` (neutral, no props). Pick the closest real match —
-     a Dutch polder is `farmland`, a Cornish clifftop is `coastal`. Don't
+     Live list in `src/routes/biomes.js` — read it, don't trust this summary.
+     Roughly:
+     - farmland: `farmland`, `prairie`, `orchard`, `vineyard`
+     - wooded: `forest`, `redwood`, `jungle`, `bamboo`, `karst`
+     - built-up: `urban`, `suburban`, `oldtown`, `industrial`, `harbour`, `servers`
+     - water: `lakeside`, `coastal`, `swamp`, `mangrove`
+     - open/arid: `mojave`, `canyon`, `badlands`, `dunes`, `saltflat`, `oasis`,
+       `savanna`, `moorland`
+     - cold/high: `alpine`, `tundra`, `glacier`
+     - other: `volcanic`
+     - surreal (only if the user wants it): `neongrid`, `graveyard`, `void`,
+       `flesh`, `mushroom`, `clockwork`, `staticfield`, `mirrorfield`
+     - `satellite` is the neutral, prop-free fallback.
+
+     Pick the closest real match — a Dutch polder is `farmland`, a Cornish
+     clifftop is `coastal`, a Utah canyon is `canyon` or `badlands`. Don't
      alternate biome every segment; change it where the landscape changes.
    - `segments[].surface`: ids from `src/physics/surfaces.js` where you know
      better than the default (e.g. `gravel` for a rail trail, `cobbles`).

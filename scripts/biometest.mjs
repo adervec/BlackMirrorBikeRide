@@ -55,8 +55,8 @@ const orphans = ARTIFACT_TYPES.filter((t) => !used.has(t));
 assert(orphans.length === 0, `no builder is unreferenced by any biome${orphans.length ? ' — orphans: ' + orphans.join(', ') : ''}`);
 
 // ---- diversity: the point of having many biomes ----
-assert(ids.length >= 20, `at least 20 biomes (${ids.length})`);
-assert(ARTIFACT_TYPES.length >= 45, `at least 45 artifact types (${ARTIFACT_TYPES.length})`);
+assert(ids.length >= 40, `at least 40 biomes (${ids.length})`);
+assert(ARTIFACT_TYPES.length >= 83, `at least 83 artifact types (${ARTIFACT_TYPES.length})`);
 const scenic = ids.filter((id) => BIOMES[id].artifacts.length > 0);
 assert(scenic.every((id) => BIOMES[id].artifacts.length >= 3),
   'every scenic biome scatters at least 3 different props');
