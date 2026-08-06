@@ -1,0 +1,490 @@
+{
+ "id": "bundled-canyon-descent",
+ "name": "Canyon Descent",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "gravel",
+   "gradient": 0.0236,
+   "length": 317.1,
+   "biome": "badlands",
+   "turn": 27.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0204,
+   "length": 259.1,
+   "biome": "badlands",
+   "turn": -26.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0228,
+   "length": 285.2,
+   "biome": "badlands",
+   "turn": -12.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0147,
+   "length": 264.3,
+   "biome": "badlands",
+   "turn": -32.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.022,
+   "length": 330.3,
+   "biome": "badlands",
+   "turn": 30
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0226,
+   "length": 328.1,
+   "biome": "badlands",
+   "turn": 12.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0143,
+   "length": 321.2,
+   "biome": "badlands",
+   "turn": 11.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0164,
+   "length": 262.6,
+   "biome": "badlands",
+   "turn": 10.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0389,
+   "length": 282.1,
+   "biome": "badlands",
+   "turn": 0.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0447,
+   "length": 281.9,
+   "biome": "badlands",
+   "turn": -11.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0507,
+   "length": 303.2,
+   "biome": "badlands",
+   "turn": 10.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0513,
+   "length": 283,
+   "biome": "badlands",
+   "turn": 34.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0528,
+   "length": 293.5,
+   "biome": "badlands",
+   "turn": -24.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0556,
+   "length": 273.4,
+   "biome": "badlands",
+   "turn": 20.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0645,
+   "length": 332.9,
+   "biome": "badlands",
+   "turn": 13.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0593,
+   "length": 332,
+   "biome": "badlands",
+   "turn": 9.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0659,
+   "length": 274.7,
+   "biome": "badlands",
+   "turn": 23.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0639,
+   "length": 273.3,
+   "biome": "badlands",
+   "turn": 13
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0645,
+   "length": 336.8,
+   "biome": "badlands",
+   "turn": 7.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.058,
+   "length": 272.1,
+   "biome": "badlands",
+   "turn": 22.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0554,
+   "length": 318.1,
+   "biome": "badlands",
+   "turn": 21.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0484,
+   "length": 288.7,
+   "biome": "badlands",
+   "turn": -15.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0459,
+   "length": 297.8,
+   "biome": "canyon",
+   "turn": 11
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0422,
+   "length": 282.5,
+   "biome": "canyon",
+   "turn": 21.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.045,
+   "length": 330.9,
+   "biome": "canyon",
+   "turn": -2.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0452,
+   "length": 334.8,
+   "biome": "canyon",
+   "turn": -7.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0439,
+   "length": 279.6,
+   "biome": "canyon",
+   "turn": -29.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0389,
+   "length": 261.6,
+   "biome": "canyon",
+   "turn": -13.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0337,
+   "length": 290.3,
+   "biome": "canyon",
+   "turn": 5.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0424,
+   "length": 290.1,
+   "biome": "canyon",
+   "turn": 16.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0458,
+   "length": 302.4,
+   "biome": "canyon",
+   "turn": -31.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0414,
+   "length": 292.5,
+   "biome": "canyon",
+   "turn": 19
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0479,
+   "length": 314.1,
+   "biome": "canyon",
+   "turn": -20.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0522,
+   "length": 336.2,
+   "biome": "canyon",
+   "turn": 0.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0564,
+   "length": 341.2,
+   "biome": "canyon",
+   "turn": 8.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0508,
+   "length": 323.3,
+   "biome": "canyon",
+   "turn": 35.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.059,
+   "length": 276,
+   "biome": "canyon",
+   "turn": 17.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0609,
+   "length": 301.9,
+   "biome": "canyon",
+   "turn": 25.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0573,
+   "length": 283.8,
+   "biome": "canyon",
+   "turn": 18
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0659,
+   "length": 272.1,
+   "biome": "canyon",
+   "turn": 7.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0587,
+   "length": 340.9,
+   "biome": "canyon",
+   "turn": -27.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0589,
+   "length": 296.8,
+   "biome": "canyon",
+   "turn": -34.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0538,
+   "length": 317.3,
+   "biome": "canyon",
+   "turn": 34.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0547,
+   "length": 332.6,
+   "biome": "canyon",
+   "turn": -18.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0512,
+   "length": 286.4,
+   "biome": "canyon",
+   "turn": 10.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0469,
+   "length": 331.6,
+   "biome": "mojave",
+   "turn": -9.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0411,
+   "length": 325.9,
+   "biome": "mojave",
+   "turn": -27.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0429,
+   "length": 259.2,
+   "biome": "mojave",
+   "turn": 17.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0345,
+   "length": 306.4,
+   "biome": "mojave",
+   "turn": -30.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0341,
+   "length": 266.2,
+   "biome": "mojave",
+   "turn": 29.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0359,
+   "length": 280.2,
+   "biome": "mojave",
+   "turn": 28.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0441,
+   "length": 292.1,
+   "biome": "mojave",
+   "turn": 20
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0344,
+   "length": 337.2,
+   "biome": "mojave",
+   "turn": 16.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0377,
+   "length": 307.4,
+   "biome": "mojave",
+   "turn": 8.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.042,
+   "length": 340.9,
+   "biome": "mojave",
+   "turn": -22.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.052,
+   "length": 344.7,
+   "biome": "mojave",
+   "turn": 33
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0492,
+   "length": 312.5,
+   "biome": "mojave",
+   "turn": 2.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0504,
+   "length": 319.6,
+   "biome": "mojave",
+   "turn": -15.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0609,
+   "length": 305.7,
+   "biome": "mojave",
+   "turn": 6.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0547,
+   "length": 261,
+   "biome": "mojave",
+   "turn": -7.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0572,
+   "length": 328.9,
+   "biome": "mojave",
+   "turn": 2.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0637,
+   "length": 264.4,
+   "biome": "mojave",
+   "turn": 11.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0568,
+   "length": 324.1,
+   "biome": "mojave",
+   "turn": 14.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0653,
+   "length": 334.3,
+   "biome": "mojave",
+   "turn": 26.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0561,
+   "length": 321.4,
+   "biome": "mojave",
+   "turn": 11
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0581,
+   "length": 300.3,
+   "biome": "mojave",
+   "turn": 0.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0512,
+   "length": 259.4,
+   "biome": "mojave",
+   "turn": 35.3
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 4853,
+   "label": "Hoodoo Gate",
+   "kind": "peak"
+  },
+  {
+   "at": 13347,
+   "label": "Dry Wash Bridge",
+   "kind": "bridge"
+  }
+ ]
+}

@@ -1,0 +1,446 @@
+{
+ "id": "bundled-alpine-hairpins",
+ "name": "Alpine Hairpins",
+ "type": "virtual",
+ "skybox": "clear-day",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.0446,
+   "length": 332.5,
+   "biome": "forest",
+   "turn": 39
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0536,
+   "length": 311.5,
+   "biome": "forest",
+   "turn": 34.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0628,
+   "length": 326,
+   "biome": "forest",
+   "turn": -39.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0636,
+   "length": 279.8,
+   "biome": "forest",
+   "turn": -46.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0658,
+   "length": 266.2,
+   "biome": "forest",
+   "turn": 26.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0591,
+   "length": 290.9,
+   "biome": "forest",
+   "turn": 46.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0677,
+   "length": 256,
+   "biome": "forest",
+   "turn": -8.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0645,
+   "length": 267.4,
+   "biome": "forest",
+   "turn": -26.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0592,
+   "length": 319.8,
+   "biome": "forest",
+   "turn": -9.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0571,
+   "length": 257.3,
+   "biome": "forest",
+   "turn": 30.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0582,
+   "length": 324.3,
+   "biome": "forest",
+   "turn": -36.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0423,
+   "length": 322.4,
+   "biome": "forest",
+   "turn": 49.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0433,
+   "length": 258.9,
+   "biome": "forest",
+   "turn": -9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0324,
+   "length": 343.2,
+   "biome": "forest",
+   "turn": -24.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0381,
+   "length": 313,
+   "biome": "forest",
+   "turn": 49.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0295,
+   "length": 288.4,
+   "biome": "alpine",
+   "turn": 24
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0318,
+   "length": 316.3,
+   "biome": "alpine",
+   "turn": 34.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0217,
+   "length": 334.4,
+   "biome": "alpine",
+   "turn": 27.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0294,
+   "length": 312,
+   "biome": "alpine",
+   "turn": -21.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0229,
+   "length": 281.4,
+   "biome": "alpine",
+   "turn": 47.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0318,
+   "length": 261.1,
+   "biome": "alpine",
+   "turn": 0.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0347,
+   "length": 260.9,
+   "biome": "alpine",
+   "turn": -16.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0363,
+   "length": 260.1,
+   "biome": "alpine",
+   "turn": 19.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0447,
+   "length": 272.8,
+   "biome": "alpine",
+   "turn": 16.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.046,
+   "length": 272,
+   "biome": "alpine",
+   "turn": 50.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0562,
+   "length": 342.8,
+   "biome": "alpine",
+   "turn": -39.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0547,
+   "length": 266.7,
+   "biome": "alpine",
+   "turn": 42.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0628,
+   "length": 280.4,
+   "biome": "alpine",
+   "turn": -19.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0678,
+   "length": 325.1,
+   "biome": "alpine",
+   "turn": -9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0607,
+   "length": 255.7,
+   "biome": "alpine",
+   "turn": 52.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0666,
+   "length": 325.7,
+   "biome": "tundra",
+   "turn": 52.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0577,
+   "length": 262.3,
+   "biome": "tundra",
+   "turn": -17.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0627,
+   "length": 335.2,
+   "biome": "tundra",
+   "turn": -38.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0537,
+   "length": 313.8,
+   "biome": "tundra",
+   "turn": -17.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0572,
+   "length": 334.1,
+   "biome": "tundra",
+   "turn": 38.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0468,
+   "length": 286.8,
+   "biome": "tundra",
+   "turn": -8.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0483,
+   "length": 317.8,
+   "biome": "tundra",
+   "turn": -43.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0528,
+   "length": 282.5,
+   "biome": "tundra",
+   "turn": -54.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0538,
+   "length": 284.2,
+   "biome": "tundra",
+   "turn": 51.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0507,
+   "length": 264.5,
+   "biome": "tundra",
+   "turn": -23.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0587,
+   "length": 261.9,
+   "biome": "tundra",
+   "turn": 16.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0609,
+   "length": 261.3,
+   "biome": "tundra",
+   "turn": 6.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0671,
+   "length": 297,
+   "biome": "tundra",
+   "turn": 33.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.068,
+   "length": 256.3,
+   "biome": "tundra",
+   "turn": 39.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.074,
+   "length": 311,
+   "biome": "tundra",
+   "turn": -22
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0834,
+   "length": 309.3,
+   "biome": "glacier",
+   "turn": -18.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0834,
+   "length": 302.5,
+   "biome": "glacier",
+   "turn": 40
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0855,
+   "length": 258.7,
+   "biome": "glacier",
+   "turn": 20.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0861,
+   "length": 303.7,
+   "biome": "glacier",
+   "turn": -44.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0841,
+   "length": 305.7,
+   "biome": "glacier",
+   "turn": 38.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0764,
+   "length": 305,
+   "biome": "glacier",
+   "turn": 15.5
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0652,
+   "length": 269.7,
+   "biome": "glacier",
+   "turn": -1.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0588,
+   "length": 299,
+   "biome": "glacier",
+   "turn": -27
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.056,
+   "length": 282.4,
+   "biome": "glacier",
+   "turn": 46.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0609,
+   "length": 295.1,
+   "biome": "glacier",
+   "turn": 39.7
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0543,
+   "length": 272.6,
+   "biome": "glacier",
+   "turn": 3.6
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0575,
+   "length": 303.9,
+   "biome": "glacier",
+   "turn": -29.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0531,
+   "length": 264.5,
+   "biome": "glacier",
+   "turn": -35.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0634,
+   "length": 274.1,
+   "biome": "glacier",
+   "turn": 38.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0719,
+   "length": 290.6,
+   "biome": "glacier",
+   "turn": -32.1
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 3506,
+   "label": "Tree Line",
+   "kind": "peak"
+  },
+  {
+   "at": 9642,
+   "label": "Refuge du Col",
+   "kind": "town"
+  },
+  {
+   "at": 14375,
+   "label": "Glacier Rim",
+   "kind": "peak"
+  }
+ ]
+}

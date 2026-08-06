@@ -1,0 +1,392 @@
+{
+ "id": "bundled-swamp-passage",
+ "name": "Swamp Passage",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "hardpack",
+   "gradient": -0.0008,
+   "length": 257.7,
+   "biome": "swamp",
+   "turn": 26.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0013,
+   "length": 266.8,
+   "biome": "swamp",
+   "turn": 29.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0012,
+   "length": 278.2,
+   "biome": "swamp",
+   "turn": -14
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.004,
+   "length": 287.4,
+   "biome": "swamp",
+   "turn": 2.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.003,
+   "length": 263.1,
+   "biome": "swamp",
+   "turn": -36.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0024,
+   "length": 322.6,
+   "biome": "swamp",
+   "turn": -31.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0057,
+   "length": 277.9,
+   "biome": "swamp",
+   "turn": 30.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0001,
+   "length": 335.2,
+   "biome": "swamp",
+   "turn": 21.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0039,
+   "length": 312.7,
+   "biome": "swamp",
+   "turn": -3.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0019,
+   "length": 317.4,
+   "biome": "swamp",
+   "turn": 21.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0055,
+   "length": 337.1,
+   "biome": "swamp",
+   "turn": -2.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0002,
+   "length": 333.5,
+   "biome": "swamp",
+   "turn": -12.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0024,
+   "length": 321.9,
+   "biome": "swamp",
+   "turn": 40.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0045,
+   "length": 318,
+   "biome": "swamp",
+   "turn": -18.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.002,
+   "length": 338.3,
+   "biome": "swamp",
+   "turn": -7.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.003,
+   "length": 281.7,
+   "biome": "swamp",
+   "turn": 6.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0036,
+   "length": 261.4,
+   "biome": "swamp",
+   "turn": 21.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0055,
+   "length": 295.4,
+   "biome": "swamp",
+   "turn": 17.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0026,
+   "length": 272.7,
+   "biome": "mangrove",
+   "turn": 22.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0007,
+   "length": 265.1,
+   "biome": "mangrove",
+   "turn": 39.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0051,
+   "length": 341.6,
+   "biome": "mangrove",
+   "turn": 35.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0008,
+   "length": 319,
+   "biome": "mangrove",
+   "turn": 9.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.003,
+   "length": 339.5,
+   "biome": "mangrove",
+   "turn": -15
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0027,
+   "length": 338.6,
+   "biome": "mangrove",
+   "turn": 36.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0012,
+   "length": 308.9,
+   "biome": "mangrove",
+   "turn": 5.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0043,
+   "length": 305.9,
+   "biome": "mangrove",
+   "turn": -39.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0059,
+   "length": 334.1,
+   "biome": "mangrove",
+   "turn": -26.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0038,
+   "length": 259,
+   "biome": "mangrove",
+   "turn": 5.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0029,
+   "length": 324.3,
+   "biome": "mangrove",
+   "turn": 5.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0,
+   "length": 281,
+   "biome": "mangrove",
+   "turn": 39.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0005,
+   "length": 337.6,
+   "biome": "mangrove",
+   "turn": -26.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0028,
+   "length": 275.8,
+   "biome": "mangrove",
+   "turn": 34.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0021,
+   "length": 321.9,
+   "biome": "mangrove",
+   "turn": 11.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0022,
+   "length": 336.9,
+   "biome": "mangrove",
+   "turn": 31.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0034,
+   "length": 284.1,
+   "biome": "mangrove",
+   "turn": -28.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0047,
+   "length": 255,
+   "biome": "terraces",
+   "turn": -3.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0006,
+   "length": 287.2,
+   "biome": "terraces",
+   "turn": 31.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.006,
+   "length": 282.3,
+   "biome": "terraces",
+   "turn": -1.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.002,
+   "length": 338.6,
+   "biome": "terraces",
+   "turn": -26
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.006,
+   "length": 262.8,
+   "biome": "terraces",
+   "turn": 15.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0008,
+   "length": 270.8,
+   "biome": "terraces",
+   "turn": 16.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.003,
+   "length": 341.4,
+   "biome": "terraces",
+   "turn": 38.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0023,
+   "length": 255.9,
+   "biome": "terraces",
+   "turn": -35.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0036,
+   "length": 294.6,
+   "biome": "terraces",
+   "turn": -33.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0022,
+   "length": 259.9,
+   "biome": "terraces",
+   "turn": 17.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.004,
+   "length": 274.5,
+   "biome": "terraces",
+   "turn": 12.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0047,
+   "length": 303.5,
+   "biome": "terraces",
+   "turn": 43.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0026,
+   "length": 330.4,
+   "biome": "terraces",
+   "turn": -11.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0001,
+   "length": 335.8,
+   "biome": "terraces",
+   "turn": 14.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0012,
+   "length": 282.9,
+   "biome": "terraces",
+   "turn": 23.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0012,
+   "length": 307,
+   "biome": "terraces",
+   "turn": 38.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0025,
+   "length": 271.3,
+   "biome": "terraces",
+   "turn": 43.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.003,
+   "length": 307.6,
+   "biome": "terraces",
+   "turn": -35.4
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 4774,
+   "label": "Cypress Crossing",
+   "kind": "bridge"
+  },
+  {
+   "at": 11935,
+   "label": "Paddy Village",
+   "kind": "town"
+  }
+ ]
+}

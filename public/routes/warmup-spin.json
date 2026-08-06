@@ -1,0 +1,156 @@
+{
+ "id": "bundled-warmup-spin",
+ "name": "Warm-Up Spin",
+ "type": "virtual",
+ "skybox": "clear-day",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0042,
+   "length": 262,
+   "biome": "farmland",
+   "turn": 18.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0007,
+   "length": 315.5,
+   "biome": "farmland",
+   "turn": 24.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0051,
+   "length": 338.5,
+   "biome": "farmland",
+   "turn": 26.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0017,
+   "length": 285.5,
+   "biome": "farmland",
+   "turn": 12.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0015,
+   "length": 301.5,
+   "biome": "farmland",
+   "turn": 19.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0019,
+   "length": 255,
+   "biome": "farmland",
+   "turn": 20.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0036,
+   "length": 298.4,
+   "biome": "farmland",
+   "turn": 16.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.004,
+   "length": 292.8,
+   "biome": "farmland",
+   "turn": 10.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0021,
+   "length": 308.8,
+   "biome": "farmland",
+   "turn": 26
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0038,
+   "length": 330.5,
+   "biome": "farmland",
+   "turn": 10
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0038,
+   "length": 291.4,
+   "biome": "orchard",
+   "turn": 17.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0001,
+   "length": 287.7,
+   "biome": "orchard",
+   "turn": 19.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.003,
+   "length": 329.1,
+   "biome": "orchard",
+   "turn": 24.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0015,
+   "length": 291.5,
+   "biome": "orchard",
+   "turn": 21.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0008,
+   "length": 312.6,
+   "biome": "orchard",
+   "turn": 19.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0025,
+   "length": 333.9,
+   "biome": "orchard",
+   "turn": 20.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0043,
+   "length": 311.7,
+   "biome": "orchard",
+   "turn": 13.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0004,
+   "length": 318.6,
+   "biome": "orchard",
+   "turn": 22.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0045,
+   "length": 309,
+   "biome": "orchard",
+   "turn": 14.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0014,
+   "length": 301.9,
+   "biome": "orchard",
+   "turn": 10.5
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 3038,
+   "label": "Halfway Barn",
+   "kind": "town"
+  }
+ ]
+}

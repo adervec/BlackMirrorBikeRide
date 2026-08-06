@@ -51,6 +51,9 @@ jobs:
       - name: Biomes & artifacts
         run: node scripts/biometest.mjs
 
+      - name: Bundled route library
+        run: node scripts/routestest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 

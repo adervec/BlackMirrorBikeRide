@@ -1,0 +1,581 @@
+{
+ "id": "bundled-sweetspot-rollers",
+ "name": "Sweet Spot Rollers",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.0076,
+   "length": 324.9,
+   "biome": "farmland",
+   "turn": 12.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0265,
+   "length": 330.4,
+   "biome": "farmland",
+   "turn": 12.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0319,
+   "length": 330.2,
+   "biome": "farmland",
+   "turn": -11.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.042,
+   "length": 259.8,
+   "biome": "farmland",
+   "turn": 16.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0417,
+   "length": 269.4,
+   "biome": "farmland",
+   "turn": 21.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0378,
+   "length": 319.6,
+   "biome": "farmland",
+   "turn": -2.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.037,
+   "length": 335.8,
+   "biome": "farmland",
+   "turn": 0.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0194,
+   "length": 263.6,
+   "biome": "farmland",
+   "turn": 1.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0147,
+   "length": 344.1,
+   "biome": "farmland",
+   "turn": 16
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.008,
+   "length": 265.9,
+   "biome": "farmland",
+   "turn": 4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0068,
+   "length": 278.9,
+   "biome": "farmland",
+   "turn": -11.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0119,
+   "length": 293.4,
+   "biome": "farmland",
+   "turn": 7.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0031,
+   "length": 275.1,
+   "biome": "farmland",
+   "turn": 11.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0095,
+   "length": 287.2,
+   "biome": "farmland",
+   "turn": 9.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0054,
+   "length": 322.3,
+   "biome": "farmland",
+   "turn": 17.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0011,
+   "length": 304.2,
+   "biome": "farmland",
+   "turn": -5.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0111,
+   "length": 280,
+   "biome": "farmland",
+   "turn": 15
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0191,
+   "length": 267.9,
+   "biome": "farmland",
+   "turn": 10.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.034,
+   "length": 283.8,
+   "biome": "farmland",
+   "turn": 0.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0417,
+   "length": 344.4,
+   "biome": "farmland",
+   "turn": 19.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0422,
+   "length": 330.5,
+   "biome": "forest",
+   "turn": 8.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0457,
+   "length": 291.9,
+   "biome": "forest",
+   "turn": -6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0392,
+   "length": 306.8,
+   "biome": "forest",
+   "turn": -9.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0313,
+   "length": 272,
+   "biome": "forest",
+   "turn": -12.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0192,
+   "length": 283.8,
+   "biome": "forest",
+   "turn": 15.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0049,
+   "length": 283,
+   "biome": "forest",
+   "turn": -10
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0125,
+   "length": 321.9,
+   "biome": "forest",
+   "turn": 2.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0166,
+   "length": 298.1,
+   "biome": "forest",
+   "turn": 11.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0333,
+   "length": 279.1,
+   "biome": "forest",
+   "turn": 6.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0341,
+   "length": 342.8,
+   "biome": "forest",
+   "turn": 10.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0257,
+   "length": 311.6,
+   "biome": "forest",
+   "turn": 10
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0275,
+   "length": 260.9,
+   "biome": "forest",
+   "turn": 11.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0206,
+   "length": 256.2,
+   "biome": "forest",
+   "turn": 16.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0209,
+   "length": 294.2,
+   "biome": "forest",
+   "turn": 0.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0198,
+   "length": 301.7,
+   "biome": "forest",
+   "turn": -1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0161,
+   "length": 342.7,
+   "biome": "forest",
+   "turn": 13.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0195,
+   "length": 306.3,
+   "biome": "forest",
+   "turn": -2.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0278,
+   "length": 290.4,
+   "biome": "forest",
+   "turn": -4.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0225,
+   "length": 316.2,
+   "biome": "forest",
+   "turn": 3.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.023,
+   "length": 318.6,
+   "biome": "forest",
+   "turn": 10.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0151,
+   "length": 301.9,
+   "biome": "prairie",
+   "turn": 2.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0071,
+   "length": 311,
+   "biome": "prairie",
+   "turn": 9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.02,
+   "length": 270.2,
+   "biome": "prairie",
+   "turn": 9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0259,
+   "length": 308.6,
+   "biome": "prairie",
+   "turn": -6.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0386,
+   "length": 338,
+   "biome": "prairie",
+   "turn": 4.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0446,
+   "length": 324.7,
+   "biome": "prairie",
+   "turn": -11.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0484,
+   "length": 322.9,
+   "biome": "prairie",
+   "turn": 21.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0503,
+   "length": 280.7,
+   "biome": "prairie",
+   "turn": 1.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0393,
+   "length": 321.4,
+   "biome": "prairie",
+   "turn": -10.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0277,
+   "length": 288.6,
+   "biome": "prairie",
+   "turn": 1.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0096,
+   "length": 291.9,
+   "biome": "prairie",
+   "turn": 10.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0013,
+   "length": 318.2,
+   "biome": "prairie",
+   "turn": 20.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0033,
+   "length": 319.4,
+   "biome": "prairie",
+   "turn": 3.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0169,
+   "length": 318.5,
+   "biome": "prairie",
+   "turn": 4.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.022,
+   "length": 336.6,
+   "biome": "prairie",
+   "turn": 22.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0104,
+   "length": 263.1,
+   "biome": "prairie",
+   "turn": 6.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0202,
+   "length": 309.9,
+   "biome": "prairie",
+   "turn": -2.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0105,
+   "length": 300.4,
+   "biome": "prairie",
+   "turn": 12.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0172,
+   "length": 341.4,
+   "biome": "prairie",
+   "turn": -9.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0184,
+   "length": 321.5,
+   "biome": "prairie",
+   "turn": 13.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0257,
+   "length": 264,
+   "biome": "farmland",
+   "turn": -3.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0347,
+   "length": 344.7,
+   "biome": "farmland",
+   "turn": -11.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.037,
+   "length": 298,
+   "biome": "farmland",
+   "turn": 17.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0414,
+   "length": 299,
+   "biome": "farmland",
+   "turn": 4.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0379,
+   "length": 322.3,
+   "biome": "farmland",
+   "turn": -12.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0274,
+   "length": 301.1,
+   "biome": "farmland",
+   "turn": -1.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0074,
+   "length": 309.6,
+   "biome": "farmland",
+   "turn": 18.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0023,
+   "length": 319.6,
+   "biome": "farmland",
+   "turn": 11.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0181,
+   "length": 308.1,
+   "biome": "farmland",
+   "turn": 8.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0331,
+   "length": 306.8,
+   "biome": "farmland",
+   "turn": 7.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0459,
+   "length": 299.9,
+   "biome": "farmland",
+   "turn": -9.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0464,
+   "length": 270.4,
+   "biome": "farmland",
+   "turn": 15
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0428,
+   "length": 320.7,
+   "biome": "farmland",
+   "turn": -10.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0428,
+   "length": 255.6,
+   "biome": "farmland",
+   "turn": 8.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.029,
+   "length": 300.7,
+   "biome": "farmland",
+   "turn": -5.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0136,
+   "length": 294.7,
+   "biome": "farmland",
+   "turn": 13.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0061,
+   "length": 282.5,
+   "biome": "farmland",
+   "turn": 7.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0071,
+   "length": 339,
+   "biome": "farmland",
+   "turn": 10
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0055,
+   "length": 281.2,
+   "biome": "farmland",
+   "turn": -4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0058,
+   "length": 326.6,
+   "biome": "farmland",
+   "turn": -12.4
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 5329,
+   "label": "Mill Crossing",
+   "kind": "bridge"
+  },
+  {
+   "at": 14776,
+   "label": "Elmswood",
+   "kind": "town"
+  }
+ ]
+}

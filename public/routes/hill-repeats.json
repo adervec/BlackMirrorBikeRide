@@ -1,0 +1,252 @@
+{
+ "id": "bundled-hill-repeats",
+ "name": "Hill Repeats",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.085,
+   "length": 273.3,
+   "biome": "moorland",
+   "turn": -17.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0878,
+   "length": 303.3,
+   "biome": "moorland",
+   "turn": -11.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0845,
+   "length": 327.1,
+   "biome": "moorland",
+   "turn": 17.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0859,
+   "length": 259.6,
+   "biome": "moorland",
+   "turn": -22.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0799,
+   "length": 274.1,
+   "biome": "moorland",
+   "turn": -25.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0803,
+   "length": 324.8,
+   "biome": "moorland",
+   "turn": -9.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0768,
+   "length": 303.6,
+   "biome": "moorland",
+   "turn": 22.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0793,
+   "length": 291.8,
+   "biome": "moorland",
+   "turn": 14.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.087,
+   "length": 331.8,
+   "biome": "moorland",
+   "turn": 4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0798,
+   "length": 330.7,
+   "biome": "moorland",
+   "turn": -23.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0843,
+   "length": 292.6,
+   "biome": "moorland",
+   "turn": -27.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0883,
+   "length": 340.4,
+   "biome": "moorland",
+   "turn": 2.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0803,
+   "length": 316.3,
+   "biome": "moorland",
+   "turn": -8.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0713,
+   "length": 281.9,
+   "biome": "moorland",
+   "turn": 4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0768,
+   "length": 273.1,
+   "biome": "moorland",
+   "turn": -17.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0781,
+   "length": 332.4,
+   "biome": "moorland",
+   "turn": 14.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0712,
+   "length": 308.7,
+   "biome": "alpine",
+   "turn": -28.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0855,
+   "length": 315.5,
+   "biome": "alpine",
+   "turn": 1.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0869,
+   "length": 341.6,
+   "biome": "alpine",
+   "turn": 4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0859,
+   "length": 318.8,
+   "biome": "alpine",
+   "turn": -16.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0803,
+   "length": 303.7,
+   "biome": "alpine",
+   "turn": 9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0809,
+   "length": 315.4,
+   "biome": "alpine",
+   "turn": -25.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0798,
+   "length": 283.3,
+   "biome": "alpine",
+   "turn": 15
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0795,
+   "length": 315.7,
+   "biome": "alpine",
+   "turn": -0.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0753,
+   "length": 285.1,
+   "biome": "alpine",
+   "turn": -25.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0881,
+   "length": 313.7,
+   "biome": "alpine",
+   "turn": -1.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0855,
+   "length": 306.3,
+   "biome": "alpine",
+   "turn": 10.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.082,
+   "length": 309.3,
+   "biome": "alpine",
+   "turn": 13.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0831,
+   "length": 273.5,
+   "biome": "alpine",
+   "turn": -2.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0764,
+   "length": 327.9,
+   "biome": "alpine",
+   "turn": -8.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0805,
+   "length": 306.9,
+   "biome": "alpine",
+   "turn": -1.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0704,
+   "length": 285,
+   "biome": "alpine",
+   "turn": 25.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0747,
+   "length": 260.1,
+   "biome": "alpine",
+   "turn": 6.1
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 2507,
+   "label": "The Wall",
+   "kind": "peak"
+  },
+  {
+   "at": 7520,
+   "label": "Cairn Top",
+   "kind": "peak"
+  }
+ ]
+}

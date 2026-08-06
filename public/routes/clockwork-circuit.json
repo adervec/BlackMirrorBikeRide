@@ -1,0 +1,252 @@
+{
+ "id": "bundled-clockwork-circuit",
+ "name": "Clockwork Circuit",
+ "type": "virtual",
+ "skybox": "the-eye",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0305,
+   "length": 292.2,
+   "biome": "clockwork",
+   "turn": -33.7
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0585,
+   "length": 270.4,
+   "biome": "clockwork",
+   "turn": -25.1
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0756,
+   "length": 275.6,
+   "biome": "clockwork",
+   "turn": 45.5
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0405,
+   "length": 277.5,
+   "biome": "clockwork",
+   "turn": -25.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0008,
+   "length": 284.8,
+   "biome": "clockwork",
+   "turn": 24.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0367,
+   "length": 259.8,
+   "biome": "clockwork",
+   "turn": -9.7
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0428,
+   "length": 273.4,
+   "biome": "clockwork",
+   "turn": 34.8
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0155,
+   "length": 260.7,
+   "biome": "clockwork",
+   "turn": -21
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0206,
+   "length": 296.7,
+   "biome": "clockwork",
+   "turn": -21.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0609,
+   "length": 265.2,
+   "biome": "clockwork",
+   "turn": -30.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0659,
+   "length": 341.7,
+   "biome": "clockwork",
+   "turn": 12.8
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0313,
+   "length": 267.8,
+   "biome": "origami",
+   "turn": -26.1
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.02,
+   "length": 316.8,
+   "biome": "origami",
+   "turn": -35.8
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0573,
+   "length": 274,
+   "biome": "origami",
+   "turn": -31.4
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0808,
+   "length": 326.3,
+   "biome": "origami",
+   "turn": -19.4
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.06,
+   "length": 333.6,
+   "biome": "origami",
+   "turn": 43.2
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0228,
+   "length": 261.7,
+   "biome": "origami",
+   "turn": -14.1
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0181,
+   "length": 275.7,
+   "biome": "origami",
+   "turn": 39.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0437,
+   "length": 269.3,
+   "biome": "origami",
+   "turn": -20.7
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0333,
+   "length": 309.6,
+   "biome": "origami",
+   "turn": -20.9
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0024,
+   "length": 291.2,
+   "biome": "origami",
+   "turn": 3.2
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.04,
+   "length": 290.6,
+   "biome": "origami",
+   "turn": 6.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0599,
+   "length": 266.7,
+   "biome": "chessboard",
+   "turn": 34.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0403,
+   "length": 303.7,
+   "biome": "chessboard",
+   "turn": 9.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0075,
+   "length": 344.3,
+   "biome": "chessboard",
+   "turn": 31.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0542,
+   "length": 336.1,
+   "biome": "chessboard",
+   "turn": 37.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0779,
+   "length": 306.2,
+   "biome": "chessboard",
+   "turn": -19.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0671,
+   "length": 282.9,
+   "biome": "chessboard",
+   "turn": -35.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0336,
+   "length": 257.7,
+   "biome": "chessboard",
+   "turn": 54.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.013,
+   "length": 293.7,
+   "biome": "chessboard",
+   "turn": 33.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0457,
+   "length": 314.1,
+   "biome": "chessboard",
+   "turn": -11.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0443,
+   "length": 292.4,
+   "biome": "chessboard",
+   "turn": 52.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0181,
+   "length": 257.4,
+   "biome": "chessboard",
+   "turn": -34.7
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 2871,
+   "label": "The Great Escapement",
+   "kind": "peak"
+  },
+  {
+   "at": 7177,
+   "label": "Endgame Square",
+   "kind": "town"
+  }
+ ]
+}

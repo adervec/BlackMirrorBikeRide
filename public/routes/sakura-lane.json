@@ -1,0 +1,280 @@
+{
+ "id": "bundled-sakura-lane",
+ "name": "Sakura Lane",
+ "type": "virtual",
+ "skybox": "clear-day",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0061,
+   "length": 273.9,
+   "biome": "sakura",
+   "turn": 19
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.01,
+   "length": 288.8,
+   "biome": "sakura",
+   "turn": -15.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0056,
+   "length": 286.3,
+   "biome": "sakura",
+   "turn": 33.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0091,
+   "length": 314.6,
+   "biome": "sakura",
+   "turn": 6.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0038,
+   "length": 272.2,
+   "biome": "sakura",
+   "turn": -16.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0065,
+   "length": 258.1,
+   "biome": "sakura",
+   "turn": 1.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0121,
+   "length": 334.4,
+   "biome": "sakura",
+   "turn": -0.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.006,
+   "length": 280.2,
+   "biome": "sakura",
+   "turn": 4.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.012,
+   "length": 296.7,
+   "biome": "sakura",
+   "turn": 10.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0105,
+   "length": 255.7,
+   "biome": "sakura",
+   "turn": 13.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0037,
+   "length": 317,
+   "biome": "sakura",
+   "turn": 23.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0043,
+   "length": 267.3,
+   "biome": "sakura",
+   "turn": 25.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0022,
+   "length": 281.8,
+   "biome": "temple",
+   "turn": 21
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0016,
+   "length": 305.9,
+   "biome": "temple",
+   "turn": 36.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0049,
+   "length": 284.6,
+   "biome": "temple",
+   "turn": -16.8
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0012,
+   "length": 333.3,
+   "biome": "temple",
+   "turn": 9.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0013,
+   "length": 255.5,
+   "biome": "temple",
+   "turn": 5
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.005,
+   "length": 256.8,
+   "biome": "temple",
+   "turn": 14.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.005,
+   "length": 330.2,
+   "biome": "temple",
+   "turn": 30.1
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0008,
+   "length": 258.6,
+   "biome": "temple",
+   "turn": -4.9
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0086,
+   "length": 283,
+   "biome": "temple",
+   "turn": 29.2
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0049,
+   "length": 310.9,
+   "biome": "temple",
+   "turn": -6.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0107,
+   "length": 281.2,
+   "biome": "temple",
+   "turn": 1.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0041,
+   "length": 294.6,
+   "biome": "temple",
+   "turn": 34.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0027,
+   "length": 319.2,
+   "biome": "temple",
+   "turn": 29.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0071,
+   "length": 263.5,
+   "biome": "bamboo",
+   "turn": -10.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0123,
+   "length": 302,
+   "biome": "bamboo",
+   "turn": 13
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0011,
+   "length": 268.3,
+   "biome": "bamboo",
+   "turn": -11.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0056,
+   "length": 287.6,
+   "biome": "bamboo",
+   "turn": 4.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0069,
+   "length": 276.1,
+   "biome": "bamboo",
+   "turn": 11.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0051,
+   "length": 335.1,
+   "biome": "bamboo",
+   "turn": -4.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0012,
+   "length": 302.6,
+   "biome": "bamboo",
+   "turn": 35
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0036,
+   "length": 326.7,
+   "biome": "bamboo",
+   "turn": 20
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0001,
+   "length": 311.3,
+   "biome": "bamboo",
+   "turn": -2.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0009,
+   "length": 319.2,
+   "biome": "bamboo",
+   "turn": -16.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0017,
+   "length": 313.5,
+   "biome": "bamboo",
+   "turn": 8.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.007,
+   "length": 302.1,
+   "biome": "bamboo",
+   "turn": -9.5
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 3255,
+   "label": "Torii Gate",
+   "kind": "church"
+  },
+  {
+   "at": 7160,
+   "label": "Pagoda Hill",
+   "kind": "peak"
+  }
+ ]
+}

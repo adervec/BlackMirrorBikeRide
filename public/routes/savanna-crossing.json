@@ -1,0 +1,1055 @@
+{
+ "id": "bundled-savanna-crossing",
+ "name": "Savanna Crossing",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "hardpack",
+   "gradient": 0.0083,
+   "length": 280.1,
+   "biome": "savanna",
+   "turn": -4.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0032,
+   "length": 278.9,
+   "biome": "savanna",
+   "turn": 9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0022,
+   "length": 275.8,
+   "biome": "savanna",
+   "turn": -6.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0101,
+   "length": 337.7,
+   "biome": "savanna",
+   "turn": 5.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0043,
+   "length": 340.5,
+   "biome": "savanna",
+   "turn": 9.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0042,
+   "length": 270.3,
+   "biome": "savanna",
+   "turn": -3.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0103,
+   "length": 265.6,
+   "biome": "savanna",
+   "turn": 4.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0091,
+   "length": 303.6,
+   "biome": "savanna",
+   "turn": 12.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0065,
+   "length": 311.8,
+   "biome": "savanna",
+   "turn": 4.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0106,
+   "length": 266.1,
+   "biome": "savanna",
+   "turn": -1.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.014,
+   "length": 301.6,
+   "biome": "savanna",
+   "turn": 3.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0077,
+   "length": 275.1,
+   "biome": "savanna",
+   "turn": 4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0097,
+   "length": 290.6,
+   "biome": "savanna",
+   "turn": 12.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0069,
+   "length": 342.4,
+   "biome": "savanna",
+   "turn": -11
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.011,
+   "length": 339.2,
+   "biome": "savanna",
+   "turn": 4.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0041,
+   "length": 275.5,
+   "biome": "savanna",
+   "turn": 3.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.01,
+   "length": 344.4,
+   "biome": "savanna",
+   "turn": -3.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0059,
+   "length": 316.8,
+   "biome": "savanna",
+   "turn": -10.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0091,
+   "length": 283,
+   "biome": "savanna",
+   "turn": 7.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0042,
+   "length": 319.8,
+   "biome": "savanna",
+   "turn": 11.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0094,
+   "length": 314.2,
+   "biome": "savanna",
+   "turn": -4.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0122,
+   "length": 280.3,
+   "biome": "savanna",
+   "turn": -12.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.009,
+   "length": 311.9,
+   "biome": "savanna",
+   "turn": 1.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0062,
+   "length": 309.7,
+   "biome": "savanna",
+   "turn": 11
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.005,
+   "length": 336.2,
+   "biome": "savanna",
+   "turn": -11.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0062,
+   "length": 318.1,
+   "biome": "savanna",
+   "turn": 13.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0135,
+   "length": 322,
+   "biome": "savanna",
+   "turn": 11.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0102,
+   "length": 337.5,
+   "biome": "savanna",
+   "turn": 4.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0075,
+   "length": 343.9,
+   "biome": "savanna",
+   "turn": -2.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0121,
+   "length": 274.3,
+   "biome": "savanna",
+   "turn": 8.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0054,
+   "length": 264.4,
+   "biome": "savanna",
+   "turn": -0.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0125,
+   "length": 263.1,
+   "biome": "savanna",
+   "turn": 3.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.009,
+   "length": 290.6,
+   "biome": "savanna",
+   "turn": -4.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.007,
+   "length": 272.3,
+   "biome": "savanna",
+   "turn": -6.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0084,
+   "length": 256,
+   "biome": "savanna",
+   "turn": 7.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.009,
+   "length": 281.8,
+   "biome": "savanna",
+   "turn": -13.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0042,
+   "length": 336,
+   "biome": "savanna",
+   "turn": 3.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0074,
+   "length": 269.7,
+   "biome": "oasis",
+   "turn": -13
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.008,
+   "length": 276.2,
+   "biome": "oasis",
+   "turn": -6.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0037,
+   "length": 302.5,
+   "biome": "oasis",
+   "turn": -1.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.003,
+   "length": 338.5,
+   "biome": "oasis",
+   "turn": 5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0019,
+   "length": 294.6,
+   "biome": "oasis",
+   "turn": 4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0075,
+   "length": 277.7,
+   "biome": "oasis",
+   "turn": -0.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0031,
+   "length": 314.6,
+   "biome": "oasis",
+   "turn": -0.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0067,
+   "length": 268.5,
+   "biome": "oasis",
+   "turn": 8.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0023,
+   "length": 289,
+   "biome": "oasis",
+   "turn": 0.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0009,
+   "length": 262.4,
+   "biome": "oasis",
+   "turn": 3.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0001,
+   "length": 325.2,
+   "biome": "oasis",
+   "turn": -4.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0035,
+   "length": 315.5,
+   "biome": "oasis",
+   "turn": 13.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.001,
+   "length": 259,
+   "biome": "oasis",
+   "turn": 9.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0042,
+   "length": 339.6,
+   "biome": "oasis",
+   "turn": 5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0044,
+   "length": 267.8,
+   "biome": "oasis",
+   "turn": -4.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0021,
+   "length": 285.7,
+   "biome": "oasis",
+   "turn": 4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0047,
+   "length": 336,
+   "biome": "oasis",
+   "turn": -7.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0045,
+   "length": 303.6,
+   "biome": "oasis",
+   "turn": 7.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0065,
+   "length": 310.1,
+   "biome": "oasis",
+   "turn": -3.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0037,
+   "length": 307.4,
+   "biome": "oasis",
+   "turn": -7.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0046,
+   "length": 280.8,
+   "biome": "oasis",
+   "turn": -4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0012,
+   "length": 284.1,
+   "biome": "oasis",
+   "turn": 5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0053,
+   "length": 321.9,
+   "biome": "oasis",
+   "turn": 4.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0032,
+   "length": 256,
+   "biome": "oasis",
+   "turn": 2.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0038,
+   "length": 344.8,
+   "biome": "oasis",
+   "turn": 6.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0037,
+   "length": 338.1,
+   "biome": "oasis",
+   "turn": -1.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0035,
+   "length": 284.5,
+   "biome": "oasis",
+   "turn": -7.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0052,
+   "length": 306.8,
+   "biome": "oasis",
+   "turn": -0.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0031,
+   "length": 267.3,
+   "biome": "oasis",
+   "turn": -10.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0031,
+   "length": 282.4,
+   "biome": "oasis",
+   "turn": 6.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0073,
+   "length": 337.6,
+   "biome": "oasis",
+   "turn": -12.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0043,
+   "length": 306.1,
+   "biome": "oasis",
+   "turn": -5.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0006,
+   "length": 262,
+   "biome": "oasis",
+   "turn": 5.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0049,
+   "length": 334.2,
+   "biome": "oasis",
+   "turn": 1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0054,
+   "length": 282.9,
+   "biome": "oasis",
+   "turn": 9.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0009,
+   "length": 303.1,
+   "biome": "oasis",
+   "turn": 7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0041,
+   "length": 325.6,
+   "biome": "savanna",
+   "turn": -10.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0089,
+   "length": 329.2,
+   "biome": "savanna",
+   "turn": 12.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0002,
+   "length": 329,
+   "biome": "savanna",
+   "turn": 9.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0014,
+   "length": 317.2,
+   "biome": "savanna",
+   "turn": -8.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0102,
+   "length": 327.7,
+   "biome": "savanna",
+   "turn": 11.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0111,
+   "length": 299.9,
+   "biome": "savanna",
+   "turn": 8.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.011,
+   "length": 295.3,
+   "biome": "savanna",
+   "turn": -2.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0086,
+   "length": 316.2,
+   "biome": "savanna",
+   "turn": 3.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0046,
+   "length": 285.5,
+   "biome": "savanna",
+   "turn": 5.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0073,
+   "length": 317.4,
+   "biome": "savanna",
+   "turn": -0.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0034,
+   "length": 266.5,
+   "biome": "savanna",
+   "turn": 6.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0041,
+   "length": 335.5,
+   "biome": "savanna",
+   "turn": -4.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0136,
+   "length": 287.7,
+   "biome": "savanna",
+   "turn": -5.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0048,
+   "length": 260.2,
+   "biome": "savanna",
+   "turn": -10
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0081,
+   "length": 271,
+   "biome": "savanna",
+   "turn": -10.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0062,
+   "length": 296.8,
+   "biome": "savanna",
+   "turn": 8.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0056,
+   "length": 315.8,
+   "biome": "savanna",
+   "turn": 2.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0142,
+   "length": 258.2,
+   "biome": "savanna",
+   "turn": -6.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0093,
+   "length": 285.6,
+   "biome": "savanna",
+   "turn": 9.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0093,
+   "length": 344.8,
+   "biome": "savanna",
+   "turn": -6.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0091,
+   "length": 323.7,
+   "biome": "savanna",
+   "turn": -3.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0092,
+   "length": 330.6,
+   "biome": "savanna",
+   "turn": -11.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0046,
+   "length": 314.8,
+   "biome": "savanna",
+   "turn": 7.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.005,
+   "length": 264.7,
+   "biome": "savanna",
+   "turn": -7.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.009,
+   "length": 320,
+   "biome": "savanna",
+   "turn": 3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0057,
+   "length": 304.4,
+   "biome": "savanna",
+   "turn": -3.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0091,
+   "length": 302.7,
+   "biome": "savanna",
+   "turn": -11.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.011,
+   "length": 332.8,
+   "biome": "savanna",
+   "turn": 7.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0092,
+   "length": 256.2,
+   "biome": "savanna",
+   "turn": -8.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0034,
+   "length": 289.9,
+   "biome": "savanna",
+   "turn": -8.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0029,
+   "length": 288.5,
+   "biome": "savanna",
+   "turn": 4.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0069,
+   "length": 335.7,
+   "biome": "savanna",
+   "turn": -7.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0117,
+   "length": 278.8,
+   "biome": "savanna",
+   "turn": 0.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0082,
+   "length": 300.5,
+   "biome": "savanna",
+   "turn": 5.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0005,
+   "length": 278.8,
+   "biome": "savanna",
+   "turn": 5.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0011,
+   "length": 333.4,
+   "biome": "savanna",
+   "turn": -7.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0033,
+   "length": 330.7,
+   "biome": "savanna",
+   "turn": 9.7
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0054,
+   "length": 321.3,
+   "biome": "dunes",
+   "turn": -2.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0086,
+   "length": 327.1,
+   "biome": "dunes",
+   "turn": 3
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0026,
+   "length": 343.6,
+   "biome": "dunes",
+   "turn": 0.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0067,
+   "length": 268.7,
+   "biome": "dunes",
+   "turn": 2.6
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0068,
+   "length": 274.9,
+   "biome": "dunes",
+   "turn": 11.3
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0005,
+   "length": 294.6,
+   "biome": "dunes",
+   "turn": 9.4
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0067,
+   "length": 339,
+   "biome": "dunes",
+   "turn": 6.7
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0081,
+   "length": 314.4,
+   "biome": "dunes",
+   "turn": -8.9
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0024,
+   "length": 296.1,
+   "biome": "dunes",
+   "turn": 8.7
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.008,
+   "length": 290.5,
+   "biome": "dunes",
+   "turn": 8.4
+  },
+  {
+   "surface": "sand",
+   "gradient": 0,
+   "length": 301.6,
+   "biome": "dunes",
+   "turn": -9.6
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0066,
+   "length": 323.7,
+   "biome": "dunes",
+   "turn": -13
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0026,
+   "length": 331,
+   "biome": "dunes",
+   "turn": -2.6
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0049,
+   "length": 264,
+   "biome": "dunes",
+   "turn": 5
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0004,
+   "length": 296,
+   "biome": "dunes",
+   "turn": -4.6
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0017,
+   "length": 270.7,
+   "biome": "dunes",
+   "turn": -1.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0023,
+   "length": 311.6,
+   "biome": "dunes",
+   "turn": -11.5
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0013,
+   "length": 286.1,
+   "biome": "dunes",
+   "turn": -3.1
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0004,
+   "length": 255.3,
+   "biome": "dunes",
+   "turn": 13
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0064,
+   "length": 276.3,
+   "biome": "dunes",
+   "turn": -2.1
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0058,
+   "length": 327.2,
+   "biome": "dunes",
+   "turn": -1.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0018,
+   "length": 258,
+   "biome": "dunes",
+   "turn": 12.7
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.006,
+   "length": 343.2,
+   "biome": "dunes",
+   "turn": -3.2
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0002,
+   "length": 334.2,
+   "biome": "dunes",
+   "turn": -10
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0062,
+   "length": 303.3,
+   "biome": "dunes",
+   "turn": 8
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0052,
+   "length": 286.4,
+   "biome": "dunes",
+   "turn": 10.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0068,
+   "length": 337.1,
+   "biome": "dunes",
+   "turn": -8.6
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0022,
+   "length": 260.7,
+   "biome": "dunes",
+   "turn": 1.4
+  },
+  {
+   "surface": "sand",
+   "gradient": -0.0015,
+   "length": 311.5,
+   "biome": "dunes",
+   "turn": 1.1
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.003,
+   "length": 312.7,
+   "biome": "dunes",
+   "turn": -4.3
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0037,
+   "length": 281.2,
+   "biome": "dunes",
+   "turn": -4.2
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0058,
+   "length": 260,
+   "biome": "dunes",
+   "turn": -5.1
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0084,
+   "length": 289.9,
+   "biome": "dunes",
+   "turn": -11
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0004,
+   "length": 290.7,
+   "biome": "dunes",
+   "turn": 8.4
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0051,
+   "length": 335,
+   "biome": "dunes",
+   "turn": 7.4
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0022,
+   "length": 299.9,
+   "biome": "dunes",
+   "turn": 5.8
+  },
+  {
+   "surface": "sand",
+   "gradient": 0.0061,
+   "length": 315.1,
+   "biome": "dunes",
+   "turn": 1.4
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 8850,
+   "label": "Acacia Water",
+   "kind": "water"
+  },
+  {
+   "at": 22126,
+   "label": "The Oasis",
+   "kind": "town"
+  },
+  {
+   "at": 37614,
+   "label": "Sand Sea",
+   "kind": "peak"
+  }
+ ]
+}

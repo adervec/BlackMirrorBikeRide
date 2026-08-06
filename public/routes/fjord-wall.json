@@ -1,0 +1,231 @@
+{
+ "id": "bundled-fjord-wall",
+ "name": "The Fjord Wall",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.1166,
+   "length": 285.7,
+   "biome": "fjord",
+   "turn": -35.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1297,
+   "length": 341.1,
+   "biome": "fjord",
+   "turn": -19
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1044,
+   "length": 307.6,
+   "biome": "fjord",
+   "turn": -29.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0668,
+   "length": 292.6,
+   "biome": "fjord",
+   "turn": -38.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0659,
+   "length": 325.5,
+   "biome": "fjord",
+   "turn": -51.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1054,
+   "length": 322.6,
+   "biome": "fjord",
+   "turn": 57.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1304,
+   "length": 323.6,
+   "biome": "fjord",
+   "turn": 21.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1231,
+   "length": 275.5,
+   "biome": "fjord",
+   "turn": 21.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0817,
+   "length": 309.9,
+   "biome": "fjord",
+   "turn": -58.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0658,
+   "length": 267.8,
+   "biome": "fjord",
+   "turn": -48.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0804,
+   "length": 302.3,
+   "biome": "fjord",
+   "turn": 51.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1168,
+   "length": 262.6,
+   "biome": "fjord",
+   "turn": -51.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1297,
+   "length": 331.4,
+   "biome": "fjord",
+   "turn": 10.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1086,
+   "length": 277.3,
+   "biome": "fjord",
+   "turn": 40.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0741,
+   "length": 270,
+   "biome": "fjord",
+   "turn": -32.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0705,
+   "length": 310.1,
+   "biome": "tundra",
+   "turn": -46.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1033,
+   "length": 259.5,
+   "biome": "tundra",
+   "turn": -50.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1395,
+   "length": 313.6,
+   "biome": "tundra",
+   "turn": -22.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1194,
+   "length": 287,
+   "biome": "tundra",
+   "turn": 15.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0804,
+   "length": 329,
+   "biome": "tundra",
+   "turn": -51.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0653,
+   "length": 314.9,
+   "biome": "tundra",
+   "turn": -20.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0842,
+   "length": 276.3,
+   "biome": "tundra",
+   "turn": 5.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1153,
+   "length": 337.4,
+   "biome": "tundra",
+   "turn": 41.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1042,
+   "length": 299.4,
+   "biome": "tundra",
+   "turn": -55.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1144,
+   "length": 288.9,
+   "biome": "tundra",
+   "turn": -42.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1125,
+   "length": 261.8,
+   "biome": "tundra",
+   "turn": -27.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1107,
+   "length": 321.3,
+   "biome": "tundra",
+   "turn": 48.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1151,
+   "length": 309.2,
+   "biome": "tundra",
+   "turn": 22.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1159,
+   "length": 330.2,
+   "biome": "tundra",
+   "turn": 62.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.1097,
+   "length": 333.3,
+   "biome": "tundra",
+   "turn": -1.3
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 2720,
+   "label": "Seven Falls",
+   "kind": "water"
+  },
+  {
+   "at": 7254,
+   "label": "Eagle Bend",
+   "kind": "peak"
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "id": "bundled-cyclocross-circuit",
+ "name": "Cyclocross Circuit",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "grass",
+   "gradient": 0.0412,
+   "length": 294.2,
+   "biome": "farmland",
+   "turn": 6.2
+  },
+  {
+   "surface": "grass",
+   "gradient": 0.0625,
+   "length": 256.2,
+   "biome": "farmland",
+   "turn": -23.2
+  },
+  {
+   "surface": "grass",
+   "gradient": -0.0118,
+   "length": 270.3,
+   "biome": "farmland",
+   "turn": 6
+  },
+  {
+   "surface": "grass",
+   "gradient": -0.0373,
+   "length": 304.4,
+   "biome": "farmland",
+   "turn": -50.3
+  },
+  {
+   "surface": "grass",
+   "gradient": 0.0287,
+   "length": 312.5,
+   "biome": "farmland",
+   "turn": -1.3
+  },
+  {
+   "surface": "grass",
+   "gradient": 0.0591,
+   "length": 288.3,
+   "biome": "farmland",
+   "turn": 94.4
+  },
+  {
+   "surface": "grass",
+   "gradient": -0.0213,
+   "length": 282.5,
+   "biome": "farmland",
+   "turn": -39.1
+  },
+  {
+   "surface": "grass",
+   "gradient": -0.0728,
+   "length": 262.1,
+   "biome": "farmland",
+   "turn": 8.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0157,
+   "length": 259.6,
+   "biome": "forest",
+   "turn": -33.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0424,
+   "length": 310.8,
+   "biome": "forest",
+   "turn": -31
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0008,
+   "length": 341.8,
+   "biome": "forest",
+   "turn": -67
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0509,
+   "length": 294.7,
+   "biome": "forest",
+   "turn": 27.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0117,
+   "length": 261.9,
+   "biome": "forest",
+   "turn": 9.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0755,
+   "length": 295.8,
+   "biome": "forest",
+   "turn": 95.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0572,
+   "length": 310,
+   "biome": "forest",
+   "turn": 26.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0355,
+   "length": 305.6,
+   "biome": "forest",
+   "turn": 50.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0351,
+   "length": 342.8,
+   "biome": "forest",
+   "turn": -25.8
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 2497,
+   "label": "The Pit",
+   "kind": "town"
+  }
+ ]
+}

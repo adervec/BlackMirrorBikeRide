@@ -1,0 +1,726 @@
+{
+ "id": "bundled-coastal-cruise",
+ "name": "Coastal Cruise",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.0043,
+   "length": 292.6,
+   "biome": "coastal",
+   "turn": 25
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0212,
+   "length": 303.8,
+   "biome": "coastal",
+   "turn": 17.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0293,
+   "length": 308.2,
+   "biome": "coastal",
+   "turn": -15.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0362,
+   "length": 264.4,
+   "biome": "coastal",
+   "turn": -6.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0359,
+   "length": 260.5,
+   "biome": "coastal",
+   "turn": -34
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0379,
+   "length": 303.6,
+   "biome": "coastal",
+   "turn": -10.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0357,
+   "length": 289.2,
+   "biome": "coastal",
+   "turn": -32.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0322,
+   "length": 342.6,
+   "biome": "coastal",
+   "turn": 2.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0342,
+   "length": 311.8,
+   "biome": "coastal",
+   "turn": 12.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0265,
+   "length": 339.3,
+   "biome": "coastal",
+   "turn": 18.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0164,
+   "length": 272.3,
+   "biome": "coastal",
+   "turn": 39.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0092,
+   "length": 284.8,
+   "biome": "coastal",
+   "turn": 41.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0053,
+   "length": 294.9,
+   "biome": "coastal",
+   "turn": -4.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0105,
+   "length": 299.4,
+   "biome": "coastal",
+   "turn": 16.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0129,
+   "length": 320,
+   "biome": "coastal",
+   "turn": 20.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0122,
+   "length": 258.2,
+   "biome": "coastal",
+   "turn": 10.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0055,
+   "length": 333.6,
+   "biome": "coastal",
+   "turn": -10.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0048,
+   "length": 299.3,
+   "biome": "coastal",
+   "turn": -35
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0044,
+   "length": 333.4,
+   "biome": "coastal",
+   "turn": 5.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0027,
+   "length": 298.2,
+   "biome": "coastal",
+   "turn": 17.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0062,
+   "length": 317.2,
+   "biome": "coastal",
+   "turn": 6.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0173,
+   "length": 308.5,
+   "biome": "coastal",
+   "turn": 41.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0281,
+   "length": 333.5,
+   "biome": "coastal",
+   "turn": 23.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0329,
+   "length": 317.2,
+   "biome": "coastal",
+   "turn": -41.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0488,
+   "length": 342,
+   "biome": "coastal",
+   "turn": 19.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0517,
+   "length": 300.1,
+   "biome": "fjord",
+   "turn": -38.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0499,
+   "length": 342,
+   "biome": "fjord",
+   "turn": 39.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0412,
+   "length": 296.3,
+   "biome": "fjord",
+   "turn": 41.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0397,
+   "length": 288.9,
+   "biome": "fjord",
+   "turn": 36.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0317,
+   "length": 270.5,
+   "biome": "fjord",
+   "turn": 30.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0217,
+   "length": 331.9,
+   "biome": "fjord",
+   "turn": -16.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0055,
+   "length": 260.3,
+   "biome": "fjord",
+   "turn": 16.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0014,
+   "length": 332.6,
+   "biome": "fjord",
+   "turn": 21.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0138,
+   "length": 303.1,
+   "biome": "fjord",
+   "turn": -38.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0236,
+   "length": 294.6,
+   "biome": "fjord",
+   "turn": -6.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0241,
+   "length": 331.3,
+   "biome": "fjord",
+   "turn": -34.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0326,
+   "length": 331.9,
+   "biome": "fjord",
+   "turn": 24.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0342,
+   "length": 266,
+   "biome": "fjord",
+   "turn": -17
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0306,
+   "length": 330,
+   "biome": "fjord",
+   "turn": 32.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0258,
+   "length": 294.5,
+   "biome": "fjord",
+   "turn": 11
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0253,
+   "length": 300.3,
+   "biome": "fjord",
+   "turn": -20.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.018,
+   "length": 322.9,
+   "biome": "fjord",
+   "turn": 16
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0174,
+   "length": 320.2,
+   "biome": "fjord",
+   "turn": -25.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0184,
+   "length": 271,
+   "biome": "fjord",
+   "turn": 16.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0237,
+   "length": 255.9,
+   "biome": "fjord",
+   "turn": -38.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0215,
+   "length": 325,
+   "biome": "fjord",
+   "turn": -26.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0229,
+   "length": 255.7,
+   "biome": "fjord",
+   "turn": 8.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.029,
+   "length": 331.1,
+   "biome": "fjord",
+   "turn": -16.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0237,
+   "length": 334.6,
+   "biome": "fjord",
+   "turn": -30.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0232,
+   "length": 270.6,
+   "biome": "fjord",
+   "turn": 27.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0123,
+   "length": 280.6,
+   "biome": "harbour",
+   "turn": -2.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0002,
+   "length": 282.3,
+   "biome": "harbour",
+   "turn": 17.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0084,
+   "length": 291,
+   "biome": "harbour",
+   "turn": 19.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0195,
+   "length": 314.8,
+   "biome": "harbour",
+   "turn": 34.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0315,
+   "length": 275.7,
+   "biome": "harbour",
+   "turn": 0.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0397,
+   "length": 270.6,
+   "biome": "harbour",
+   "turn": 17.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.048,
+   "length": 287.7,
+   "biome": "harbour",
+   "turn": -41.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0501,
+   "length": 338.3,
+   "biome": "harbour",
+   "turn": -15.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0538,
+   "length": 273.3,
+   "biome": "harbour",
+   "turn": 40.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0469,
+   "length": 289.9,
+   "biome": "harbour",
+   "turn": -13.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0337,
+   "length": 339,
+   "biome": "harbour",
+   "turn": -30.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0261,
+   "length": 270,
+   "biome": "harbour",
+   "turn": -41.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0238,
+   "length": 289.7,
+   "biome": "harbour",
+   "turn": -20.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0125,
+   "length": 293.3,
+   "biome": "harbour",
+   "turn": 27.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0003,
+   "length": 263.2,
+   "biome": "harbour",
+   "turn": -7.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0076,
+   "length": 325.3,
+   "biome": "harbour",
+   "turn": 40.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0074,
+   "length": 319,
+   "biome": "harbour",
+   "turn": 25.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0196,
+   "length": 338.5,
+   "biome": "harbour",
+   "turn": 21.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0173,
+   "length": 260.4,
+   "biome": "harbour",
+   "turn": 3.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0134,
+   "length": 295.1,
+   "biome": "harbour",
+   "turn": -9.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0122,
+   "length": 286.3,
+   "biome": "harbour",
+   "turn": 23.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0098,
+   "length": 307.3,
+   "biome": "harbour",
+   "turn": 6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0203,
+   "length": 338.4,
+   "biome": "harbour",
+   "turn": 41.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0196,
+   "length": 268.1,
+   "biome": "harbour",
+   "turn": -2.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0234,
+   "length": 321,
+   "biome": "harbour",
+   "turn": 26.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0252,
+   "length": 270.4,
+   "biome": "coastal",
+   "turn": -0.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.031,
+   "length": 320.9,
+   "biome": "coastal",
+   "turn": -5.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0373,
+   "length": 299.9,
+   "biome": "coastal",
+   "turn": 22.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0367,
+   "length": 258.7,
+   "biome": "coastal",
+   "turn": 18.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0327,
+   "length": 319.5,
+   "biome": "coastal",
+   "turn": -38.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0344,
+   "length": 333.4,
+   "biome": "coastal",
+   "turn": 3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0305,
+   "length": 340.1,
+   "biome": "coastal",
+   "turn": -10.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0165,
+   "length": 269.7,
+   "biome": "coastal",
+   "turn": 34.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0107,
+   "length": 318.3,
+   "biome": "coastal",
+   "turn": -9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0028,
+   "length": 296.4,
+   "biome": "coastal",
+   "turn": 17.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0144,
+   "length": 272.7,
+   "biome": "coastal",
+   "turn": 36.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0273,
+   "length": 296.7,
+   "biome": "coastal",
+   "turn": 37.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0414,
+   "length": 318.9,
+   "biome": "coastal",
+   "turn": 40.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0471,
+   "length": 270.7,
+   "biome": "coastal",
+   "turn": -11.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0431,
+   "length": 258.6,
+   "biome": "coastal",
+   "turn": 9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0397,
+   "length": 303.3,
+   "biome": "coastal",
+   "turn": 4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0442,
+   "length": 277.8,
+   "biome": "coastal",
+   "turn": -17.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0339,
+   "length": 302.2,
+   "biome": "coastal",
+   "turn": 19.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0293,
+   "length": 269.9,
+   "biome": "coastal",
+   "turn": 27.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0233,
+   "length": 324.3,
+   "biome": "coastal",
+   "turn": -19.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0162,
+   "length": 298.8,
+   "biome": "coastal",
+   "turn": 8.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.004,
+   "length": 273.3,
+   "biome": "coastal",
+   "turn": 21.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0025,
+   "length": 336.9,
+   "biome": "coastal",
+   "turn": 14.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0058,
+   "length": 318.7,
+   "biome": "coastal",
+   "turn": 31.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0053,
+   "length": 326.8,
+   "biome": "coastal",
+   "turn": 2.9
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 5415,
+   "label": "Gull Rock",
+   "kind": "water"
+  },
+  {
+   "at": 15644,
+   "label": "The Slipway",
+   "kind": "town"
+  },
+  {
+   "at": 25874,
+   "label": "Lighthouse Head",
+   "kind": "peak"
+  }
+ ]
+}

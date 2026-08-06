@@ -1,0 +1,420 @@
+{
+ "id": "bundled-harbour-industrial",
+ "name": "Harbour & Ironworks",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "concrete",
+   "gradient": -0.0043,
+   "length": 340.2,
+   "biome": "harbour",
+   "turn": -31.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0014,
+   "length": 271,
+   "biome": "harbour",
+   "turn": 30.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0037,
+   "length": 305.9,
+   "biome": "harbour",
+   "turn": 42.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0035,
+   "length": 338.7,
+   "biome": "harbour",
+   "turn": 2.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0031,
+   "length": 297.7,
+   "biome": "harbour",
+   "turn": -5.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0053,
+   "length": 307.8,
+   "biome": "harbour",
+   "turn": 29.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0026,
+   "length": 287,
+   "biome": "harbour",
+   "turn": -9.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.002,
+   "length": 267,
+   "biome": "harbour",
+   "turn": 13.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0055,
+   "length": 258.6,
+   "biome": "harbour",
+   "turn": 13.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0038,
+   "length": 333.7,
+   "biome": "harbour",
+   "turn": -32.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0024,
+   "length": 255.4,
+   "biome": "harbour",
+   "turn": -28.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0017,
+   "length": 321.2,
+   "biome": "harbour",
+   "turn": 34.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0028,
+   "length": 298.3,
+   "biome": "harbour",
+   "turn": -4.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0058,
+   "length": 287.7,
+   "biome": "harbour",
+   "turn": 8.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0054,
+   "length": 258.2,
+   "biome": "harbour",
+   "turn": -2.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0023,
+   "length": 280.7,
+   "biome": "harbour",
+   "turn": 11.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0032,
+   "length": 331.2,
+   "biome": "harbour",
+   "turn": 1.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0006,
+   "length": 266,
+   "biome": "harbour",
+   "turn": 8.7
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0053,
+   "length": 306.1,
+   "biome": "harbour",
+   "turn": 37.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0022,
+   "length": 344.8,
+   "biome": "industrial",
+   "turn": -6.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0049,
+   "length": 264.9,
+   "biome": "industrial",
+   "turn": 9.7
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0058,
+   "length": 331,
+   "biome": "industrial",
+   "turn": 41.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0024,
+   "length": 301.6,
+   "biome": "industrial",
+   "turn": -19.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0015,
+   "length": 330.2,
+   "biome": "industrial",
+   "turn": -16.6
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0059,
+   "length": 283.1,
+   "biome": "industrial",
+   "turn": -18.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0031,
+   "length": 301.8,
+   "biome": "industrial",
+   "turn": -19.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0029,
+   "length": 332,
+   "biome": "industrial",
+   "turn": -29.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.002,
+   "length": 283.4,
+   "biome": "industrial",
+   "turn": 39.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0016,
+   "length": 314.7,
+   "biome": "industrial",
+   "turn": 39.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0012,
+   "length": 272.1,
+   "biome": "industrial",
+   "turn": 42.6
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0004,
+   "length": 293.4,
+   "biome": "industrial",
+   "turn": 36
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0024,
+   "length": 282.7,
+   "biome": "industrial",
+   "turn": 27.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0022,
+   "length": 340.1,
+   "biome": "industrial",
+   "turn": 42.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0041,
+   "length": 322.5,
+   "biome": "industrial",
+   "turn": -25.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0053,
+   "length": 305.9,
+   "biome": "industrial",
+   "turn": -23.6
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0001,
+   "length": 303.6,
+   "biome": "industrial",
+   "turn": 33.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0024,
+   "length": 328.4,
+   "biome": "industrial",
+   "turn": 6
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0022,
+   "length": 308.4,
+   "biome": "industrial",
+   "turn": 28
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0047,
+   "length": 316.5,
+   "biome": "urban",
+   "turn": -6.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0014,
+   "length": 328.5,
+   "biome": "urban",
+   "turn": -14.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0045,
+   "length": 316.6,
+   "biome": "urban",
+   "turn": -15.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0012,
+   "length": 259.4,
+   "biome": "urban",
+   "turn": 0.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0045,
+   "length": 269.8,
+   "biome": "urban",
+   "turn": -22.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0013,
+   "length": 307.2,
+   "biome": "urban",
+   "turn": 30
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0049,
+   "length": 282.2,
+   "biome": "urban",
+   "turn": 26.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0052,
+   "length": 294.7,
+   "biome": "urban",
+   "turn": -11.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0058,
+   "length": 325.8,
+   "biome": "urban",
+   "turn": 34.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0018,
+   "length": 329.9,
+   "biome": "urban",
+   "turn": -20.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0006,
+   "length": 330.2,
+   "biome": "urban",
+   "turn": 9.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0057,
+   "length": 268.1,
+   "biome": "urban",
+   "turn": -22
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0017,
+   "length": 273.3,
+   "biome": "urban",
+   "turn": 24.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0039,
+   "length": 301.4,
+   "biome": "urban",
+   "turn": -20.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0056,
+   "length": 290,
+   "biome": "urban",
+   "turn": -24.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0022,
+   "length": 267.9,
+   "biome": "urban",
+   "turn": 38.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0026,
+   "length": 272.1,
+   "biome": "urban",
+   "turn": -26.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0004,
+   "length": 316.8,
+   "biome": "urban",
+   "turn": 34.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0037,
+   "length": 260.2,
+   "biome": "urban",
+   "turn": 38.2
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 3414,
+   "label": "Dock Crane",
+   "kind": "peak"
+  },
+  {
+   "at": 11947,
+   "label": "The Foundry",
+   "kind": "town"
+  }
+ ]
+}

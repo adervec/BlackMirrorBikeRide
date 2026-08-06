@@ -1,0 +1,656 @@
+{
+ "id": "bundled-tuscan-hills",
+ "name": "Tuscan Hills",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.0116,
+   "length": 269.1,
+   "biome": "vineyard",
+   "turn": 27.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.026,
+   "length": 307.2,
+   "biome": "vineyard",
+   "turn": 9.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.038,
+   "length": 300.1,
+   "biome": "vineyard",
+   "turn": -9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0576,
+   "length": 312.4,
+   "biome": "vineyard",
+   "turn": 16.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0687,
+   "length": 264.8,
+   "biome": "vineyard",
+   "turn": 22.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0651,
+   "length": 300.5,
+   "biome": "vineyard",
+   "turn": 4.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0715,
+   "length": 329.4,
+   "biome": "vineyard",
+   "turn": -24.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0675,
+   "length": 281.7,
+   "biome": "vineyard",
+   "turn": -11.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0573,
+   "length": 324.2,
+   "biome": "vineyard",
+   "turn": 25.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0407,
+   "length": 265,
+   "biome": "vineyard",
+   "turn": 6.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0272,
+   "length": 310.1,
+   "biome": "vineyard",
+   "turn": 35
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0086,
+   "length": 340.1,
+   "biome": "vineyard",
+   "turn": 39.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0007,
+   "length": 313.8,
+   "biome": "vineyard",
+   "turn": -12.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0111,
+   "length": 317.7,
+   "biome": "vineyard",
+   "turn": -16
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0324,
+   "length": 329.6,
+   "biome": "vineyard",
+   "turn": 23.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.038,
+   "length": 315.2,
+   "biome": "vineyard",
+   "turn": 31.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0425,
+   "length": 299.2,
+   "biome": "vineyard",
+   "turn": -25.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0353,
+   "length": 275,
+   "biome": "vineyard",
+   "turn": 7.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0357,
+   "length": 312.9,
+   "biome": "vineyard",
+   "turn": -4.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0273,
+   "length": 263.3,
+   "biome": "vineyard",
+   "turn": 39.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0112,
+   "length": 285.5,
+   "biome": "vineyard",
+   "turn": -20.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0044,
+   "length": 265.2,
+   "biome": "vineyard",
+   "turn": 26
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0178,
+   "length": 305.8,
+   "biome": "olivegrove",
+   "turn": -4.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0261,
+   "length": 336.6,
+   "biome": "olivegrove",
+   "turn": 7.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0486,
+   "length": 317.1,
+   "biome": "olivegrove",
+   "turn": 20.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0478,
+   "length": 319.8,
+   "biome": "olivegrove",
+   "turn": -23.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0624,
+   "length": 344.8,
+   "biome": "olivegrove",
+   "turn": 14.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0691,
+   "length": 337.9,
+   "biome": "olivegrove",
+   "turn": 13.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.061,
+   "length": 341.2,
+   "biome": "olivegrove",
+   "turn": 8.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0602,
+   "length": 266.8,
+   "biome": "olivegrove",
+   "turn": -29.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0485,
+   "length": 276.4,
+   "biome": "olivegrove",
+   "turn": -10.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0279,
+   "length": 317.9,
+   "biome": "olivegrove",
+   "turn": 3.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0166,
+   "length": 258.4,
+   "biome": "olivegrove",
+   "turn": 34.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0011,
+   "length": 344.5,
+   "biome": "olivegrove",
+   "turn": -5.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.026,
+   "length": 309.1,
+   "biome": "olivegrove",
+   "turn": -8.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0443,
+   "length": 290.5,
+   "biome": "olivegrove",
+   "turn": -11.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0492,
+   "length": 278,
+   "biome": "olivegrove",
+   "turn": 38.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0608,
+   "length": 270.6,
+   "biome": "olivegrove",
+   "turn": -29.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0758,
+   "length": 311.4,
+   "biome": "olivegrove",
+   "turn": 18.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0737,
+   "length": 301.5,
+   "biome": "olivegrove",
+   "turn": -4.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0734,
+   "length": 262.8,
+   "biome": "olivegrove",
+   "turn": -18.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0626,
+   "length": 255.9,
+   "biome": "olivegrove",
+   "turn": 26.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0583,
+   "length": 258.2,
+   "biome": "olivegrove",
+   "turn": 39.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0467,
+   "length": 303.7,
+   "biome": "olivegrove",
+   "turn": -3.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0305,
+   "length": 319.2,
+   "biome": "olivegrove",
+   "turn": 22.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.015,
+   "length": 315.1,
+   "biome": "lavender",
+   "turn": 9.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.007,
+   "length": 288.6,
+   "biome": "lavender",
+   "turn": 35.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0141,
+   "length": 277,
+   "biome": "lavender",
+   "turn": -27.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0349,
+   "length": 259,
+   "biome": "lavender",
+   "turn": -26
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0452,
+   "length": 338.2,
+   "biome": "lavender",
+   "turn": -16.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0389,
+   "length": 285.7,
+   "biome": "lavender",
+   "turn": 9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0456,
+   "length": 291.6,
+   "biome": "lavender",
+   "turn": -31.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0428,
+   "length": 265.3,
+   "biome": "lavender",
+   "turn": 9.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0334,
+   "length": 302.9,
+   "biome": "lavender",
+   "turn": -24.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0141,
+   "length": 287.8,
+   "biome": "lavender",
+   "turn": 28.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0015,
+   "length": 338,
+   "biome": "lavender",
+   "turn": 39.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0147,
+   "length": 266.9,
+   "biome": "lavender",
+   "turn": -16
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0239,
+   "length": 332.7,
+   "biome": "lavender",
+   "turn": 2.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0414,
+   "length": 315.3,
+   "biome": "lavender",
+   "turn": 24.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.052,
+   "length": 323.3,
+   "biome": "lavender",
+   "turn": 26.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0527,
+   "length": 309,
+   "biome": "lavender",
+   "turn": 24.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0533,
+   "length": 266.4,
+   "biome": "lavender",
+   "turn": 19
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.049,
+   "length": 325.2,
+   "biome": "lavender",
+   "turn": -30.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0455,
+   "length": 324.6,
+   "biome": "lavender",
+   "turn": -26.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0373,
+   "length": 255.9,
+   "biome": "lavender",
+   "turn": -4.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.023,
+   "length": 318.4,
+   "biome": "lavender",
+   "turn": 10.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0047,
+   "length": 284.6,
+   "biome": "lavender",
+   "turn": 17.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0104,
+   "length": 282.6,
+   "biome": "vineyard",
+   "turn": 6.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0278,
+   "length": 323.4,
+   "biome": "vineyard",
+   "turn": -25.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0427,
+   "length": 295.2,
+   "biome": "vineyard",
+   "turn": 20
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0652,
+   "length": 321.3,
+   "biome": "vineyard",
+   "turn": 26.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0758,
+   "length": 258,
+   "biome": "vineyard",
+   "turn": -4.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0826,
+   "length": 336.6,
+   "biome": "vineyard",
+   "turn": -12.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0787,
+   "length": 257.6,
+   "biome": "vineyard",
+   "turn": 26.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0797,
+   "length": 340.7,
+   "biome": "vineyard",
+   "turn": 7.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0648,
+   "length": 282.3,
+   "biome": "vineyard",
+   "turn": 33.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.053,
+   "length": 307.3,
+   "biome": "vineyard",
+   "turn": -22.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0449,
+   "length": 286,
+   "biome": "vineyard",
+   "turn": -1.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0226,
+   "length": 301.4,
+   "biome": "vineyard",
+   "turn": 12
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.011,
+   "length": 256.8,
+   "biome": "vineyard",
+   "turn": 29.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0082,
+   "length": 272.4,
+   "biome": "vineyard",
+   "turn": -11.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0211,
+   "length": 263.5,
+   "biome": "vineyard",
+   "turn": 21.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0398,
+   "length": 328.9,
+   "biome": "vineyard",
+   "turn": 9
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0511,
+   "length": 256.5,
+   "biome": "vineyard",
+   "turn": 14.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0536,
+   "length": 265.1,
+   "biome": "vineyard",
+   "turn": 30.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0512,
+   "length": 331.3,
+   "biome": "vineyard",
+   "turn": 21.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0409,
+   "length": 270.2,
+   "biome": "vineyard",
+   "turn": -23.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0364,
+   "length": 291.2,
+   "biome": "vineyard",
+   "turn": -17.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0223,
+   "length": 263.4,
+   "biome": "vineyard",
+   "turn": -2.1
+  },
+  {
+   "surface": "gravel",
+   "gradient": -0.0107,
+   "length": 292.9,
+   "biome": "vineyard",
+   "turn": 6.6
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 6424,
+   "label": "Villa Bianca",
+   "kind": "town"
+  },
+  {
+   "at": 15524,
+   "label": "Cypress Ridge",
+   "kind": "peak"
+  },
+  {
+   "at": 22751,
+   "label": "Santa Chiara",
+   "kind": "church"
+  }
+ ]
+}

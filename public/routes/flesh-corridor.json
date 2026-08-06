@@ -1,0 +1,210 @@
+{
+ "id": "bundled-flesh-corridor",
+ "name": "Flesh Corridor",
+ "type": "virtual",
+ "skybox": "flesh-sky",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.023,
+   "length": 313.5,
+   "biome": "flesh",
+   "turn": 2.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0464,
+   "length": 321.9,
+   "biome": "flesh",
+   "turn": 7.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0245,
+   "length": 303.2,
+   "biome": "flesh",
+   "turn": -26.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0158,
+   "length": 268.3,
+   "biome": "flesh",
+   "turn": -13.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0026,
+   "length": 296.6,
+   "biome": "flesh",
+   "turn": -32
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0105,
+   "length": 298.7,
+   "biome": "flesh",
+   "turn": -29.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0412,
+   "length": 304.8,
+   "biome": "flesh",
+   "turn": -27.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0404,
+   "length": 323.8,
+   "biome": "flesh",
+   "turn": -10.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0127,
+   "length": 316.5,
+   "biome": "flesh",
+   "turn": -37.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0299,
+   "length": 259.5,
+   "biome": "bonefield",
+   "turn": -5.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0315,
+   "length": 263.2,
+   "biome": "bonefield",
+   "turn": -36.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0163,
+   "length": 268.8,
+   "biome": "bonefield",
+   "turn": 4.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0209,
+   "length": 343,
+   "biome": "bonefield",
+   "turn": 21
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0194,
+   "length": 313.7,
+   "biome": "bonefield",
+   "turn": -14
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0251,
+   "length": 287.3,
+   "biome": "bonefield",
+   "turn": 22.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0548,
+   "length": 287,
+   "biome": "bonefield",
+   "turn": -33.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0355,
+   "length": 335.5,
+   "biome": "bonefield",
+   "turn": 35.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0042,
+   "length": 344.8,
+   "biome": "bonefield",
+   "turn": 7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0177,
+   "length": 270.4,
+   "biome": "mushroom",
+   "turn": 30.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0154,
+   "length": 340.5,
+   "biome": "mushroom",
+   "turn": -13.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0284,
+   "length": 331.8,
+   "biome": "mushroom",
+   "turn": -3.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0331,
+   "length": 268.1,
+   "biome": "mushroom",
+   "turn": 35.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0048,
+   "length": 323.8,
+   "biome": "mushroom",
+   "turn": -30.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0343,
+   "length": 301.8,
+   "biome": "mushroom",
+   "turn": 15.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0383,
+   "length": 306.3,
+   "biome": "mushroom",
+   "turn": -12.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0132,
+   "length": 269.6,
+   "biome": "mushroom",
+   "turn": 9.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0043,
+   "length": 261.1,
+   "biome": "mushroom",
+   "turn": -4.5
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 2843,
+   "label": "The Ribcage",
+   "kind": "bridge"
+  },
+  {
+   "at": 6499,
+   "label": "Spore Hollow",
+   "kind": "peak"
+  }
+ ]
+}

@@ -1,0 +1,462 @@
+{
+ "id": "bundled-autumn-loop",
+ "name": "Autumn Loop",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.0083,
+   "length": 340.3,
+   "biome": "autumnforest",
+   "turn": 28.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0238,
+   "length": 276.5,
+   "biome": "autumnforest",
+   "turn": 15.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0355,
+   "length": 341.6,
+   "biome": "autumnforest",
+   "turn": 37.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0378,
+   "length": 267.3,
+   "biome": "autumnforest",
+   "turn": 28.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0349,
+   "length": 284,
+   "biome": "autumnforest",
+   "turn": -1.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0285,
+   "length": 295.6,
+   "biome": "autumnforest",
+   "turn": -1.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0249,
+   "length": 343.5,
+   "biome": "autumnforest",
+   "turn": 27
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0083,
+   "length": 338.7,
+   "biome": "autumnforest",
+   "turn": -3.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0059,
+   "length": 341.9,
+   "biome": "autumnforest",
+   "turn": -2.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.007,
+   "length": 296.7,
+   "biome": "autumnforest",
+   "turn": -7.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0115,
+   "length": 323.6,
+   "biome": "autumnforest",
+   "turn": -22.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0085,
+   "length": 286.5,
+   "biome": "autumnforest",
+   "turn": -24.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0006,
+   "length": 322.8,
+   "biome": "autumnforest",
+   "turn": 20.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0209,
+   "length": 327.6,
+   "biome": "autumnforest",
+   "turn": -18.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.032,
+   "length": 257.4,
+   "biome": "autumnforest",
+   "turn": 34.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0383,
+   "length": 302.5,
+   "biome": "autumnforest",
+   "turn": -22
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0529,
+   "length": 280.4,
+   "biome": "autumnforest",
+   "turn": -1.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0401,
+   "length": 311.3,
+   "biome": "autumnforest",
+   "turn": 10.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0288,
+   "length": 314.7,
+   "biome": "autumnforest",
+   "turn": -10.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0113,
+   "length": 321.9,
+   "biome": "autumnforest",
+   "turn": -6.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0092,
+   "length": 287.5,
+   "biome": "autumnforest",
+   "turn": -25.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0179,
+   "length": 299.6,
+   "biome": "orchard",
+   "turn": 13.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0301,
+   "length": 304,
+   "biome": "orchard",
+   "turn": 33.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.034,
+   "length": 320.2,
+   "biome": "orchard",
+   "turn": 28.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0327,
+   "length": 333.9,
+   "biome": "orchard",
+   "turn": -24.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0239,
+   "length": 291.5,
+   "biome": "orchard",
+   "turn": -12.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0258,
+   "length": 273.5,
+   "biome": "orchard",
+   "turn": 23.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.023,
+   "length": 290.7,
+   "biome": "orchard",
+   "turn": 0.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0183,
+   "length": 269.4,
+   "biome": "orchard",
+   "turn": -12.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0185,
+   "length": 326.4,
+   "biome": "orchard",
+   "turn": 9.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0252,
+   "length": 324.9,
+   "biome": "orchard",
+   "turn": 31.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0165,
+   "length": 335.4,
+   "biome": "orchard",
+   "turn": 25.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0018,
+   "length": 289.9,
+   "biome": "orchard",
+   "turn": 36.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0197,
+   "length": 311.2,
+   "biome": "orchard",
+   "turn": -9.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0336,
+   "length": 293.2,
+   "biome": "orchard",
+   "turn": -25.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0422,
+   "length": 324.8,
+   "biome": "orchard",
+   "turn": -19
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0451,
+   "length": 265.2,
+   "biome": "orchard",
+   "turn": 4.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0409,
+   "length": 269.9,
+   "biome": "orchard",
+   "turn": 17.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0363,
+   "length": 308.1,
+   "biome": "orchard",
+   "turn": 36.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.015,
+   "length": 290.3,
+   "biome": "orchard",
+   "turn": 13.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0011,
+   "length": 307.6,
+   "biome": "orchard",
+   "turn": -18.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0056,
+   "length": 271.4,
+   "biome": "orchard",
+   "turn": -7.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0133,
+   "length": 265.3,
+   "biome": "autumnforest",
+   "turn": 19.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0105,
+   "length": 298.2,
+   "biome": "autumnforest",
+   "turn": 18.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0141,
+   "length": 295,
+   "biome": "autumnforest",
+   "turn": -15.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0179,
+   "length": 273.7,
+   "biome": "autumnforest",
+   "turn": 6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.023,
+   "length": 300.3,
+   "biome": "autumnforest",
+   "turn": -21
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0318,
+   "length": 330.4,
+   "biome": "autumnforest",
+   "turn": -24.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0293,
+   "length": 310.7,
+   "biome": "autumnforest",
+   "turn": -8.7
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0326,
+   "length": 328.3,
+   "biome": "autumnforest",
+   "turn": 7.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0399,
+   "length": 324.9,
+   "biome": "autumnforest",
+   "turn": 24.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0285,
+   "length": 269.9,
+   "biome": "autumnforest",
+   "turn": 6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.005,
+   "length": 315.4,
+   "biome": "autumnforest",
+   "turn": 3.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0163,
+   "length": 288.5,
+   "biome": "autumnforest",
+   "turn": 18
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0332,
+   "length": 292.9,
+   "biome": "autumnforest",
+   "turn": -2.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0398,
+   "length": 269.2,
+   "biome": "autumnforest",
+   "turn": -18.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0459,
+   "length": 291.5,
+   "biome": "autumnforest",
+   "turn": 7.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0425,
+   "length": 263.4,
+   "biome": "autumnforest",
+   "turn": -7.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0278,
+   "length": 262.5,
+   "biome": "autumnforest",
+   "turn": -12
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0149,
+   "length": 323.3,
+   "biome": "autumnforest",
+   "turn": 13.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0112,
+   "length": 327.3,
+   "biome": "autumnforest",
+   "turn": -7.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0041,
+   "length": 339,
+   "biome": "autumnforest",
+   "turn": 5.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0038,
+   "length": 305.6,
+   "biome": "autumnforest",
+   "turn": -15.4
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 5712,
+   "label": "Cider Press",
+   "kind": "town"
+  },
+  {
+   "at": 13708,
+   "label": "Copper Hill",
+   "kind": "peak"
+  }
+ ]
+}

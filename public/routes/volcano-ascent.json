@@ -1,0 +1,371 @@
+{
+ "id": "bundled-volcano-ascent",
+ "name": "Volcano Ascent",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "asphalt",
+   "gradient": 0.075,
+   "length": 272.8,
+   "biome": "jungle",
+   "turn": -26.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0898,
+   "length": 329.6,
+   "biome": "jungle",
+   "turn": 12.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1028,
+   "length": 319.8,
+   "biome": "jungle",
+   "turn": 17.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1005,
+   "length": 291.7,
+   "biome": "jungle",
+   "turn": 2.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0887,
+   "length": 336.6,
+   "biome": "jungle",
+   "turn": 2.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0673,
+   "length": 330.5,
+   "biome": "jungle",
+   "turn": 26.9
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0497,
+   "length": 294.3,
+   "biome": "jungle",
+   "turn": -19.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0422,
+   "length": 274.4,
+   "biome": "jungle",
+   "turn": -38.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0412,
+   "length": 294,
+   "biome": "jungle",
+   "turn": -15.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0461,
+   "length": 257.1,
+   "biome": "jungle",
+   "turn": -38.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0598,
+   "length": 261,
+   "biome": "jungle",
+   "turn": 11.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0762,
+   "length": 257.8,
+   "biome": "jungle",
+   "turn": 34.5
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.094,
+   "length": 258.3,
+   "biome": "jungle",
+   "turn": 3.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.1024,
+   "length": 334.9,
+   "biome": "jungle",
+   "turn": 25.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0999,
+   "length": 314.2,
+   "biome": "jungle",
+   "turn": 38.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0871,
+   "length": 271.3,
+   "biome": "jungle",
+   "turn": -21.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": 0.0719,
+   "length": 276.5,
+   "biome": "jungle",
+   "turn": 32.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0508,
+   "length": 334.4,
+   "biome": "geothermal",
+   "turn": 27.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0458,
+   "length": 325.2,
+   "biome": "geothermal",
+   "turn": 12.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0458,
+   "length": 320.1,
+   "biome": "geothermal",
+   "turn": 26.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0511,
+   "length": 328.4,
+   "biome": "geothermal",
+   "turn": 9.2
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0565,
+   "length": 338.4,
+   "biome": "geothermal",
+   "turn": 15.8
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0774,
+   "length": 265.8,
+   "biome": "geothermal",
+   "turn": -36.3
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0916,
+   "length": 282.2,
+   "biome": "geothermal",
+   "turn": 17.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.1032,
+   "length": 293.5,
+   "biome": "geothermal",
+   "turn": -7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0983,
+   "length": 294.3,
+   "biome": "geothermal",
+   "turn": -38.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0937,
+   "length": 343.4,
+   "biome": "geothermal",
+   "turn": -16.5
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0789,
+   "length": 267.8,
+   "biome": "geothermal",
+   "turn": 30.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0596,
+   "length": 343.2,
+   "biome": "geothermal",
+   "turn": 17.7
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0484,
+   "length": 273.9,
+   "biome": "geothermal",
+   "turn": -28.6
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0404,
+   "length": 281,
+   "biome": "geothermal",
+   "turn": -10.4
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0482,
+   "length": 343.5,
+   "biome": "geothermal",
+   "turn": 32.9
+  },
+  {
+   "surface": "gravel",
+   "gradient": 0.0569,
+   "length": 344.2,
+   "biome": "geothermal",
+   "turn": -22.9
+  },
+  {
+   "surface": "chipseal",
+   "gradient": 0.0725,
+   "length": 274.5,
+   "biome": "volcanic",
+   "turn": -35.1
+  },
+  {
+   "surface": "chipseal",
+   "gradient": 0.0846,
+   "length": 259.1,
+   "biome": "volcanic",
+   "turn": -24.1
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0882,
+   "length": 316.2,
+   "biome": "volcanic",
+   "turn": 5.7
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0877,
+   "length": 335,
+   "biome": "volcanic",
+   "turn": 12.4
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0858,
+   "length": 297.2,
+   "biome": "volcanic",
+   "turn": -31.1
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0871,
+   "length": 307.4,
+   "biome": "volcanic",
+   "turn": 28.3
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0938,
+   "length": 307.6,
+   "biome": "volcanic",
+   "turn": -1.7
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0954,
+   "length": 291.9,
+   "biome": "volcanic",
+   "turn": -32.6
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0855,
+   "length": 300.3,
+   "biome": "volcanic",
+   "turn": -22.4
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0845,
+   "length": 339,
+   "biome": "volcanic",
+   "turn": 31.9
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0843,
+   "length": 288.7,
+   "biome": "volcanic",
+   "turn": 0.9
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.087,
+   "length": 322.5,
+   "biome": "volcanic",
+   "turn": 25.7
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0894,
+   "length": 340.9,
+   "biome": "volcanic",
+   "turn": 29.4
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0915,
+   "length": 270.6,
+   "biome": "volcanic",
+   "turn": 37.7
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0906,
+   "length": 287.7,
+   "biome": "volcanic",
+   "turn": 9.6
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0954,
+   "length": 269.3,
+   "biome": "volcanic",
+   "turn": 5
+  },
+  {
+   "surface": "chipseal",
+   "gradient": -0.0852,
+   "length": 278.9,
+   "biome": "volcanic",
+   "turn": -6.3
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 6016,
+   "label": "Steam Terraces",
+   "kind": "water"
+  },
+  {
+   "at": 12785,
+   "label": "Caldera Rim",
+   "kind": "peak"
+  }
+ ]
+}

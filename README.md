@@ -74,6 +74,7 @@ node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin
 node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups
 node scripts/pwatest.mjs     # manifest / icons / service worker installability contract
 node scripts/biometest.mjs   # biome data + every artifact type has a working builder
+node scripts/routestest.mjs  # bundled route library: valid, rideable, varied
 node scripts/smoke.mjs       # renders every non-WebGL screen under jsdom
 npm run build                # production build / import-resolution check
 ```
@@ -191,6 +192,13 @@ device via the repo (`public/routes/`).
 - **Menu themes**: Midnight, Arcade, CRT Terminal, Pastel, Vaporwave, Graphite, Wasteland.
 
 ### Routes & skyboxes
+- **34 routes ship with the app** (~660 km), covering every biome and surface: warm-ups and
+  recovery spins, sweet-spot rollers, VO2 sawtooths and hill repeats, an 80 km endurance
+  haul, alpine hairpins, a volcano ascent and a fjord wall, a cobbled classic, a gravel
+  grinder, a wooden velodrome, a desert time trial, and the strange ones — the Void Run,
+  Flesh Corridor, Arcade Grid, Clockwork Circuit. They're generated from a spec table by
+  `node tools/make-routes.mjs`; edit a spec and re-run rather than hand-editing 100 segments.
+- The route list **filters by name or terrain** and shows distance, total climb and biomes.
 - **Import / export** routes as `.json`, **clone** routes, per-route **activity counts**, and
   **edit-locking** once a route has activities (clone to edit) — protects PBs/replays.
 - The **upcoming end behaviour** (finish 🏁 / teleport ⊚ / U-turn ⟲) is marked on the overhead map.

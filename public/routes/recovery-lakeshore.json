@@ -1,0 +1,301 @@
+{
+ "id": "bundled-recovery-lakeshore",
+ "name": "Recovery Lakeshore",
+ "type": "virtual",
+ "skybox": "golden-hour",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0027,
+   "length": 334.7,
+   "biome": "lakeside",
+   "turn": 7.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0036,
+   "length": 292.8,
+   "biome": "lakeside",
+   "turn": 24.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0033,
+   "length": 323.8,
+   "biome": "lakeside",
+   "turn": 22.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0029,
+   "length": 288,
+   "biome": "lakeside",
+   "turn": -1.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0052,
+   "length": 279,
+   "biome": "lakeside",
+   "turn": 21.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0007,
+   "length": 331,
+   "biome": "lakeside",
+   "turn": 20.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0027,
+   "length": 270.9,
+   "biome": "lakeside",
+   "turn": 2.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.003,
+   "length": 308.5,
+   "biome": "lakeside",
+   "turn": 1.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0004,
+   "length": 264.5,
+   "biome": "lakeside",
+   "turn": 10.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0016,
+   "length": 297.5,
+   "biome": "lakeside",
+   "turn": -6.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0011,
+   "length": 310.1,
+   "biome": "lakeside",
+   "turn": 0.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0001,
+   "length": 338.9,
+   "biome": "lakeside",
+   "turn": -5.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0015,
+   "length": 279.9,
+   "biome": "lakeside",
+   "turn": 7.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0035,
+   "length": 261.7,
+   "biome": "coastal",
+   "turn": -5.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.001,
+   "length": 260,
+   "biome": "coastal",
+   "turn": 17.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0044,
+   "length": 319.1,
+   "biome": "coastal",
+   "turn": 2.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0013,
+   "length": 257.1,
+   "biome": "coastal",
+   "turn": 25.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0051,
+   "length": 311.7,
+   "biome": "coastal",
+   "turn": 24
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0044,
+   "length": 278.3,
+   "biome": "coastal",
+   "turn": 4.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0015,
+   "length": 283.1,
+   "biome": "coastal",
+   "turn": 17.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0036,
+   "length": 327.3,
+   "biome": "coastal",
+   "turn": -1.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0029,
+   "length": 261.2,
+   "biome": "coastal",
+   "turn": -0.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0054,
+   "length": 277.4,
+   "biome": "coastal",
+   "turn": -6.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0021,
+   "length": 266.6,
+   "biome": "coastal",
+   "turn": 5.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.005,
+   "length": 289.5,
+   "biome": "coastal",
+   "turn": 23.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0055,
+   "length": 338.4,
+   "biome": "coastal",
+   "turn": 0.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0021,
+   "length": 280.8,
+   "biome": "coastal",
+   "turn": 22.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0053,
+   "length": 331.9,
+   "biome": "lakeside",
+   "turn": 17.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0005,
+   "length": 292.4,
+   "biome": "lakeside",
+   "turn": 19.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0059,
+   "length": 292.8,
+   "biome": "lakeside",
+   "turn": 3.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.004,
+   "length": 338.2,
+   "biome": "lakeside",
+   "turn": 8.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0041,
+   "length": 269.6,
+   "biome": "lakeside",
+   "turn": 24.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0015,
+   "length": 272.3,
+   "biome": "lakeside",
+   "turn": 3.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0052,
+   "length": 284.3,
+   "biome": "lakeside",
+   "turn": 7.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0044,
+   "length": 257.4,
+   "biome": "lakeside",
+   "turn": -7.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0045,
+   "length": 304.1,
+   "biome": "lakeside",
+   "turn": 23.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0007,
+   "length": 322.1,
+   "biome": "lakeside",
+   "turn": -7.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0022,
+   "length": 267.1,
+   "biome": "lakeside",
+   "turn": 2.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0031,
+   "length": 263.2,
+   "biome": "lakeside",
+   "turn": -1.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0001,
+   "length": 257.3,
+   "biome": "lakeside",
+   "turn": 21
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 3272,
+   "label": "Boathouse Point",
+   "kind": "water"
+  },
+  {
+   "at": 8647,
+   "label": "Heron Bridge",
+   "kind": "bridge"
+  }
+ ]
+}

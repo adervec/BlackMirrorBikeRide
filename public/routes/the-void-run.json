@@ -1,0 +1,350 @@
+{
+ "id": "bundled-the-void-run",
+ "name": "The Void Run",
+ "type": "virtual",
+ "skybox": "starfield",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0108,
+   "length": 334.2,
+   "biome": "void",
+   "turn": 24.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.006,
+   "length": 339.1,
+   "biome": "void",
+   "turn": 22.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.011,
+   "length": 299.4,
+   "biome": "void",
+   "turn": -2.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0068,
+   "length": 325.9,
+   "biome": "void",
+   "turn": 16.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0145,
+   "length": 259.8,
+   "biome": "void",
+   "turn": 19.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0053,
+   "length": 319.3,
+   "biome": "void",
+   "turn": 20.4
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0118,
+   "length": 344.6,
+   "biome": "void",
+   "turn": 7.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0123,
+   "length": 280.5,
+   "biome": "void",
+   "turn": -6.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0072,
+   "length": 286.2,
+   "biome": "void",
+   "turn": -9.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0066,
+   "length": 289.4,
+   "biome": "void",
+   "turn": 13.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0017,
+   "length": 275.3,
+   "biome": "void",
+   "turn": -8.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0058,
+   "length": 281.1,
+   "biome": "void",
+   "turn": 0.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0037,
+   "length": 329.8,
+   "biome": "void",
+   "turn": 5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0009,
+   "length": 291.4,
+   "biome": "void",
+   "turn": 13.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0005,
+   "length": 336.5,
+   "biome": "void",
+   "turn": 15.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0017,
+   "length": 306,
+   "biome": "void",
+   "turn": -12.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0052,
+   "length": 339.5,
+   "biome": "mirrorfield",
+   "turn": 8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.005,
+   "length": 284.2,
+   "biome": "mirrorfield",
+   "turn": -2.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0065,
+   "length": 322.9,
+   "biome": "mirrorfield",
+   "turn": 0.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0022,
+   "length": 320.9,
+   "biome": "mirrorfield",
+   "turn": 12.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0004,
+   "length": 256.1,
+   "biome": "mirrorfield",
+   "turn": 21
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0001,
+   "length": 344.7,
+   "biome": "mirrorfield",
+   "turn": 4.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0019,
+   "length": 279.9,
+   "biome": "mirrorfield",
+   "turn": -6.6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0011,
+   "length": 324.2,
+   "biome": "mirrorfield",
+   "turn": 12.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0039,
+   "length": 300.5,
+   "biome": "mirrorfield",
+   "turn": 1.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0099,
+   "length": 339.2,
+   "biome": "mirrorfield",
+   "turn": 14.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0061,
+   "length": 312.4,
+   "biome": "mirrorfield",
+   "turn": 16
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0094,
+   "length": 307.9,
+   "biome": "mirrorfield",
+   "turn": -9.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0077,
+   "length": 302.7,
+   "biome": "mirrorfield",
+   "turn": -6
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0113,
+   "length": 267.7,
+   "biome": "mirrorfield",
+   "turn": 10.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0084,
+   "length": 310,
+   "biome": "mirrorfield",
+   "turn": 18.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0124,
+   "length": 338.7,
+   "biome": "void",
+   "turn": -1.7
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0067,
+   "length": 323.2,
+   "biome": "void",
+   "turn": 24.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0052,
+   "length": 303.7,
+   "biome": "void",
+   "turn": 16.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0111,
+   "length": 342.3,
+   "biome": "void",
+   "turn": -4.1
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0081,
+   "length": 326.8,
+   "biome": "void",
+   "turn": 2.8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0083,
+   "length": 274.5,
+   "biome": "void",
+   "turn": 28.3
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0001,
+   "length": 314.3,
+   "biome": "void",
+   "turn": -13
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0032,
+   "length": 306,
+   "biome": "void",
+   "turn": -5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0011,
+   "length": 336.7,
+   "biome": "void",
+   "turn": 12.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0067,
+   "length": 293.1,
+   "biome": "void",
+   "turn": 13.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0025,
+   "length": 290.2,
+   "biome": "void",
+   "turn": -5.5
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": -0.0006,
+   "length": 279.9,
+   "biome": "void",
+   "turn": -8
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0003,
+   "length": 345,
+   "biome": "void",
+   "turn": 14.9
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0033,
+   "length": 269.8,
+   "biome": "void",
+   "turn": -11.2
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0013,
+   "length": 289.9,
+   "biome": "void",
+   "turn": 24
+  },
+  {
+   "surface": "smooth-asphalt",
+   "gradient": 0.0061,
+   "length": 329.9,
+   "biome": "void",
+   "turn": 0.6
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 4777,
+   "label": "First Monolith",
+   "kind": "peak"
+  },
+  {
+   "at": 10422,
+   "label": "The Reflecting Line",
+   "kind": "water"
+  }
+ ]
+}

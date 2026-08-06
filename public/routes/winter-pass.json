@@ -1,0 +1,560 @@
+{
+ "id": "bundled-winter-pass",
+ "name": "Winter Pass",
+ "type": "virtual",
+ "skybox": "overcast",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "hardpack",
+   "gradient": 0.0475,
+   "length": 318.2,
+   "biome": "snowforest",
+   "turn": 43.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0535,
+   "length": 303,
+   "biome": "snowforest",
+   "turn": 35.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.06,
+   "length": 300.7,
+   "biome": "snowforest",
+   "turn": -35.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0599,
+   "length": 281.3,
+   "biome": "snowforest",
+   "turn": 10.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0638,
+   "length": 272.7,
+   "biome": "snowforest",
+   "turn": -24.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0687,
+   "length": 295.4,
+   "biome": "snowforest",
+   "turn": 31.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0675,
+   "length": 314.8,
+   "biome": "snowforest",
+   "turn": 7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0651,
+   "length": 339.9,
+   "biome": "snowforest",
+   "turn": -29
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0594,
+   "length": 320,
+   "biome": "snowforest",
+   "turn": -10.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0579,
+   "length": 319.8,
+   "biome": "snowforest",
+   "turn": 11
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0661,
+   "length": 288.8,
+   "biome": "snowforest",
+   "turn": 2.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0612,
+   "length": 274.9,
+   "biome": "snowforest",
+   "turn": -3.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0533,
+   "length": 285.8,
+   "biome": "snowforest",
+   "turn": -41.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0518,
+   "length": 264,
+   "biome": "snowforest",
+   "turn": 17.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0469,
+   "length": 320.9,
+   "biome": "snowforest",
+   "turn": -34.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.042,
+   "length": 344.5,
+   "biome": "snowforest",
+   "turn": 31.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0375,
+   "length": 259.8,
+   "biome": "snowforest",
+   "turn": 0
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.038,
+   "length": 338.2,
+   "biome": "snowforest",
+   "turn": -39.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0327,
+   "length": 316.3,
+   "biome": "snowforest",
+   "turn": 36.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0298,
+   "length": 319.6,
+   "biome": "tundra",
+   "turn": 36.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0306,
+   "length": 283.6,
+   "biome": "tundra",
+   "turn": -33.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0308,
+   "length": 286.7,
+   "biome": "tundra",
+   "turn": 16.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0267,
+   "length": 280.1,
+   "biome": "tundra",
+   "turn": 19.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0249,
+   "length": 274.6,
+   "biome": "tundra",
+   "turn": -21.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0317,
+   "length": 290.8,
+   "biome": "tundra",
+   "turn": 37.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0216,
+   "length": 334.6,
+   "biome": "tundra",
+   "turn": -33.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0328,
+   "length": 290.7,
+   "biome": "tundra",
+   "turn": -39.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0315,
+   "length": 301.5,
+   "biome": "tundra",
+   "turn": -20.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0332,
+   "length": 294.1,
+   "biome": "tundra",
+   "turn": -17
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0366,
+   "length": 281.4,
+   "biome": "tundra",
+   "turn": 39.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0388,
+   "length": 327.8,
+   "biome": "tundra",
+   "turn": 11.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0459,
+   "length": 297.2,
+   "biome": "tundra",
+   "turn": 5.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0542,
+   "length": 329.2,
+   "biome": "tundra",
+   "turn": 25.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0546,
+   "length": 325.7,
+   "biome": "tundra",
+   "turn": 18.9
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0556,
+   "length": 303.1,
+   "biome": "tundra",
+   "turn": -35.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0619,
+   "length": 276.7,
+   "biome": "tundra",
+   "turn": 3.1
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0588,
+   "length": 275.6,
+   "biome": "tundra",
+   "turn": 19.2
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0676,
+   "length": 342.1,
+   "biome": "tundra",
+   "turn": 18
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0652,
+   "length": 256.4,
+   "biome": "glacier",
+   "turn": 9.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0631,
+   "length": 344.9,
+   "biome": "glacier",
+   "turn": -11.5
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0575,
+   "length": 316.6,
+   "biome": "glacier",
+   "turn": -6.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0639,
+   "length": 309.1,
+   "biome": "glacier",
+   "turn": 24.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0597,
+   "length": 305.9,
+   "biome": "glacier",
+   "turn": -4.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.053,
+   "length": 341,
+   "biome": "glacier",
+   "turn": 22.4
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0496,
+   "length": 295.6,
+   "biome": "glacier",
+   "turn": -11.8
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0467,
+   "length": 312.6,
+   "biome": "glacier",
+   "turn": -3.6
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0392,
+   "length": 319.9,
+   "biome": "glacier",
+   "turn": 31.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": 0.0433,
+   "length": 326.6,
+   "biome": "glacier",
+   "turn": -5.9
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0554,
+   "length": 287.9,
+   "biome": "glacier",
+   "turn": 12
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0607,
+   "length": 282.1,
+   "biome": "glacier",
+   "turn": -36.5
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0583,
+   "length": 278,
+   "biome": "glacier",
+   "turn": -7.5
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0564,
+   "length": 274.4,
+   "biome": "glacier",
+   "turn": -7.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0646,
+   "length": 275.8,
+   "biome": "glacier",
+   "turn": 4.2
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0669,
+   "length": 293.7,
+   "biome": "glacier",
+   "turn": 10.7
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0694,
+   "length": 274.1,
+   "biome": "glacier",
+   "turn": 36.3
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0769,
+   "length": 274.5,
+   "biome": "glacier",
+   "turn": 10.1
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0725,
+   "length": 340.6,
+   "biome": "glacier",
+   "turn": -22.5
+  },
+  {
+   "surface": "concrete",
+   "gradient": -0.0766,
+   "length": 266.5,
+   "biome": "glacier",
+   "turn": 16.8
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0862,
+   "length": 312.4,
+   "biome": "snowforest",
+   "turn": 15.2
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0837,
+   "length": 325.5,
+   "biome": "snowforest",
+   "turn": -39.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0898,
+   "length": 292.3,
+   "biome": "snowforest",
+   "turn": -19.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0792,
+   "length": 266.9,
+   "biome": "snowforest",
+   "turn": 30
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.087,
+   "length": 341.2,
+   "biome": "snowforest",
+   "turn": 8.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0795,
+   "length": 259.1,
+   "biome": "snowforest",
+   "turn": -13.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0727,
+   "length": 283.5,
+   "biome": "snowforest",
+   "turn": -17.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.071,
+   "length": 341.4,
+   "biome": "snowforest",
+   "turn": 32
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0737,
+   "length": 335.9,
+   "biome": "snowforest",
+   "turn": 7.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.062,
+   "length": 272.8,
+   "biome": "snowforest",
+   "turn": 11.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0614,
+   "length": 294.6,
+   "biome": "snowforest",
+   "turn": -6.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0575,
+   "length": 288.5,
+   "biome": "snowforest",
+   "turn": 39
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0573,
+   "length": 319.8,
+   "biome": "snowforest",
+   "turn": 16.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0567,
+   "length": 320.6,
+   "biome": "snowforest",
+   "turn": -36.3
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0566,
+   "length": 271.8,
+   "biome": "snowforest",
+   "turn": 42.1
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0517,
+   "length": 294.5,
+   "biome": "snowforest",
+   "turn": -1.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0623,
+   "length": 328.9,
+   "biome": "snowforest",
+   "turn": 30.6
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0626,
+   "length": 274.1,
+   "biome": "snowforest",
+   "turn": -30.4
+  },
+  {
+   "surface": "asphalt",
+   "gradient": -0.0714,
+   "length": 332.6,
+   "biome": "snowforest",
+   "turn": 0.8
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 7426,
+   "label": "Snow Gate",
+   "kind": "town"
+  },
+  {
+   "at": 15781,
+   "label": "Ice Field",
+   "kind": "water"
+  }
+ ]
+}

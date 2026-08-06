@@ -1,0 +1,371 @@
+{
+ "id": "bundled-ruins-of-antiquity",
+ "name": "Ruins of Antiquity",
+ "type": "virtual",
+ "skybox": "clear-day",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "cobbles",
+   "gradient": 0.0162,
+   "length": 284.9,
+   "biome": "ruins",
+   "turn": 35.6
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0445,
+   "length": 341.8,
+   "biome": "ruins",
+   "turn": 31.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.063,
+   "length": 290.2,
+   "biome": "ruins",
+   "turn": -21.1
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.066,
+   "length": 276.4,
+   "biome": "ruins",
+   "turn": 33.9
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.063,
+   "length": 336.6,
+   "biome": "ruins",
+   "turn": 15.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0449,
+   "length": 317.5,
+   "biome": "ruins",
+   "turn": 11.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0084,
+   "length": 330.7,
+   "biome": "ruins",
+   "turn": -11.5
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0139,
+   "length": 327.9,
+   "biome": "ruins",
+   "turn": 24.6
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0293,
+   "length": 281.7,
+   "biome": "ruins",
+   "turn": -5
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0445,
+   "length": 317.3,
+   "biome": "ruins",
+   "turn": -17
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0325,
+   "length": 332.3,
+   "biome": "ruins",
+   "turn": -12.1
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0171,
+   "length": 285.2,
+   "biome": "ruins",
+   "turn": 7.9
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0117,
+   "length": 287.9,
+   "biome": "ruins",
+   "turn": 4.8
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0392,
+   "length": 276.6,
+   "biome": "ruins",
+   "turn": -17
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0553,
+   "length": 265.4,
+   "biome": "ruins",
+   "turn": -14.8
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0633,
+   "length": 305.9,
+   "biome": "ruins",
+   "turn": 11.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0501,
+   "length": 340.4,
+   "biome": "ruins",
+   "turn": -14.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0308,
+   "length": 318.6,
+   "biome": "olivegrove",
+   "turn": -15
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0021,
+   "length": 303.5,
+   "biome": "olivegrove",
+   "turn": 11.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0283,
+   "length": 338.3,
+   "biome": "olivegrove",
+   "turn": -8.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.054,
+   "length": 294.9,
+   "biome": "olivegrove",
+   "turn": 18.5
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.071,
+   "length": 280.2,
+   "biome": "olivegrove",
+   "turn": 28.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0709,
+   "length": 282.8,
+   "biome": "olivegrove",
+   "turn": 27.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0544,
+   "length": 276.5,
+   "biome": "olivegrove",
+   "turn": 6.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.035,
+   "length": 327.6,
+   "biome": "olivegrove",
+   "turn": 5.4
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0001,
+   "length": 319.7,
+   "biome": "olivegrove",
+   "turn": 8.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0183,
+   "length": 267.6,
+   "biome": "olivegrove",
+   "turn": 4.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0442,
+   "length": 332.8,
+   "biome": "olivegrove",
+   "turn": -4.8
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0386,
+   "length": 315.6,
+   "biome": "olivegrove",
+   "turn": 15.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.0312,
+   "length": 334.9,
+   "biome": "olivegrove",
+   "turn": 31.7
+  },
+  {
+   "surface": "hardpack",
+   "gradient": 0.009,
+   "length": 344.3,
+   "biome": "olivegrove",
+   "turn": 23.3
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0138,
+   "length": 312.2,
+   "biome": "olivegrove",
+   "turn": -7.6
+  },
+  {
+   "surface": "hardpack",
+   "gradient": -0.0398,
+   "length": 295.6,
+   "biome": "olivegrove",
+   "turn": 5.5
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0543,
+   "length": 257.3,
+   "biome": "ruins",
+   "turn": 15.3
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0505,
+   "length": 307.4,
+   "biome": "ruins",
+   "turn": -1.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0481,
+   "length": 307.3,
+   "biome": "ruins",
+   "turn": 2.4
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.015,
+   "length": 298.9,
+   "biome": "ruins",
+   "turn": -0.2
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0128,
+   "length": 311.4,
+   "biome": "ruins",
+   "turn": -8.5
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0455,
+   "length": 326,
+   "biome": "ruins",
+   "turn": 22.9
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0713,
+   "length": 308.1,
+   "biome": "ruins",
+   "turn": 30.2
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0735,
+   "length": 339,
+   "biome": "ruins",
+   "turn": 15.1
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0699,
+   "length": 337.3,
+   "biome": "ruins",
+   "turn": -4.6
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0591,
+   "length": 281.9,
+   "biome": "ruins",
+   "turn": -1.6
+  },
+  {
+   "surface": "cobbles",
+   "gradient": 0.0228,
+   "length": 344,
+   "biome": "ruins",
+   "turn": 23.3
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0029,
+   "length": 297.1,
+   "biome": "ruins",
+   "turn": -11.3
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0312,
+   "length": 277.1,
+   "biome": "ruins",
+   "turn": 13.7
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0488,
+   "length": 271.6,
+   "biome": "ruins",
+   "turn": 28.9
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0425,
+   "length": 257,
+   "biome": "ruins",
+   "turn": 16.6
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0317,
+   "length": 316.7,
+   "biome": "ruins",
+   "turn": 20
+  },
+  {
+   "surface": "cobbles",
+   "gradient": -0.0079,
+   "length": 285.6,
+   "biome": "ruins",
+   "turn": -2.9
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 4580,
+   "label": "Broken Arch",
+   "kind": "peak"
+  },
+  {
+   "at": 10687,
+   "label": "Temple of Dust",
+   "kind": "church"
+  }
+ ]
+}

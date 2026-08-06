@@ -1,0 +1,107 @@
+{
+ "id": "bundled-velodrome-pursuit",
+ "name": "Velodrome Pursuit",
+ "type": "virtual",
+ "skybox": "clear-day",
+ "airDensity": 1.25,
+ "segments": [
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0038,
+   "length": 271.4,
+   "biome": "urban",
+   "turn": -34.4
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0025,
+   "length": 333.2,
+   "biome": "urban",
+   "turn": -57
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0019,
+   "length": 269.8,
+   "biome": "urban",
+   "turn": 121.7
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0035,
+   "length": 267.6,
+   "biome": "urban",
+   "turn": -11.5
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0035,
+   "length": 314.1,
+   "biome": "urban",
+   "turn": -16.4
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0042,
+   "length": 306.1,
+   "biome": "urban",
+   "turn": 47
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0058,
+   "length": 320.4,
+   "biome": "urban",
+   "turn": 117
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.002,
+   "length": 299.7,
+   "biome": "urban",
+   "turn": -8.5
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0001,
+   "length": 302.2,
+   "biome": "urban",
+   "turn": 123.8
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0021,
+   "length": 325.4,
+   "biome": "urban",
+   "turn": 118.2
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0041,
+   "length": 274.6,
+   "biome": "urban",
+   "turn": -23.5
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": -0.0007,
+   "length": 330.8,
+   "biome": "urban",
+   "turn": 49.3
+  },
+  {
+   "surface": "wood-boards",
+   "gradient": 0.0038,
+   "length": 340.9,
+   "biome": "urban",
+   "turn": 8.1
+  }
+ ],
+ "landmarks": [
+  {
+   "at": 1978,
+   "label": "Back Straight",
+   "kind": "town"
+  }
+ ]
+}
