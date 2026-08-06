@@ -17,7 +17,20 @@ import { gradientEnvironment, applyAnisotropy, maxAnisotropyFor, makeBloomCompos
 import { surfaceTexture, groundTexture } from './textures.js';
 
 const ROAD_HALF = 2.6;        // metres each side of centreline
-const TERRAIN_OFFSETS = [-220, -95, -38, -9, 9, 38, 95, 220];
+// Lateral distances of the terrain strips, in metres each side of the road.
+// Dense near the rider (where you actually look) and reaching far enough out
+// that the outer edge is buried in fog — at the old 220 m limit the ground
+// simply stopped in plain sight, showing sky through the gap.
+const TERRAIN_OFFSETS = [
+  -760, -500, -320, -205, -132, -84, -54, -34, -20, -9,
+  9, 20, 34, 54, 84, 132, 205, 320, 500, 760,
+];
+const TERRAIN_FAR = 760;
+// The profile carries a point every 4 m, which is what the road ribbon needs.
+// The terrain does not: it is smooth undulation stretching 760 m out, so it
+// samples every Nth point instead. At 20 strips the 4 m spacing meant ~2.3M
+// indices on an 80 km route and a ~13 s scene build.
+const TERRAIN_STEP = 3;
 const TEX_M = 2.4;            // metres per road-texture tile
 const TERRAIN_TEX_M = 9;      // metres per ground-texture tile
 
@@ -249,7 +262,11 @@ export class WorldScene {
   }
 
   _buildTerrain(profile) {
-    const pts = profile.points;
+    const all = profile.points;
+    // Subsampled rows, always keeping the last point so the strip reaches the end.
+    const pts = [];
+    for (let i = 0; i < all.length; i += TERRAIN_STEP) pts.push(all[i]);
+    if (pts[pts.length - 1] !== all[all.length - 1]) pts.push(all[all.length - 1]);
     const n = pts.length;
     const K = TERRAIN_OFFSETS.length;
     const positions = new Float32Array(n * K * 3);
@@ -265,7 +282,7 @@ export class WorldScene {
       for (let k = 0; k < K; k++) {
         const off = TERRAIN_OFFSETS[k];
         const near = Math.abs(off) < 12;
-        const amp = near ? 0 : (Math.abs(off) / 220) * 9;
+        const amp = near ? 0 : Math.min(14, (Math.abs(off) / 220) * 9);
         const hnoise = (Math.sin(p.s * 0.012 + off * 0.05) + Math.cos(off * 0.021 + p.s * 0.008)) * 0.5;
         const y = p.y - 0.05 + hnoise * amp;
         const xx = p.x + latX * off;
@@ -281,22 +298,42 @@ export class WorldScene {
         colors[ti + 2] = cLow.b + (cGround.b - cLow.b) * t;
       }
     }
-    const idx = [];
+    const idx = new Uint32Array((n - 1) * (K - 1) * 6);
+    let w = 0;
     for (let i = 0; i < n - 1; i++) {
       for (let k = 0; k < K - 1; k++) {
         const a = i * K + k, b = i * K + k + 1, c = (i + 1) * K + k, d = (i + 1) * K + k + 1;
-        idx.push(a, c, b, b, c, d);
+        idx[w++] = a; idx[w++] = c; idx[w++] = b; idx[w++] = b; idx[w++] = c; idx[w++] = d;
       }
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-    geo.setIndex(idx);
+    geo.setIndex(new THREE.BufferAttribute(idx, 1));
     geo.computeVertexNormals();
     const terrain = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: groundTexture(), vertexColors: true, roughness: 1.0, metalness: 0.0, flatShading: true }));
     terrain.receiveShadow = true;
     this.scene.add(terrain);
+    this._buildGroundPlane(profile);
+  }
+
+  // A single huge quad well below the route, in the biome's ground colour. The
+  // detailed strips can't cover every case — they end eventually, and on a tight
+  // bend the far ones fold through themselves and cull — so this sits underneath
+  // as a floor. It is only ever seen deep in fog, where it reads as more ground.
+  _buildGroundPlane(profile) {
+    const b = profile.bounds;
+    const size = Math.max(b.maxX - b.minX, b.maxZ - b.minZ) + TERRAIN_FAR * 6;
+    const biome = BIOMES[profile.points[0]?.biomeId] || BIOMES.mojave;
+    const mesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(size, size),
+      new THREE.MeshBasicMaterial({ color: biome.groundLow, fog: true })
+    );
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.position.set((b.maxX + b.minX) / 2, b.minY - 18, (b.maxZ + b.minZ) / 2);
+    mesh.renderOrder = -1;
+    this.scene.add(mesh);
   }
 
   _maybeGrid(profile) {

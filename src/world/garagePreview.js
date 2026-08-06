@@ -7,6 +7,7 @@ import { buildAvatar } from './avatar.js';
 import { getState } from '../state.js';
 import { resolveQuality } from './quality.js';
 import { gradientEnvironment, applyAnisotropy, maxAnisotropyFor } from './gfx.js';
+import { circle } from './poly.js';
 
 export class GaragePreview {
   constructor(container) {
@@ -43,7 +44,7 @@ export class GaragePreview {
 
     // turntable floor
     const floor = new THREE.Mesh(
-      new THREE.CircleGeometry(2.4, 48),
+      circle(2.4, 48),
       new THREE.MeshStandardMaterial({ color: 0x1a1f2b, roughness: 0.9, metalness: 0.1 })
     );
     floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true;

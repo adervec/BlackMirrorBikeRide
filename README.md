@@ -181,6 +181,9 @@ device via the repo (`public/routes/`).
   *riders* are avatars (have many, each with its own look and visual body, optionally **snapped**
   to a player's proportions). Physics always uses the player; riders/clothing/decals never affect speed.
 - **OG-Xbox-tier graphics**: real-time shadows, PBR materials, ACES tone mapping, full-res.
+  Model smoothness is one knob — `DETAIL` in `src/world/poly.js` scales the tessellation of
+  every curved primitive in the world, the props and the avatar at once (segment counts of
+  4 or fewer are left alone: those are deliberate shapes like pitched roofs, not low detail).
 - **Detailed avatar face** (Fallout-3 energy): face shape, eyes/iris, brows, nose, mouth, facial
   hair, hair — all customizable.
 - **Vehicles**: bicycle / trike / quad / unicycle / tandem; a **parts shop** spanning real →
