@@ -924,6 +924,406 @@ const builders = {
     face.position.set(0, h / 2, 0.09); g.add(face);
     g.rotation.y = Math.random() * Math.PI * 2;
     return g;
+  },
+
+  // ---- seasonal woodland ----
+  autumntree() {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.24, 1.9, 6), M(0x5f4530));
+    trunk.position.y = 0.95; g.add(trunk);
+    const cols = [0xc4621f, 0xd89a28, 0xa8341f, 0xc48a2a];
+    for (let i = 0; i < 3; i++) {
+      const ball = new THREE.Mesh(new THREE.SphereGeometry(1.15 - i * 0.22, 7, 5),
+        M(cols[Math.floor(Math.random() * cols.length)]));
+      ball.position.set((Math.random() - 0.5) * 0.8, 2.3 + i * 0.55, (Math.random() - 0.5) * 0.8);
+      g.add(ball);
+    }
+    return g;
+  },
+  fallenleaves() {
+    const g = new THREE.Group();
+    const cols = [0xc4621f, 0xd89a28, 0x8a4a1f];
+    for (let i = 0; i < 9; i++) {
+      const l = new THREE.Mesh(new THREE.CircleGeometry(0.16 + Math.random() * 0.12, 5),
+        M(cols[Math.floor(Math.random() * cols.length)]));
+      l.rotation.set(-Math.PI / 2, 0, Math.random() * 3);
+      l.position.set((Math.random() - 0.5) * 2.4, 0.03, (Math.random() - 0.5) * 2.4);
+      g.add(l);
+    }
+    return g;
+  },
+  snowpine() {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.18, 1.1, 6), M(0x4a3a2a));
+    trunk.position.y = 0.55; g.add(trunk);
+    const needle = M(0x2a4a30);
+    const snow = M(0xf0f6fa);
+    for (let i = 0; i < 3; i++) {
+      const cone = new THREE.Mesh(new THREE.ConeGeometry(1.1 - i * 0.26, 1.3, 7), needle);
+      cone.position.y = 1.3 + i * 0.8; g.add(cone);
+      const cap = new THREE.Mesh(new THREE.ConeGeometry(1.0 - i * 0.26, 0.45, 7), snow);
+      cap.position.y = 1.75 + i * 0.8; g.add(cap);   // snow sitting on each tier
+    }
+    return g;
+  },
+  cherrytree() {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.2, 1.7, 6), M(0x5a4438));
+    trunk.position.y = 0.85; g.add(trunk);
+    const blossom = M(0xf2c2d4);
+    for (let i = 0; i < 4; i++) {
+      const b = new THREE.Mesh(new THREE.SphereGeometry(0.85 + Math.random() * 0.3, 7, 5), blossom);
+      b.scale.y = 0.75;
+      const a = (i / 4) * Math.PI * 2;
+      b.position.set(Math.cos(a) * 0.55, 2.1 + Math.random() * 0.5, Math.sin(a) * 0.55);
+      g.add(b);
+    }
+    return g;
+  },
+  olivetree() {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.38, 1.4, 6), M(0x7a6a52));
+    trunk.position.y = 0.7; trunk.rotation.z = (Math.random() - 0.5) * 0.25; g.add(trunk);
+    const leaf = M(0x8a9c70);
+    for (let i = 0; i < 3; i++) {
+      const c = new THREE.Mesh(new THREE.SphereGeometry(0.95, 7, 5), leaf);
+      c.scale.y = 0.7;
+      c.position.set((Math.random() - 0.5) * 1.1, 1.9 + Math.random() * 0.4, (Math.random() - 0.5) * 1.1);
+      g.add(c);
+    }
+    return g;
+  },
+
+  // ---- field crops ----
+  lavenderrow() {
+    const g = new THREE.Group();
+    const c = M(0x8a7ac4);
+    for (let i = 0; i < 6; i++) {
+      const b = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.5, 0.5), c);
+      b.position.set(i * 0.75 - 1.9, 0.25, 0);
+      g.add(b);
+    }
+    return g;
+  },
+  sunflower() {
+    const g = new THREE.Group();
+    const stem = M(0x4a7a30);
+    for (let i = 0; i < 5; i++) {
+      const h = 1.5 + Math.random() * 0.6;
+      const x = (Math.random() - 0.5) * 1.3, z = (Math.random() - 0.5) * 1.3;
+      const s = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.05, h, 4), stem);
+      s.position.set(x, h / 2, z); g.add(s);
+      const head = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.09, 9), M(0xe8c22a));
+      head.rotation.x = Math.PI / 2.6; head.position.set(x, h + 0.1, z); g.add(head);
+      const core = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.11, 8), M(0x6a4a20));
+      core.rotation.x = Math.PI / 2.6; core.position.set(x, h + 0.1, z + 0.04); g.add(core);
+    }
+    return g;
+  },
+  cornstalk() {
+    const g = new THREE.Group();
+    const c = M(0x7a9c3a);
+    for (let i = 0; i < 6; i++) {
+      const h = 1.9 + Math.random() * 0.6;
+      const x = (Math.random() - 0.5) * 1.2, z = (Math.random() - 0.5) * 1.2;
+      const s = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.06, h, 4), c);
+      s.position.set(x, h / 2, z); g.add(s);
+      for (let k = 0; k < 2; k++) {
+        const leaf = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.9, 3), c);
+        leaf.position.set(x, h * 0.6 + k * 0.35, z);
+        leaf.rotation.set(0.5, k * 2.2, k ? 0.8 : -0.8);
+        g.add(leaf);
+      }
+    }
+    return g;
+  },
+  paddyterrace() {
+    const g = new THREE.Group();
+    const bund = M(0x6a5a3a);
+    const water = new THREE.MeshLambertMaterial({ color: 0x8aa8b4, flatShading: true, transparent: true, opacity: 0.75 });
+    for (let i = 0; i < 3; i++) {
+      const w = 7 - i * 1.2;
+      const pad = new THREE.Mesh(new THREE.BoxGeometry(w, 0.1, 3.4), water);
+      pad.position.set(0, 0.5 + i * 0.7, i * 1.1); g.add(pad);
+      const wall = new THREE.Mesh(new THREE.BoxGeometry(w, 0.7, 0.28), bund);
+      wall.position.set(0, 0.2 + i * 0.7, i * 1.1 - 1.7); g.add(wall);
+    }
+    return g;
+  },
+
+  // ---- works & machinery ----
+  gravelpile() {
+    const r = 1.2 + Math.random() * 1.6;
+    const m = new THREE.Mesh(new THREE.ConeGeometry(r, r * 1.1, 8), M(0x9a958a));
+    m.position.y = r * 0.55; return m;
+  },
+  quarryface() {
+    const g = new THREE.Group();
+    const rock = M(0xa8a396);
+    for (let i = 0; i < 4; i++) {
+      const h = 3 + i * 2.2;
+      const step = new THREE.Mesh(new THREE.BoxGeometry(12 - i * 1.5, h, 3), rock);
+      step.position.set(0, h / 2, i * 2.6); g.add(step);
+    }
+    return g;
+  },
+  excavator() {
+    const g = new THREE.Group();
+    const yellow = M(0xd8a82a);
+    const dark = M(0x3a3f45);
+    const tracks = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.8, 1.6), dark);
+    tracks.position.y = 0.4; g.add(tracks);
+    const cab = new THREE.Mesh(new THREE.BoxGeometry(2.0, 1.5, 1.5), yellow);
+    cab.position.set(-0.4, 1.6, 0); g.add(cab);
+    const boom = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.4, 0.4), yellow);
+    boom.position.set(1.4, 2.4, 0); boom.rotation.z = -0.5; g.add(boom);
+    const arm = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.35, 0.35), yellow);
+    arm.position.set(3.0, 1.5, 0); arm.rotation.z = 0.7; g.add(arm);
+    const bucket = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.7, 1.0), dark);
+    bucket.position.set(3.7, 0.5, 0); g.add(bucket);
+    return g;
+  },
+  windturbine() {
+    const g = new THREE.Group();
+    const white = M(0xeef0f2);
+    const h = 26 + Math.random() * 16;
+    const tower = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 1.1, h, 9), white);
+    tower.position.y = h / 2; g.add(tower);
+    const nacelle = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.9, 0.9), white);
+    nacelle.position.y = h + 0.4; g.add(nacelle);
+    for (let i = 0; i < 3; i++) {
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.5, 13, 0.14), white);
+      const a = (i / 3) * Math.PI * 2 + Math.random();
+      blade.position.set(0.9, h + 0.4 + Math.sin(a) * 6.5, Math.cos(a) * 6.5);
+      blade.rotation.x = -a;
+      g.add(blade);
+    }
+    return g;
+  },
+
+  // ---- geothermal ----
+  hotspring() {
+    const g = new THREE.Group();
+    const r = 1.6 + Math.random() * 1.6;
+    const rim = new THREE.Mesh(new THREE.TorusGeometry(r, 0.28, 6, 12), M(0xc4a878));
+    rim.rotation.x = Math.PI / 2; rim.position.y = 0.14; g.add(rim);
+    const pool = new THREE.Mesh(new THREE.CircleGeometry(r, 14),
+      new THREE.MeshLambertMaterial({ color: 0x4ac4d0, flatShading: true, transparent: true, opacity: 0.85 }));
+    pool.rotation.x = -Math.PI / 2; pool.position.y = 0.16; g.add(pool);
+    const steam = new THREE.MeshLambertMaterial({ color: 0xe4e8ea, flatShading: true, transparent: true, opacity: 0.3 });
+    for (let i = 0; i < 3; i++) {
+      const p = new THREE.Mesh(new THREE.SphereGeometry(0.5 + i * 0.2, 6, 5), steam);
+      p.position.set((Math.random() - 0.5) * 0.8, 0.9 + i * 0.8, (Math.random() - 0.5) * 0.8);
+      g.add(p);
+    }
+    return g;
+  },
+  mudpot() {
+    const g = new THREE.Group();
+    const mud = M(0x6a5a48);
+    const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 0.6, 0.35, 9), mud);
+    bowl.position.y = 0.18; g.add(bowl);
+    for (let i = 0; i < 3; i++) {
+      const b = new THREE.Mesh(new THREE.SphereGeometry(0.18 + Math.random() * 0.14, 6, 5), M(0x7d6a52));
+      b.position.set((Math.random() - 0.5) * 0.7, 0.4, (Math.random() - 0.5) * 0.7);
+      g.add(b);
+    }
+    return g;
+  },
+
+  // ---- fjord ----
+  fjordcliff() {
+    const g = new THREE.Group();
+    const h = 26 + Math.random() * 24;
+    const rock = M(0x6a6f6a);
+    const face = new THREE.Mesh(new THREE.BoxGeometry(16, h, 9), rock);
+    face.position.y = h / 2; face.rotation.y = (Math.random() - 0.5) * 0.4; g.add(face);
+    const cap = new THREE.Mesh(new THREE.BoxGeometry(15, 1.2, 8), M(0x4f6b3c));
+    cap.position.y = h; cap.rotation.y = face.rotation.y; g.add(cap);
+    return g;
+  },
+  waterfall() {
+    const g = new THREE.Group();
+    const h = 14 + Math.random() * 14;
+    const water = new THREE.MeshLambertMaterial({ color: 0xdcecf4, flatShading: true, transparent: true, opacity: 0.72 });
+    const fall = new THREE.Mesh(new THREE.BoxGeometry(1.6, h, 0.35), water);
+    fall.position.y = h / 2; g.add(fall);
+    const pool = new THREE.Mesh(new THREE.CircleGeometry(2.2, 12), water);
+    pool.rotation.x = -Math.PI / 2; pool.position.y = 0.06; g.add(pool);
+    return g;
+  },
+  boathouse() {
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(3.6, 2.4, 4.4), M(0xa8422f));
+    body.position.y = 1.2; g.add(body);
+    const roof = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 2.3, 4.6, 3), M(0x5a4a3a));
+    roof.rotation.set(Math.PI / 2, Math.PI, 0); roof.position.y = 3.0; g.add(roof);
+    const jetty = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.14, 3.4), M(0x8a7050));
+    jetty.position.set(0, 0.5, 3.8); g.add(jetty);
+    return g;
+  },
+
+  // ---- antiquity ----
+  column() {
+    const g = new THREE.Group();
+    const h = 3 + Math.random() * 3.5;
+    const stone = M(0xd8d0b8);
+    const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.4, h, 10), stone);
+    shaft.position.y = h / 2 + 0.2; g.add(shaft);
+    const base = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.4, 1.1), stone);
+    base.position.y = 0.2; g.add(base);
+    if (Math.random() < 0.6) {                 // some still carry a capital
+      const cap = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.35, 1.0), stone);
+      cap.position.y = h + 0.55; g.add(cap);
+    }
+    g.rotation.z = (Math.random() - 0.5) * 0.1;
+    return g;
+  },
+  rubble() {
+    const g = new THREE.Group();
+    const stone = M(0xc0b89c);
+    for (let i = 0; i < 6; i++) {
+      const s = 0.25 + Math.random() * 0.5;
+      const b = new THREE.Mesh(new THREE.BoxGeometry(s, s * 0.7, s * 0.9), stone);
+      b.position.set((Math.random() - 0.5) * 2, s * 0.35, (Math.random() - 0.5) * 2);
+      b.rotation.set(Math.random() * 0.4, Math.random() * 3, Math.random() * 0.4);
+      g.add(b);
+    }
+    return g;
+  },
+  brokenarch() {
+    const g = new THREE.Group();
+    const stone = M(0xd0c8b0);
+    for (const dx of [-1.8, 1.8]) {
+      const h = dx < 0 ? 4.5 : 3.2;           // one side collapsed lower
+      const p = new THREE.Mesh(new THREE.BoxGeometry(0.9, h, 0.9), stone);
+      p.position.set(dx, h / 2, 0); g.add(p);
+    }
+    const span = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.42, 5, 9, Math.PI * 0.62), stone);
+    span.position.set(-0.3, 4.5, 0); span.rotation.z = 0.4; g.add(span);
+    return g;
+  },
+  torii() {
+    const g = new THREE.Group();
+    const red = M(0xc0392b);
+    for (const dx of [-1.5, 1.5]) {
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 4.2, 8), red);
+      p.position.set(dx, 2.1, 0); g.add(p);
+    }
+    const lintel = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.3, 0.4), red);
+    lintel.position.y = 3.6; g.add(lintel);
+    const top = new THREE.Mesh(new THREE.BoxGeometry(5.0, 0.34, 0.5), red);
+    top.position.y = 4.25; g.add(top);
+    return g;
+  },
+  pagoda() {
+    const g = new THREE.Group();
+    const wall = M(0xd8ccb4);
+    const roof = M(0x8a3a30);
+    let y = 0;
+    for (let i = 0; i < 4; i++) {
+      const w = 3.4 - i * 0.6;
+      const body = new THREE.Mesh(new THREE.BoxGeometry(w, 1.6, w), wall);
+      body.position.y = y + 0.8; g.add(body);
+      const r = new THREE.Mesh(new THREE.ConeGeometry(w * 0.95, 0.8, 4), roof);
+      r.position.y = y + 2.0; r.rotation.y = Math.PI / 4; g.add(r);
+      y += 2.2;
+    }
+    return g;
+  },
+
+  // ---- airfield ----
+  hangar() {
+    const g = new THREE.Group();
+    const shell = M(0xa8adb2);
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(6, 6, 14, 12, 1, false, 0, Math.PI), shell);
+    body.rotation.z = Math.PI / 2; body.rotation.y = Math.PI / 2; g.add(body);
+    const back = new THREE.Mesh(new THREE.CircleGeometry(6, 12, 0, Math.PI), M(0x8a9096));
+    back.position.z = -7; back.rotation.z = 0; g.add(back);
+    return g;
+  },
+  windsock() {
+    const g = new THREE.Group();
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.09, 4.2, 6), M(0x9aa0a6));
+    pole.position.y = 2.1; g.add(pole);
+    const cone = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.22, 1.8, 8, 1, true), M(0xe86a1f));
+    cone.rotation.z = Math.PI / 2; cone.position.set(1.0, 4.0, 0); g.add(cone);
+    return g;
+  },
+  runwaylight() {
+    const g = new THREE.Group();
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.5, 5), M(0x6a6f75));
+    post.position.y = 0.25; g.add(post);
+    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.13, 6, 5),
+      new THREE.MeshBasicMaterial({ color: Math.random() < 0.5 ? 0x4cc2ff : 0xffd24a }));
+    lamp.position.y = 0.55; g.add(lamp);
+    return g;
+  },
+
+  // ---- bone, paper, chess ----
+  femur() {
+    const g = new THREE.Group();
+    const bone = M(0xe8dcc4);
+    const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 1.5, 6), bone);
+    shaft.rotation.z = Math.PI / 2; shaft.position.y = 0.14; g.add(shaft);
+    for (const dx of [-0.78, 0.78]) {
+      const knob = new THREE.Mesh(new THREE.SphereGeometry(0.2, 6, 5), bone);
+      knob.position.set(dx, 0.16, 0); g.add(knob);
+    }
+    g.rotation.y = Math.random() * Math.PI * 2;
+    return g;
+  },
+  papercrane() {
+    const g = new THREE.Group();
+    const paper = new THREE.MeshLambertMaterial({ color: 0xf4f0e8, flatShading: true, side: THREE.DoubleSide });
+    const body = new THREE.Mesh(new THREE.ConeGeometry(0.4, 0.9, 4), paper);
+    body.rotation.z = Math.PI / 2; body.position.y = 0.5; g.add(body);
+    for (const s of [1, -1]) {
+      const wing = new THREE.Mesh(new THREE.ConeGeometry(0.34, 1.2, 3), paper);
+      wing.position.set(0, 0.72, s * 0.32);
+      wing.rotation.set(s * 1.1, 0, Math.PI / 2.2);
+      g.add(wing);
+    }
+    const neck = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.7, 4), paper);
+    neck.position.set(0.55, 0.85, 0); neck.rotation.z = -0.9; g.add(neck);
+    return g;
+  },
+  paperfold() {
+    const g = new THREE.Group();
+    const paper = new THREE.MeshLambertMaterial({ color: 0xeae4d8, flatShading: true, side: THREE.DoubleSide });
+    for (let i = 0; i < 3; i++) {
+      const p = new THREE.Mesh(new THREE.ConeGeometry(0.45 + Math.random() * 0.3, 0.9, 4), paper);
+      p.position.set((Math.random() - 0.5) * 1.2, 0.45, (Math.random() - 0.5) * 1.2);
+      p.rotation.set((Math.random() - 0.5) * 0.5, Math.random() * 3, (Math.random() - 0.5) * 0.5);
+      g.add(p);
+    }
+    return g;
+  },
+  chesspawn() {
+    const g = new THREE.Group();
+    const mat = M(Math.random() < 0.5 ? 0xf0ece4 : 0x24242a);
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.75, 0.3, 12), mat);
+    base.position.y = 0.15; g.add(base);
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.45, 1.3, 12), mat);
+    body.position.y = 1.0; g.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.36, 10, 7), mat);
+    head.position.y = 1.9; g.add(head);
+    return g;
+  },
+  chessrook() {
+    const g = new THREE.Group();
+    const mat = M(Math.random() < 0.5 ? 0xf0ece4 : 0x24242a);
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.9, 0.35, 12), mat);
+    base.position.y = 0.18; g.add(base);
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.7, 1.9, 12), mat);
+    body.position.y = 1.3; g.add(body);
+    for (let i = 0; i < 5; i++) {              // crenellations
+      const a = (i / 5) * Math.PI * 2;
+      const c = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.4, 0.24), mat);
+      c.position.set(Math.cos(a) * 0.46, 2.45, Math.sin(a) * 0.46);
+      g.add(c);
+    }
+    return g;
   }
 };
 

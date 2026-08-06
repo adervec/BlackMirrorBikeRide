@@ -86,7 +86,8 @@ export const BIOMES = {
     artifacts: [
       { type: 'building',   density: 2.2 },
       { type: 'streetlamp', density: 1.0 },
-      { type: 'roadsign',   density: 0.3 }
+      { type: 'roadsign',   density: 0.3 },
+      { type: 'bollard',    density: 0.6 }
     ]
   },
   lakeside: {
@@ -99,7 +100,8 @@ export const BIOMES = {
     artifacts: [
       { type: 'reeds',     density: 2.5 },
       { type: 'deciduous', density: 0.8 },
-      { type: 'rock',      density: 0.6 }
+      { type: 'rock',      density: 0.6 },
+      { type: 'boathouse', density: 0.25 }
     ]
   },
   coastal: {
@@ -439,7 +441,257 @@ export const BIOMES = {
       { type: 'boulder',    density: 0.6 }
     ]
   },
+  autumnforest: {
+    label: 'Autumn Forest',
+    ground: 0x8a6a3a,
+    groundLow: 0x6a4f2a,
+    fog: 0xdcc09a,
+    fogDensity: 0.0032,
+    defaultSurface: 'asphalt',
+    artifacts: [
+      { type: 'autumntree',   density: 3.0 },
+      { type: 'fallenleaves', density: 2.4 },
+      { type: 'deadtree',     density: 0.6 },
+      { type: 'boulder',      density: 0.5 }
+    ]
+  },
+  snowforest: {
+    label: 'Winter Forest',
+    ground: 0xdfe8ee,
+    groundLow: 0xb8c6d0,
+    fog: 0xdde8f0,
+    fogDensity: 0.0034,
+    defaultSurface: 'hardpack',
+    artifacts: [
+      { type: 'snowpine',  density: 3.2 },
+      { type: 'snowdrift', density: 1.6 },
+      { type: 'deadtree',  density: 0.5 },
+      { type: 'boulder',   density: 0.4 }
+    ]
+  },
+  sakura: {
+    label: 'Cherry Blossom',
+    ground: 0x9aae70,
+    groundLow: 0x7a8e52,
+    fog: 0xf0dce4,
+    fogDensity: 0.0026,
+    defaultSurface: 'smooth-asphalt',
+    artifacts: [
+      { type: 'cherrytree', density: 2.6 },
+      { type: 'lantern',    density: 0.8 },
+      { type: 'hedge',      density: 0.8 },
+      { type: 'boulder',    density: 0.3 }
+    ]
+  },
+  lavender: {
+    label: 'Lavender Fields',
+    ground: 0x9a9a5e,
+    groundLow: 0x7c7c46,
+    fog: 0xe4dcec,
+    fogDensity: 0.0020,
+    defaultSurface: 'asphalt',
+    artifacts: [
+      { type: 'lavenderrow', density: 3.0 },
+      { type: 'cypress',     density: 0.6 },
+      { type: 'villa',       density: 0.1 },
+      { type: 'stonewall',   density: 0.5 }
+    ]
+  },
+  sunflower: {
+    label: 'Sunflower Fields',
+    ground: 0x9caa50,
+    groundLow: 0x7c8a3c,
+    fog: 0xeee4b0,
+    fogDensity: 0.0022,
+    defaultSurface: 'asphalt',
+    artifacts: [
+      { type: 'sunflower', density: 3.4 },
+      { type: 'fence',     density: 0.8 },
+      { type: 'haybale',   density: 0.3 },
+      { type: 'grasstuft', density: 0.8 }
+    ]
+  },
+  cornfield: {
+    label: 'Cornfield',
+    ground: 0xa8a054,
+    groundLow: 0x86803e,
+    fog: 0xe2dcb4,
+    fogDensity: 0.0024,
+    defaultSurface: 'hardpack',
+    artifacts: [
+      { type: 'cornstalk', density: 3.6 },
+      { type: 'fence',     density: 0.8 },
+      { type: 'grainsilo', density: 0.12 },
+      { type: 'windpump',  density: 0.2 }
+    ]
+  },
+  olivegrove: {
+    label: 'Olive Grove',
+    ground: 0xa8a874,
+    groundLow: 0x86865a,
+    fog: 0xe4e0c4,
+    fogDensity: 0.0022,
+    defaultSurface: 'hardpack',
+    artifacts: [
+      { type: 'olivetree', density: 2.4 },
+      { type: 'stonewall', density: 1.0 },
+      { type: 'grasstuft', density: 1.2 },
+      { type: 'boulder',   density: 0.5 }
+    ]
+  },
+  terraces: {
+    label: 'Rice Terraces',
+    ground: 0x7aa054,
+    groundLow: 0x5c8040,
+    fog: 0xc8dcc0,
+    fogDensity: 0.0030,
+    defaultSurface: 'hardpack',
+    artifacts: [
+      { type: 'paddyterrace', density: 1.4 },
+      { type: 'reeds',        density: 2.0 },
+      { type: 'palm',         density: 0.5 },
+      { type: 'boulder',      density: 0.4 }
+    ]
+  },
+  quarry: {
+    label: 'Quarry',
+    ground: 0x9a958a,
+    groundLow: 0x76726a,
+    fog: 0xcfcac0,
+    fogDensity: 0.0030,
+    defaultSurface: 'gravel',
+    artifacts: [
+      { type: 'gravelpile', density: 1.4 },
+      { type: 'quarryface', density: 0.5 },
+      { type: 'excavator',  density: 0.25 },
+      { type: 'container',  density: 0.4 }
+    ]
+  },
+  windfarm: {
+    label: 'Wind Farm',
+    ground: 0x8aa858,
+    groundLow: 0x6c8a42,
+    fog: 0xdce8e4,
+    fogDensity: 0.0020,
+    defaultSurface: 'asphalt',
+    artifacts: [
+      { type: 'windturbine', density: 0.4 },
+      { type: 'grasstuft',   density: 2.4 },
+      { type: 'fence',       density: 0.8 },
+      { type: 'wheat',       density: 1.0 }
+    ]
+  },
+  geothermal: {
+    label: 'Geothermal',
+    ground: 0x8a7e6a,
+    groundLow: 0x685e4e,
+    fog: 0xd0c4b4,
+    fogDensity: 0.0036,
+    defaultSurface: 'gravel',
+    artifacts: [
+      { type: 'hotspring', density: 0.9 },
+      { type: 'mudpot',    density: 1.2 },
+      { type: 'steamvent', density: 1.0 },
+      { type: 'lavarock',  density: 1.0 }
+    ]
+  },
+  fjord: {
+    label: 'Fjord',
+    ground: 0x5a6b52,
+    groundLow: 0x3f4d3a,
+    fog: 0xc0d0d8,
+    fogDensity: 0.0026,
+    defaultSurface: 'asphalt',
+    artifacts: [
+      { type: 'fjordcliff', density: 0.45 },
+      { type: 'pine',       density: 1.8 },
+      { type: 'waterfall',  density: 0.3 },
+      { type: 'boathouse',  density: 0.3 }
+    ]
+  },
+  ruins: {
+    label: 'Ancient Ruins',
+    ground: 0xa8a084,
+    groundLow: 0x847c64,
+    fog: 0xdcd4bc,
+    fogDensity: 0.0024,
+    defaultSurface: 'cobbles',
+    artifacts: [
+      { type: 'column',     density: 1.6 },
+      { type: 'rubble',     density: 2.0 },
+      { type: 'brokenarch', density: 0.4 },
+      { type: 'grasstuft',  density: 1.2 }
+    ]
+  },
+  temple: {
+    label: 'Temple Road',
+    ground: 0x7a9060,
+    groundLow: 0x5c7048,
+    fog: 0xd4dcc4,
+    fogDensity: 0.0026,
+    defaultSurface: 'cobbles',
+    artifacts: [
+      { type: 'torii',      density: 0.5 },
+      { type: 'pagoda',     density: 0.3 },
+      { type: 'lantern',    density: 1.6 },
+      { type: 'cherrytree', density: 1.0 }
+    ]
+  },
+  airfield: {
+    label: 'Airfield',
+    ground: 0x8a9464,
+    groundLow: 0x6c744c,
+    fog: 0xd8dcd4,
+    fogDensity: 0.0022,
+    defaultSurface: 'concrete',
+    artifacts: [
+      { type: 'runwaylight', density: 2.2 },
+      { type: 'windsock',    density: 0.4 },
+      { type: 'hangar',      density: 0.25 },
+      { type: 'fence',       density: 1.0 }
+    ]
+  },
   // ---- the existentially bizarre end, to match the stranger skyboxes ----
+  bonefield: {
+    label: 'Bone Field',
+    ground: 0xa89c84,
+    groundLow: 0x847a64,
+    fog: 0xd8ccb4,
+    fogDensity: 0.0030,
+    defaultSurface: 'hardpack',
+    artifacts: [
+      { type: 'femur',   density: 2.2 },
+      { type: 'skull',   density: 1.4 },
+      { type: 'ribarch', density: 0.5 },
+      { type: 'boulder', density: 0.4 }
+    ]
+  },
+  origami: {
+    label: 'Origami',
+    ground: 0xe8e4dc,
+    groundLow: 0xc8c4bc,
+    fog: 0xf0ece4,
+    fogDensity: 0.0022,
+    defaultSurface: 'wood-boards',
+    artifacts: [
+      { type: 'papercrane', density: 1.8 },
+      { type: 'paperfold',  density: 2.0 },
+      { type: 'lantern',    density: 0.5 }
+    ]
+  },
+  chessboard: {
+    label: 'Chessboard',
+    ground: 0xdcd8d0,
+    groundLow: 0x3a3a3a,
+    fog: 0xc8c8cc,
+    fogDensity: 0.0024,
+    defaultSurface: 'smooth-asphalt',
+    artifacts: [
+      { type: 'chesspawn', density: 1.8 },
+      { type: 'chessrook', density: 0.8 },
+      { type: 'monolith',  density: 0.3 }
+    ]
+  },
   mushroom: {
     label: 'Mushroom Wood',
     ground: 0x4a4438,
@@ -477,7 +729,8 @@ export const BIOMES = {
     artifacts: [
       { type: 'serverrack', density: 2.2 },
       { type: 'cablecoil',  density: 1.2 },
-      { type: 'pylon',      density: 0.5 }
+      { type: 'pylon',      density: 0.5 },
+      { type: 'crt',        density: 0.8 }
     ]
   },
   staticfield: {
@@ -488,9 +741,10 @@ export const BIOMES = {
     fogDensity: 0.0034,
     defaultSurface: 'chipseal',
     artifacts: [
-      { type: 'crt',      density: 2.0 },
-      { type: 'antenna',  density: 0.8 },
-      { type: 'deadtree', density: 0.5 }
+      { type: 'crt',        density: 2.0 },
+      { type: 'antenna',    density: 0.8 },
+      { type: 'deadtree',   density: 0.5 },
+      { type: 'serverrack', density: 0.4 }
     ]
   },
   mirrorfield: {
@@ -528,9 +782,10 @@ export const BIOMES = {
     fogDensity: 0.0026,
     defaultSurface: 'smooth-asphalt',
     artifacts: [
-      { type: 'monolith',  density: 0.8 },
-      { type: 'floatcube', density: 0.6 },
-      { type: 'obelisk',   density: 0.5 }
+      { type: 'monolith',    density: 0.8 },
+      { type: 'floatcube',   density: 0.6 },
+      { type: 'obelisk',     density: 0.5 },
+      { type: 'blackmirror', density: 0.4 }
     ]
   },
   flesh: {
@@ -543,7 +798,8 @@ export const BIOMES = {
     artifacts: [
       { type: 'fleshpillar', density: 1.2 },
       { type: 'eyestalk',    density: 0.9 },
-      { type: 'ribarch',     density: 0.3 }
+      { type: 'ribarch',     density: 0.3 },
+      { type: 'femur',       density: 0.6 }
     ]
   },
   // Neutral prop-free ground: the default for plain (un-enriched) GPX imports.

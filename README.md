@@ -160,9 +160,9 @@ live in `public/routes/` and are fetched & merged into every device on app load
 ✅ BLE power (Cycling Power/FTMS) + optional heart rate · ✅ biometric profile affecting
 performance · ✅ bike garage · ✅ avatar + bike customization · ✅ 3D low-poly world +
 top-down map icon · ✅ virtual routes (material/incline/length segments) · ✅ skyboxes
-(normal → existentially bizarre) · ✅ **40 biomes / 83 roadside artifact types**,
-from Mojave/redwood/karst/harbour to the outright bizarre (Void, Flesh, Clockwork,
-Static, Black Mirrors) ·
+(normal → existentially bizarre) · ✅ **58 biomes / 114 roadside artifact types**,
+from Mojave/redwood/fjord/rice-terraces to the outright bizarre (Void, Flesh,
+Clockwork, Static, Black Mirrors, Origami, Chessboard) ·
 ✅ matching simplified overhead map · ✅ real routes from GPX files (distance / turns /
 gradients straight from the track, Claude-enriched biomes & landmarks) · ✅ full stats
 HUD · ✅ show/hide/reorder stats · ✅ units (metric/imperial/per-measurement/per-reading +

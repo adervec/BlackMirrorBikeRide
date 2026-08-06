@@ -35,20 +35,26 @@ ride actually goes and dress the route accordingly.
    - `segments[].biome`: assign **contiguous runs** matching the real terrain.
      Live list in `src/routes/biomes.js` — read it, don't trust this summary.
      Roughly:
-     - farmland: `farmland`, `prairie`, `orchard`, `vineyard`
-     - wooded: `forest`, `redwood`, `jungle`, `bamboo`, `karst`
-     - built-up: `urban`, `suburban`, `oldtown`, `industrial`, `harbour`, `servers`
-     - water: `lakeside`, `coastal`, `swamp`, `mangrove`
+     - farm & crop: `farmland`, `prairie`, `cornfield`, `orchard`, `vineyard`,
+       `lavender`, `sunflower`, `olivegrove`, `terraces`
+     - wooded: `forest`, `redwood`, `autumnforest`, `snowforest`, `sakura`,
+       `jungle`, `bamboo`, `karst`
+     - built-up: `urban`, `suburban`, `oldtown`, `industrial`, `harbour`,
+       `quarry`, `airfield`, `windfarm`, `servers`
+     - water: `lakeside`, `coastal`, `fjord`, `swamp`, `mangrove`
      - open/arid: `mojave`, `canyon`, `badlands`, `dunes`, `saltflat`, `oasis`,
        `savanna`, `moorland`
      - cold/high: `alpine`, `tundra`, `glacier`
-     - other: `volcanic`
+     - other: `volcanic`, `geothermal`, `ruins`, `temple`
      - surreal (only if the user wants it): `neongrid`, `graveyard`, `void`,
-       `flesh`, `mushroom`, `clockwork`, `staticfield`, `mirrorfield`
+       `flesh`, `mushroom`, `clockwork`, `staticfield`, `mirrorfield`,
+       `bonefield`, `origami`, `chessboard`
      - `satellite` is the neutral, prop-free fallback.
 
      Pick the closest real match — a Dutch polder is `farmland`, a Cornish
-     clifftop is `coastal`, a Utah canyon is `canyon` or `badlands`. Don't
+     clifftop is `coastal`, a Utah canyon is `canyon` or `badlands`, a Norwegian
+     shore road is `fjord`. Seasonal ones (`autumnforest`, `snowforest`,
+     `sakura`) are fair game when the ride's date or the user says so. Don't
      alternate biome every segment; change it where the landscape changes.
    - `segments[].surface`: ids from `src/physics/surfaces.js` where you know
      better than the default (e.g. `gravel` for a rail trail, `cobbles`).
