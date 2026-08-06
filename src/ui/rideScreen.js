@@ -109,7 +109,7 @@ export function renderRide(ctx) {
           btn('⏪ -200m', () => session.skip(-200), 'btn small ghost'),
           btn('+200m ⏩', () => session.skip(200), 'btn small ghost'),
           btn('↺ Restart', () => { session.seekFraction(0); session.previewAtEnd = false; }, 'btn small ghost'),
-          btn('‹ Exit', () => ctx.router.go('routes'), 'btn small ghost')
+          btn('‹ Exit', () => leaveRide(), 'btn small ghost')
         ])
       ]));
     } else if (mode === 'replay') {
@@ -121,14 +121,14 @@ export function renderRide(ctx) {
         h(3, `Replay · ${new Date(replayActivity.date).toLocaleDateString()}`),
         div({ class: 'pc-row' }, [el('label', {}, 'Speed'), mult, multLbl]),
         div({ class: 'pc-row' }, [el('label', {}, 'Scrub'), scrub]),
-        div({ class: 'row' }, [pauseBtn, btn('‹ Exit', () => ctx.router.go('routes'), 'btn small ghost')])
+        div({ class: 'row' }, [pauseBtn, btn('‹ Exit', () => leaveRide(), 'btn small ghost')])
       ]));
     } else {
       pauseBtn = btn('⏸ Pause', () => { const p = session.togglePause(); pauseBtn.textContent = p ? '▶ Resume' : '⏸ Pause'; });
       controlsRegion.append(div({ class: 'ride-controls' }, [
         pauseBtn,
         btn('🏁 Finish', () => { if (session) { session.stop(); showSummary(session.summary()); } }, 'btn ghost'),
-        btn('‹ Exit', () => ctx.router.go('routes'), 'btn ghost')
+        btn('‹ Exit', () => leaveRide(), 'btn ghost')
       ]));
     }
   }
@@ -184,13 +184,36 @@ export function renderRide(ctx) {
     }
   }
 
+  // ---------- don't lose a ride by accident ----------
+  // Leaving through the app is already safe: cleanup calls session.stop(), which
+  // records the activity. Closing or reloading the tab never runs cleanup at
+  // all, though, so the whole ride would vanish — hence the unload guards.
+  const rideInProgress = () => mode === 'ride' && session && !session.finished && session.distance >= 30;
+
+  const onBeforeUnload = (e) => {
+    if (!rideInProgress()) return;
+    e.preventDefault();
+    e.returnValue = ''; // some browsers still require this to show the prompt
+  };
+  // Fires when the page really is going away (including on mobile). Persist the
+  // ride here so that leaving anyway still lands it in History. `persisted`
+  // means it's only going into the back/forward cache and may well come back,
+  // so leave the session running in that case.
+  const onPageHide = (e) => { if (!e.persisted && rideInProgress()) session.stop(); };
+
+  // Confirm before an in-app exit too — Escape is easy to hit by accident.
+  function leaveRide(to = 'routes', params = {}) {
+    if (rideInProgress() && !confirm('End this ride now? Everything so far is saved to History.')) return;
+    ctx.router.go(to, params);
+  }
+
   // ---------- keyboard ----------
   const keyHandler = (e) => {
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
     if (!world || !session) return;
     if (e.key === 'c' || e.key === 'C') { const m = world.cycleCamera(1); renderCamPanel(); flashBanner('Camera: ' + CAMERA_LABELS[m], 1200); }
     else if (e.key === ' ') { e.preventDefault(); const p = session.togglePause(); if (pauseBtn) pauseBtn.textContent = p ? '▶ Resume' : '⏸ Pause'; }
-    else if (e.key === 'Escape') ctx.router.go('routes');
+    else if (e.key === 'Escape') leaveRide();
     else if (e.key >= '1' && e.key <= '5') { const m = CAMERA_MODES[+e.key - 1]; if (m) { world.setCameraMode(m); renderCamPanel(); } }
     else if (mode === 'preview' && e.key === 'ArrowLeft') session.skip(-200);
     else if (mode === 'preview' && e.key === 'ArrowRight') session.skip(200);
@@ -228,9 +251,13 @@ export function renderRide(ctx) {
 
   const unsub = sensors.onStatus(() => { if (mode === 'ride') renderSensorPanel(); });
   window.addEventListener('keydown', keyHandler);
+  window.addEventListener('beforeunload', onBeforeUnload);
+  window.addEventListener('pagehide', onPageHide);
 
   ctx.onCleanup(() => {
     window.removeEventListener('keydown', keyHandler);
+    window.removeEventListener('beforeunload', onBeforeUnload);
+    window.removeEventListener('pagehide', onPageHide);
     unsub();
     if (session) session.stop();
     sensors.stopSimulator();

@@ -80,14 +80,28 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
 .menu-sub { color: var(--dim); font-size: .85rem; }
 .menu-footer { color: var(--dim); font-size: .85rem; border-top: 1px solid var(--line); padding-top: .8rem; }
 
+/* ---- data tables (routes, history, garage lists) ---- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); margin-bottom: 1rem; }
+.data-table { width: 100%; border-collapse: collapse; font-size: .9rem; white-space: nowrap; }
+.data-table th, .data-table td { padding: .55rem .7rem; text-align: left; border-bottom: 1px solid var(--line); }
+.data-table thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--card2); color: var(--dim);
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--card2); }
+.data-table td.num, .data-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.data-table .t-name { font-weight: 700; white-space: normal; min-width: 11rem; display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; }
+.data-table .t-sub { color: var(--dim); font-size: .78rem; font-weight: 400; white-space: normal; flex-basis: 100%; }
+.data-table .t-actions { display: flex; gap: .3rem; justify-content: flex-end; }
+.data-table tr.is-pb { box-shadow: inset 3px 0 0 #ffd24a; }
+.table-note { color: var(--dim); font-size: .8rem; margin: -.5rem 0 1rem; }
+
 /* ---- routes ---- */
-.route-list { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1rem; }
-.route-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem; }
-.route-head { display: flex; align-items: center; gap: .7rem; }
-.badge { font-size: .68rem; text-transform: uppercase; padding: .15rem .5rem; border-radius: 6px; font-weight: 700; }
+.badge { font-size: .68rem; text-transform: uppercase; padding: .15rem .5rem; border-radius: 6px; font-weight: 700; white-space: nowrap; }
 .badge-virtual { background: #143; color: #9f9; }
 .badge-real { background: #134; color: #9cf; }
-.route-meta { color: var(--dim); font-size: .85rem; margin: .2rem 0 .3rem; }
 .lock-note { color: var(--warn); font-size: .82rem; align-self: center; padding: 0 .4rem; }
 .empty { color: var(--dim); padding: 2rem; text-align: center; }
 
@@ -176,17 +190,7 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
 .scrub { width: 100%; }
 
 /* history */
-.history-list { display: flex; flex-direction: column; gap: .8rem; }
-.history-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem; }
-.history-card.pb { border-color: #ffd24a; box-shadow: 0 0 0 1px rgba(255,210,74,.25) inset; }
-.history-head { display: flex; align-items: center; gap: .6rem; }
 .badge-pb { background: #4a3a10; color: #ffd24a; font-size: .68rem; padding: .15rem .5rem; border-radius: 6px; font-weight: 700; }
-.history-meta { color: var(--dim); font-size: .82rem; margin: .2rem 0 .5rem; }
-.history-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem; margin-bottom: .5rem; }
-@media (max-width: 700px) { .history-stats { grid-template-columns: repeat(3, 1fr); } }
-.history-stat { background: var(--card2); border-radius: 9px; padding: .5rem .3rem; text-align: center; }
-.hs-val { font-weight: 800; font-size: 1.02rem; font-variant-numeric: tabular-nums; }
-.hs-lab { color: var(--dim); font-size: .66rem; text-transform: uppercase; margin-top: .2rem; }
 
 /* garage */
 .garage-layout { display: grid; grid-template-columns: 420px 1fr; gap: 1.1rem; align-items: start; }
@@ -229,6 +233,10 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
   .cam-buttons { flex-direction: row; flex-wrap: wrap; }
   .ride-bottom { flex-wrap: wrap; }
   .preview-controls, .replay-controls { min-width: 0; width: 100%; }
+  .data-table { font-size: .82rem; }
+  .data-table th, .data-table td { padding: .45rem .5rem; }
+  .data-table .t-name { min-width: 8.5rem; }
+  .screen { padding: 1rem .7rem 3rem; }
   .sky-editor { grid-template-columns: 1fr; }
   .seg-row { grid-template-columns: 28px repeat(2, 1fr); }
   .garage-preview-col { position: static; }

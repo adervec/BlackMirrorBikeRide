@@ -198,7 +198,13 @@ device via the repo (`public/routes/`).
   grinder, a wooden velodrome, a desert time trial, and the strange ones — the Void Run,
   Flesh Corridor, Arcade Grid, Clockwork Circuit. They're generated from a spec table by
   `node tools/make-routes.mjs`; edit a spec and re-run rather than hand-editing 100 segments.
-- The route list **filters by name or terrain** and shows distance, total climb and biomes.
+- The route list and ride history are **sortable-width data tables** — aligned distance,
+  climb, PB and lap columns rather than stacked cards — and the route list **filters by
+  name or terrain**. Wide tables scroll inside their own frame so a phone page never
+  scrolls sideways.
+- **An in-progress ride can't be lost by accident**: leaving via Escape or *Exit* asks
+  first, closing or reloading the tab raises the browser's own warning, and if you leave
+  anyway the ride is still written to History on the way out.
 - **Import / export** routes as `.json`, **clone** routes, per-route **activity counts**, and
   **edit-locking** once a route has activities (clone to edit) — protects PBs/replays.
 - The **upcoming end behaviour** (finish 🏁 / teleport ⊚ / U-turn ⟲) is marked on the overhead map.

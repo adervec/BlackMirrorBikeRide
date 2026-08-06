@@ -50,6 +50,19 @@ export function colorInput(value, onChange) {
   return el('input', { type: 'color', value, oninput: (e) => onChange(e.target.value) });
 }
 
+// A scannable data table. `cols` is [{ label, align?, cell(row) }]; anything a
+// cell returns (node, string, number) is placed as-is. Wrapped in a scroller so
+// a wide table never forces the page itself to scroll sideways on a phone.
+export function table(cols, rows, { empty = 'Nothing here yet.' } = {}) {
+  if (!rows.length) return div({ class: 'empty' }, empty);
+  const head = el('tr', {}, cols.map((c) => el('th', { class: c.align === 'right' ? 'num' : null }, c.label)));
+  const body = rows.map((r) => el('tr', { class: r._rowClass || null },
+    cols.map((c) => el('td', { class: c.align === 'right' ? 'num' : null }, c.cell(r)))));
+  return div({ class: 'table-wrap' }, [
+    el('table', { class: 'data-table' }, [el('thead', {}, [head]), el('tbody', {}, body)])
+  ]);
+}
+
 // Standard screen scaffold with a title bar + back button.
 export function screen(title, ctx, bodyChildren, { backTo = 'menu' } = {}) {
   const root = div({ class: 'screen' });
