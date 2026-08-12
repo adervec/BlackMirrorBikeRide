@@ -28,7 +28,8 @@ export function renderMenu(ctx) {
     grid,
     div({ class: 'menu-footer' }, [
       div({}, `Player: ${player.name} · ${player.weightKg} kg · FTP ${player.ftpW} W (${ftpWkg(player).toFixed(2)} W/kg)`),
-      div({ class: 'dim' }, `${s.routes.length} routes · ${s.riders.length} rider(s) · ${s.garage.bikes.length} bike(s)`)
+      div({ class: 'dim' }, `${s.routes.length} routes · ${s.riders.length} rider(s) · ${s.garage.bikes.length} bike(s)`),
+      div({}, el('a', { href: 'https://adervec.github.io', target: '_blank', rel: 'noopener noreferrer' }, 'More apps by this maker — adervec.github.io'))
     ])
   ]);
   return root;
