@@ -51,5 +51,18 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   });
 }
 
+// Tell the maker's app portal (adervec.github.io — same origin, so it shares this
+// localStorage) that the app is installed here. Installed launches only; a plain
+// browser tab never registers.
+try {
+  const modes = ['standalone', 'minimal-ui', 'fullscreen', 'window-controls-overlay'];
+  if (navigator.standalone || modes.some((m) => window.matchMedia(`(display-mode: ${m})`).matches)) {
+    const key = 'portal-installed';
+    const registry = JSON.parse(localStorage.getItem(key) || '{}');
+    registry['BlackMirrorBikeRide'] = Date.now();
+    localStorage.setItem(key, JSON.stringify(registry));
+  }
+} catch {}
+
 // Expose for quick debugging in the console.
 window.__bmbr = { router };
