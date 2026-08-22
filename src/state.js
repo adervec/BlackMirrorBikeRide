@@ -195,6 +195,8 @@ export function mergeBundledRoutes(routes) {
 // ---- activities / history / PBs ----
 export function addActivity(activity) {
   state.activities.unshift(activity);
+  // maker-portal character sheet (same-origin localStorage; stays in this browser)
+  try { const k = 'portal-activity', a = JSON.parse(localStorage.getItem(k) || '[]'); a.push([Math.round(Date.now() / 1000), 'BlackMirrorBikeRide', 'ride', Math.max(1, Math.round((activity.durationS || 600) / 600))]); localStorage.setItem(k, JSON.stringify(a.slice(-2000))); } catch (_) { /* quota — ignore */ }
   if (state.activities.length > MAX_ACTIVITIES) state.activities.length = MAX_ACTIVITIES;
   save();
   return activity;
