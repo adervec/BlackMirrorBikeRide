@@ -241,3 +241,52 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
   .seg-row { grid-template-columns: 28px repeat(2, 1fr); }
   .garage-preview-col { position: static; }
 }
+
+/* ---- power zones on the live power tiles ---- */
+.hud-tile[data-zone="1"] .hud-value { color: #8a93a8; }
+.hud-tile[data-zone="2"] .hud-value { color: #4cc2ff; }
+.hud-tile[data-zone="3"] .hud-value { color: #43d17a; }
+.hud-tile[data-zone="4"] .hud-value { color: #ffd24a; }
+.hud-tile[data-zone="5"] .hud-value { color: #ff9b3d; }
+.hud-tile[data-zone="6"] .hud-value { color: #ff5b5b; }
+.hud-tile[data-zone="7"] .hud-value { color: #d58bff; }
+
+/* ---- workout bar (bottom centre) ---- */
+.workout-bar { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 6; width: min(520px, 92vw);
+  background: rgba(10,13,20,.82); border: 1px solid rgba(120,140,180,.3); border-radius: 12px; padding: .5rem .8rem; backdrop-filter: blur(4px); }
+.wo-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: .82rem; color: var(--dim); }
+.wo-target { font-size: 1.6rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+.wo-target small { font-size: .75rem; color: var(--dim); font-weight: 600; margin-left: .25rem; }
+.wo-text { color: var(--text); font-weight: 600; }
+.wo-graph { display: flex; align-items: flex-end; height: 44px; gap: 1px; margin: .4rem 0 .2rem; }
+.wo-block { flex: 0 0 auto; min-width: 2px; background: #3a4a66; border-radius: 2px 2px 0 0; opacity: .8; }
+.wo-block.free { background: repeating-linear-gradient(45deg, #3a4a66, #3a4a66 3px, #222a3a 3px, #222a3a 6px); }
+.wo-block.done { opacity: .3; }
+.wo-block.cur { background: var(--accent); opacity: 1; }
+.wo-progress { height: 4px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden; }
+.wo-progress > div { height: 100%; background: var(--accent); width: 0; }
+.wo-row { display: flex; gap: .4rem; justify-content: center; margin-top: .45rem; flex-wrap: wrap; }
+.wo-done { color: #7be6a0; font-weight: 700; }
+
+/* ---- climb readout (under the minimap) ---- */
+.climb-readout { background: rgba(10,13,20,.78); border: 1px solid rgba(120,140,180,.3); border-radius: 9px; padding: .4rem .7rem; font-weight: 700; backdrop-filter: blur(4px); font-variant-numeric: tabular-nums; }
+.climb-readout .dim { font-weight: 500; }
+.climb-readout .ahead { color: #7be6a0; } .climb-readout .behind { color: #ff8a8a; }
+
+/* ---- ride summary extras ---- */
+.zone-bars { display: flex; gap: 4px; height: 64px; align-items: flex-end; margin: .4rem 0 1.4rem; }
+.zone-bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 2px; position: relative; opacity: .9; }
+.zone-bar span { position: absolute; left: 0; right: 0; bottom: -17px; font-size: .62rem; color: var(--dim); white-space: nowrap; }
+.summary-sub { color: var(--dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin-top: 1rem; }
+.ftp-estimate { background: var(--card2); border-radius: 12px; padding: .8rem 1rem; margin: .6rem 0; }
+.ftp-estimate strong { font-size: 1.3rem; }
+
+/* ---- toast (app-wide, e.g. recovered ride) ---- */
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 60; background: var(--card); color: var(--text);
+  border: 1px solid var(--line); border-radius: 10px; padding: .6rem 1rem; box-shadow: 0 8px 28px rgba(0,0,0,.5); max-width: 92vw; }
+
+@media (max-width: 700px), (max-height: 500px) {
+  .workout-bar { bottom: auto; top: 12px; left: 50%; width: min(300px, 46vw); padding: .35rem .5rem; }
+  .wo-graph { height: 26px; }
+  .wo-target { font-size: 1.2rem; }
+}

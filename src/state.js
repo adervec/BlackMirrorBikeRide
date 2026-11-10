@@ -3,7 +3,8 @@
 // lives here and is mirrored to localStorage. Transient ride state does not.
 
 import { DEFAULT_UNIT_PREFS } from './game/units.js';
-import { DEFAULT_HUD_LAYOUT } from './game/hudConfig.js';
+import { DEFAULT_HUD_LAYOUT, completeHudLayout } from './game/hudConfig.js';
+import { BUILTIN_WORKOUTS } from './game/workouts.js';
 import { defaultPlayer } from './profile/player.js';
 import { defaultBike } from './profile/garage.js';
 import { defaultRider } from './profile/customize.js';
@@ -27,6 +28,7 @@ function freshState() {
     activities: [],
     decals: defaultDecalLibrary(),
     customSkyboxes: [],
+    workouts: [],             // imported .zwo files (built-ins live in game/workouts.js)
     settings: {
       units: structuredClone(DEFAULT_UNIT_PREFS),
       hud: structuredClone(DEFAULT_HUD_LAYOUT),
@@ -36,6 +38,9 @@ function freshState() {
       replaySpeedMul: 4,
       theme: 'midnight',
       graphicsQuality: DEFAULT_QUALITY,
+      trainerDifficulty: 1,   // share of the road gradient sent to a controllable trainer
+      autoPause: true,        // stop the clock when a real trainer goes quiet at a standstill
+      audio: { enabled: true, volume: 0.5 },
       dismissedRouteIds: [],  // bundled routes the user deleted; never re-merged
       sync: { driveClientId: '', auto: false, lastAt: 0 }
     }
@@ -83,12 +88,14 @@ function load() {
       activities: parsed.activities || [],
       decals: parsed.decals && parsed.decals.length ? parsed.decals : base.decals,
       customSkyboxes: parsed.customSkyboxes || [],
+      workouts: parsed.workouts || [],
       settings: {
         ...base.settings,
         ...parsed.settings,
         units: { ...base.settings.units, ...(parsed.settings?.units || {}) },
-        hud: parsed.settings?.hud || base.settings.hud,
+        hud: completeHudLayout(parsed.settings?.hud || base.settings.hud),
         ghost: { ...base.settings.ghost, ...(parsed.settings?.ghost || {}) },
+        audio: { ...base.settings.audio, ...(parsed.settings?.audio || {}) },
         sync: { ...base.settings.sync, ...(parsed.settings?.sync || {}) }
       }
     };
@@ -265,6 +272,11 @@ export function deleteDecal(id) {
   state.decals = state.decals.filter((x) => x.id !== id);
   save();
 }
+
+// ---- workouts (imported .zwo; built-ins are code) ----
+export function getWorkout(id) { return BUILTIN_WORKOUTS.find((w) => w.id === id) || state.workouts.find((w) => w.id === id) || null; }
+export function addWorkout(w) { state.workouts.push(w); save(); return w; }
+export function deleteWorkout(id) { state.workouts = state.workouts.filter((w) => w.id !== id); save(); }
 
 // ---- custom skyboxes ----
 export function addCustomSkybox(sky) { state.customSkyboxes.push(sky); save(); }

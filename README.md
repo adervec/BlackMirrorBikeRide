@@ -50,8 +50,39 @@ single glyph by `node tools/make-icons.mjs` — no image files to hand-edit.
 
 - **▲ / ▼** — adjust simulated watts
 - **C** — cycle camera; **1–5** — pick a camera directly
-- **Space** — pause/resume · **Esc** — exit to route list
+- **Space** — pause/resume · **Esc** — exit to route list · **M** — mute
+- **[ / ]** — workout intensity ±5% · **N** — skip the current workout block
 - Cameras: Chase · Oncoming (rear view of the bike) · Left Pan · Right Pan · Cockpit
+
+## Workouts, trainer control, zones & export
+
+- **Trainer control (FTMS).** On a smart trainer with a Fitness Machine control point the
+  app takes control: the **road gradient** is sent as resistance (scaled by *Settings →
+  Trainer difficulty*), and a **workout target** switches it to **ERG mode**. Read-only
+  trainers (a Schwinn 130, a power meter) work exactly as before. Your speed in the world
+  always uses the real gradient.
+- **Structured workouts.** The Workouts screen ships a small library — Ramp Test, 20-min FTP
+  Test, Sweet Spot 3×12, VO2max 5×3, Over-Unders, Endurance, Recovery — and imports Zwift
+  **`.zwo`** files (warm-ups, ramps, intervals, free-ride blocks, text cues). Pick a route, ride
+  it with the workout: a bar shows the block graph, live target, countdown, ±5% intensity and
+  skip. Without a trainer the **simulator follows the target**, so a workout can be previewed.
+- **FTP tests & zones.** Finish a test and the summary offers to **set your FTP** (ramp: 75% of
+  best minute; 20-min: 95% of the test average). Live power tiles take the colour of your
+  **Coggan zone**; the summary shows **time in zone**.
+- **Timed climbs.** Runs of ≥2% on a route are detected and categorised (Cat 4 → HC by
+  length × gradient). Hitting one shows a banner and a live timer, with the **gap to your PB**
+  on that climb when a ghost is riding.
+- **TCX export.** Any ride downloads as a `.tcx` (power, HR, cadence, speed, altitude) from
+  History or the ride summary — upload it to Strava, Intervals.icu, Garmin Connect…
+- **Ride hygiene.** Screen wake-lock while riding, **auto-pause** when a real trainer goes
+  quiet at a standstill (pedal to resume), battery chimes at 20/10/5%, and an **autosave** every
+  few seconds — a crash or a killed tab still lands the ride in History on next launch.
+- **Sound.** Fully synthesised (no audio files): tyre & wind hiss scale with speed, a chain hum
+  follows cadence, the freewheel clicks when coasting, and short cues mark zone changes,
+  workout blocks and climbs. *Settings → Sound* to adjust or turn off.
+- **Weather & night.** Skyboxes can carry **rain, snow or thick fog**, and a **night** flag that
+  puts a headlamp on the bike — see *Rainy Dusk*, *Snowfall*, *Pea-Souper*, *Night Ride*, or
+  set them on a custom skybox.
 
 ## Preview, replay, history & ghosts
 
@@ -63,12 +94,24 @@ single glyph by `node tools/make-icons.mjs` — no image files to hand-edit.
 - Turn on the **player ghost** (Settings → Ghost & Playback, on by default): your all-time
   PB rides alongside you as a **ghost icon on the overhead map only**, with a live
   **time-behind / time-ahead** readout. Never a second rider in the 3D world.
+- **Coach & briefs (cowork folder).** History → Coach connects a local folder through the
+  maker's shared cowork panel. The app writes `cowork.json` (house protocol v1), a
+  **precomputed brief** (`BRIEF.md` + `brief.json`: today / 7 / 28-day totals with the previous
+  week for trend, last ride, per-day and per-week tables, consistency, routes & PBs, workouts
+  & zone split, FTP, data gaps, possible data errors) so a daily or weekly brief reads one
+  page instead of re-deriving it, plus `coach/request.json` with the last 40 rides in full
+  (source, workout, NP, max, HR, kJ, TSS, zones). The folder is rewritten **after every ride,
+  on launch and when History opens** — no Sync button needed once the browser keeps the
+  folder permission. An agent (CoworkSyncHub, Claude Desktop, a person) answers in
+  `coach/reply.json`, shown under the panel. Nothing leaves the machine.
 
 ## Tests
 
 ```bash
 node scripts/selftest.mjs    # physics, units, route geometry, activity/PB math
 node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost (headless)
+node scripts/trainingtest.mjs # .zwo parsing, ERG targets, FTP estimates, zones, climbs, TCX, FTMS encoding
+node scripts/brieftest.mjs   # cowork brief digest (totals, trend, PBs, gaps, anomalies) + folder file set
 node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
 node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
 node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups

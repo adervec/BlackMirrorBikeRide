@@ -8,16 +8,26 @@
 // In ride & replay it can also render a GHOST of a past activity (default the
 // all-time PB): the ghost appears only as an icon on the overhead minimap and a
 // time-behind readout — never in the 3D world.
+//
+// A ride can also carry a structured WORKOUT: the step target becomes an ERG
+// target for the trainer (and the simulator), zones are tallied from FTP, and
+// categorised climbs on the route are timed against the ghost.
 
 import { buildProfile, profileAt, totalDistance } from '../routes/virtualRoute.js';
+import { detectClimbs } from '../routes/climbs.js';
 import { surfaceCrr, surfaceLabel } from '../physics/surfaces.js';
 import { createPhysics, computeCdA, totalMass } from '../physics/engine.js';
 import { computeBikeSpec } from '../profile/garage.js';
 import { createActivity, distanceAtTime, timeAtDistance, sampleAtTime } from './activity.js';
+import { stepAt, targetWatts, zoneOf, ZONES, estimateFtp } from './workouts.js';
+import { formatTime } from './units.js';
 
 const R_AIR = 287.05;
 const P_STD = 101325;
 const HUMAN_EFFICIENCY = 0.24;
+const AUTOSAVE_S = 5;
+const CONTROL_S = 1;      // trainer control-point writes, at most this often
+const IDLE_PAUSE_S = 3;   // real sensor silent this long at a standstill -> auto-pause
 
 export class Session {
   constructor(opts) {
@@ -25,7 +35,8 @@ export class Session {
       route, reverse, player, bike, rider, decals = [], skyboxDef = null,
       sensors, world, minimap, hud, settings,
       mode = 'ride', replayActivity = null, ghost = null,
-      onEnd, onFrame, onRecord
+      workout = null, ftp = null,
+      onEnd, onFrame, onRecord, onCue, onAutosave
     } = opts;
 
     this.route = route;
@@ -44,15 +55,22 @@ export class Session {
     this.mode = mode;
     this.replayActivity = replayActivity;
     this.ghost = ghost;
+    this.workout = mode === 'ride' ? workout : null;
+    this.ftp = ftp || player?.ftpW || 200;
+    this.intensity = 1;
     this.onEnd = onEnd || (() => {});
     this.onFrame = onFrame || (() => {});
     this.onRecord = onRecord || (() => {});
+    this.onCue = onCue || (() => {});
+    this.onAutosave = onAutosave || null;
 
     this.paused = false;
+    this.autoPaused = false;
     this.finished = false;
     this._raf = null;
     this._last = 0;
     this._recorded = false;
+    this._idleFor = 0;
 
     // mode params
     this.previewSpeed = settings.previewSpeedMs || 40;
@@ -79,6 +97,8 @@ export class Session {
   _buildProfile() {
     this.profile = buildProfile(this.route, { reverse: this.reverse });
     this.total = this.routeTotal ?? (this.routeTotal = this.profile.totalLength);
+    this.climbs = detectClimbs(this.profile.segments);
+    this.climb = null; this.climbDelta = null;
     this.world.build(this.profile, this.route, {
       rider: this.rider, bike: this.bike, player: this.player,
       decals: this.decals, skyboxDef: this.skyboxDef
@@ -108,9 +128,23 @@ export class Session {
     // recording
     this.samples = [{ t: 0, d: 0, p: 0, s: 0, hr: null, c: null }];
     this._recAccum = 0;
+    this._saveAccum = 0;
     // ghost
     this.ghostDistance = null;
     this.ghostDelta = null;
+    // workout / ERG
+    this.workoutTime = 0;
+    this.workoutDone = false;
+    this.stepInfo = null;
+    this.targetW = null;
+    this._stepIdx = -1;
+    this._ctlAccum = CONTROL_S;
+    // zones
+    this.zoneTime = ZONES.map(() => 0);
+    this.zone = 1;
+    this._zoneCueAt = -10;
+    // climbs
+    this.climb = null; this.climbStartT = 0; this.climbDelta = null; this.lastClimb = null;
   }
 
   start() {
@@ -120,6 +154,7 @@ export class Session {
       let dt = (now - this._last) / 1000;
       this._last = now;
       if (dt > 0.25) dt = 0.25;
+      if (this.mode === 'ride') this._autoPause(dt);
       if (!this.paused && !this.finished) this._tick(dt);
       this._render(dt);
     };
@@ -128,17 +163,45 @@ export class Session {
 
   pause() { this.paused = true; }
   resume() { this.paused = false; this._last = performance.now(); }
-  togglePause() { this.paused ? this.resume() : this.pause(); return this.paused; }
+  togglePause() { this.autoPaused = false; this.paused ? this.resume() : this.pause(); return this.paused; }
+
+  // Stop pedalling on a real trainer and the clock stops with you; pedal and it
+  // resumes. Never for the simulator (its power starts at zero on purpose).
+  _autoPause(dt) {
+    if (!this.settings.autoPause || this.sensors.simulatorActive || !this.sensors.powerSource) return;
+    const p = this.sensors.power || 0;
+    if (this.autoPaused) {
+      if (p > 10) { this.autoPaused = false; this.resume(); this.onCue('resume'); }
+      return;
+    }
+    if (this.paused) return; // a manual pause is the rider's business
+    if (p < 5 && this.speed < 0.5) {
+      this._idleFor += dt;
+      if (this._idleFor > IDLE_PAUSE_S) { this.autoPaused = true; this.pause(); this.onCue('autoPause'); }
+    } else this._idleFor = 0;
+  }
 
   stop() {
     if (this._raf) cancelAnimationFrame(this._raf);
     this._raf = null;
-    if (this.mode === 'ride') this.sensors.stopSimulator();
+    if (this.mode === 'ride') {
+      this.sensors.stopSimulator();
+      this.sensors.setSimulation?.(0, 0.004); // leave the trainer on a flat road, not holding 300 W
+    }
     this._finalizeRecording();
+    if (this.mode === 'ride') this.onAutosave?.(null);
   }
 
   setCameraMode(m) { this.world.setCameraMode(m); }
   cycleCamera(d) { return this.world.cycleCamera(d); }
+
+  // ---- workout controls ----
+  adjustIntensity(d) { this.intensity = Math.round(Math.max(0.5, Math.min(1.5, this.intensity + d)) * 100) / 100; return this.intensity; }
+  skipStep() {
+    if (!this.stepInfo) return;
+    this.workoutTime = this.stepInfo.start + this.stepInfo.step.dur;
+    this._ctlAccum = CONTROL_S; // push the new target at once
+  }
 
   // ---- preview / replay controls ----
   setPreviewSpeed(ms) { this.previewSpeed = Math.max(2, ms); }
@@ -190,14 +253,96 @@ export class Session {
     if (dy > 0) this.ascent += dy; else this.descent += -dy;
     this.prevY = st.y;
 
+    this._updateWorkout(dt);
+    this._updateZone(dt);
+    this._updateClimb();
+
+    // trainer control: ERG target when a workout asks for one, else the road
+    this._ctlAccum += dt;
+    if (this._ctlAccum >= CONTROL_S) {
+      this._ctlAccum = 0;
+      if (this.targetW != null) this.sensors.setTargetPower?.(this.targetW);
+      else this.sensors.setSimulation?.(st.gradient * 100 * (this.settings.trainerDifficulty ?? 1), crr);
+    }
+
     // record ~1 Hz
     this._recAccum += dt;
     if (this._recAccum >= 1) {
       this._recAccum -= 1;
       this.samples.push({ t: this.time, d: this.distance, p: Math.round(power), s: this.speed, hr: this.curHR, c: this.curCadence });
     }
+    // crash insurance
+    if (this.onAutosave) {
+      this._saveAccum += dt;
+      if (this._saveAccum >= AUTOSAVE_S && this.distance >= 30) { this._saveAccum = 0; this.onAutosave(this._snapshot()); }
+    }
 
     this._handleTerminus();
+  }
+
+  _updateWorkout(dt) {
+    if (!this.workout || this.workoutDone) return;
+    this.workoutTime += dt;
+    const at = stepAt(this.workout, this.workoutTime);
+    if (!at) {
+      this.workoutDone = true; this.stepInfo = null; this.targetW = null;
+      this._ctlAccum = CONTROL_S;
+      this.onCue('workoutDone');
+      return;
+    }
+    this.stepInfo = at;
+    this.targetW = targetWatts(at, this.ftp, this.intensity);
+    if (at.idx !== this._stepIdx) {
+      if (this._stepIdx >= 0) this.onCue('step', at);
+      this._stepIdx = at.idx;
+      this._ctlAccum = CONTROL_S;
+    }
+  }
+
+  // Zones from 3 s power so a single noisy sample doesn't flicker the tile;
+  // a cue fires on a change, with a short hold-off at boundaries.
+  _updateZone(dt) {
+    const z = zoneOf(this.power3s, this.ftp);
+    this.zoneTime[z - 1] += dt;
+    if (z !== this.zone && this.time - this._zoneCueAt > 3) {
+      this.onCue(z > this.zone ? 'zoneUp' : 'zoneDown', z);
+      this._zoneCueAt = this.time;
+      this.zone = z;
+    }
+  }
+
+  _pbClimbTime(c) {
+    if (!this.ghost) return null;
+    const a = timeAtDistance(this.ghost.samples, c.start), b = timeAtDistance(this.ghost.samples, c.end);
+    return a == null || b == null || b <= a ? null : b - a;
+  }
+
+  _updateClimb() {
+    const d = this.distance;
+    if (this.climb) {
+      const c = this.climb;
+      if (d >= c.end || d < c.start) {
+        const finished = d >= c.end;
+        this.lastClimb = { climb: c, time: this.time - this.climbStartT, pb: this._pbClimbTime(c), finished };
+        if (finished) this.onCue('climbEnd', this.lastClimb);
+        this.climb = null; this.climbDelta = null;
+      } else if (this.ghost) {
+        const g0 = timeAtDistance(this.ghost.samples, c.start), g1 = timeAtDistance(this.ghost.samples, d);
+        this.climbDelta = g0 == null || g1 == null ? null : (this.time - this.climbStartT) - (g1 - g0);
+      }
+    }
+    if (!this.climb) {
+      // only pick a climb up near its foot — not when teleporting into the middle of one
+      const c = this.climbs.find((x) => d >= x.start && d < x.end && d - x.start < 60);
+      if (c) { this.climb = c; this.climbStartT = this.time; this.climbDelta = null; this.onCue('climbStart', c); }
+    }
+  }
+
+  _snapshot() {
+    return {
+      routeId: this.route.id, routeName: this.route.name, reverse: this.startReverse,
+      samples: this.samples, summary: this.summary(), total: this.routeTotal, savedAt: Date.now()
+    };
   }
 
   _tickPreview(dt) {
@@ -262,7 +407,8 @@ export class Session {
     this.samples.push({ t: this.time, d: this.distance, p: Math.round(this.curPower), s: this.speed, hr: this.curHR, c: this.curCadence });
     const activity = createActivity({
       route: this.route, reverse: this.startReverse,
-      samples: this.samples, summary: this.summary(), total: this.routeTotal
+      samples: this.samples, summary: this.summary(), total: this.routeTotal,
+      source: this.sensors.powerSource || null, workoutName: this.workout?.name || null
     });
     this.onRecord(activity);
   }
@@ -277,6 +423,7 @@ export class Session {
     const avgPower = isReplay ? this.replayActivity.avgPower : (this.time > 1 ? this.sumPowerTime / this.time : 0);
     const avgSpeed = isReplay ? this.replayActivity.avgSpeed : (this.time > 1 ? this.distance / this.time : 0);
     const usableSpeed = Math.max(this.smoothSpeed, this.curSpeed, 0.1);
+    const si = this.stepInfo;
 
     return {
       mode: this.mode,
@@ -304,9 +451,23 @@ export class Session {
       temperature: this.temperatureC,
       progressText: `${(this.progressFraction() * 100).toFixed(1)}%`,
       nextTurn: nextTurn(this.profile, this.distance),
-      // ghost extras (consumed by the ride screen, not the HUD tiles)
+      // workout / zones
+      targetPower: this.targetW,
+      workoutStep: si ? `${si.idx + 1}/${this.workout.steps.length} · ${formatTime(si.remaining)} left` : (this.workoutDone ? 'Complete' : null),
+      zone: isPreview ? null : `Z${this.zone} ${ZONES[this.zone - 1].name}`,
+      zoneNum: isPreview ? null : this.zone,
+      // extras consumed by the ride screen, not the HUD tiles
       ghostActive: !!this.ghost && !isPreview,
-      ghostDelta: this.ghostDelta
+      ghostDelta: this.ghostDelta,
+      stepInfo: si,
+      workoutTime: this.workoutTime,
+      workoutDone: this.workoutDone,
+      intensity: this.intensity,
+      climb: this.climb,
+      climbElapsed: this.climb ? this.time - this.climbStartT : null,
+      climbDelta: this.climbDelta,
+      autoPaused: this.autoPaused,
+      paused: this.paused
     };
   }
 
@@ -315,18 +476,27 @@ export class Session {
     this.hud.render(telem, this.settings);
     this.world.update(dt, this.distance, { speed: this.curSpeed || 0, cadence: this.curCadence || 0 });
     this.minimap.render(this.distance, this.ghostDistance);
-    this.onFrame(telem);
+    this.onFrame(telem, dt);
   }
 
   summary() {
+    const isReplay = this.mode === 'replay';
+    // ponytail: the FTP estimate assumes the workout clock stayed in step with
+    // the ride clock, i.e. no blocks were skipped before the test window.
+    const shift = this.workoutTime - this.time;
+    const shifted = shift > 0.5 ? this.samples.map((x) => ({ ...x, t: x.t + shift })) : this.samples;
     return {
       routeName: this.route.name,
       distance: this.distance,
       time: this.time,
-      avgPower: this.mode === 'replay' ? this.replayActivity.avgPower : (this.time > 1 ? this.sumPowerTime / this.time : 0),
-      avgSpeed: this.mode === 'replay' ? this.replayActivity.avgSpeed : (this.time > 1 ? this.distance / this.time : 0),
-      energy: this.mode === 'replay' ? this.replayActivity.energyJ : this.energyJ,
-      ascent: this.ascent
+      avgPower: isReplay ? this.replayActivity.avgPower : (this.time > 1 ? this.sumPowerTime / this.time : 0),
+      avgSpeed: isReplay ? this.replayActivity.avgSpeed : (this.time > 1 ? this.distance / this.time : 0),
+      energy: isReplay ? this.replayActivity.energyJ : this.energyJ,
+      ascent: this.ascent,
+      zoneTime: this.zoneTime,
+      ftp: this.ftp,
+      workoutName: this.workout?.name || null,
+      ftpEstimate: this.workout ? estimateFtp(this.workout, shifted) : null
     };
   }
 }

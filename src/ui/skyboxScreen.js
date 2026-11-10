@@ -1,6 +1,6 @@
-import { div, h, el, field, select, textInput, numberInput, colorInput, btn, screen } from './dom.js';
+import { div, h, el, field, select, textInput, numberInput, colorInput, checkbox, btn, screen } from './dom.js';
 import { getState, addCustomSkybox, deleteCustomSkybox, save } from '../state.js';
-import { SKYBOXES, makeCustomSkybox, SKYBOX_SPECIALS, colorCss } from '../routes/skyboxes.js';
+import { SKYBOXES, makeCustomSkybox, SKYBOX_SPECIALS, WEATHERS, colorCss } from '../routes/skyboxes.js';
 import { downloadJSON } from '../routes/io.js';
 
 export function renderSkyboxes(ctx) {
@@ -23,6 +23,7 @@ export function renderSkyboxes(ctx) {
     return div({ class: 'sky-swatch', style: { background: `linear-gradient(to top, ${colorCss(sky.bottom)}, ${colorCss(sky.top)})` } },
       [div({ class: 'sky-sun', style: { background: colorCss(sky.sun) } })]);
   }
+  const tag = (sky) => [sky.weather && WEATHERS.find((w) => w.value === sky.weather)?.label, sky.lamp && 'lamp'].filter(Boolean).join(' · ');
 
   // built-ins (read only)
   const builtins = div({ class: 'card' }, [
@@ -30,8 +31,13 @@ export function renderSkyboxes(ctx) {
     div({ class: 'hint' }, 'These ship with the game and can be cloned into custom skyboxes.'),
     div({ class: 'sky-grid' }, Object.entries(SKYBOXES).map(([id, sky]) =>
       div({ class: 'sky-card' }, [
-        swatch(sky), div({ class: 'sky-name' }, sky.label),
-        btn('Clone', () => { const c = { ...makeCustomSkybox(sky.label + ' copy'), top: colorCss(sky.top), bottom: colorCss(sky.bottom), sun: colorCss(sky.sun), ambient: colorCss(sky.ambient), sunIntensity: sky.sunIntensity, ambientIntensity: sky.ambientIntensity, sunPos: [...(sky.sunPos || [0.5, 0.8, 0.2])], special: sky.special || '' }; addCustomSkybox(c); ctx.router.go('skyboxes'); }, 'btn small ghost')
+        swatch(sky), div({ class: 'sky-name' }, sky.label + (tag(sky) ? ` (${tag(sky)})` : '')),
+        btn('Clone', () => {
+          const c = { ...makeCustomSkybox(sky.label + ' copy'), top: colorCss(sky.top), bottom: colorCss(sky.bottom), sun: colorCss(sky.sun), ambient: colorCss(sky.ambient),
+            sunIntensity: sky.sunIntensity, ambientIntensity: sky.ambientIntensity, sunPos: [...(sky.sunPos || [0.5, 0.8, 0.2])],
+            special: sky.special || '', weather: sky.weather || '', lamp: !!sky.lamp };
+          addCustomSkybox(c); ctx.router.go('skyboxes');
+        }, 'btn small ghost')
       ])
     ))
   ]);
@@ -71,6 +77,8 @@ export function renderSkyboxes(ctx) {
           colLabeled('Sun Z', numberInput(sky.sunPos[2], updPos(2), { min: -1, max: 1, step: 0.1 }))
         ]),
         field('Special effect', select(SKYBOX_SPECIALS, sky.special || '', upd('special'))),
+        field('Weather', select(WEATHERS, sky.weather || '', upd('weather'))),
+        checkbox('Night: headlamp on the bike (drop the sun intensity for the full effect)', !!sky.lamp, upd('lamp')),
         div({ class: 'row' }, [
           btn('Export', () => downloadJSON(`${(sky.label || 'sky').replace(/\W+/g, '_')}.bmbr.json`, { tag: 'bmbr-skybox', skybox: sky }), 'btn small ghost'),
           btn('Delete', () => { deleteCustomSkybox(sky.id); ctx.router.go('skyboxes'); }, 'btn small danger')

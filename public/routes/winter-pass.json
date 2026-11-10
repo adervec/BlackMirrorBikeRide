@@ -2,7 +2,7 @@
  "id": "bundled-winter-pass",
  "name": "Winter Pass",
  "type": "virtual",
- "skybox": "overcast",
+ "skybox": "snowfall",
  "airDensity": 1.25,
  "segments": [
   {

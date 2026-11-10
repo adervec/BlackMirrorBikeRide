@@ -1,6 +1,7 @@
 // Skyboxes range from the mundane to the existentially bizarre. The scene reads
-// `top`/`bottom` to build a gradient dome, sun lighting params, and an optional
-// `special` animator id handled in world/scene.js.
+// `top`/`bottom` to build a gradient dome, sun lighting params, an optional
+// `special` animator id, a `weather` (rain / snow / thick fog) and `lamp` (a
+// headlight on the bike for night rides) — all handled in world/scene.js.
 
 export const SKYBOXES = {
   'clear-day': {
@@ -20,6 +21,30 @@ export const SKYBOXES = {
     top: 0x9aa3ad, bottom: 0xc8ced3,
     sun: 0xdfe4e8, sunIntensity: 0.6, ambient: 0xaab0b6, ambientIntensity: 0.75,
     sunPos: [0.2, 0.9, 0.1]
+  },
+  'rainy-dusk': {
+    label: 'Rainy Dusk',
+    top: 0x1e2633, bottom: 0x5a6675,
+    sun: 0x9aa6b8, sunIntensity: 0.45, ambient: 0x4a5566, ambientIntensity: 0.7,
+    sunPos: [0.3, 0.6, 0.2], weather: 'rain'
+  },
+  'snowfall': {
+    label: 'Snowfall',
+    top: 0x7f8a99, bottom: 0xdfe6ee,
+    sun: 0xe8eef6, sunIntensity: 0.55, ambient: 0xb8c2cf, ambientIntensity: 0.8,
+    sunPos: [0.2, 0.8, 0.1], weather: 'snow'
+  },
+  'pea-souper': {
+    label: 'Pea-Souper',
+    top: 0x8a8f95, bottom: 0xb9bec4,
+    sun: 0xd0d4d8, sunIntensity: 0.5, ambient: 0xa0a6ad, ambientIntensity: 0.8,
+    sunPos: [0.2, 0.9, 0.1], weather: 'fog'
+  },
+  'night-ride': {
+    label: 'Night Ride',
+    top: 0x030409, bottom: 0x0b1020,
+    sun: 0x3a4a7a, sunIntensity: 0.15, ambient: 0x101828, ambientIntensity: 0.25,
+    sunPos: [0.3, 0.7, -0.5], special: 'stars', lamp: true
   },
   'starfield': {
     label: 'Starfield',
@@ -76,7 +101,7 @@ export function makeCustomSkybox(name = 'My Sky') {
     label: name,
     top: '#3a7bd5', bottom: '#bfe3ff',
     sun: '#fff4e0', sunIntensity: 1.1, ambient: '#8899aa', ambientIntensity: 0.55,
-    sunPos: [0.5, 0.8, 0.2], special: '', custom: true
+    sunPos: [0.5, 0.8, 0.2], special: '', weather: '', lamp: false, custom: true
   };
 }
 
@@ -86,6 +111,13 @@ export const SKYBOX_SPECIALS = [
   { value: 'gridSun', label: 'Grid Sun' },
   { value: 'eye', label: 'The Eye' },
   { value: 'breathe', label: 'Breathing Fog' }
+];
+
+export const WEATHERS = [
+  { value: '', label: 'Clear' },
+  { value: 'rain', label: 'Rain' },
+  { value: 'snow', label: 'Snow' },
+  { value: 'fog', label: 'Thick fog' }
 ];
 
 // Convert a skybox colour (number or '#rrggbb') to a CSS string for swatches.

@@ -29,8 +29,11 @@ export class HUD {
       const el = this._els[item.id];
       if (!def || !el) continue;
       const raw = telemetry[def.field];
-      el.value.textContent = this._fmtValue(def, raw, prefs, item.unit);
-      el.unit.textContent = this._fmtUnit(def, raw, prefs, item.unit);
+      const blank = raw == null && def.type !== 'time' && def.type !== 'text';
+      el.value.textContent = blank ? '—' : this._fmtValue(def, raw, prefs, item.unit);
+      el.unit.textContent = blank ? '' : this._fmtUnit(def, raw, prefs, item.unit);
+      // live power tiles take the colour of the current zone
+      if (def.field === 'power' || def.field === 'power3s') el.tile.dataset.zone = telemetry.zoneNum || '';
     }
   }
 

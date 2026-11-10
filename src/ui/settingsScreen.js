@@ -1,4 +1,4 @@
-import { div, h, el, field, select, textInput, numberInput, btn, screen } from './dom.js';
+import { div, h, el, field, select, textInput, numberInput, checkbox, btn, screen } from './dom.js';
 import { getState, save, resetState } from '../state.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
@@ -60,7 +60,7 @@ export function renderSettings(ctx) {
   }
   renderHud();
 
-  // ---- Session & API ----
+  // ---- Session ----
   const sessionCard = div({ class: 'card' }, [
     h(2, 'Session'),
     field('On reaching the end', select([
@@ -71,18 +71,49 @@ export function renderSettings(ctx) {
     div({ class: 'hint' }, 'Applies to every route. Any route can also be ridden in reverse from the route list.')
   ]);
 
+  // ---- Trainer control & ride behaviour ----
+  const diffLabel = el('label', {}, `Trainer difficulty — ${Math.round(s.settings.trainerDifficulty * 100)}% of the road gradient`);
+  const trainerCard = div({ class: 'card' }, [
+    h(2, 'Trainer & Ride'),
+    div({ class: 'field' }, [
+      diffLabel,
+      el('input', { type: 'range', min: 0, max: 150, step: 5, value: Math.round(s.settings.trainerDifficulty * 100),
+        oninput: (e) => { s.settings.trainerDifficulty = +e.target.value / 100; diffLabel.textContent = `Trainer difficulty — ${e.target.value}% of the road gradient`; save(); } })
+    ]),
+    div({ class: 'hint' }, 'On an FTMS smart trainer the road gradient (scaled by this) is sent as resistance, and a workout target overrides it with ERG mode. ' +
+      'Your speed in the world always uses the real gradient. Read-only trainers and power meters are unaffected.'),
+    div({ class: 'field' }, [
+      el('label', {}, 'Auto-pause'),
+      checkbox('Stop the clock when a real trainer goes quiet at a standstill; pedal to resume', s.settings.autoPause, (v) => { s.settings.autoPause = v; save(); })
+    ]),
+    div({ class: 'hint' }, 'Rides also autosave every few seconds — a crash or a dead battery still leaves the ride in History. The screen stays awake while riding, and you get a chime at 20 / 10 / 5 % battery.')
+  ]);
+
+  // ---- Sound ----
+  const volLabel = el('label', {}, `Volume — ${Math.round((s.settings.audio.volume ?? 0.5) * 100)}%`);
+  const soundCard = div({ class: 'card' }, [
+    h(2, 'Sound'),
+    div({ class: 'field' }, [
+      el('label', {}, 'Ride sounds'),
+      checkbox('Tyre & wind hiss, chain hum, freewheel clicks, and cues for zones, workout blocks and climbs', s.settings.audio.enabled, (v) => { s.settings.audio.enabled = v; save(); })
+    ]),
+    div({ class: 'field' }, [
+      volLabel,
+      el('input', { type: 'range', min: 0, max: 100, step: 5, value: Math.round((s.settings.audio.volume ?? 0.5) * 100),
+        oninput: (e) => { s.settings.audio.volume = +e.target.value / 100; volLabel.textContent = `Volume — ${e.target.value}%`; save(); } })
+    ]),
+    div({ class: 'hint' }, 'Everything is synthesised in the browser — no audio files. Press M during a ride to mute.')
+  ]);
+
   const ghostCard = div({ class: 'card' }, [
     h(2, 'Ghost & Playback'),
     div({ class: 'field' }, [
       el('label', {}, 'Player ghost'),
-      div({ class: 'row' }, [
-        el('input', { type: 'checkbox', checked: s.settings.ghost.enabled, onchange: (e) => { s.settings.ghost.enabled = e.target.checked; save(); } }),
-        el('span', {}, 'Show a ghost of my all-time PB on the overhead map (with time-behind)')
-      ])
+      checkbox('Show a ghost of my all-time PB on the overhead map (with time-behind)', s.settings.ghost.enabled, (v) => { s.settings.ghost.enabled = v; save(); })
     ]),
     field('Preview speed (m/s)', numberInput(s.settings.previewSpeedMs, (v) => { s.settings.previewSpeedMs = Math.max(2, Number(v) || 40); save(); }, { min: 2, max: 300, step: 1 })),
     field('Replay speed (×)', numberInput(s.settings.replaySpeedMul, (v) => { s.settings.replaySpeedMul = Math.max(0.25, Number(v) || 4); save(); }, { min: 0.25, max: 30, step: 0.25 })),
-    div({ class: 'hint' }, 'The ghost defaults to your fastest completed lap for that route & direction. Ghost shows on the map only — never as a second rider in the 3D world.')
+    div({ class: 'hint' }, 'The ghost defaults to your fastest completed lap for that route & direction. Ghost shows on the map only — never as a second rider in the 3D world. Categorised climbs on a route are timed against it too.')
   ]);
 
   // ---- Cloud sync (Google Drive appData) ----
@@ -95,7 +126,7 @@ export function renderSettings(ctx) {
 
     const rows = [
       h(2, 'Cloud Sync'),
-      div({ class: 'hint' }, 'Syncs rides, PBs, routes, riders, bikes and decals to a private folder in ' +
+      div({ class: 'hint' }, 'Syncs rides, PBs, routes, workouts, riders, bikes and decals to a private folder in ' +
         'your own Google Drive — visible to this app only, never to anyone else. Units, HUD layout, theme ' +
         'and graphics quality stay local to each device.')
     ];
@@ -128,10 +159,7 @@ export function renderSettings(ctx) {
       ]));
       rows.push(div({ class: 'field' }, [
         el('label', {}, 'Automatic sync'),
-        div({ class: 'row' }, [
-          el('input', { type: 'checkbox', checked: cfg.auto, onchange: (e) => { cfg.auto = e.target.checked; save(); } }),
-          el('span', {}, 'Sync on startup and after each ride')
-        ])
+        checkbox('Sync on startup and after each ride', cfg.auto, (v) => { cfg.auto = v; save(); })
       ]));
     }
 
@@ -178,10 +206,12 @@ export function renderSettings(ctx) {
     ]),
     div({ class: 'card' }, [
       h(2, 'In-Ride HUD Layout'),
-      div({ class: 'hint' }, 'Show/hide, reorder, and override the unit for each reading.'),
+      div({ class: 'hint' }, 'Show/hide, reorder, and override the unit for each reading. Live power tiles take the colour of your current zone (from your FTP).'),
       hudBody
     ]),
     sessionCard,
+    trainerCard,
+    soundCard,
     ghostCard,
     syncCard,
     dangerCard

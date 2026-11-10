@@ -2,7 +2,7 @@
  "id": "bundled-harbour-industrial",
  "name": "Harbour & Ironworks",
  "type": "virtual",
- "skybox": "overcast",
+ "skybox": "rainy-dusk",
  "airDensity": 1.25,
  "segments": [
   {

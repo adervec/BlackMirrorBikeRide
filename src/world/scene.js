@@ -73,6 +73,7 @@ export class WorldScene {
     this._dynamic = [];
 
     const sky = view.skyboxDef || SKYBOXES[route.skybox] || SKYBOXES[DEFAULT_SKYBOX];
+    this.renderer.toneMappingExposure = sky.lamp ? 0.9 : 1.05;
     this._buildSky(sky);
     // Image-based lighting from the sky gradient: PBR materials pick up realistic
     // ambient + reflections (especially metallic / clearcoat bike paint).
@@ -94,6 +95,8 @@ export class WorldScene {
     this.scene.add(this.avatar.group);
 
     this._buildSkySpecials(sky);
+    this._buildWeather(sky);
+    this._buildLamp(sky);
 
     // Sharpen every texture in the freshly-built scene.
     applyAnisotropy(this.scene, maxAnisotropyFor(this.renderer, this.q));
@@ -383,6 +386,56 @@ export class WorldScene {
         if (this.scene.fog) this.scene.fog.density = this._biomeFogDensity(this.profile) * (1 + Math.sin(t * 0.5) * 0.25);
       });
     }
+  }
+
+  // Rain / snow: one Points cloud in a box that rides along with the camera and
+  // wraps each particle back to the top as it falls. Thick fog just turns the
+  // biome fog up.
+  _buildWeather(sky) {
+    const kind = sky.weather;
+    if (kind === 'fog') { if (this.scene.fog) this.scene.fog.density *= 4; return; }
+    if (kind !== 'rain' && kind !== 'snow') return;
+    const rain = kind === 'rain';
+    const N = rain ? 2600 : 1800, BOX = 70, H = 40;
+    const pos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) pos.set([(Math.random() - 0.5) * BOX, Math.random() * H, (Math.random() - 0.5) * BOX], i * 3);
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const m = new THREE.PointsMaterial({
+      color: rain ? 0xa9c4e0 : 0xffffff, size: rain ? 0.07 : 0.22, sizeAttenuation: true,
+      transparent: true, opacity: rain ? 0.55 : 0.9, depthWrite: false
+    });
+    const pts = new THREE.Points(g, m);
+    pts.frustumCulled = false;
+    this.scene.add(pts);
+    const vy = rain ? 15 : 1.6;
+    let last = 0;
+    this._dynamic.push((t) => {
+      const dt = last ? Math.min(0.1, t - last) : 0.016; last = t;
+      const c = this.camera.position;
+      pts.position.set(c.x, c.y - H * 0.5, c.z);
+      const a = g.attributes.position.array;
+      for (let i = 0; i < N; i++) {
+        let y = a[i * 3 + 1] - vy * dt;
+        if (!rain) a[i * 3] += Math.sin(t * 1.3 + i) * dt * 0.7; // flakes drift
+        if (y < 0) { y += H; a[i * 3] = (Math.random() - 0.5) * BOX; a[i * 3 + 2] = (Math.random() - 0.5) * BOX; }
+        a[i * 3 + 1] = y;
+      }
+      g.attributes.position.needsUpdate = true;
+    });
+  }
+
+  // A headlamp on the bars, pointing down the road (the avatar faces +X).
+  _buildLamp(sky) {
+    if (!sky.lamp) return;
+    // Biome fog is a daytime colour; at night it would paint the distance beige.
+    if (this.scene.fog) this.scene.fog.color.multiplyScalar(0.12);
+    if (!this.avatar) return;
+    const lamp = new THREE.SpotLight(0xfff2d0, 90, 50, 0.48, 0.5, 1.4);
+    lamp.position.set(0.5, 0.85, 0);
+    lamp.target.position.set(16, -0.4, 0);
+    lamp.castShadow = false;
+    this.avatar.group.add(lamp, lamp.target);
   }
 
   setCameraMode(m) { this.rig.setMode(m); }

@@ -9,7 +9,7 @@ export function el(tag, props = {}, children = []) {
     else if (k === 'html') e.innerHTML = v;
     else if (k.startsWith('on') && typeof v === 'function') e.addEventListener(k.slice(2).toLowerCase(), v);
     else if (k === 'value') e.value = v;
-    else if (k === 'checked' || k === 'selected' || k === 'disabled') { if (v) e.setAttribute(k, ''); e[k] = !!v; }
+    else if (k === 'checked' || k === 'selected' || k === 'disabled' || k === 'multiple') { if (v) e.setAttribute(k, ''); e[k] = !!v; }
     else e.setAttribute(k, v);
   }
   for (const c of [].concat(children)) {
@@ -50,6 +50,14 @@ export function colorInput(value, onChange) {
   return el('input', { type: 'color', value, oninput: (e) => onChange(e.target.value) });
 }
 
+// A labelled on/off switch.
+export function checkbox(labelText, checked, onChange) {
+  return div({ class: 'row' }, [
+    el('input', { type: 'checkbox', checked, onchange: (e) => onChange(e.target.checked) }),
+    el('span', {}, labelText)
+  ]);
+}
+
 // A scannable data table. `cols` is [{ label, align?, cell(row) }]; anything a
 // cell returns (node, string, number) is placed as-is. Wrapped in a scroller so
 // a wide table never forces the page itself to scroll sideways on a phone.
@@ -72,4 +80,12 @@ export function screen(title, ctx, bodyChildren, { backTo = 'menu' } = {}) {
   ]);
   root.append(bar, div({ class: 'screen-body' }, bodyChildren));
   return root;
+}
+
+// A transient notice at the bottom of the page (survives screen changes).
+export function toast(text, ms = 6000) {
+  const t = div({ class: 'toast' }, text);
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), ms);
+  return t;
 }

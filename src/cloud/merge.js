@@ -6,7 +6,7 @@
 //
 // Payload shape:
 //   { app:'bmbr', v, savedAt, players[], riders[], bikes[], routes[],
-//     activities[], decals[], customSkyboxes[], dismissedRouteIds[] }
+//     activities[], decals[], customSkyboxes[], workouts[], dismissedRouteIds[] }
 //
 // Device-local preferences (units, HUD layout, theme, graphics quality) are
 // deliberately NOT synced — a phone wants the low graphics preset while the
@@ -39,6 +39,7 @@ export function mergeSyncable(local, remote) {
       .sort((x, y) => (Date.parse(y.date) || 0) - (Date.parse(x.date) || 0)),
     decals: unionById(local.decals, remote.decals),
     customSkyboxes: unionById(local.customSkyboxes, remote.customSkyboxes),
+    workouts: unionById(local.workouts, remote.workouts),
     dismissedRouteIds: [...new Set([
       ...(local.dismissedRouteIds || []),
       ...(remote.dismissedRouteIds || [])

@@ -31,7 +31,10 @@ export const READINGS = {
   surface:         { label: 'Surface',         type: 'text',        field: 'surface' },
   temperature:     { label: 'Air Temp',        type: 'temperature', field: 'temperature' },
   progress:        { label: 'Progress',        type: 'text',        field: 'progressText' },
-  nextTurn:        { label: 'Next Turn',       type: 'text',        field: 'nextTurn' }
+  nextTurn:        { label: 'Next Turn',       type: 'text',        field: 'nextTurn' },
+  targetPower:     { label: 'Target',          type: 'power',       field: 'targetPower' },
+  workoutStep:     { label: 'Workout',         type: 'text',        field: 'workoutStep' },
+  zone:            { label: 'Zone',            type: 'text',        field: 'zone' }
 };
 
 // Ordered layout. `visible` toggles display; `unit` overrides the global
@@ -59,5 +62,15 @@ export const DEFAULT_HUD_LAYOUT = [
   { id: 'maxSpeed',          visible: false, unit: null },
   { id: 'energy',            visible: true,  unit: null },
   { id: 'temperature',       visible: false, unit: null },
-  { id: 'nextTurn',          visible: true,  unit: null }
+  { id: 'nextTurn',          visible: true,  unit: null },
+  { id: 'targetPower',       visible: false, unit: null },
+  { id: 'workoutStep',       visible: false, unit: null },
+  { id: 'zone',              visible: false, unit: null }
 ];
+
+// Saved layouts predate readings added later; append whatever they lack.
+export function completeHudLayout(saved) {
+  const out = Array.isArray(saved) ? saved.filter((l) => READINGS[l.id]) : [];
+  for (const d of DEFAULT_HUD_LAYOUT) if (!out.some((l) => l.id === d.id)) out.push({ ...d });
+  return out;
+}

@@ -26,7 +26,8 @@ const screens = [
   ['garageScreen', 'renderGarage'],
   ['settingsScreen', 'renderSettings'],
   ['historyScreen', 'renderHistory'],
-  ['skyboxScreen', 'renderSkyboxes']
+  ['skyboxScreen', 'renderSkyboxes'],
+  ['workoutsScreen', 'renderWorkouts']
 ];
 
 for (const [mod, fn] of screens) {

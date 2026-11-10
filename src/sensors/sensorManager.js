@@ -50,6 +50,7 @@ export class SensorManager {
       powerSource: this.powerSource,
       hrSource: this.hrSource,
       simulator: this.simulatorActive,
+      controllable: this.controllable,
       bleSupported: BLE_SUPPORTED
     };
   }
@@ -99,6 +100,17 @@ export class SensorManager {
   }
 
   setSimulatorTarget(w) { this.simulator?.setTarget(w); }
+
+  // ---- trainer control (FTMS control point, when the device has one) ----
+  get controllable() { return !!this.powerHandle?.control; }
+  // ERG: hold the rider at `w`. The simulator follows the same target so a
+  // workout can be previewed without hardware.
+  setTargetPower(w) {
+    if (this.simulator) this.simulator.setTarget(w);
+    this.powerHandle?.control?.setTargetPower(w);
+  }
+  // SIM: make the trainer feel the road.
+  setSimulation(gradePct, crr) { this.powerHandle?.control?.setSimulation(gradePct, crr); }
 
   stopSimulator() {
     if (this.simulator) { this.simulator.stop(); this.simulator = null; if (this.powerSource?.startsWith('Simulator')) this.powerSource = null; this._emit(); }

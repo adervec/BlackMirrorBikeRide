@@ -1,5 +1,6 @@
 // An "activity" is a recorded ride: a series of ~1 Hz samples plus summary
-// stats. Activities power the History screen, route PBs, replays, and ghosts.
+// stats. Activities power the History screen, route PBs, replays, ghosts, the
+// TCX export and the cowork brief.
 //
 // Sample shape: { t, d, p, s, hr, c }
 //   t  elapsed seconds
@@ -12,7 +13,8 @@
 let _id = 0;
 const uid = () => `act-${Date.now().toString(36)}-${(_id++).toString(36)}`;
 
-export function createActivity({ route, reverse, samples, summary, total }) {
+export function createActivity({ route, reverse, samples, summary, total, source = null, workoutName = null }) {
+  const stats = statsFromSamples(samples);
   return {
     id: uid(),
     routeId: route.id,
@@ -27,8 +29,55 @@ export function createActivity({ route, reverse, samples, summary, total }) {
     ascentM: summary.ascent,
     total,                              // route length when recorded
     lapTimeS: lapTime(samples, total),  // time to first cover the full route
+    // context a brief wants without re-deriving it
+    source,                             // 'Simulator (manual)' or the trainer's name
+    workoutName,
+    zoneTime: Array.isArray(summary.zoneTime) ? summary.zoneTime.map((z) => Math.round(z)) : null,
+    ftpEstimate: summary.ftpEstimate || null,
+    normPower: stats.normPower,
+    maxPower: stats.maxPower,
+    avgHr: stats.avgHr,
     samples
   };
+}
+
+// Normalized power (30 s rolling mean, 4th-power mean, 4th root), max power and
+// average heart rate from the sample series. Nulls when there's nothing to say.
+export function statsFromSamples(samples) {
+  if (!samples || samples.length < 2) return { normPower: null, maxPower: null, avgHr: null };
+  const E = [0];
+  let maxPower = 0, hrSum = 0, hrN = 0;
+  for (let i = 1; i < samples.length; i++) {
+    const a = samples[i - 1], b = samples[i];
+    E.push(E[i - 1] + ((a.p || 0) + (b.p || 0)) / 2 * Math.max(0, b.t - a.t));
+  }
+  let np4 = 0, dur = 0, j = 0;
+  for (let i = 1; i < samples.length; i++) {
+    const s = samples[i];
+    maxPower = Math.max(maxPower, s.p || 0);
+    if (s.hr != null) { hrSum += s.hr; hrN++; }
+    while (j < i && samples[j].t < s.t - 30) j++;
+    const span = s.t - samples[j].t;
+    const p30 = span > 0 ? (E[i] - E[j]) / span : (s.p || 0);
+    const dt = Math.max(0, s.t - samples[i - 1].t);
+    np4 += Math.pow(p30, 4) * dt; dur += dt;
+  }
+  if (samples[0].hr != null) { hrSum += samples[0].hr; hrN++; }
+  return {
+    normPower: dur > 0 ? Math.round(Math.pow(np4 / dur, 0.25)) : null,
+    maxPower: Math.round(maxPower),
+    avgHr: hrN ? Math.round(hrSum / hrN) : null
+  };
+}
+
+// Stored stats when the activity has them (recorded after this field existed),
+// otherwise derived from its samples.
+export function activityStats(a) {
+  if (!a) return { normPower: null, maxPower: null, avgHr: null };
+  if (a.normPower != null || a.maxPower != null || a.avgHr != null) {
+    return { normPower: a.normPower ?? null, maxPower: a.maxPower ?? null, avgHr: a.avgHr ?? null };
+  }
+  return statsFromSamples(a.samples);
 }
 
 // Time at which the ride first reached distance `target` (linear interp).

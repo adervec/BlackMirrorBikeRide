@@ -2,7 +2,7 @@
  "id": "bundled-static-and-ash",
  "name": "Static & Ash",
  "type": "virtual",
- "skybox": "the-eye",
+ "skybox": "night-ride",
  "airDensity": 1.25,
  "segments": [
   {

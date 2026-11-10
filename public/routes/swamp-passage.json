@@ -2,7 +2,7 @@
  "id": "bundled-swamp-passage",
  "name": "Swamp Passage",
  "type": "virtual",
- "skybox": "overcast",
+ "skybox": "pea-souper",
  "airDensity": 1.25,
  "segments": [
   {

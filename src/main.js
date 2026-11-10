@@ -1,9 +1,13 @@
 import './style.css';
 import { Router } from './ui/router.js';
 import { applyTheme } from './ui/themes.js';
-import { getState, mergeBundledRoutes } from './state.js';
+import { toast } from './ui/dom.js';
+import { getState, mergeBundledRoutes, addActivity } from './state.js';
 import { loadBundledRoutes } from './routes/bundled.js';
 import { autoSync } from './cloud/sync.js';
+import { pushCoworkFolder } from './cloud/coworkFolder.js';
+import { createActivity } from './game/activity.js';
+import { formatTime } from './game/units.js';
 import { renderMenu } from './ui/menuScreen.js';
 import { renderRoutes } from './ui/routesScreen.js';
 import { renderVirtualBuilder } from './ui/builderScreen.js';
@@ -12,7 +16,8 @@ import { renderGarage } from './ui/garageScreen.js';
 import { renderSettings } from './ui/settingsScreen.js';
 import { renderHistory } from './ui/historyScreen.js';
 import { renderSkyboxes } from './ui/skyboxScreen.js';
-import { renderRide } from './ui/rideScreen.js';
+import { renderWorkouts } from './ui/workoutsScreen.js';
+import { renderRide, AUTOSAVE_KEY } from './ui/rideScreen.js';
 
 applyTheme(getState().settings.theme);
 
@@ -28,9 +33,27 @@ router
   .register('settings', renderSettings)
   .register('history', renderHistory)
   .register('skyboxes', renderSkyboxes)
+  .register('workouts', renderWorkouts)
   .register('ride', renderRide);
 
 router.go('menu');
+
+// A ride snapshot left behind means the last session never got to finish
+// (crash, killed tab, dead battery). Land it in History rather than lose it.
+try {
+  const raw = localStorage.getItem(AUTOSAVE_KEY);
+  if (raw) {
+    localStorage.removeItem(AUTOSAVE_KEY);
+    const snap = JSON.parse(raw);
+    if (snap?.samples?.length > 5) {
+      const act = createActivity({ route: { id: snap.routeId, name: snap.routeName }, reverse: snap.reverse, samples: snap.samples, summary: snap.summary, total: snap.total });
+      act.date = new Date(snap.savedAt || Date.now()).toISOString();
+      addActivity(act);
+      toast(`Recovered an unfinished ride on ${snap.routeName} (${formatTime(snap.summary?.time || 0)}) into History.`);
+      router.go('menu');
+    }
+  }
+} catch { /* nothing usable */ }
 
 // Merge routes shipped with the app (public/routes/). Refresh passive screens
 // only — never re-render mid-ride.
@@ -41,6 +64,9 @@ loadBundledRoutes().then((routes) => {
 // Pull anything ridden on another device (silent — never prompts; opt-in via Settings).
 autoSync().then((r) => {
   if (r?.pulled && ['menu', 'routes', 'history'].includes(router.current)) router.go(router.current);
+  // The cowork folder (if one was ever connected) should reflect today's state
+  // every time the app opens, whether or not History gets visited.
+  pushCoworkFolder();
 });
 
 // Service worker: makes the app installable and usable offline. Production only,
