@@ -105,6 +105,13 @@ export function renderSettings(ctx) {
     div({ class: 'hint' }, 'Everything is synthesised in the browser — no audio files. Press M during a ride to mute.')
   ]);
 
+  // ---- Font (house standard: shared picker from adervec.github.io/font.js) ----
+  const fontCard = div({ class: 'card' }, [
+    h(2, 'Font'),
+    el('app-font-picker'),
+    div({ class: 'hint' }, 'Shared with the other apps from this maker. Needs a connection the first time; the HUD numbers keep their own face.')
+  ]);
+
   const ghostCard = div({ class: 'card' }, [
     h(2, 'Ghost & Playback'),
     div({ class: 'field' }, [
@@ -212,6 +219,7 @@ export function renderSettings(ctx) {
     sessionCard,
     trainerCard,
     soundCard,
+    fontCard,
     ghostCard,
     syncCard,
     dangerCard

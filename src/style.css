@@ -19,7 +19,7 @@ html, body { margin: 0; height: 100%; }
 body {
   background: radial-gradient(1200px 700px at 70% -10%, #1a2030, var(--bg));
   color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--app-font, 'Segoe UI', system-ui, -apple-system, sans-serif);
   font-size: 15px;
   touch-action: manipulation; /* no double-tap zoom delay on buttons */
 }

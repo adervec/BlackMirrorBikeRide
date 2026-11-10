@@ -60,6 +60,14 @@ assert(html.includes('%BASE_URL%manifest.webmanifest'), 'manifest link uses %BAS
 assert(/name="theme-color"/.test(html), 'index.html sets theme-color');
 assert(/rel="apple-touch-icon"/.test(html), 'index.html sets an apple-touch-icon (iOS ignores the manifest icons)');
 
+// ---- house font standard ----
+const css = readFileSync(join(root, 'src', 'style.css'), 'utf8');
+const head = html.slice(0, html.indexOf('</head>'));
+assert(head.includes('<script src="https://adervec.github.io/font.js"></script>'), 'font.js loads in <head>, not deferred');
+assert(css.includes("font-family: var(--app-font, 'Segoe UI'"), 'body font is var(--app-font) with the old stack as the offline fallback');
+assert(!css.includes('Atkinson'), 'Atkinson is not hardcoded: the variable carries the choice the reader made');
+assert(readFileSync(join(root, 'src', 'ui', 'settingsScreen.js'), 'utf8').includes("el('app-font-picker')"), 'settings screen has the font picker');
+
 // ---- registration ----
 const main = readFileSync(join(root, 'src', 'main.js'), 'utf8');
 assert(/serviceWorker/.test(main) && /register\(/.test(main), 'main.js registers the service worker');
