@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { profileAt } from '../routes/virtualRoute.js';
 import { BIOMES } from '../routes/biomes.js';
 import { circle, cone, cylinder, dodeca, icosa, octa, sphere, torus } from './poly.js';
+import { mergeProps } from './merge.js';
 
 const MAX_ARTIFACTS = 700;
 const _box = new THREE.Box3();      // reused while measuring props for placement
@@ -1494,5 +1495,6 @@ export function buildArtifacts(profile) {
       }
     }
   }
-  return root;
+  // ~3800 prop meshes is a draw-call problem, not a triangle problem.
+  return mergeProps(root);
 }
