@@ -3,7 +3,7 @@
 
 export const THEMES = {
   midnight: {
-    label: 'Midnight (default)',
+    label: 'Midnight',
     vars: { '--bg': '#0b0d14', '--bg2': '#12151f', '--card': '#171b27', '--card2': '#1e2333', '--line': '#2a3042', '--text': '#e6e9f0', '--dim': '#8a93a8', '--accent': '#4cc2ff', '--accent2': '#ff5db1' }
   },
   arcade: {
@@ -38,8 +38,13 @@ export function themeList() {
   return Object.entries(THEMES).map(([id, t]) => ({ value: id, label: t.label }));
 }
 
-export function applyTheme(id) {
-  const t = THEMES[id] || THEMES[DEFAULT_THEME];
+// No saved theme: follow the device — Pastel in light mode, Midnight in dark.
+export function themeFor(saved, light = typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches) {
+  return THEMES[saved] ? saved : light ? 'pastel' : DEFAULT_THEME;
+}
+
+export function applyTheme(saved) {
+  const id = themeFor(saved), t = THEMES[id];
   const root = document.documentElement;
   for (const [k, v] of Object.entries(t.vars)) root.style.setProperty(k, v);
   document.body && (document.body.dataset.theme = id);

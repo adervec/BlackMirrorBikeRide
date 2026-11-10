@@ -68,6 +68,13 @@ assert(css.includes("font-family: var(--app-font, 'Segoe UI'"), 'body font is va
 assert(!css.includes('Atkinson'), 'Atkinson is not hardcoded: the variable carries the choice the reader made');
 assert(readFileSync(join(root, 'src', 'ui', 'settingsScreen.js'), 'utf8').includes("el('app-font-picker')"), 'settings screen has the font picker');
 
+// ---- what's new + device-following theme ----
+const news = JSON.parse(readFileSync(join(pub, 'whatsnew.json'), 'utf8'));
+assert(Array.isArray(news) && news.length && news.every((e) => /^\d{4}-\d{2}-\d{2}$/.test(e.date) && e.items.length) && news.every((e, i) => !i || e.date <= news[i - 1].date), 'whatsnew.json: dated entries, newest first');
+assert(head.includes('<meta name="app-whatsnew" content="whatsnew.json" />'), 'index.html points at whatsnew.json');
+const { themeFor } = await import('../src/ui/themes.js');
+assert(themeFor(null, true) === 'pastel' && themeFor(null, false) === 'midnight' && themeFor('arcade', true) === 'arcade', 'no saved theme follows the device; a saved one wins');
+
 // ---- registration ----
 const main = readFileSync(join(root, 'src', 'main.js'), 'utf8');
 assert(/serviceWorker/.test(main) && /register\(/.test(main), 'main.js registers the service worker');

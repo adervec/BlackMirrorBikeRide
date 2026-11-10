@@ -36,7 +36,7 @@ function freshState() {
       ghost: { enabled: true, source: 'pb' },
       previewSpeedMs: 40,
       replaySpeedMul: 4,
-      theme: 'midnight',
+      theme: null, // null = follow the device (themes.js themeFor); a saved choice wins
       graphicsQuality: DEFAULT_QUALITY,
       trainerDifficulty: 1,   // share of the road gradient sent to a controllable trainer
       autoPause: true,        // stop the clock when a real trainer goes quiet at a standstill

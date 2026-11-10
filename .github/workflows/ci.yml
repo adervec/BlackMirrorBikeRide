@@ -111,3 +111,12 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # ── Live check: the deployed site works, then tag deploy-YYYYMMDD-HHMM ──────
+  after-deploy:
+    needs: deploy
+    uses: adervec/CoworkSyncHub/.github/workflows/after-deploy.yml@main
+    with:
+      url: https://adervec.github.io/BlackMirrorBikeRide/
+    permissions:
+      contents: write

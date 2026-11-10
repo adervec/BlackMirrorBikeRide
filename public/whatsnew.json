@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-11-10",
+    "items": [
+      "Settings has a button that erases all of this app's data on this device. Your Google Drive copy is not touched.",
+      "The app starts in a light or dark theme to match your device, until you pick one.",
+      "Atkinson Hyperlegible is now the default font, and you can change it in Settings."
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "items": [
+      "Structured workouts: built-in sessions, .zwo import, an FTP ramp test and a 20-minute test.",
+      "Smart trainers are controlled directly: ERG mode follows workout targets, and Sim mode feels the gradient.",
+      "Power zones, categorised climbs with a live climb readout, auto-pause, and recovery of rides cut short by a crash.",
+      "Export any ride as a TCX file for Strava or Garmin.",
+      "Ride sounds, plus rain, snow, fog and night-ride skies."
+    ]
+  }
+]
