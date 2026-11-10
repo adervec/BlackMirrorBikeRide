@@ -2,9 +2,9 @@ name: CI / CD
 
 on:
   push:
-    branches: [master, dev]
+    branches: [main, dev]
   pull_request:
-    branches: [master, dev]
+    branches: [main, dev]
 
 permissions:
   contents: read
@@ -54,6 +54,15 @@ jobs:
       - name: Bundled route library
         run: node scripts/routestest.mjs
 
+      - name: Workouts, zones, climbs, TCX, FTMS
+        run: node scripts/trainingtest.mjs
+
+      - name: Cowork brief
+        run: node scripts/brieftest.mjs
+
+      - name: Erase only this app's data
+        run: node scripts/erasetest.mjs
+
       - name: DOM smoke
         run: node scripts/smoke.mjs
 
@@ -61,7 +70,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: test
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     permissions:

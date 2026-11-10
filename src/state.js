@@ -116,6 +116,21 @@ export function save() {
 export function getState() { return state; }
 export function resetState() { state = freshState(); save(); return state; }
 
+// Erase this app's data from the device. Every app on adervec.github.io shares
+// one origin, so never clear the whole store: only keys this app owns go, plus
+// its own entry in the portal's install registry. Returns the removed keys.
+// The caller reloads afterwards, or the in-memory state would be saved back.
+export function eraseLocalKeys(ls = localStorage) {
+  const mine = [];
+  for (let i = 0; i < ls.length; i++) { const k = ls.key(i); if (/^bmbr[.-]/.test(k)) mine.push(k); }
+  mine.forEach((k) => ls.removeItem(k));
+  try {
+    const reg = JSON.parse(ls.getItem('portal-installed') || '{}');
+    if ('BlackMirrorBikeRide' in reg) { delete reg.BlackMirrorBikeRide; ls.setItem('portal-installed', JSON.stringify(reg)); }
+  } catch { /* not ours to repair */ }
+  return mine;
+}
+
 export const STORAGE_LOCATION = `localStorage["${STORAGE_KEY}"] (this browser profile)`;
 
 // ---- players ----

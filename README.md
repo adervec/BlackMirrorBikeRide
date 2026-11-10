@@ -112,6 +112,7 @@ node scripts/selftest.mjs    # physics, units, route geometry, activity/PB math
 node scripts/sessiontest.mjs # Session ride-recording / preview / replay / ghost (headless)
 node scripts/trainingtest.mjs # .zwo parsing, ERG targets, FTP estimates, zones, climbs, TCX, FTMS encoding
 node scripts/brieftest.mjs   # cowork brief digest (totals, trend, PBs, gaps, anomalies) + folder file set
+node scripts/erasetest.mjs   # "Erase all data" removes only this app's keys (the origin is shared)
 node scripts/gpxtest.mjs     # GPX parsing / downsampling / gradient clamping / landmarks
 node scripts/synctest.mjs    # cloud-sync merge (union semantics) + OAuth origin gate
 node scripts/texturetest.mjs # procedural surface textures + per-surface road draw groups

@@ -27,7 +27,7 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== VERSION) await caches.delete(k);
+    for (const k of await caches.keys()) if (k !== VERSION && k.startsWith('bmbr-')) await caches.delete(k); // the origin is shared with sibling apps
     await self.clients.claim();
   })());
 });

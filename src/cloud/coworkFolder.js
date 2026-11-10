@@ -23,6 +23,9 @@ function idb(mode, fn) {
   });
 }
 
+// Forget the connected folder (this app's entry only; the store is shared).
+export const forgetCoworkFolder = () => idb('readwrite', (st) => st.delete(COWORK_APP)).catch(() => {});
+
 async function writeFile(root, path, text) {
   const parts = path.split('/').filter(Boolean);
   let dir = root;

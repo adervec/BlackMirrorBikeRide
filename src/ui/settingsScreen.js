@@ -1,5 +1,6 @@
 import { div, h, el, field, select, textInput, numberInput, checkbox, btn, screen } from './dom.js';
-import { getState, save, resetState } from '../state.js';
+import { getState, save, resetState, eraseLocalKeys } from '../state.js';
+import { forgetCoworkFolder } from '../cloud/coworkFolder.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
 import { themeList, applyTheme } from './themes.js';
@@ -192,7 +193,16 @@ export function renderSettings(ctx) {
     h(2, 'Data'),
     btn('Reset everything to defaults', () => {
       if (confirm('Reset profile, garage, routes and settings to defaults?')) { resetState(); ctx.router.go('settings'); }
-    }, 'btn danger')
+    }, 'btn danger'),
+    btn('Erase all of this app’s data on this device', async () => {
+      if (!confirm('Erase every ride, route, workout, profile and setting stored on this device, and disconnect cloud sync? This cannot be undone. The copy in Google Drive is not touched.')) return;
+      signOut();
+      eraseLocalKeys();
+      await forgetCoworkFolder();
+      try { for (const k of await caches.keys()) if (k.startsWith('bmbr-')) await caches.delete(k); } catch { /* no Cache API */ }
+      location.reload();
+    }, 'btn danger'),
+    div({ class: 'hint' }, 'Erase removes only Black Mirror Bike Ride’s data. Other apps from this maker, files already written to a cowork folder, and the Google Drive copy are left alone.')
   ]);
 
   const appearanceCard = div({ class: 'card' }, [
