@@ -24,7 +24,22 @@ function coachSection(s) {
     cw.mount(host, {
       app: COWORK_APP, manifest: coworkManifest(),
       files: () => coworkFiles(s),
-      apply: (_ch, reply) => { const text = coworkReplyText(reply); try { localStorage.setItem('bmbr-coach-reply', text); } catch { /* quota */ } show(text); }
+      // cowork v2 (house standard): review before the advice replaces the current one; undo from the history.
+      // BRIEF.md stays ours (coworkFiles writes it, and so does the headless push after every ride).
+      channels: {
+        coach: {
+          label: 'Ride coach',
+          preview: (reply) => [{ id: 'reply', label: 'Show this advice (replaces the current one)', detail: coworkReplyText(reply).slice(0, 400) }],
+          apply: (reply) => {
+            let prev = ''; try { prev = localStorage.getItem('bmbr-coach-reply') || ''; } catch { /* private mode */ }
+            const text = coworkReplyText(reply);
+            try { localStorage.setItem('bmbr-coach-reply', text); } catch { /* quota */ }
+            show(text);
+            return { summary: 'new coaching advice shown', undo: { prev } };
+          },
+          undo: (data) => { try { localStorage.setItem('bmbr-coach-reply', data.prev || ''); } catch { /* quota */ } show(data.prev || ''); }
+        }
+      }
     });
   });
   return div({ class: 'coach' }, [
