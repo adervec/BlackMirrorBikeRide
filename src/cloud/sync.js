@@ -81,7 +81,7 @@ async function getToken(interactive) {
 async function fetchProfile(token) {
   try {
     const r = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', { headers: { Authorization: `Bearer ${token}` } });
-    if (r.ok) { const j = await r.json(); _profile = { name: j.name || j.email || 'Google account', email: j.email || '', picture: j.picture || '' }; }
+    if (r.ok) { const j = await r.json(); _profile = { name: j.name || j.email || 'Google account', email: j.email || '', picture: j.picture || '' }; window.appFont?.setAccount(_profile); }
   } catch { /* cosmetic only — never fails a sync */ }
   return _profile;
 }
@@ -153,7 +153,7 @@ export function signOut() {
   if (_token && window.google?.accounts?.oauth2) {
     try { window.google.accounts.oauth2.revoke(_token); } catch {}
   }
-  _token = null; _tokenExp = 0; _profile = null;
+  _token = null; _tokenExp = 0; _profile = null; window.appFont?.setAccount(null);
 }
 
 // Pull remote → merge into local → push merged back. Returns a small summary.

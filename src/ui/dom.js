@@ -76,7 +76,9 @@ export function screen(title, ctx, bodyChildren, { backTo = 'menu' } = {}) {
   const root = div({ class: 'screen' });
   const bar = div({ class: 'topbar' }, [
     backTo ? btn('‹ Back', () => ctx.router.go(backTo), 'btn ghost') : null,
-    h(1, title, { class: 'screen-title' })
+    h(1, title, { class: 'screen-title' }),
+    // house standard: the signed-in Google picture on every screen's title bar (font.js <app-account>)
+    document.createElement('app-account')
   ]);
   root.append(bar, div({ class: 'screen-body' }, bodyChildren));
   return root;
