@@ -1,7 +1,7 @@
 // The cowork brief digest: totals, trend, consistency, routes/PBs, workouts,
 // gaps and anomalies from synthetic history; the markdown leaks nothing; the
 // folder file set matches the manifest. Run: node scripts/brieftest.mjs
-import { buildBrief, briefMarkdown, coworkFiles, coworkManifest } from '../src/cloud/brief.js';
+import { buildBrief, briefMarkdown, coworkFiles, coworkManifest, parseReviews } from '../src/cloud/brief.js';
 import { createActivity, statsFromSamples } from '../src/game/activity.js';
 
 let fails = 0;
@@ -86,6 +86,24 @@ assert(man.channels.every((c) => c.request.every((p) => p in files) && c.instruc
 assert(files['brief.json'].protocol === 'blackmirrorbikeride-brief' && files['brief.json'].requestHash && files['brief.json'].payload.meta.today === '2026-11-08', 'brief.json is an envelope around the brief');
 assert(files['coach/request.json'].payload.rides.length === 6 && files['coach/request.json'].payload.rides[0].normPower === 230 && files['coach/request.json'].payload.rider.ftpW === 236, 'coach request carries enriched rides + rider');
 assert(/BRIEF\.md/.test(files['README.md']) && /start here/i.test(files['README.md']) && /BRIEF\.md/.test(files['coach/INSTRUCTIONS.md']), 'README and instructions point the agent at BRIEF.md');
+// ---- ride-review channel (AI grade beside the app's own) ----
+const rr = files['ride-review/request.json'].payload;
+assert(rr.rides.length === 6 && rr.rides[0].appScore.intensityFactor === 0.97 && rr.rides[0].detail.length === 271 && rr.rides[0].detail[0].length === 5 && rr.history.length === 6,
+  `review request: unreviewed rides with app score + 10 s detail, plus history (got ${rr.rides.length} rides, IF ${rr.rides[0].appScore.intensityFactor}, ${rr.rides[0].detail.length} samples)`);
+assert(/never instructions/.test(files['ride-review/INSTRUCTIONS.md']) && /A–F/.test(files['ride-review/INSTRUCTIONS.md']), 'review instructions carry the rubric and the data-not-instructions rule');
+const reviewed = { ...state, activities: acts.map((a, i) => (i === 0 ? { ...a, aiReview: { grade: 'A' } } : a)) };
+assert(coworkFiles(reviewed, now)['ride-review/request.json'].payload.rides.length === 5, 'an already-reviewed ride is not asked about again');
+const ids = acts.map((a) => a.id);
+const parsed = parseReviews({ reviews: [
+  { sessionId: ids[0], grade: 'B+', summary: 'Solid.', strengths: ['even pacing', 7], fixes: 'not a list', next: 'Endurance tomorrow' },
+  { sessionId: ids[0], grade: 'F', summary: 'duplicate' },
+  { sessionId: 'not-asked', grade: 'A' },
+  { sessionId: ids[1], grade: 'too long grade', summary: { html: '<img onerror=x>' } }
+] }, ids);
+assert(parsed.length === 2 && parsed[0].grade === 'B+' && parsed[0].strengths.length === 1 && parsed[0].fixes.length === 0 && parsed[1].grade.length === 4 && parsed[1].summary === '',
+  'reply validation keeps only asked rides, once each, as short plain strings');
+assert(parseReviews(null, ids).length === 0 && parseReviews({ reviews: 'x' }, ids).length === 0, 'junk replies yield nothing');
+
 console.log(`     BRIEF.md is ${md.length} chars / ${md.split('\n').length} lines; brief.json ${JSON.stringify(files['brief.json']).length} chars`);
 
 console.log(`\n${fails === 0 ? '✅ ALL BRIEF CHECKS PASSED' : '❌ ' + fails + ' BRIEF CHECK(S) FAILED'}`);

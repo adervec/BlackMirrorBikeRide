@@ -290,3 +290,7 @@ label { display: block; font-size: .8rem; color: var(--dim); margin-bottom: .2re
   .wo-graph { height: 26px; }
   .wo-target { font-size: 1.2rem; }
 }
+
+/* AI ride review, under the ride in History (beside the app's own numbers) */
+.ai-review { margin-top: 6px; padding: 6px 8px; border-inline-start: 3px solid var(--accent2); background: var(--card2); border-radius: 6px; font-size: 0.9em; max-width: 60ch; }
+.ai-review ul { margin: 2px 0 4px; padding-inline-start: 18px; }

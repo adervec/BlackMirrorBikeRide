@@ -418,7 +418,7 @@ function buildWorkoutBar(workout) {
         text.textContent = si.step.text || (si.frac == null ? 'Free ride' : `Block ${si.idx + 1} of ${workout.steps.length}`);
       }
       const pct = si.frac == null ? '' : (si.step.abs ? '' : `${Math.round(si.frac * telem.intensity * 100)}%`);
-      target.innerHTML = telem.targetPower == null ? 'Free ride' : `${telem.targetPower} W${pct ? `<small>${pct} FTP</small>` : ''}`;
+      target.replaceChildren(telem.targetPower == null ? 'Free ride' : `${telem.targetPower} W`, ...(telem.targetPower != null && pct ? [el('small', {}, `${pct} FTP`)] : []));
       remaining.textContent = `${formatTime(si.remaining)} left · ${formatTime(Math.max(0, total - telem.workoutTime))} total`;
       fill.style.width = `${Math.min(100, (si.elapsed / si.step.dur) * 100)}%`;
     }

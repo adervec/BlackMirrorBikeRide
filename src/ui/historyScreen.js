@@ -1,10 +1,10 @@
 import { div, el, btn, screen, table } from './dom.js';
-import { getState, getRoute, deleteActivity, getPB } from '../state.js';
+import { getState, getRoute, deleteActivity, getPB, setActivityReview } from '../state.js';
 import { formatTime, formatString } from '../game/units.js';
 import { buildProfile } from '../routes/virtualRoute.js';
 import { activityToTcx, tcxFilename } from '../game/tcx.js';
 import { downloadText } from '../routes/io.js';
-import { COWORK_APP, coworkManifest, coworkFiles } from '../cloud/brief.js';
+import { COWORK_APP, coworkManifest, coworkFiles, parseReviews } from '../cloud/brief.js';
 import { loadCowork, pushCoworkFolder } from '../cloud/coworkFolder.js';
 
 // Folder cowork through the maker's shared panel (https://adervec.github.io/cowork.js, fs mode):
@@ -23,7 +23,8 @@ function coachSection(s) {
     if (!cw || host.childElementCount) return;
     cw.mount(host, {
       app: COWORK_APP, manifest: coworkManifest(),
-      files: () => coworkFiles(s),
+      // each channel writes only its own files, so its declared requestHash is its own
+      files: (ch) => Object.fromEntries(Object.entries(coworkFiles(s)).filter(([p]) => ch === 'coach' ? !p.startsWith('ride-review/') : p.startsWith(ch + '/'))),
       // cowork v2 (house standard): review before the advice replaces the current one; undo from the history.
       // BRIEF.md stays ours (coworkFiles writes it, and so does the headless push after every ride).
       channels: {
@@ -38,6 +39,25 @@ function coachSection(s) {
             return { summary: 'new coaching advice shown', undo: { prev } };
           },
           undo: (data) => { try { localStorage.setItem('bmbr-coach-reply', data.prev || ''); } catch { /* quota */ } show(data.prev || ''); }
+        },
+        'ride-review': {
+          label: 'Ride review (AI grade per ride)',
+          schedule: 'daily', // and the folder push after every ride rewrites the request
+          preview: (reply) => parseReviews(reply, s.activities.map((a) => a.id)).map((r) => {
+            const a = s.activities.find((x) => x.id === r.sessionId);
+            return { id: r.sessionId, label: `${a.routeName} · ${new Date(a.date).toLocaleDateString()}: ${r.grade}`, detail: r.summary };
+          }),
+          apply: (reply, acceptedIds) => {
+            const ok = new Set(acceptedIds), prev = {}, at = new Date().toISOString();
+            for (const r of parseReviews(reply, s.activities.map((a) => a.id))) {
+              if (!ok.has(r.sessionId)) continue;
+              prev[r.sessionId] = s.activities.find((a) => a.id === r.sessionId).aiReview || null;
+              setActivityReview(r.sessionId, { ...r, at });
+            }
+            pushCoworkFolder();
+            return { summary: `${Object.keys(prev).length} ride review(s) added`, undo: { prev } };
+          },
+          undo: (data) => { for (const [id, r] of Object.entries(data.prev || {})) setActivityReview(id, r); pushCoworkFolder(); }
         }
       }
     });
@@ -46,6 +66,17 @@ function coachSection(s) {
     div({ class: 'hint' }, 'Coach · hand your rides to an agent through a folder (CoworkSyncHub, Claude Desktop, a person) — the reply shows here. Nothing is uploaded. ' +
       'The folder also gets BRIEF.md, a precomputed digest for daily/weekly briefs, refreshed after every ride.'),
     host, out
+  ]);
+}
+
+// The AI's grade, shown under the ride, beside (never replacing) the app's own numbers.
+function aiReviewBlock(r) {
+  const li = (items) => (items?.length ? el('ul', {}, items.map((x) => el('li', {}, x))) : null);
+  return div({ class: 'ai-review', 'data-clamp': '6' }, [
+    div({}, [el('span', { class: 'badge' }, `AI review ${r.grade || ''}`), ' ', r.summary || '']),
+    r.strengths?.length ? div({ class: 'dim small' }, 'Strengths') : null, li(r.strengths),
+    r.fixes?.length ? div({ class: 'dim small' }, 'To fix') : null, li(r.fixes),
+    r.next ? div({ class: 'small' }, `Next: ${r.next}`) : null
   ]);
 }
 
@@ -70,7 +101,8 @@ export function renderHistory(ctx) {
       el('span', {}, a.routeName + (a.reverse ? ' ↺' : '')),
       isPB(a) ? el('span', { class: 'badge badge-pb' }, '★ PB') : null,
       a.workoutName ? el('span', { class: 'badge badge-virtual', title: 'Structured workout' }, a.workoutName) : null,
-      div({ class: 't-sub' }, new Date(a.date).toLocaleString() + (a.source ? ` · ${a.source}` : ''))
+      div({ class: 't-sub' }, new Date(a.date).toLocaleString() + (a.source ? ` · ${a.source}` : '')),
+      a.aiReview ? aiReviewBlock(a.aiReview) : null
     ]) },
     { label: 'Lap', align: 'right', cell: (a) => (a.lapTimeS != null ? formatTime(a.lapTimeS) : '—') },
     { label: 'Duration', align: 'right', cell: (a) => formatTime(a.durationS) },

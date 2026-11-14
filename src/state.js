@@ -224,6 +224,8 @@ export function addActivity(activity) {
   return activity;
 }
 export function deleteActivity(id) { state.activities = state.activities.filter((a) => a.id !== id); save(); }
+// The AI ride review sits beside the app's own numbers; null removes it (undo).
+export function setActivityReview(id, review) { const a = state.activities.find((x) => x.id === id); if (!a) return; if (review) a.aiReview = review; else delete a.aiReview; save(); }
 export function getActivity(id) { return state.activities.find((a) => a.id === id); }
 export function getActivitiesForRoute(routeId, reverse) {
   return state.activities.filter((a) => a.routeId === routeId && (reverse === undefined || a.reverse === !!reverse));
