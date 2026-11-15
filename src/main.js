@@ -18,6 +18,7 @@ import { renderHistory } from './ui/historyScreen.js';
 import { renderSkyboxes } from './ui/skyboxScreen.js';
 import { renderWorkouts } from './ui/workoutsScreen.js';
 import { renderRide, AUTOSAVE_KEY } from './ui/rideScreen.js';
+import { i18nReady, t } from './i18n.js';
 
 if (migrateTheme(getState().settings.theme, window.appFont)) { delete getState().settings.theme; save(); }
 
@@ -36,6 +37,7 @@ router
   .register('workouts', renderWorkouts)
   .register('ride', renderRide);
 
+await i18nReady(); // draw the first screen in the reader's language
 router.go('menu');
 
 // A ride snapshot left behind means the last session never got to finish
@@ -49,7 +51,7 @@ try {
       const act = createActivity({ route: { id: snap.routeId, name: snap.routeName }, reverse: snap.reverse, samples: snap.samples, summary: snap.summary, total: snap.total });
       act.date = new Date(snap.savedAt || Date.now()).toISOString();
       addActivity(act);
-      toast(`Recovered an unfinished ride on ${snap.routeName} (${formatTime(snap.summary?.time || 0)}) into History.`);
+      toast(t('Recovered an unfinished ride on {route} ({time}) into History.', { route: snap.routeName, time: formatTime(snap.summary?.time || 0) }));
       router.go('menu');
     }
   }

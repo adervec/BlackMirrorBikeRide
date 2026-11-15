@@ -14,6 +14,9 @@ import { RideAudio } from '../game/audio.js';
 import { ZONES } from '../game/workouts.js';
 import { activityToTcx, tcxFilename } from '../game/tcx.js';
 import { downloadText } from '../routes/io.js';
+import { t, fmtDate, signed } from '../i18n.js';
+// Camera labels (world/cameras.js) and zone names (game/workouts.js) are translated where shown:
+// i18n-keys: Chase | Oncoming (rear) | Left Pan | Right Pan | Cockpit
 
 // An in-progress ride is snapshotted here every few seconds; main.js turns a
 // leftover snapshot (a crash, a killed tab) into a History entry on launch.
@@ -59,7 +62,7 @@ export function renderRide(ctx) {
   const root = div({ class: 'ride-root' }, [
     sceneContainer,
     div({ class: 'ride-top-left' }, [
-      mode !== 'ride' ? div({ class: 'mode-badge ' + mode }, mode === 'preview' ? 'PREVIEW' : 'REPLAY') : null,
+      mode !== 'ride' ? div({ class: 'mode-badge ' + mode }, mode === 'preview' ? t('PREVIEW') : t('REPLAY')) : null,
       hudEl
     ]),
     topRight,
@@ -77,38 +80,42 @@ export function renderRide(ctx) {
   function renderSensorPanel() {
     sensorPanel.innerHTML = '';
     const st = sensors.status();
-    const control = st.controllable ? 'FTMS ✓ (ERG / grade)' : (st.powerSource && !st.simulator ? 'read-only' : '—');
+    const control = st.controllable ? t('FTMS ✓ (ERG / grade)') : (st.powerSource && !st.simulator ? t('read-only') : '—');
+    // Source names stay English in the data (they are saved with the ride); only the app's own are translated here.
+    const powerName = st.simulator ? (sensors.simulator?.mode === 'auto' ? t('Simulator (auto)') : t('Simulator (manual)'))
+      : st.powerSource === 'Power Source' ? t('Power Source') : st.powerSource;
+    const hrName = st.hrSource === 'Heart Rate' ? t('Heart Rate') : st.hrSource;
     const rows = [
-      div({ class: 'sensor-row' }, [el('span', {}, 'Power:'), el('strong', {}, st.powerSource || 'none')]),
-      div({ class: 'sensor-row' }, [el('span', {}, 'Control:'), el('strong', {}, control)]),
-      div({ class: 'sensor-row' }, [el('span', {}, 'HR:'), el('strong', {}, st.hrSource || 'none')])
+      div({ class: 'sensor-row' }, [el('span', {}, t('Power:')), el('strong', {}, powerName || t('none'))]),
+      div({ class: 'sensor-row' }, [el('span', {}, t('Control:')), el('strong', {}, control)]),
+      div({ class: 'sensor-row' }, [el('span', {}, t('HR:')), el('strong', {}, hrName || t('none'))])
     ];
     if (sensors.simulatorActive) {
-      rows.push(div({ class: 'sensor-row sim-target' }, [el('span', {}, 'Target:'),
+      rows.push(div({ class: 'sensor-row sim-target' }, [el('span', {}, t('Target:')),
         el('strong', { id: 'sim-target' }, `${sensors.simulator.targetWatts} W`)]));
       rows.push(div({ class: 'sensor-buttons' }, [
         btn('−25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts - 25), 'btn small ghost'),
         btn('+25 W', () => sensors.setSimulatorTarget(sensors.simulator.targetWatts + 25), 'btn small ghost')
       ]));
-      rows.push(div({ class: 'hint small' }, workout ? 'ERG: the simulator follows the workout target' : '▲ / ▼ also adjust watts'));
+      rows.push(div({ class: 'hint small' }, workout ? t('ERG: the simulator follows the workout target') : t('▲ / ▼ also adjust watts')));
     }
     const buttons = div({ class: 'sensor-buttons' }, [
-      btn('Connect Trainer', async () => { try { await sensors.connectPower(); } catch (e) { alert(e.message); } }, 'btn small'),
-      btn('Connect HR', async () => { try { await sensors.connectHeartRate(); } catch (e) { alert(e.message); } }, 'btn small'),
-      btn(sensors.simulatorActive ? 'Sim: Auto' : 'Use Simulator', () => {
+      btn(t('Connect Trainer'), async () => { try { await sensors.connectPower(); } catch (e) { alert(e.message); } }, 'btn small'),
+      btn(t('Connect HR'), async () => { try { await sensors.connectHeartRate(); } catch (e) { alert(e.message); } }, 'btn small'),
+      btn(sensors.simulatorActive ? t('Sim: Auto') : t('Use Simulator'), () => {
         sensors.startSimulator(sensors.simulator && sensors.simulator.mode === 'manual' ? 'auto' : 'manual');
       }, 'btn small ghost')
     ]);
-    sensorPanel.append(h(3, 'Sensors'), ...rows, buttons);
-    if (!st.bleSupported) sensorPanel.append(div({ class: 'warn small' }, 'Web Bluetooth unavailable — use Chrome/Edge for real sensors.'));
+    sensorPanel.append(h(3, t('Sensors')), ...rows, buttons);
+    if (!st.bleSupported) sensorPanel.append(div({ class: 'warn small' }, t('Web Bluetooth unavailable — use Chrome/Edge for real sensors.')));
   }
 
   function renderCamPanel() {
     camPanel.innerHTML = '';
     const cur = world ? world.cameraMode() : 'chase';
-    camPanel.append(h(3, 'Camera (C to cycle)'),
+    camPanel.append(h(3, t('Camera (C to cycle)')),
       div({ class: 'cam-buttons' }, CAMERA_MODES.map((m, i) =>
-        btn(`${i + 1}. ${CAMERA_LABELS[m]}`, () => { world.setCameraMode(m); renderCamPanel(); },
+        btn(t('{n}. {camera}', { n: i + 1, camera: t(CAMERA_LABELS[m]) }), () => { world.setCameraMode(m); renderCamPanel(); },
           'btn small' + (m === cur ? ' active' : '')))));
   }
 
@@ -119,33 +126,33 @@ export function renderRide(ctx) {
       const scrub = el('input', { type: 'range', min: 0, max: 1000, value: 0, class: 'scrub', oninput: (e) => session.seekFraction(+e.target.value / 1000) });
       scrub.id = 'scrub';
       controlsRegion.append(div({ class: 'ride-controls preview-controls' }, [
-        h(3, 'Preview'),
-        div({ class: 'pc-row' }, [el('label', {}, 'Speed'), speed]),
-        div({ class: 'pc-row' }, [el('label', {}, 'Scrub'), scrub]),
+        h(3, t('Preview')),
+        div({ class: 'pc-row' }, [el('label', {}, t('Speed')), speed]),
+        div({ class: 'pc-row' }, [el('label', {}, t('Scrub')), scrub]),
         div({ class: 'row' }, [
-          btn('⏪ -200m', () => session.skip(-200), 'btn small ghost'),
-          btn('+200m ⏩', () => session.skip(200), 'btn small ghost'),
-          btn('↺ Restart', () => { session.seekFraction(0); session.previewAtEnd = false; }, 'btn small ghost'),
-          btn('‹ Exit', () => leaveRide(), 'btn small ghost')
+          btn(t('⏪ -200m'), () => session.skip(-200), 'btn small ghost'),
+          btn(t('+200m ⏩'), () => session.skip(200), 'btn small ghost'),
+          btn(t('↺ Restart'), () => { session.seekFraction(0); session.previewAtEnd = false; }, 'btn small ghost'),
+          btn(t('‹ Exit'), () => leaveRide(), 'btn small ghost')
         ])
       ]));
     } else if (mode === 'replay') {
       const mult = el('input', { type: 'range', min: 1, max: 30, step: 1, value: session.replaySpeedMul, oninput: (e) => { session.setReplaySpeed(+e.target.value); multLbl.textContent = `${e.target.value}×`; } });
       const multLbl = el('strong', {}, `${session.replaySpeedMul}×`);
       const scrub = el('input', { type: 'range', min: 0, max: 1000, value: 0, class: 'scrub', id: 'scrub', oninput: (e) => session.seekFraction(+e.target.value / 1000) });
-      pauseBtn = btn('⏸ Pause', () => session.togglePause());
+      pauseBtn = btn(t('⏸ Pause'), () => session.togglePause());
       controlsRegion.append(div({ class: 'ride-controls replay-controls' }, [
-        h(3, `Replay · ${new Date(replayActivity.date).toLocaleDateString()}`),
-        div({ class: 'pc-row' }, [el('label', {}, 'Speed'), mult, multLbl]),
-        div({ class: 'pc-row' }, [el('label', {}, 'Scrub'), scrub]),
-        div({ class: 'row' }, [pauseBtn, btn('‹ Exit', () => leaveRide(), 'btn small ghost')])
+        h(3, t('Replay · {date}', { date: fmtDate(replayActivity.date) })),
+        div({ class: 'pc-row' }, [el('label', {}, t('Speed')), mult, multLbl]),
+        div({ class: 'pc-row' }, [el('label', {}, t('Scrub')), scrub]),
+        div({ class: 'row' }, [pauseBtn, btn(t('‹ Exit'), () => leaveRide(), 'btn small ghost')])
       ]));
     } else {
-      pauseBtn = btn('⏸ Pause', () => session.togglePause());
+      pauseBtn = btn(t('⏸ Pause'), () => session.togglePause());
       controlsRegion.append(div({ class: 'ride-controls' }, [
         pauseBtn,
-        btn('🏁 Finish', () => { if (session) { session.stop(); showSummary(session.summary()); } }, 'btn ghost'),
-        btn('‹ Exit', () => leaveRide(), 'btn ghost')
+        btn(t('🏁 Finish'), () => { if (session) { session.stop(); showSummary(session.summary()); } }, 'btn ghost'),
+        btn(t('‹ Exit'), () => leaveRide(), 'btn ghost')
       ]));
     }
   }
@@ -159,37 +166,37 @@ export function renderRide(ctx) {
     const zMax = Math.max(1, ...zt);
     const zTotal = zt.reduce((a, b) => a + b, 0) || 1;
     const card = div({ class: 'summary-card' }, [
-      h(1, sum.replay ? 'Replay Finished' : 'Ride Complete'),
-      isPB ? div({ class: 'pb-flash' }, '★ NEW PERSONAL BEST ★') : null,
+      h(1, sum.replay ? t('Replay Finished') : t('Ride Complete')),
+      isPB ? div({ class: 'pb-flash' }, t('★ NEW PERSONAL BEST ★')) : null,
       h(2, sum.routeName + (sum.workoutName ? ` · ${sum.workoutName}` : '')),
       div({ class: 'summary-grid' }, [
-        stat('Distance', formatString('distance', sum.distance, u)),
-        stat('Time', formatTime(sum.time)),
-        stat('Avg Power', formatString('power', sum.avgPower, u)),
-        stat('Avg Speed', formatString('speed', sum.avgSpeed, u)),
-        stat('Ascent', formatString('distance', sum.ascent, u)),
-        stat('Energy', formatString('energy', sum.energy, u))
+        stat(t('Distance'), formatString('distance', sum.distance, u)),
+        stat(t('Time'), formatTime(sum.time)),
+        stat(t('Avg Power'), formatString('power', sum.avgPower, u)),
+        stat(t('Avg Speed'), formatString('speed', sum.avgSpeed, u)),
+        stat(t('Ascent'), formatString('distance', sum.ascent, u)),
+        stat(t('Energy'), formatString('energy', sum.energy, u))
       ]),
-      !sum.replay && zt.length ? div({ class: 'summary-sub' }, `Time in zone (FTP ${sum.ftp} W)`) : null,
+      !sum.replay && zt.length ? div({ class: 'summary-sub' }, t('Time in zone (FTP {ftp} W)', { ftp: sum.ftp })) : null,
       !sum.replay && zt.length ? div({ class: 'zone-bars' }, ZONES.map((z, i) =>
-        div({ class: 'zone-bar', title: `${z.name}: ${formatTime(zt[i])}`, style: { background: z.color, height: `${Math.max(3, (zt[i] / zMax) * 100)}%` } },
+        div({ class: 'zone-bar', title: t('{zone}: {time}', { zone: t(z.name), time: formatTime(zt[i]) }), style: { background: z.color, height: `${Math.max(3, (zt[i] / zMax) * 100)}%` } },
           [el('span', {}, `Z${z.z} ${Math.round((zt[i] / zTotal) * 100)}%`)]))) : null
     ]);
     if (sum.ftpEstimate) {
       const ftpBox = div({ class: 'ftp-estimate' }, [
-        div({}, ['Estimated FTP: ', el('strong', {}, `${sum.ftpEstimate} W`), el('span', { class: 'dim' }, ` (currently ${sum.ftp} W)`)]),
-        btn('Set as my FTP', (e) => { upsertPlayer({ ...activePlayer(), ftpW: sum.ftpEstimate }); e.target.textContent = `FTP set to ${sum.ftpEstimate} W ✓`; e.target.disabled = true; }, 'btn small')
+        div({}, [t('Estimated FTP:'), ' ', el('strong', {}, `${sum.ftpEstimate} W`), ' ', el('span', { class: 'dim' }, t('(currently {ftp} W)', { ftp: sum.ftp }))]),
+        btn(t('Set as my FTP'), (e) => { upsertPlayer({ ...activePlayer(), ftpW: sum.ftpEstimate }); e.target.textContent = t('FTP set to {ftp} W ✓', { ftp: sum.ftpEstimate }); e.target.disabled = true; }, 'btn small')
       ]);
       card.append(ftpBox);
     }
     card.append(div({ class: 'row' }, [
-      !sum.replay ? btn('Ride Again', () => ctx.router.go('ride', { routeId: route.id, reverse, workoutId: workout?.id })) : null,
+      !sum.replay ? btn(t('Ride Again'), () => ctx.router.go('ride', { routeId: route.id, reverse, workoutId: workout?.id })) : null,
       savedActivityId ? btn('⤓ TCX', () => {
         const a = getActivity(savedActivityId);
         if (a) downloadText(tcxFilename(a), activityToTcx(a, session.profile), 'application/vnd.garmin.tcx+xml');
       }, 'btn ghost') : null,
-      btn('History', () => ctx.router.go('history', { routeId: route.id }), 'btn ghost'),
-      btn('Back to Routes', () => ctx.router.go('routes'), 'btn ghost')
+      btn(t('History'), () => ctx.router.go('history', { routeId: route.id }), 'btn ghost'),
+      btn(t('Back to Routes'), () => ctx.router.go('routes'), 'btn ghost')
     ]));
     overlay.append(card);
   }
@@ -204,15 +211,17 @@ export function renderRide(ctx) {
   function onCue(kind, payload) {
     audio?.cue(kind);
     switch (kind) {
-      case 'step': flashBanner(`▶ ${payload.step.text || (payload.frac == null ? 'Free ride' : `${Math.round(payload.frac * 100)}% FTP for ${formatTime(payload.step.dur)}`)}`); break;
-      case 'workoutDone': flashBanner('Workout complete 🎉', 4000); break;
+      case 'step': flashBanner(`▶ ${payload.step.text || (payload.frac == null ? t('Free ride') : t('{pct}% FTP for {time}', { pct: Math.round(payload.frac * 100), time: formatTime(payload.step.dur) }))}`); break;
+      case 'workoutDone': flashBanner(t('Workout complete 🎉'), 4000); break;
       case 'climbStart': flashBanner(`⛰ ${payload.label}`, 3500); break;
       case 'climbEnd': {
-        const d = payload.pb != null ? ` · vs PB ${payload.time - payload.pb >= 0 ? '+' : ''}${(payload.time - payload.pb).toFixed(1)} s` : '';
-        flashBanner(`⛰ Climb done in ${formatTime(payload.time)}${d}`, 4000); break;
+        const time = formatTime(payload.time);
+        if (payload.pb == null) { flashBanner(t('⛰ Climb done in {time}', { time }), 4000); break; }
+        const delta = signed(payload.time - payload.pb);
+        flashBanner(t('⛰ Climb done in {time} · vs PB {delta} s', { time, delta }), 4000); break;
       }
-      case 'autoPause': flashBanner('Auto-paused — pedal to resume', 4000); break;
-      case 'resume': flashBanner('Resumed', 1200); break;
+      case 'autoPause': flashBanner(t('Auto-paused — pedal to resume'), 4000); break;
+      case 'resume': flashBanner(t('Resumed'), 1200); break;
       default: break;
     }
   }
@@ -224,15 +233,16 @@ export function renderRide(ctx) {
   function onFrame(telem, dt) {
     audio?.update({ speed: telem.speed, cadence: telem.cadence, dt });
     if (sensors.simulatorActive) {
-      const t = document.getElementById('sim-target');
-      if (t) t.textContent = `${sensors.simulator.targetWatts} W`;
+      const tgt = document.getElementById('sim-target');
+      if (tgt) tgt.textContent = `${sensors.simulator.targetWatts} W`;
     }
-    if (pauseBtn) pauseBtn.textContent = telem.paused ? '▶ Resume' : '⏸ Pause';
+    if (pauseBtn) pauseBtn.textContent = telem.paused ? t('▶ Resume') : t('⏸ Pause');
 
     if (telem.ghostActive && telem.ghostDelta != null) {
       ghostReadout.style.display = '';
       const d = telem.ghostDelta;
-      ghostReadout.textContent = `👻 vs PB: ${d >= 0 ? '+' : ''}${d.toFixed(1)} s ${d >= 0 ? 'behind' : 'ahead'}`;
+      const delta = signed(d);
+      ghostReadout.textContent = d >= 0 ? t('👻 vs PB: {delta} s behind', { delta }) : t('👻 vs PB: {delta} s ahead', { delta });
       ghostReadout.className = 'ghost-readout ' + (d > 0 ? 'behind' : 'ahead');
     } else {
       ghostReadout.style.display = 'none';
@@ -243,7 +253,7 @@ export function renderRide(ctx) {
       climbLabel.textContent = `⛰ ${telem.climb.label}`;
       climbTime.textContent = formatTime(telem.climbElapsed);
       const d = telem.climbDelta;
-      climbDelta.textContent = d == null ? '' : `${d >= 0 ? '+' : ''}${d.toFixed(1)} s`;
+      climbDelta.textContent = d == null ? '' : `${signed(d)} s`;
       climbDelta.className = d == null ? '' : (d > 0 ? 'behind' : 'ahead');
     } else climbReadout.style.display = 'none';
 
@@ -270,7 +280,7 @@ export function renderRide(ctx) {
   const onPageHide = (e) => { if (!e.persisted && rideInProgress()) session.stop(); };
 
   function leaveRide(to = 'routes', params = {}) {
-    if (rideInProgress() && !confirm('End this ride now? Everything so far is saved to History.')) return;
+    if (rideInProgress() && !confirm(t('End this ride now? Everything so far is saved to History.'))) return;
     ctx.router.go(to, params);
   }
 
@@ -287,7 +297,7 @@ export function renderRide(ctx) {
   const onBattery = (b) => () => {
     if (b.charging) return;
     for (const lvl of [0.2, 0.1, 0.05]) {
-      if (b.level <= lvl && !warned.has(lvl)) { warned.add(lvl); flashBanner(`🔋 Battery at ${Math.round(b.level * 100)}%`, 4000); audio?.cue('battery'); }
+      if (b.level <= lvl && !warned.has(lvl)) { warned.add(lvl); flashBanner(t('🔋 Battery at {pct}%', { pct: Math.round(b.level * 100) }), 4000); audio?.cue('battery'); }
     }
   };
   let battery = null;
@@ -302,16 +312,16 @@ export function renderRide(ctx) {
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
     if (!world || !session) return;
     const k = e.key;
-    if (k === 'c' || k === 'C') { const m = world.cycleCamera(1); renderCamPanel(); flashBanner('Camera: ' + CAMERA_LABELS[m], 1200); }
+    if (k === 'c' || k === 'C') { const m = world.cycleCamera(1); renderCamPanel(); flashBanner(t('Camera: {camera}', { camera: t(CAMERA_LABELS[m]) }), 1200); }
     else if (k === ' ') { e.preventDefault(); session.togglePause(); }
     else if (k === 'Escape') leaveRide();
     else if (k >= '1' && k <= '5') { const m = CAMERA_MODES[+k - 1]; if (m) { world.setCameraMode(m); renderCamPanel(); } }
     else if (mode === 'preview' && k === 'ArrowLeft') session.skip(-200);
     else if (mode === 'preview' && k === 'ArrowRight') session.skip(200);
-    else if (workout && k === '[') flashBanner(`Intensity ${Math.round(session.adjustIntensity(-0.05) * 100)}%`, 1200);
-    else if (workout && k === ']') flashBanner(`Intensity ${Math.round(session.adjustIntensity(0.05) * 100)}%`, 1200);
+    else if (workout && k === '[') flashBanner(t('Intensity {pct}%', { pct: Math.round(session.adjustIntensity(-0.05) * 100) }), 1200);
+    else if (workout && k === ']') flashBanner(t('Intensity {pct}%', { pct: Math.round(session.adjustIntensity(0.05) * 100) }), 1200);
     else if (workout && (k === 'n' || k === 'N')) session.skipStep();
-    else if (audio && (k === 'm' || k === 'M')) { audio.setVolume(audio.volume ? 0 : s.settings.audio.volume || 0.5); flashBanner(audio.volume ? '🔊 Sound on' : '🔇 Muted', 1200); }
+    else if (audio && (k === 'm' || k === 'M')) { audio.setVolume(audio.volume ? 0 : s.settings.audio.volume || 0.5); flashBanner(audio.volume ? t('🔊 Sound on') : t('🔇 Muted'), 1200); }
   };
 
   // ---------- deferred init (needs layout for canvas sizing) ----------
@@ -338,9 +348,9 @@ export function renderRide(ctx) {
 
     if (mode === 'ride' && !sensors.powerSource) {
       sensors.startSimulator('manual');
-      flashBanner(workout ? 'Simulator active — it will follow the workout targets.' : 'Simulator active — pedal with ▲ / ▼, or connect a trainer.', 3500);
+      flashBanner(workout ? t('Simulator active — it will follow the workout targets.') : t('Simulator active — pedal with ▲ / ▼, or connect a trainer.'), 3500);
     }
-    if (ghost) flashBanner(`Ghost: your PB (${formatTime(ghost.lapTimeS)})`, 3000);
+    if (ghost) flashBanner(t('Ghost: your PB ({time})', { time: formatTime(ghost.lapTimeS) }), 3000);
     if (workout) workoutBar.bind(session);
 
     renderControls();
@@ -392,7 +402,7 @@ function buildWorkoutBar(workout) {
     btn('−5%', () => session && (intensity.textContent = `${Math.round(session.adjustIntensity(-0.05) * 100)}%`), 'btn small ghost'),
     intensity,
     btn('+5%', () => session && (intensity.textContent = `${Math.round(session.adjustIntensity(0.05) * 100)}%`), 'btn small ghost'),
-    btn('Skip ▸', () => session?.skipStep(), 'btn small ghost')
+    btn(t('Skip ▸'), () => session?.skipStep(), 'btn small ghost')
   ]);
   const root = div({ class: 'workout-bar' }, [
     div({ class: 'wo-head' }, [text, remaining]),
@@ -408,18 +418,18 @@ function buildWorkoutBar(workout) {
     update(telem) {
       const si = telem.stepInfo;
       if (telem.workoutDone) {
-        if (lastIdx !== -1) { lastIdx = -1; blocks.forEach((b) => b.classList.add('done')); blocks.forEach((b) => b.classList.remove('cur')); text.textContent = 'Workout complete'; text.className = 'wo-text wo-done'; target.textContent = '—'; remaining.textContent = ''; fill.style.width = '100%'; row.style.display = 'none'; }
+        if (lastIdx !== -1) { lastIdx = -1; blocks.forEach((b) => b.classList.add('done')); blocks.forEach((b) => b.classList.remove('cur')); text.textContent = t('Workout complete'); text.className = 'wo-text wo-done'; target.textContent = '—'; remaining.textContent = ''; fill.style.width = '100%'; row.style.display = 'none'; }
         return;
       }
       if (!si) return;
       if (si.idx !== lastIdx) {
         lastIdx = si.idx;
         blocks.forEach((b, i) => { b.classList.toggle('done', i < si.idx); b.classList.toggle('cur', i === si.idx); });
-        text.textContent = si.step.text || (si.frac == null ? 'Free ride' : `Block ${si.idx + 1} of ${workout.steps.length}`);
+        text.textContent = si.step.text || (si.frac == null ? t('Free ride') : t('Block {n} of {total}', { n: si.idx + 1, total: workout.steps.length }));
       }
       const pct = si.frac == null ? '' : (si.step.abs ? '' : `${Math.round(si.frac * telem.intensity * 100)}%`);
-      target.replaceChildren(telem.targetPower == null ? 'Free ride' : `${telem.targetPower} W`, ...(telem.targetPower != null && pct ? [el('small', {}, `${pct} FTP`)] : []));
-      remaining.textContent = `${formatTime(si.remaining)} left · ${formatTime(Math.max(0, total - telem.workoutTime))} total`;
+      target.replaceChildren(telem.targetPower == null ? t('Free ride') : `${telem.targetPower} W`, ...(telem.targetPower != null && pct ? [el('small', {}, t('{pct} FTP', { pct }))] : []));
+      remaining.textContent = t('{left} left · {total} total', { left: formatTime(si.remaining), total: formatTime(Math.max(0, total - telem.workoutTime)) });
       fill.style.width = `${Math.min(100, (si.elapsed / si.step.dur) * 100)}%`;
     }
   };

@@ -9,6 +9,8 @@
 // non-linear units (temperature, gradient as an angle) just as easily as scaled
 // ones.
 
+import { t } from '../i18n.js';
+
 const linear = (factor, symbol, label, decimals = 1) => ({
   label,
   symbol,
@@ -18,6 +20,12 @@ const linear = (factor, symbol, label, decimals = 1) => ({
 });
 
 // type -> { base, label, units: {id: unitDef}, presets }
+// Labels stay English here (t() can't run at import time); they are translated where rendered.
+// i18n-keys: Speed | Distance | Power | Weight | Body length | Gradient | Cadence | Heart rate | Temperature | Energy | Area
+// i18n-keys: Kilometres / hour | Miles / hour | Metres / second | Knots | Furlongs / fortnight | Kilometres | Miles | Metres | Feet | Furlongs | Smoots
+// i18n-keys: Watts | Kilowatts | Horsepower | Donkeypower | Kilograms | Pounds | Stone | Grams | Centimetres | Inches | Hands
+// i18n-keys: Percent | Per-mille | Degrees | Ratio (1:x) | Revolutions / minute | Beats / minute | Celsius | Fahrenheit | Kelvin
+// i18n-keys: Kilojoules | Kilocalories | Watt-hours | Square metres | Square centimetres | Square feet
 export const MEASUREMENTS = {
   speed: {
     label: 'Speed',
@@ -228,5 +236,5 @@ export function formatTime(seconds) {
 export function unitOptions(type) {
   const m = MEASUREMENTS[type];
   if (!m) return [];
-  return Object.entries(m.units).map(([id, def]) => ({ id, label: def.label, symbol: def.symbol }));
+  return Object.entries(m.units).map(([id, def]) => ({ id, label: t(def.label), symbol: def.symbol }));
 }

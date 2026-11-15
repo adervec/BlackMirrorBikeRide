@@ -1,6 +1,8 @@
 // Route import / export / clone helpers. Routes live in localStorage; these let
 // users move them in and out as .json files and duplicate them.
 
+import { t } from '../i18n.js';
+
 let _id = 0;
 const uid = (p) => `${p}-${Date.now().toString(36)}-${(_id++).toString(36)}`;
 
@@ -40,13 +42,13 @@ export function parseRoutesFile(text) {
   else if (data.segments) routes = [data];
   return routes
     .filter((r) => r && Array.isArray(r.segments))
-    .map((r) => ({ ...r, id: uid('import'), name: r.name ? `${r.name} (imported)` : 'Imported Route' }));
+    .map((r) => ({ ...r, id: uid('import'), name: r.name ? t('{name} (imported)', { name: r.name }) : t('Imported Route') }));
 }
 
 export function cloneRoute(route) {
   const copy = structuredClone(route);
   copy.id = uid('clone');
-  copy.name = `${route.name} (copy)`;
+  copy.name = t('{name} (copy)', { name: route.name });
   delete copy.bundled; // a clone is a local route
   return copy;
 }

@@ -148,6 +148,8 @@ export function estimateFtp(workout, samples) {
 }
 
 // ---- power zones (Coggan) ---------------------------------------------------
+// Zone names are translated where shown (t(z.name)).
+// i18n-keys: Recovery | Endurance | Tempo | Threshold | VO2max | Anaerobic | Neuro
 export const ZONES = [
   { z: 1, name: 'Recovery',   max: 0.55, color: '#8a93a8' },
   { z: 2, name: 'Endurance',  max: 0.75, color: '#4cc2ff' },

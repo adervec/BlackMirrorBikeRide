@@ -7,6 +7,8 @@
 //   'wkg'   -> watts per kilogram (no unit conversion)
 //   'text'  -> raw string (e.g. surface name)
 
+// Labels stay English here (translations load after import); hud.js translates them when shown.
+// i18n-keys: Power | Power (3s) | Avg Power | Norm. Power | Max Power | Speed | Avg Speed | Max Speed | Cadence | Heart Rate | Distance | Dist. Remaining | Elapsed | Time Left (est) | Gradient | Altitude | Ascent | Descent | Energy | Surface | Air Temp | Progress | Next Turn | Target | Workout | Zone
 export const READINGS = {
   power:           { label: 'Power',          type: 'power',       field: 'power' },
   power3s:         { label: 'Power (3s)',      type: 'power',       field: 'power3s' },

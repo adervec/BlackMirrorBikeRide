@@ -2,6 +2,11 @@
 // outfits that can be applied to a rider in one click. Clothing has NO speed
 // impact (purely cosmetic) — physics only ever uses the player's biometrics.
 
+// Labels stay English here; garageScreen translates them where rendered.
+// i18n-keys: Helmet | Hat | Jersey | Gilet / Vest | Gloves | Shorts | Socks | Shoes
+// i18n-keys: None | Road Helmet | Aero Helmet | TT Helmet | MTB / Trail | Retro Leather | Cycling Cap | Beanie | Cowboy Hat | Top Hat | Viking Helm
+// i18n-keys: Classic | Pro Team | Retro Wool | Rainbow Bands | Flannel | Hawaiian | Windproof | Hi-Viz | Puffer | Short-Finger | Full-Finger | Track Mitts
+// i18n-keys: Bib Shorts | Baggy MTB | Jorts | Long Tights | Ankle | Tall | Wool | Rainbow | Road Cleats | MTB Shoes | Sneakers | Boots | Sandals (+socks)
 export const CLOTHING = {
   helmet: {
     label: 'Helmet',
@@ -98,9 +103,11 @@ export function defaultClothing() {
   };
 }
 
+// i18n-keys: Solid | Stripes | Colour Blocks | Polka Dots
 export const JERSEY_PATTERNS = { solid: 'Solid', stripes: 'Stripes', blocks: 'Colour Blocks', dots: 'Polka Dots' };
 
 // Pre-assembled outfits (cosmetic only).
+// i18n-keys: Classic Roadie | Pro Team | Wasteland | Sunday Casual
 export const OUTFITS = {
   'classic-roadie': {
     label: 'Classic Roadie',

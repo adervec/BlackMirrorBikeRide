@@ -1,4 +1,5 @@
 // Tiny DOM helper so screens stay declarative without a framework.
+import { t } from '../i18n.js';
 
 export function el(tag, props = {}, children = []) {
   const e = document.createElement(tag);
@@ -61,8 +62,8 @@ export function checkbox(labelText, checked, onChange) {
 // A scannable data table. `cols` is [{ label, align?, cell(row) }]; anything a
 // cell returns (node, string, number) is placed as-is. Wrapped in a scroller so
 // a wide table never forces the page itself to scroll sideways on a phone.
-export function table(cols, rows, { empty = 'Nothing here yet.' } = {}) {
-  if (!rows.length) return div({ class: 'empty' }, empty);
+export function table(cols, rows, { empty } = {}) {
+  if (!rows.length) return div({ class: 'empty' }, empty ?? t('Nothing here yet.'));
   const head = el('tr', {}, cols.map((c) => el('th', { class: c.align === 'right' ? 'num' : null }, c.label)));
   const body = rows.map((r) => el('tr', { class: r._rowClass || null },
     cols.map((c) => el('td', { class: c.align === 'right' ? 'num' : null }, c.cell(r)))));
@@ -75,7 +76,7 @@ export function table(cols, rows, { empty = 'Nothing here yet.' } = {}) {
 export function screen(title, ctx, bodyChildren, { backTo = 'menu' } = {}) {
   const root = div({ class: 'screen' });
   const bar = div({ class: 'topbar' }, [
-    backTo ? btn('‹ Back', () => ctx.router.go(backTo), 'btn ghost') : null,
+    backTo ? btn(t('‹ Back'), () => ctx.router.go(backTo), 'btn ghost') : null,
     h(1, title, { class: 'screen-title' }),
     // house standard: the signed-in Google picture on every screen's title bar (font.js <app-account>)
     document.createElement('app-account')
@@ -86,8 +87,8 @@ export function screen(title, ctx, bodyChildren, { backTo = 'menu' } = {}) {
 
 // A transient notice at the bottom of the page (survives screen changes).
 export function toast(text, ms = 6000) {
-  const t = div({ class: 'toast' }, text);
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), ms);
-  return t;
+  const note = div({ class: 'toast' }, text);
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), ms);
+  return note;
 }

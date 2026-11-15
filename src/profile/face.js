@@ -2,6 +2,10 @@
 // low-poly fidelity: discrete shape choices + colours that the avatar builder
 // turns into chunky facial geometry.
 
+// Labels stay English here; garageScreen translates them where rendered.
+// i18n-keys: Oval | Round | Square | Long | Gaunt | Flat | Angled | Raised | Bushy | Button | Straight | Aquiline | Broad
+// i18n-keys: Neutral | Smile | Smirk | Frown | Grimace | Clean Shaven | Stubble | Moustache | Goatee | Full Beard
+// i18n-keys: Bald | Short | Mohawk | Top Knot | Afro
 export const FACE_SHAPES = {
   oval:   { label: 'Oval',   w: 1.0,  h: 1.0 },
   round:  { label: 'Round',  w: 1.12, h: 0.95 },

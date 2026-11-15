@@ -21,6 +21,7 @@ import { computeBikeSpec } from '../profile/garage.js';
 import { createActivity, distanceAtTime, timeAtDistance, sampleAtTime } from './activity.js';
 import { stepAt, targetWatts, zoneOf, ZONES, estimateFtp } from './workouts.js';
 import { formatTime } from './units.js';
+import { t } from '../i18n.js';
 
 const R_AIR = 287.05;
 const P_STD = 101325;
@@ -453,8 +454,8 @@ export class Session {
       nextTurn: nextTurn(this.profile, this.distance),
       // workout / zones
       targetPower: this.targetW,
-      workoutStep: si ? `${si.idx + 1}/${this.workout.steps.length} · ${formatTime(si.remaining)} left` : (this.workoutDone ? 'Complete' : null),
-      zone: isPreview ? null : `Z${this.zone} ${ZONES[this.zone - 1].name}`,
+      workoutStep: si ? t('{n}/{total} · {time} left', { n: si.idx + 1, total: this.workout.steps.length, time: formatTime(si.remaining) }) : (this.workoutDone ? t('Complete') : null),
+      zone: isPreview ? null : `Z${this.zone} ${t(ZONES[this.zone - 1].name)}`,
       zoneNum: isPreview ? null : this.zone,
       // extras consumed by the ride screen, not the HUD tiles
       ghostActive: !!this.ghost && !isPreview,
@@ -510,9 +511,9 @@ function nextTurn(profile, distance) {
     const dist = pts[j].s - distance;
     if (dist > 600) break;
     const dh = pts[j].heading - h0;
-    if (Math.abs(dh) > 0.14) return `${dh > 0 ? 'Bear right' : 'Bear left'} in ${Math.round(dist)} m`;
+    if (Math.abs(dh) > 0.14) return dh > 0 ? t('Bear right in {dist} m', { dist: Math.round(dist) }) : t('Bear left in {dist} m', { dist: Math.round(dist) });
   }
-  return 'Continue straight';
+  return t('Continue straight');
 }
 
 export { totalDistance };

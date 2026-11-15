@@ -1,36 +1,37 @@
 import { div, h, el } from './dom.js';
 import { getState, activePlayer } from '../state.js';
 import { ftpWkg } from '../profile/player.js';
+import { t, num } from '../i18n.js';
 
 export function renderMenu(ctx) {
   const s = getState();
   const player = activePlayer();
   const tiles = [
-    { id: 'routes',   title: 'Ride',            sub: 'Pick a route and roll',             go: 'routes' },
-    { id: 'workouts', title: 'Workouts',        sub: 'ERG intervals, .zwo files & FTP tests', go: 'workouts' },
-    { id: 'builder',  title: 'Virtual Routes',  sub: 'Build segment-based worlds',        go: 'builder' },
-    { id: 'real',     title: 'Real Routes',     sub: 'Ride a GPX file in 3D',             go: 'real' },
-    { id: 'garage',   title: 'Garage & Rider',  sub: 'Bike build, body & avatar',         go: 'garage' },
-    { id: 'history',  title: 'History & PBs',   sub: 'Past rides, bests, replays & TCX',  go: 'history' },
-    { id: 'settings', title: 'Settings',        sub: 'Units, HUD, trainer, sound, ghost', go: 'settings' }
+    { id: 'routes',   title: t('Ride'),            sub: t('Pick a route and roll'),             go: 'routes' },
+    { id: 'workouts', title: t('Workouts'),        sub: t('ERG intervals, .zwo files & FTP tests'), go: 'workouts' },
+    { id: 'builder',  title: t('Virtual Routes'),  sub: t('Build segment-based worlds'),        go: 'builder' },
+    { id: 'real',     title: t('Real Routes'),     sub: t('Ride a GPX file in 3D'),             go: 'real' },
+    { id: 'garage',   title: t('Garage & Rider'),  sub: t('Bike build, body & avatar'),         go: 'garage' },
+    { id: 'history',  title: t('History & PBs'),   sub: t('Past rides, bests, replays & TCX'),  go: 'history' },
+    { id: 'settings', title: t('Settings'),        sub: t('Units, HUD, trainer, sound, ghost'), go: 'settings' }
   ];
 
-  const grid = div({ class: 'menu-grid' }, tiles.map((t) =>
-    el('button', { class: 'menu-tile', onclick: () => ctx.router.go(t.go) }, [
-      h(2, t.title), div({ class: 'menu-sub' }, t.sub)
+  const grid = div({ class: 'menu-grid' }, tiles.map((tile) =>
+    el('button', { class: 'menu-tile', onclick: () => ctx.router.go(tile.go) }, [
+      h(2, tile.title), div({ class: 'menu-sub' }, tile.sub)
     ])
   ));
 
   const root = div({ class: 'screen menu-screen' }, [
     div({ class: 'hero' }, [
       h(1, 'BLACK MIRROR BIKE RIDE', { class: 'hero-title' }),
-      div({ class: 'hero-sub' }, 'A homebrew indoor cycling sim — bring your own watts.')
+      div({ class: 'hero-sub' }, t('A homebrew indoor cycling sim — bring your own watts.'))
     ]),
     grid,
     div({ class: 'menu-footer' }, [
-      div({}, `Player: ${player.name} · ${player.weightKg} kg · FTP ${player.ftpW} W (${ftpWkg(player).toFixed(2)} W/kg)`),
-      div({ class: 'dim' }, `${s.routes.length} routes · ${s.riders.length} rider(s) · ${s.garage.bikes.length} bike(s)`),
-      div({}, el('a', { href: 'https://adervec.github.io', target: '_blank', rel: 'noopener noreferrer' }, 'More apps by this maker — adervec.github.io'))
+      div({}, t('Player: {name} · {kg} kg · FTP {ftp} W ({wkg} W/kg)', { name: player.name, kg: player.weightKg, ftp: player.ftpW, wkg: num(ftpWkg(player), 2) })),
+      div({ class: 'dim' }, [t.n('{n} route', '{n} routes', s.routes.length), t.n('{n} rider', '{n} riders', s.riders.length), t.n('{n} bike', '{n} bikes', s.garage.bikes.length)].join(' · ')),
+      div({}, el('a', { href: 'https://adervec.github.io', target: '_blank', rel: 'noopener noreferrer' }, t('More apps by this maker — adervec.github.io')))
     ])
   ]);
   return root;

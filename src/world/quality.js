@@ -7,6 +7,9 @@
 // Quality is read when a renderer is built (entering a ride or the garage), so a
 // change in Settings takes effect the next time you open one of those screens.
 
+import { t } from '../i18n.js';
+
+// i18n-keys: Low (phone) | Balanced (integrated GPU) | High (desktop default) | Ultra (discrete GPU)
 export const QUALITY_PRESETS = {
   low: {
     label: 'Low (phone)',
@@ -63,5 +66,5 @@ export function resolveQuality(id) {
 
 // [{ value, label }] for a <select>.
 export function qualityOptions() {
-  return Object.entries(QUALITY_PRESETS).map(([value, p]) => ({ value, label: p.label }));
+  return Object.entries(QUALITY_PRESETS).map(([value, p]) => ({ value, label: t(p.label) }));
 }

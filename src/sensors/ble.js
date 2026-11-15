@@ -10,6 +10,8 @@
 // Each connect* function returns a handle { device, disconnect() } and pushes
 // parsed values to the provided callback.
 
+import { t } from '../i18n.js';
+
 export const BLE_SUPPORTED = typeof navigator !== 'undefined' && !!navigator.bluetooth;
 
 const UUID = {
@@ -87,7 +89,7 @@ function parseHeartRate(dv) {
 }
 
 async function requestAndConnect(filters, optionalServices) {
-  if (!BLE_SUPPORTED) throw new Error('Web Bluetooth is not available in this browser. Use Chrome or Edge.');
+  if (!BLE_SUPPORTED) throw new Error(t('Web Bluetooth is not available in this browser. Use Chrome or Edge.'));
   const device = await navigator.bluetooth.requestDevice({ filters, optionalServices });
   const server = await device.gatt.connect();
   return { device, server };

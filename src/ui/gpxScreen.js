@@ -10,6 +10,7 @@ import { surfaceList } from '../physics/surfaces.js';
 import { allSkyboxOptions } from '../routes/skyboxes.js';
 import { biomeList } from '../routes/biomes.js';
 import { parseGpx, gpxToRoute } from '../routes/gpx.js';
+import { t, num } from '../i18n.js';
 
 export function renderGpxImport(ctx) {
   const s = getState();
@@ -45,9 +46,10 @@ export function renderGpxImport(ctx) {
         }
         // Run the conversion once just for the stats line.
         const preview = gpxToRoute(state.parsed, state);
-        const km = (totalDistance(preview) / 1000).toFixed(2);
-        setStatus(`Parsed ${state.parsed.points.length} trackpoints · ${km} km · ` +
-          (preview.hasElevation ? 'elevation data found.' : 'no elevation — riding flat.'), 'ok');
+        const km = num(totalDistance(preview) / 1000, 2);
+        setStatus(preview.hasElevation
+          ? t.n('Parsed {n} trackpoint · {km} km · elevation data found.', 'Parsed {n} trackpoints · {km} km · elevation data found.', state.parsed.points.length, { km })
+          : t.n('Parsed {n} trackpoint · {km} km · no elevation — riding flat.', 'Parsed {n} trackpoints · {km} km · no elevation — riding flat.', state.parsed.points.length, { km }), 'ok');
       } catch (err) {
         state.parsed = null;
         setStatus(err.message, 'err');
@@ -66,7 +68,7 @@ export function renderGpxImport(ctx) {
         else ctx.router.go('routes');
         return;
       }
-      if (!state.parsed) throw new Error('Choose a GPX file first.');
+      if (!state.parsed) throw new Error(t('Choose a GPX file first.'));
       const route = gpxToRoute(state.parsed, { ...state, name: state.name || undefined });
       if (existing) { route.id = existing.id; route.landmarks = existing.landmarks || []; }
       upsertRoute(route);
@@ -78,33 +80,31 @@ export function renderGpxImport(ctx) {
   }
 
   const body = [
-    field(existing ? 'Replace geometry from GPX file (optional)' : 'GPX file', fileInput),
-    field('Name', nameInput),
-    field('Skybox', select(skyOpts, state.skybox, (v) => { state.skybox = v; }))
+    field(existing ? t('Replace geometry from GPX file (optional)') : t('GPX file'), fileInput),
+    field(t('Name'), nameInput),
+    field(t('Skybox'), select(skyOpts, state.skybox, (v) => { state.skybox = v; }))
   ];
   if (!existing) {
     // Hidden in edit mode so re-saving never bulk-clobbers per-segment
     // biomes/surfaces on a Claude-enriched route.
     body.splice(2, 0,
-      field('Surface', select(surfaceOpts, state.surface, (v) => { state.surface = v; })),
-      field('Biome', select(biomeOpts, state.biome, (v) => { state.biome = v; }))
+      field(t('Surface'), select(surfaceOpts, state.surface, (v) => { state.surface = v; })),
+      field(t('Biome'), select(biomeOpts, state.biome, (v) => { state.biome = v; }))
     );
   }
 
-  return screen(existing ? 'Edit GPX Route' : 'Import GPX Route', ctx, [
+  return screen(existing ? t('Edit GPX Route') : t('Import GPX Route'), ctx, [
     div({ class: 'card' }, [
-      h(2, existing ? 'Route' : 'GPX file'),
-      div({ class: 'hint' }, 'Export a GPX from Strava, Komoot, RideWithGPS, Garmin… and ride it in 3D. ' +
-        'Distance, turns and gradients come straight from the track.'),
+      h(2, existing ? t('Route') : t('GPX file')),
+      div({ class: 'hint' }, t('Export a GPX from Strava, Komoot, RideWithGPS, Garmin… and ride it in 3D. Distance, turns and gradients come straight from the track.')),
       ...body,
       div({ class: 'row' }, [
-        btn('Save route', () => saveRoute(false)),
-        btn('Save & Ride', () => saveRoute(true)),
-        btn('Cancel', () => ctx.router.go('routes'), 'btn ghost')
+        btn(t('Save route'), () => saveRoute(false)),
+        btn(t('Save & Ride'), () => saveRoute(true)),
+        btn(t('Cancel'), () => ctx.router.go('routes'), 'btn ghost')
       ]),
       status,
-      div({ class: 'hint small' }, 'Want real-world scenery — biomes that change along the ride, named landmarks? ' +
-        'Ask Claude to enrich this GPX with the gpx-route skill (see README).')
+      div({ class: 'hint small' }, t('Want real-world scenery — biomes that change along the ride, named landmarks? Ask Claude to enrich this GPX with the gpx-route skill (see README).'))
     ])
   ], { backTo: 'routes' });
 }

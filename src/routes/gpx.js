@@ -5,6 +5,7 @@
 
 import { haversine, bearing } from './geo.js';
 import { ONTARIO_AIR_DENSITY } from './virtualRoute.js';
+import { t } from '../i18n.js';
 
 let _id = 0;
 const uid = () => `gpx-${Date.now().toString(36)}-${(_id++).toString(36)}`;
@@ -19,7 +20,7 @@ const MAX_GRADE = 0.25;  // clamp GPS-noise gradients to ±25%
 // concatenate in document order.
 export function parseGpx(text) {
   const doc = new DOMParser().parseFromString(text, 'application/xml');
-  if (doc.querySelector('parsererror')) throw new Error('Not a valid GPX file.');
+  if (doc.querySelector('parsererror')) throw new Error(t('Not a valid GPX file.'));
   let nodes = doc.querySelectorAll('trkpt');
   if (!nodes.length) nodes = doc.querySelectorAll('rtept');
   const points = [];
@@ -31,7 +32,7 @@ export function parseGpx(text) {
     const ele = eleText != null && eleText !== '' ? parseFloat(eleText) : null;
     points.push({ lat, lng, ele: Number.isFinite(ele) ? ele : null });
   }
-  if (points.length < 2) throw new Error('GPX contains fewer than 2 trackpoints.');
+  if (points.length < 2) throw new Error(t('GPX contains fewer than 2 trackpoints.'));
   const name = doc.querySelector('trk > name')?.textContent?.trim() ||
                doc.querySelector('metadata > name')?.textContent?.trim() || null;
   return { name, points };
@@ -79,11 +80,11 @@ export function gpxToRoute(parsed, { name, surface = 'asphalt', skybox = 'clear-
     if (ele) gradient = Math.max(-MAX_GRADE, Math.min(MAX_GRADE, (ele[i + 1] - ele[i]) / len));
     segments.push({ surface, gradient, length: len, biome, turn });
   }
-  if (!segments.length) throw new Error('GPX track is too short to ride.');
+  if (!segments.length) throw new Error(t('GPX track is too short to ride.'));
 
   return {
     id: uid(),
-    name: name || parsed.name || 'GPX Route',
+    name: name || parsed.name || t('GPX Route'),
     type: 'real',
     skybox,
     airDensity: ONTARIO_AIR_DENSITY,

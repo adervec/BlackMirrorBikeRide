@@ -4,6 +4,7 @@ import { createEmptyVirtualRoute, defaultSegment, buildProfile, totalDistance, O
 import { surfaceList } from '../physics/surfaces.js';
 import { biomeList } from '../routes/biomes.js';
 import { allSkyboxOptions } from '../routes/skyboxes.js';
+import { t, num } from '../i18n.js';
 
 export function renderVirtualBuilder(ctx) {
   const existing = ctx.params.routeId ? getRoute(ctx.params.routeId) : null;
@@ -20,10 +21,10 @@ export function renderVirtualBuilder(ctx) {
 
   function refreshSummary() {
     const prof = buildProfile(route);
-    const km = (totalDistance(route) / 1000).toFixed(2);
+    const km = num(totalDistance(route) / 1000, 2);
     const climb = Math.round(prof.bounds.maxY - prof.bounds.minY);
     summary.innerHTML = '';
-    summary.append(`${km} km · ${route.segments.length} segments · elevation span ${climb} m`);
+    summary.append(t.n('{km} km · {n} segment · elevation span {climb} m', '{km} km · {n} segments · elevation span {climb} m', route.segments.length, { km, climb }));
     drawPreview(previewCanvas, prof);
   }
 
@@ -33,11 +34,11 @@ export function renderVirtualBuilder(ctx) {
       const upd = (key, parse = (v) => v) => (v) => { seg[key] = parse(v); refreshSummary(); };
       segList.append(div({ class: 'seg-row' }, [
         div({ class: 'seg-idx' }, '#' + (i + 1)),
-        labeled('Surface', select(surfaceOpts, seg.surface, upd('surface'))),
-        labeled('Gradient %', numberInput((seg.gradient * 100).toFixed(1), upd('gradient', (v) => (Number(v) || 0) / 100), { step: 0.1, min: -30, max: 30 })),
-        labeled('Length m', numberInput(seg.length, upd('length', Number), { min: 10, step: 10 })),
-        labeled('Biome', select(biomeOpts, seg.biome, upd('biome'))),
-        labeled('Turn °', numberInput(seg.turn || 0, upd('turn', Number), { step: 5, min: -180, max: 180 })),
+        labeled(t('Surface'), select(surfaceOpts, seg.surface, upd('surface'))),
+        labeled(t('Gradient %'), numberInput((seg.gradient * 100).toFixed(1), upd('gradient', (v) => (Number(v) || 0) / 100), { step: 0.1, min: -30, max: 30 })),
+        labeled(t('Length m'), numberInput(seg.length, upd('length', Number), { min: 10, step: 10 })),
+        labeled(t('Biome'), select(biomeOpts, seg.biome, upd('biome'))),
+        labeled(t('Turn °'), numberInput(seg.turn || 0, upd('turn', Number), { step: 5, min: -180, max: 180 })),
         div({ class: 'seg-actions' }, [
           btn('↑', () => move(i, -1), 'btn icon'),
           btn('↓', () => move(i, 1), 'btn icon'),
@@ -56,29 +57,29 @@ export function renderVirtualBuilder(ctx) {
   }
 
   const meta = div({ class: 'card' }, [
-    h(2, 'Route Settings'),
-    field('Name', textInput(route.name, (v) => { route.name = v; })),
-    field('Skybox', select(skyOpts, route.skybox, (v) => { route.skybox = v; })),
-    field('Air density (kg/m³)', numberInput(route.airDensity, (v) => { route.airDensity = Number(v) || ONTARIO_AIR_DENSITY; }, { step: 0.01, min: 0.5, max: 1.5 })),
-    div({ class: 'hint' }, `Air resistance is a route constant (no wind/drafting). Ontario default ≈ ${ONTARIO_AIR_DENSITY}.`)
+    h(2, t('Route Settings')),
+    field(t('Name'), textInput(route.name, (v) => { route.name = v; })),
+    field(t('Skybox'), select(skyOpts, route.skybox, (v) => { route.skybox = v; })),
+    field(t('Air density (kg/m³)'), numberInput(route.airDensity, (v) => { route.airDensity = Number(v) || ONTARIO_AIR_DENSITY; }, { step: 0.01, min: 0.5, max: 1.5 })),
+    div({ class: 'hint' }, t('Air resistance is a route constant (no wind/drafting). Ontario default ≈ {density}.', { density: ONTARIO_AIR_DENSITY }))
   ]);
 
   renderSegList();
   refreshSummary();
 
-  return screen(existing ? 'Edit Virtual Route' : 'New Virtual Route', ctx, [
+  return screen(existing ? t('Edit Virtual Route') : t('New Virtual Route'), ctx, [
     meta,
     div({ class: 'card' }, [
-      h(2, 'Segments'),
-      div({ class: 'hint' }, 'Each segment = a surface material at an incline, for a length, in a biome. Turn bends the route.'),
+      h(2, t('Segments')),
+      div({ class: 'hint' }, t('Each segment = a surface material at an incline, for a length, in a biome. Turn bends the route.')),
       segList,
-      btn('+ Add segment', () => { route.segments.push(defaultSegment()); renderSegList(); refreshSummary(); })
+      btn(t('+ Add segment'), () => { route.segments.push(defaultSegment()); renderSegList(); refreshSummary(); })
     ]),
-    div({ class: 'card' }, [h(2, 'Elevation Profile'), previewCanvas, summary]),
+    div({ class: 'card' }, [h(2, t('Elevation Profile')), previewCanvas, summary]),
     div({ class: 'row sticky-actions' }, [
-      btn('Save', () => { upsertRoute(route); ctx.router.go('routes'); }),
-      btn('Save & Ride', () => { upsertRoute(route); ctx.router.go('ride', { routeId: route.id, reverse: false }); }),
-      btn('Cancel', () => ctx.router.go('routes'), 'btn ghost')
+      btn(t('Save'), () => { upsertRoute(route); ctx.router.go('routes'); }),
+      btn(t('Save & Ride'), () => { upsertRoute(route); ctx.router.go('ride', { routeId: route.id, reverse: false }); }),
+      btn(t('Cancel'), () => ctx.router.go('routes'), 'btn ghost')
     ])
   ], { backTo: 'routes' });
 }

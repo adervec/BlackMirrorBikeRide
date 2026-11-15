@@ -6,6 +6,7 @@
 import { defaultFace } from './face.js';
 import { defaultClothing } from './clothing.js';
 
+// i18n-keys: Slim | Regular | Stocky | Hefty
 export const BUILDS = {
   slim:    { label: 'Slim',    torsoScale: 0.9,  limbScale: 0.92 },
   regular: { label: 'Regular', torsoScale: 1.0,  limbScale: 1.0 },

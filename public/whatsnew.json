@@ -1,5 +1,12 @@
 [
  {
+  "date": "2026-11-15",
+  "items": [
+   "The app now speaks 16 more languages: French, Spanish, Portuguese, Italian, Croatian, German, Chinese, Ukrainian, Esperanto, Swahili, Hindi, Bengali, Indonesian, Urdu, Farsi and Arabic. Pick one under the font picker in Settings. They are machine translated from English and have not been checked by a person.",
+   "Dates and numbers now follow your language and region."
+  ]
+ },
+ {
   "date": "2026-11-14",
   "items": [
    "New colour themes, the same 15 as the other apps from this maker (Settings > Appearance). System, the default, follows your device's light or dark mode. If you had picked a theme before, you get the closest new one.",

@@ -4,6 +4,8 @@
 // choices resolve to mass / Crr / Cd / position for the physics.
 
 // Wheel layout is in avatar-local space: +x is forward, z is lateral.
+// Vehicle types and riding positions are translated where rendered; frame / wheel / tyre names are catalogue names.
+// i18n-keys: Unicycle | Bicycle | Tricycle | Quad Bike | Tandem | Hoods | Drops | Aero Bars | Upright
 export const VEHICLE_TYPES = {
   unicycle: { label: 'Unicycle', extraMass: -2.5, wheels: [{ x: 0.0, z: 0 }] },
   bike:     { label: 'Bicycle',  extraMass: 0,    wheels: [{ x: 0.6, z: 0 }, { x: -0.6, z: 0 }] },

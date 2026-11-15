@@ -13,3 +13,6 @@ npm-debug.log*
 
 # local launcher for resuming the Claude Code session in this folder
 RESUME CLAUDE*.ps1
+
+# translation work files (node ../CoworkSyncHub/i18n.mjs todo .)
+public/locales/_todo/

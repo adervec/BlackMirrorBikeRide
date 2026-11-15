@@ -5,6 +5,7 @@
 
 import { READINGS } from './hudConfig.js';
 import { format, formatTime } from './units.js';
+import { t, num } from '../i18n.js';
 
 export class HUD {
   constructor(container) {
@@ -40,7 +41,7 @@ export class HUD {
   _fmtValue(def, raw, prefs, override) {
     if (def.type === 'time') return formatTime(raw);
     if (def.type === 'text') return raw == null || raw === '' ? '—' : String(raw);
-    if (def.type === 'wkg') return raw == null || Number.isNaN(raw) ? '—' : raw.toFixed(2);
+    if (def.type === 'wkg') return raw == null || Number.isNaN(raw) ? '—' : num(raw, 2);
     const f = format(def.type, raw, prefs, override);
     return f.value;
   }
@@ -67,7 +68,7 @@ export class HUD {
       unit.className = 'hud-unit';
       const label = document.createElement('div');
       label.className = 'hud-label';
-      label.textContent = def.label;
+      label.textContent = t(def.label);
       const row = document.createElement('div');
       row.className = 'hud-value-row';
       row.append(value, unit);

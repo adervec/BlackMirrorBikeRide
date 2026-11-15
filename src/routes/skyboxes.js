@@ -3,6 +3,9 @@
 // `special` animator id, a `weather` (rain / snow / thick fog) and `lamp` (a
 // headlight on the bike for night rides) — all handled in world/scene.js.
 
+import { t } from '../i18n.js';
+
+// i18n-keys: Clear Day | Golden Hour | Overcast | Rainy Dusk | Snowfall | Pea-Souper | Night Ride | Starfield | Vaporwave | The Eye That Watches | Sky of Quiet Flesh
 export const SKYBOXES = {
   'clear-day': {
     label: 'Clear Day',
@@ -75,7 +78,7 @@ export const SKYBOXES = {
 export const DEFAULT_SKYBOX = 'clear-day';
 
 export function skyboxList() {
-  return Object.entries(SKYBOXES).map(([id, s]) => ({ id, label: s.label }));
+  return Object.entries(SKYBOXES).map(([id, s]) => ({ id, label: t(s.label) }));
 }
 
 // Resolve a skybox id against built-ins + the user's custom skyboxes.
@@ -105,6 +108,8 @@ export function makeCustomSkybox(name = 'My Sky') {
   };
 }
 
+// Labels are translated where rendered (skyboxScreen).
+// i18n-keys: None | Starfield | Grid Sun | The Eye | Breathing Fog
 export const SKYBOX_SPECIALS = [
   { value: '', label: 'None' },
   { value: 'stars', label: 'Starfield' },
@@ -113,6 +118,7 @@ export const SKYBOX_SPECIALS = [
   { value: 'breathe', label: 'Breathing Fog' }
 ];
 
+// i18n-keys: Clear | Rain | Snow | Thick fog
 export const WEATHERS = [
   { value: '', label: 'Clear' },
   { value: 'rain', label: 'Rain' },

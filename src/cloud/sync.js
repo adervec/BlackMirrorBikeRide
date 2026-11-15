@@ -7,6 +7,7 @@
 
 import { getState, save, exportSyncable, importSyncable } from '../state.js';
 import { DRIVE_SCOPE, SYNC_FILENAME, driveClientId } from './config.js';
+import { t } from '../i18n.js';
 
 const DRIVE = 'https://www.googleapis.com/drive/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/drive/v3';
@@ -36,7 +37,7 @@ function loadGIS() {
     s.src = 'https://accounts.google.com/gsi/client';
     s.async = true; s.defer = true;
     s.onload = () => resolve();
-    s.onerror = () => { _gis = null; reject(new Error("Couldn't load Google sign-in (offline?)")); };
+    s.onerror = () => { _gis = null; reject(new Error(t("Couldn't load Google sign-in (offline?)"))); };
     document.head.appendChild(s);
   });
   return _gis;
@@ -54,7 +55,7 @@ function requestToken(prompt) {
         resolve(_token);
       },
       // Without this a dismissed or blocked popup never settles the promise.
-      error_callback: (err) => reject(new Error(err?.message || 'Sign-in was cancelled')),
+      error_callback: (err) => reject(new Error(err?.message || t('Sign-in was cancelled'))),
     });
     client.requestAccessToken({ prompt });
   });
@@ -64,7 +65,7 @@ function requestToken(prompt) {
 // otherwise it only ever reuses an existing grant silently, so the auto-sync
 // path can never pop a window at the user.
 async function getToken(interactive) {
-  if (!syncConfigured()) throw new Error('Cloud sync is not configured here.');
+  if (!syncConfigured()) throw new Error(t('Cloud sync is not configured here.'));
   if (_token && Date.now() < _tokenExp - 60000) return _token;
   await loadGIS();
   // Try silent first even when interactive: a returning user with a live Google
@@ -81,7 +82,7 @@ async function getToken(interactive) {
 async function fetchProfile(token) {
   try {
     const r = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', { headers: { Authorization: `Bearer ${token}` } });
-    if (r.ok) { const j = await r.json(); _profile = { name: j.name || j.email || 'Google account', email: j.email || '', picture: j.picture || '' }; window.appFont?.setAccount(_profile); }
+    if (r.ok) { const j = await r.json(); _profile = { name: j.name || j.email || t('Google account'), email: j.email || '', picture: j.picture || '' }; window.appFont?.setAccount(_profile); }
   } catch { /* cosmetic only — never fails a sync */ }
   return _profile;
 }
@@ -89,8 +90,8 @@ async function fetchProfile(token) {
 async function api(url, opts = {}) {
   const token = await getToken(false);
   const res = await fetch(url, { ...opts, headers: { Authorization: `Bearer ${token}`, ...(opts.headers || {}) } });
-  if (res.status === 401) { _token = null; throw new Error('Google session expired — connect again.'); }
-  if (!res.ok) throw new Error(`Drive error ${res.status}: ${(await res.text()).slice(0, 140)}`);
+  if (res.status === 401) { _token = null; throw new Error(t('Google session expired — connect again.')); }
+  if (!res.ok) throw new Error(t('Drive error {status}: {detail}', { status: res.status, detail: (await res.text()).slice(0, 140) }));
   return res;
 }
 
@@ -104,7 +105,7 @@ async function findFileId() {
 async function downloadPayload(id) {
   const res = await api(`${DRIVE}/files/${id}?alt=media`);
   try { return await res.json(); }
-  catch { throw new Error('The cloud sync file is corrupt — run Sync now from a device that has your data.'); }
+  catch { throw new Error(t('The cloud sync file is corrupt — run Sync now from a device that has your data.')); }
 }
 
 // Big payloads (a full ride history with telemetry) use the resumable protocol:
@@ -117,10 +118,10 @@ async function uploadResumable(id, body) {
       headers: { 'Content-Type': 'application/json; charset=UTF-8', 'X-Upload-Content-Type': 'application/json' },
       body: JSON.stringify(meta) });
   const session = init.headers.get('Location');
-  if (!session) throw new Error('Drive upload session was not created.');
+  if (!session) throw new Error(t('Drive upload session was not created.'));
   // No auth header here on purpose — the session URL carries its own credentials.
   const put = await fetch(session, { method: 'PUT', body });
-  if (!put.ok) throw new Error(`Drive upload failed (${put.status}).`);
+  if (!put.ok) throw new Error(t('Drive upload failed ({status}).', { status: put.status }));
   return id || (await put.json()).id;
 }
 

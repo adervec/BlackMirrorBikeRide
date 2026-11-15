@@ -6,6 +6,8 @@ import { activityToTcx, tcxFilename } from '../game/tcx.js';
 import { downloadText } from '../routes/io.js';
 import { COWORK_APP, coworkManifest, coworkFiles, parseReviews } from '../cloud/brief.js';
 import { loadCowork, pushCoworkFolder } from '../cloud/coworkFolder.js';
+import { t, fmtDate, fmtDateTime } from '../i18n.js';
+
 
 // Folder cowork through the maker's shared panel (https://adervec.github.io/cowork.js, fs mode):
 // the panel drives a folder you pick; we hand it the brief digest + the ride history (see
@@ -29,23 +31,23 @@ function coachSection(s) {
       // BRIEF.md stays ours (coworkFiles writes it, and so does the headless push after every ride).
       channels: {
         coach: {
-          label: 'Ride coach',
-          preview: (reply) => [{ id: 'reply', label: 'Show this advice (replaces the current one)', detail: coworkReplyText(reply).slice(0, 400) }],
+          label: t('Ride coach'),
+          preview: (reply) => [{ id: 'reply', label: t('Show this advice (replaces the current one)'), detail: coworkReplyText(reply).slice(0, 400) }],
           apply: (reply) => {
             let prev = ''; try { prev = localStorage.getItem('bmbr-coach-reply') || ''; } catch { /* private mode */ }
             const text = coworkReplyText(reply);
             try { localStorage.setItem('bmbr-coach-reply', text); } catch { /* quota */ }
             show(text);
-            return { summary: 'new coaching advice shown', undo: { prev } };
+            return { summary: t('new coaching advice shown'), undo: { prev } };
           },
           undo: (data) => { try { localStorage.setItem('bmbr-coach-reply', data.prev || ''); } catch { /* quota */ } show(data.prev || ''); }
         },
         'ride-review': {
-          label: 'Ride review (AI grade per ride)',
+          label: t('Ride review (AI grade per ride)'),
           schedule: 'daily', // and the folder push after every ride rewrites the request
           preview: (reply) => parseReviews(reply, s.activities.map((a) => a.id)).map((r) => {
             const a = s.activities.find((x) => x.id === r.sessionId);
-            return { id: r.sessionId, label: `${a.routeName} · ${new Date(a.date).toLocaleDateString()}: ${r.grade}`, detail: r.summary };
+            return { id: r.sessionId, label: t('{route} · {date}: {grade}', { route: a.routeName, date: fmtDate(a.date), grade: r.grade }), detail: r.summary };
           }),
           apply: (reply, acceptedIds) => {
             const ok = new Set(acceptedIds), prev = {}, at = new Date().toISOString();
@@ -55,7 +57,7 @@ function coachSection(s) {
               setActivityReview(r.sessionId, { ...r, at });
             }
             pushCoworkFolder();
-            return { summary: `${Object.keys(prev).length} ride review(s) added`, undo: { prev } };
+            return { summary: t.n('{n} ride review added', '{n} ride reviews added', Object.keys(prev).length), undo: { prev } };
           },
           undo: (data) => { for (const [id, r] of Object.entries(data.prev || {})) setActivityReview(id, r); pushCoworkFolder(); }
         }
@@ -63,8 +65,7 @@ function coachSection(s) {
     });
   });
   return div({ class: 'coach' }, [
-    div({ class: 'hint' }, 'Coach · hand your rides to an agent through a folder (CoworkSyncHub, Claude Desktop, a person) — the reply shows here. Nothing is uploaded. ' +
-      'The folder also gets BRIEF.md, a precomputed digest for daily/weekly briefs, refreshed after every ride.'),
+    div({ class: 'hint' }, t('Coach · hand your rides to an agent through a folder (CoworkSyncHub, Claude Desktop, a person) — the reply shows here. Nothing is uploaded. The folder also gets BRIEF.md, a precomputed digest for daily/weekly briefs, refreshed after every ride.')),
     host, out
   ]);
 }
@@ -73,10 +74,10 @@ function coachSection(s) {
 function aiReviewBlock(r) {
   const li = (items) => (items?.length ? el('ul', {}, items.map((x) => el('li', {}, x))) : null);
   return div({ class: 'ai-review', 'data-clamp': '6' }, [
-    div({}, [el('span', { class: 'badge' }, `AI review ${r.grade || ''}`), ' ', r.summary || '']),
-    r.strengths?.length ? div({ class: 'dim small' }, 'Strengths') : null, li(r.strengths),
-    r.fixes?.length ? div({ class: 'dim small' }, 'To fix') : null, li(r.fixes),
-    r.next ? div({ class: 'small' }, `Next: ${r.next}`) : null
+    div({}, [el('span', { class: 'badge' }, t('AI review {grade}', { grade: r.grade || '' })), ' ', r.summary || '']),
+    r.strengths?.length ? div({ class: 'dim small' }, t('Strengths')) : null, li(r.strengths),
+    r.fixes?.length ? div({ class: 'dim small' }, t('To fix')) : null, li(r.fixes),
+    r.next ? div({ class: 'small' }, t('Next: {next}', { next: r.next })) : null
   ]);
 }
 
@@ -97,37 +98,37 @@ export function renderHistory(ctx) {
   const isPB = (a) => { const pb = getPB(a.routeId, a.reverse); return pb && pb.id === a.id; };
 
   const COLS = [
-    { label: 'Ride', cell: (a) => div({ class: 't-name' }, [
+    { label: t('Ride'), cell: (a) => div({ class: 't-name' }, [
       el('span', {}, a.routeName + (a.reverse ? ' ↺' : '')),
-      isPB(a) ? el('span', { class: 'badge badge-pb' }, '★ PB') : null,
-      a.workoutName ? el('span', { class: 'badge badge-virtual', title: 'Structured workout' }, a.workoutName) : null,
-      div({ class: 't-sub' }, new Date(a.date).toLocaleString() + (a.source ? ` · ${a.source}` : '')),
+      isPB(a) ? el('span', { class: 'badge badge-pb' }, t('★ PB')) : null,
+      a.workoutName ? el('span', { class: 'badge badge-virtual', title: t('Structured workout') }, a.workoutName) : null,
+      div({ class: 't-sub' }, fmtDateTime(a.date) + (a.source ? ` · ${a.source}` : '')),
       a.aiReview ? aiReviewBlock(a.aiReview) : null
     ]) },
-    { label: 'Lap', align: 'right', cell: (a) => (a.lapTimeS != null ? formatTime(a.lapTimeS) : '—') },
-    { label: 'Duration', align: 'right', cell: (a) => formatTime(a.durationS) },
-    { label: 'Distance', align: 'right', cell: (a) => formatString('distance', a.distanceM, u) },
-    { label: 'Avg Power', align: 'right', cell: (a) => formatString('power', a.avgPower, u) },
-    { label: 'Avg Speed', align: 'right', cell: (a) => formatString('speed', a.avgSpeed, u) },
-    { label: 'Ascent', align: 'right', cell: (a) => formatString('distance', a.ascentM, u) },
+    { label: t('Lap'), align: 'right', cell: (a) => (a.lapTimeS != null ? formatTime(a.lapTimeS) : '—') },
+    { label: t('Duration'), align: 'right', cell: (a) => formatTime(a.durationS) },
+    { label: t('Distance'), align: 'right', cell: (a) => formatString('distance', a.distanceM, u) },
+    { label: t('Avg Power'), align: 'right', cell: (a) => formatString('power', a.avgPower, u) },
+    { label: t('Avg Speed'), align: 'right', cell: (a) => formatString('speed', a.avgSpeed, u) },
+    { label: t('Ascent'), align: 'right', cell: (a) => formatString('distance', a.ascentM, u) },
     { label: '', cell: (a) => {
       const missing = !getRoute(a.routeId);
       return div({ class: 't-actions' }, [
-        missing ? el('span', { class: 'dim small' }, 'route deleted')
-          : btn('Replay ⏩', () => ctx.router.go('ride', { routeId: a.routeId, reverse: a.reverse, mode: 'replay', activityId: a.id }), 'btn small'),
-        !missing ? btn('Ride again', () => ctx.router.go('ride', { routeId: a.routeId, reverse: a.reverse }), 'btn small ghost') : null,
-        btn('⤓ TCX', () => exportTcx(a), 'btn small ghost'),
-        btn('✕', () => { if (confirm('Delete this activity?')) { deleteActivity(a.id); pushCoworkFolder(); ctx.router.go('history', ctx.params); } }, 'btn small icon danger')
+        missing ? el('span', { class: 'dim small' }, t('route deleted'))
+          : btn(t('Replay ⏩'), () => ctx.router.go('ride', { routeId: a.routeId, reverse: a.reverse, mode: 'replay', activityId: a.id }), 'btn small'),
+        !missing ? btn(t('Ride again'), () => ctx.router.go('ride', { routeId: a.routeId, reverse: a.reverse }), 'btn small ghost') : null,
+        btn(t('⤓ TCX'), () => exportTcx(a), 'btn small ghost'),
+        btn('✕', () => { if (confirm(t('Delete this activity?'))) { deleteActivity(a.id); pushCoworkFolder(); ctx.router.go('history', ctx.params); } }, 'btn small icon danger')
       ]);
     } }
   ];
 
   const rows = acts.map((a) => ({ ...a, _rowClass: isPB(a) ? 'is-pb' : null }));
 
-  return screen(route ? `History — ${route.name}` : 'History & PBs', ctx, [
-    route ? div({ class: 'hint' }, 'Personal bests are the fastest completed lap per direction. Replay any ride or set it as your ghost target in Settings.') : null,
-    acts.length ? div({ class: 'table-note' }, `${acts.length} ride(s) · ${formatString('distance', acts.reduce((t, a) => t + a.distanceM, 0), u)} total · TCX files upload to Strava, Intervals.icu, Garmin Connect…`) : null,
-    table(COLS, rows, { empty: 'No recorded activities yet. Go ride something!' }),
+  return screen(route ? t('History — {route}', { route: route.name }) : t('History & PBs'), ctx, [
+    route ? div({ class: 'hint' }, t('Personal bests are the fastest completed lap per direction. Replay any ride or set it as your ghost target in Settings.')) : null,
+    acts.length ? div({ class: 'table-note' }, t.n('{n} ride · {dist} total · TCX files upload to Strava, Intervals.icu, Garmin Connect…', '{n} rides · {dist} total · TCX files upload to Strava, Intervals.icu, Garmin Connect…', acts.length, { dist: formatString('distance', acts.reduce((sum, a) => sum + a.distanceM, 0), u) })) : null,
+    table(COLS, rows, { empty: t('No recorded activities yet. Go ride something!') }),
     route ? null : coachSection(s)
   ], { backTo: route ? 'routes' : 'menu' });
 }
