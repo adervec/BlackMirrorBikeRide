@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "localStorage": ["bmbr.state.v1", "bmbr.ride.inprogress", "bmbr-coach-reply"],
+  "indexedDB": [],
+  "drive": ["bmbr-sync.json"],
+  "caches": [],
+  "export": "History > ⤓ TCX per ride; Routes > Export all; Skyboxes > Export all; About > Back up my data"
+}

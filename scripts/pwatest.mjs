@@ -72,8 +72,12 @@ assert(readFileSync(join(root, 'src', 'ui', 'settingsScreen.js'), 'utf8').includ
 const news = JSON.parse(readFileSync(join(pub, 'whatsnew.json'), 'utf8'));
 assert(Array.isArray(news) && news.length && news.every((e) => /^\d{4}-\d{2}-\d{2}$/.test(e.date) && e.items.length) && news.every((e, i) => !i || e.date <= news[i - 1].date), 'whatsnew.json: dated entries, newest first');
 assert(head.includes('<meta name="app-whatsnew" content="whatsnew.json" />'), 'index.html points at whatsnew.json');
-const { themeFor } = await import('../src/ui/themes.js');
-assert(themeFor(null, true) === 'pastel' && themeFor(null, false) === 'midnight' && themeFor('arcade', true) === 'arcade', 'no saved theme follows the device; a saved one wins');
+const { migrateTheme } = await import('../src/ui/themes.js');
+const fakeFont = (choice) => ({ set: null, theme: () => choice, setTheme(id) { this.set = id; } });
+const f1 = fakeFont('system'), f2 = fakeFont('paper'), f3 = fakeFont('system');
+assert(migrateTheme('wasteland', f1) && f1.set === 'ember' && migrateTheme('graphite', f2) && f2.set === null && !migrateTheme('arcade', null) && !migrateTheme(undefined, f3) && f3.set === null,
+  'old themes map once onto the house list; a house choice already made wins; no font.js = retry later');
+assert(css.includes('var(--t-bg') && html.includes('app-theme-picker') === false && readFileSync(join(root, 'src', 'ui', 'settingsScreen.js'), 'utf8').includes("el('app-theme-picker')"), 'colours come from the house palette and settings offers the house theme picker');
 
 // ---- registration ----
 const main = readFileSync(join(root, 'src', 'main.js'), 'utf8');

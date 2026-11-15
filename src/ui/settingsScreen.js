@@ -3,7 +3,6 @@ import { getState, save, resetState, eraseLocalKeys } from '../state.js';
 import { forgetCoworkFolder } from '../cloud/coworkFolder.js';
 import { MEASUREMENTS, unitOptions, applyPreset } from '../game/units.js';
 import { READINGS } from '../game/hudConfig.js';
-import { themeList, applyTheme, themeFor } from './themes.js';
 import { qualityOptions } from '../world/quality.js';
 import { originAllowed } from '../cloud/config.js';
 import { syncConfigured, isSignedIn, account, lastSync, signIn, signOut, syncNow } from '../cloud/sync.js';
@@ -207,8 +206,8 @@ export function renderSettings(ctx) {
 
   const appearanceCard = div({ class: 'card' }, [
     h(2, 'Appearance'),
-    field('Menu theme', select(themeList(), themeFor(s.settings.theme), (v) => { s.settings.theme = v; applyTheme(v); save(); })),
-    div({ class: 'hint' }, 'Themes restyle the whole UI. Applied instantly and remembered.'),
+    el('app-theme-picker'),
+    div({ class: 'hint' }, 'The same themes as the other apps from this maker, chosen per app. System follows the light or dark mode of your device.'),
     field('Graphics quality', select(qualityOptions(), s.settings.graphicsQuality, (v) => { s.settings.graphicsQuality = v; save(); })),
     div({ class: 'hint' }, 'Controls resolution, shadow detail, image-based lighting and bloom in the 3D world & garage. Higher looks richer but needs more GPU. Applies next time you open a ride or the garage.'),
     btn('Manage skyboxes →', () => ctx.router.go('skyboxes'), 'btn ghost')

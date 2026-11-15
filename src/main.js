@@ -1,8 +1,8 @@
 import './style.css';
 import { Router } from './ui/router.js';
-import { applyTheme } from './ui/themes.js';
+import { migrateTheme } from './ui/themes.js';
 import { toast } from './ui/dom.js';
-import { getState, mergeBundledRoutes, addActivity } from './state.js';
+import { getState, save, mergeBundledRoutes, addActivity } from './state.js';
 import { loadBundledRoutes } from './routes/bundled.js';
 import { autoSync } from './cloud/sync.js';
 import { pushCoworkFolder } from './cloud/coworkFolder.js';
@@ -19,7 +19,7 @@ import { renderSkyboxes } from './ui/skyboxScreen.js';
 import { renderWorkouts } from './ui/workoutsScreen.js';
 import { renderRide, AUTOSAVE_KEY } from './ui/rideScreen.js';
 
-applyTheme(getState().settings.theme);
+if (migrateTheme(getState().settings.theme, window.appFont)) { delete getState().settings.theme; save(); }
 
 const app = document.getElementById('app');
 const router = new Router(app);
@@ -77,18 +77,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   });
 }
 
-// Tell the maker's app portal (adervec.github.io — same origin, so it shares this
-// localStorage) that the app is installed here. Installed launches only; a plain
-// browser tab never registers.
-try {
-  const modes = ['standalone', 'minimal-ui', 'fullscreen', 'window-controls-overlay'];
-  if (navigator.standalone || modes.some((m) => window.matchMedia(`(display-mode: ${m})`).matches)) {
-    const key = 'portal-installed';
-    const registry = JSON.parse(localStorage.getItem(key) || '{}');
-    registry['BlackMirrorBikeRide'] = Date.now();
-    localStorage.setItem(key, JSON.stringify(registry));
-  }
-} catch {}
+// The home-screen install is recorded by font.js (portal-installed) for every app.
 
 // Expose for quick debugging in the console.
 window.__bmbr = { router };

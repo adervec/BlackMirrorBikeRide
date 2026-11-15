@@ -36,7 +36,6 @@ function freshState() {
       ghost: { enabled: true, source: 'pb' },
       previewSpeedMs: 40,
       replaySpeedMul: 4,
-      theme: null, // null = follow the device (themes.js themeFor); a saved choice wins
       graphicsQuality: DEFAULT_QUALITY,
       trainerDifficulty: 1,   // share of the road gradient sent to a controllable trainer
       autoPause: true,        // stop the clock when a real trainer goes quiet at a standstill
@@ -218,7 +217,7 @@ export function mergeBundledRoutes(routes) {
 export function addActivity(activity) {
   state.activities.unshift(activity);
   // maker-portal character sheet (same-origin localStorage; stays in this browser)
-  try { const k = 'portal-activity', a = JSON.parse(localStorage.getItem(k) || '[]'); a.push([Math.round(Date.now() / 1000), 'BlackMirrorBikeRide', 'ride', Math.max(1, Math.round((activity.durationS || 600) / 600))]); localStorage.setItem(k, JSON.stringify(a.slice(-2000))); } catch (_) { /* quota — ignore */ }
+  globalThis.appFont?.logSession({ kind: 'ride', minutes: (activity.durationS || 600) / 60, id: activity.id }); // the hub's session ledger (standard 25)
   if (state.activities.length > MAX_ACTIVITIES) state.activities.length = MAX_ACTIVITIES;
   save();
   return activity;
